@@ -3,16 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		627E200926CE8F4D00550D59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 627E200826CE8F4D00550D59 /* LaunchScreen.storyboard */; };
 		62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40212690B0FA009B77F3 /* AppDelegate.swift */; };
 		62BA40242690B0FA009B77F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40232690B0FA009B77F3 /* SceneDelegate.swift */; };
 		62BA40262690B0FA009B77F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40252690B0FA009B77F3 /* ViewController.swift */; };
-		62BA40292690B0FA009B77F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62BA40272690B0FA009B77F3 /* Main.storyboard */; };
 		62BA402B2690B0FC009B77F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62BA402A2690B0FC009B77F3 /* Assets.xcassets */; };
-		62BA402E2690B0FC009B77F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62BA402C2690B0FC009B77F3 /* LaunchScreen.storyboard */; };
 		62BA40392690B0FD009B77F3 /* diaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40382690B0FD009B77F3 /* diaryTests.swift */; };
 		62BA40442690B0FD009B77F3 /* diaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40432690B0FD009B77F3 /* diaryUITests.swift */; };
 		9D432695EA98D656B099F4B1 /* Pods_diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B894E3AA684F49C439F7258 /* Pods_diary.framework */; };
@@ -44,13 +43,12 @@
 		5E0D0EF1C767475EB03B257B /* Pods-diaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diaryTests.release.xcconfig"; path = "Target Support Files/Pods-diaryTests/Pods-diaryTests.release.xcconfig"; sourceTree = "<group>"; };
 		601756147E85EE8A3E70851A /* Pods-diary-diaryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diary-diaryUITests.debug.xcconfig"; path = "Target Support Files/Pods-diary-diaryUITests/Pods-diary-diaryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		61203E3BB236EAAB98001720 /* Pods_diaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_diaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		627E200826CE8F4D00550D59 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62BA401E2690B0FA009B77F3 /* diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62BA40212690B0FA009B77F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62BA40232690B0FA009B77F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		62BA40252690B0FA009B77F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		62BA40282690B0FA009B77F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		62BA402A2690B0FC009B77F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		62BA402D2690B0FC009B77F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62BA402F2690B0FC009B77F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62BA40342690B0FD009B77F3 /* diaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = diaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62BA40382690B0FD009B77F3 /* diaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diaryTests.swift; sourceTree = "<group>"; };
@@ -119,9 +117,8 @@
 				62BA40212690B0FA009B77F3 /* AppDelegate.swift */,
 				62BA40232690B0FA009B77F3 /* SceneDelegate.swift */,
 				62BA40252690B0FA009B77F3 /* ViewController.swift */,
-				62BA40272690B0FA009B77F3 /* Main.storyboard */,
 				62BA402A2690B0FC009B77F3 /* Assets.xcassets */,
-				62BA402C2690B0FC009B77F3 /* LaunchScreen.storyboard */,
+				627E200826CE8F4D00550D59 /* LaunchScreen.storyboard */,
 				62BA402F2690B0FC009B77F3 /* Info.plist */,
 			);
 			path = diary;
@@ -155,7 +152,6 @@
 				649B15496766866789EDBF0E /* Pods-diaryTests.debug.xcconfig */,
 				5E0D0EF1C767475EB03B257B /* Pods-diaryTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -277,9 +273,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62BA402E2690B0FC009B77F3 /* LaunchScreen.storyboard in Resources */,
 				62BA402B2690B0FC009B77F3 /* Assets.xcassets in Resources */,
-				62BA40292690B0FA009B77F3 /* Main.storyboard in Resources */,
+				627E200926CE8F4D00550D59 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,25 +438,6 @@
 			targetProxy = 62BA40402690B0FD009B77F3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		62BA40272690B0FA009B77F3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				62BA40282690B0FA009B77F3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		62BA402C2690B0FC009B77F3 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				62BA402D2690B0FC009B77F3 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		62BA40462690B0FD009B77F3 /* Debug */ = {
