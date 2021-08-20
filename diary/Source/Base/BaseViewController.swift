@@ -18,7 +18,6 @@ class BaseViewController: UIViewController {
     }
     
     // MARK: - Initializing
-    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -36,7 +35,6 @@ class BaseViewController: UIViewController {
     var disposeBag = DisposeBag()
     
     // MARK: - Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLayout()
@@ -46,14 +44,12 @@ class BaseViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         view.addSubview(self.activityIndicatorView)
-        
         activityIndicatorView.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
     }
     
     // MARK: - Methods
-    
     func setupLayout() {
         // add Views
     }
