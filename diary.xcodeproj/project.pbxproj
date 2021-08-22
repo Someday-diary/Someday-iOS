@@ -15,6 +15,8 @@
 		625F4C5F26CF6DAA00DC5978 /* DiaryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5E26CF6DAA00DC5978 /* DiaryStep.swift */; };
 		625F4C6126CF8CEC00DC5978 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C6026CF8CEC00DC5978 /* AppFlow.swift */; };
 		625F4C6426CF94CC00DC5978 /* MainViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C6326CF94CC00DC5978 /* MainViewReactor.swift */; };
+		625F4C7426D0EE0A00DC5978 /* FSCalendar+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C7326D0EE0A00DC5978 /* FSCalendar+Rx.swift */; };
+		625F4C7726D233F100DC5978 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C7626D233F100DC5978 /* R.generated.swift */; };
 		627E200926CE8F4D00550D59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 627E200826CE8F4D00550D59 /* LaunchScreen.storyboard */; };
 		627E200F26CE93DC00550D59 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E200E26CE93DC00550D59 /* BaseViewController.swift */; };
 		62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40212690B0FA009B77F3 /* AppDelegate.swift */; };
@@ -59,6 +61,8 @@
 		625F4C5E26CF6DAA00DC5978 /* DiaryStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryStep.swift; sourceTree = "<group>"; };
 		625F4C6026CF8CEC00DC5978 /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		625F4C6326CF94CC00DC5978 /* MainViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewReactor.swift; sourceTree = "<group>"; };
+		625F4C7326D0EE0A00DC5978 /* FSCalendar+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FSCalendar+Rx.swift"; sourceTree = "<group>"; };
+		625F4C7626D233F100DC5978 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		627E200826CE8F4D00550D59 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		627E200E26CE93DC00550D59 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		62BA401E2690B0FA009B77F3 /* diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +118,14 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		625F4C6626CFCB1C00DC5978 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				625F4C7326D0EE0A00DC5978 /* FSCalendar+Rx.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		627E200A26CE928100550D59 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +137,7 @@
 				627E201326CE948200550D59 /* Model */,
 				627E201426CE948E00550D59 /* Network */,
 				627E200D26CE93A800550D59 /* Base */,
+				625F4C6626CFCB1C00DC5978 /* Extension */,
 				627E201526CE949900550D59 /* Utils */,
 			);
 			path = Source;
@@ -142,6 +155,7 @@
 		627E200C26CE92AE00550D59 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				625F4C7626D233F100DC5978 /* R.generated.swift */,
 				62BA402F2690B0FC009B77F3 /* Info.plist */,
 			);
 			path = SupportingFiles;
@@ -285,6 +299,7 @@
 			buildConfigurationList = 62BA40482690B0FD009B77F3 /* Build configuration list for PBXNativeTarget "diary" */;
 			buildPhases = (
 				524A2C98F2EA7CA5B46F882A /* [CP] Check Pods Manifest.lock */,
+				625F4C7526D232E500DC5978 /* ShellScript */,
 				62BA401A2690B0FA009B77F3 /* Sources */,
 				62BA401B2690B0FA009B77F3 /* Frameworks */,
 				62BA401C2690B0FA009B77F3 /* Resources */,
@@ -446,6 +461,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		625F4C7526D232E500DC5978 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n\n";
+		};
 		DBB4301821AA10341830D9B3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -516,9 +550,11 @@
 			files = (
 				625F4C5F26CF6DAA00DC5978 /* DiaryStep.swift in Sources */,
 				62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */,
+				625F4C7426D0EE0A00DC5978 /* FSCalendar+Rx.swift in Sources */,
 				62BA40242690B0FA009B77F3 /* SceneDelegate.swift in Sources */,
 				625F4C6126CF8CEC00DC5978 /* AppFlow.swift in Sources */,
 				625F4C5726CF235F00DC5978 /* UIViewControllerPreview.swift in Sources */,
+				625F4C7726D233F100DC5978 /* R.generated.swift in Sources */,
 				625F4C6426CF94CC00DC5978 /* MainViewReactor.swift in Sources */,
 				625F4C5B26CF23AC00DC5978 /* DeviceType.swift in Sources */,
 				625F4C5526CF22D300DC5978 /* Preview.swift in Sources */,
