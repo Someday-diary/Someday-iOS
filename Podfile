@@ -10,7 +10,8 @@ target 'diary' do
   # UI
   pod 'SnapKit'
   pod 'RxFlow'
-  
+  pod 'FSCalendar'
+ 
   # Architecture
   pod 'ReactorKit'
 

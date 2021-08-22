@@ -10,7 +10,8 @@ import SwiftUI
 
 struct ViewControllerPreview: PreviewProvider {
     static var previews: some View {
-        MainViewController().showPreview(.iPhone12Pro)
+        let reactor = MainViewReactor()
+        MainViewController(reactor: reactor).showPreview(.iPhone12Pro)
     }
 }
 
