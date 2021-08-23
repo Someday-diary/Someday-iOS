@@ -109,8 +109,8 @@ struct R: Rswift.Validatable {
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
-    /// Color `AppColor`.
-    static let appColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AppColor")
+    /// Color `MainColor`.
+    static let mainColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "MainColor")
 
     #if os(iOS) || os(tvOS)
     /// `UIColor(named: "AccentColor", bundle: ..., traitCollection: ...)`
@@ -122,11 +122,11 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "AppColor", bundle: ..., traitCollection: ...)`
+    /// `UIColor(named: "MainColor", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
-    static func appColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
-      return UIKit.UIColor(resource: R.color.appColor, compatibleWith: traitCollection)
+    static func mainColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.mainColor, compatibleWith: traitCollection)
     }
     #endif
 
@@ -139,10 +139,10 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(watchOS)
-    /// `UIColor(named: "AppColor", bundle: ..., traitCollection: ...)`
+    /// `UIColor(named: "MainColor", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
-    static func appColor(_: Void = ()) -> UIKit.UIColor? {
-      return UIKit.UIColor(named: R.color.appColor.name)
+    static func mainColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.mainColor.name)
     }
     #endif
 

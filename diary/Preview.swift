@@ -15,4 +15,10 @@ struct ViewControllerPreview: PreviewProvider {
     }
 }
 
+//struct ViewPreview: PreviewProvider {
+//    static var previews: some View {
+//        CalendarView().showPreview(width: 300, height: 300)
+//    }
+//}
+
 #endif
