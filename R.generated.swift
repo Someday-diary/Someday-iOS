@@ -105,12 +105,20 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 2 colors.
+  /// This `R.color` struct is generated, and contains static references to 6 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
+    /// Color `CalendarHeaderColor`.
+    static let calendarHeaderColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "CalendarHeaderColor")
+    /// Color `CalendarTitleDefaultColor`.
+    static let calendarTitleDefaultColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "CalendarTitleDefaultColor")
+    /// Color `CalendarTitlePlaceHolderColor`.
+    static let calendarTitlePlaceHolderColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "CalendarTitlePlaceHolderColor")
     /// Color `MainColor`.
     static let mainColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "MainColor")
+    /// Color `WeekdayTextColor`.
+    static let weekdayTextColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "WeekdayTextColor")
 
     #if os(iOS) || os(tvOS)
     /// `UIColor(named: "AccentColor", bundle: ..., traitCollection: ...)`
@@ -118,6 +126,33 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func accentColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.accentColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "CalendarHeaderColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func calendarHeaderColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.calendarHeaderColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "CalendarTitleDefaultColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func calendarTitleDefaultColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.calendarTitleDefaultColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "CalendarTitlePlaceHolderColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func calendarTitlePlaceHolderColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.calendarTitlePlaceHolderColor, compatibleWith: traitCollection)
     }
     #endif
 
@@ -130,6 +165,15 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "WeekdayTextColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func weekdayTextColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.weekdayTextColor, compatibleWith: traitCollection)
+    }
+    #endif
+
     #if os(watchOS)
     /// `UIColor(named: "AccentColor", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
@@ -139,10 +183,42 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(watchOS)
+    /// `UIColor(named: "CalendarHeaderColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func calendarHeaderColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.calendarHeaderColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "CalendarTitleDefaultColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func calendarTitleDefaultColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.calendarTitleDefaultColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "CalendarTitlePlaceHolderColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func calendarTitlePlaceHolderColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.calendarTitlePlaceHolderColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
     /// `UIColor(named: "MainColor", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
     static func mainColor(_: Void = ()) -> UIKit.UIColor? {
       return UIKit.UIColor(named: R.color.mainColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "WeekdayTextColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func weekdayTextColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.weekdayTextColor.name)
     }
     #endif
 

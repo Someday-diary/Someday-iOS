@@ -25,13 +25,14 @@ final class MainViewController: BaseViewController, View {
         $0.select(Date())
         $0.appearance.headerMinimumDissolvedAlpha = 0
         $0.appearance.selectionColor = R.color.mainColor()
-        $0.appearance.titleSelectionColor = .white
-        $0.appearance.headerTitleColor = #colorLiteral(red: 0.2352941176, green: 0.2352941176, blue: 0.2352941176, alpha: 1)
+        $0.appearance.titleSelectionColor = .systemBackground
+        $0.appearance.headerTitleColor = R.color.calendarHeaderColor()
         $0.appearance.headerTitleFont = Font.calendarTitle
         $0.appearance.headerDateFormat = "MMM"
         $0.headerHeight = 64
-        $0.appearance.weekdayTextColor = #colorLiteral(red: 0.5764705882, green: 0.5764705882, blue: 0.5764705882, alpha: 1)
-        $0.appearance.titlePlaceholderColor = #colorLiteral(red: 0.5764705882, green: 0.5764705882, blue: 0.5764705882, alpha: 1)
+        $0.appearance.weekdayTextColor = R.color.weekdayTextColor()
+        $0.appearance.titleDefaultColor = R.color.calendarTitleDefaultColor()
+        $0.appearance.titlePlaceholderColor = R.color.calendarTitlePlaceHolderColor()
         $0.appearance.eventDefaultColor = R.color.mainColor()
         $0.appearance.eventSelectionColor = R.color.mainColor()
         $0.appearance.subtitleFont = UIFont.systemFont(ofSize: 0)
