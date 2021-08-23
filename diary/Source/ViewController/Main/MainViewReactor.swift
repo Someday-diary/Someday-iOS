@@ -10,7 +10,7 @@ import RxCocoa
 import ReactorKit
 import RxFlow
 
-class MainViewReactor: Reactor, Stepper {
+final class MainViewReactor: Reactor, Stepper {
     var steps = PublishRelay<Step>()
     
     
