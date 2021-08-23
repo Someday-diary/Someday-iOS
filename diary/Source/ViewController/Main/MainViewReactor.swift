@@ -10,23 +10,23 @@ import RxCocoa
 import ReactorKit
 import RxFlow
 
-class MainViewReactor: Reactor, Stepper {
+final class MainViewReactor: Reactor, Stepper {
+    var steps = PublishRelay<Step>()
     
-    var steps: PublishRelay<Step> = PublishRelay<Step>()
+    
+    var initialState: State
     
     enum Action {
-        case <#case#>
+        case setDay(Date)
     }
     
     enum Mutation {
-        case <#case#>
+        case changeDay(Date)
     }
     
     struct State {
-        
+        var selectedDay: Date = Date()
     }
-    
-    var initialState: State
     
     init() {
         self.initialState = State()
@@ -34,6 +34,22 @@ class MainViewReactor: Reactor, Stepper {
     
     
     func mutate(action: Action) -> Observable<Mutation> {
-        <#code#>
+        switch action {
+        
+        case let .setDay(selectedDay):
+            return Observable.just(Mutation.changeDay(selectedDay))
+        }
+    }
+    
+    // update state
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        
+        switch mutation {
+        case let .changeDay(selectedDay):
+            state.selectedDay = selectedDay
+        }
+        
+        return state
     }
 }
