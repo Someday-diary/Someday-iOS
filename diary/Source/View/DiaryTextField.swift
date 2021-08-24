@@ -64,8 +64,8 @@ final class DiaryTextField: UIView {
         
         self.textField.snp.makeConstraints {
             $0.top.equalTo(self.eventLabel.snp.bottom).offset(Metric.textFieldTop)
-            $0.left.equalToSuperview()
-            $0.right.equalToSuperview()
+            $0.left.equalToSuperview().offset(11)
+            $0.right.equalToSuperview().offset(-11)
         }
         
         self.separatorView.snp.makeConstraints {
