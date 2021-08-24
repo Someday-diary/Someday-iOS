@@ -93,6 +93,7 @@ class DiaryCalendar: UIView {
             .subscribe(onNext: { [weak self] in
                 self?.moveCurrentPage(moveUp: true)
             }).disposed(by: disposeBag)
+        
         self.prevButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.moveCurrentPage(moveUp: false)

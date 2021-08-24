@@ -57,6 +57,11 @@ final class MainViewController: BaseViewController, View {
         }
     }
     
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        self.calendarView.calendar.reloadData()
+        self.calendarView.calendar.calendarHeaderView.reloadData()
+    }
+    
     // MARK: Configuring
     
     func bind(reactor: MainViewReactor) {
