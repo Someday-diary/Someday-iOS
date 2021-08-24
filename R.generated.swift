@@ -225,6 +225,48 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
+  /// This `R.image` struct is generated, and contains static references to 4 images.
+  struct image {
+    /// Image `CalendarAsset`.
+    static let calendarAsset = Rswift.ImageResource(bundle: R.hostingBundle, name: "CalendarAsset")
+    /// Image `CalendarBackButton`.
+    static let calendarBackButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "CalendarBackButton")
+    /// Image `CalendarFrontButton`.
+    static let calendarFrontButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "CalendarFrontButton")
+    /// Image `DiaryDrawerButton`.
+    static let diaryDrawerButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "DiaryDrawerButton")
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "CalendarAsset", bundle: ..., traitCollection: ...)`
+    static func calendarAsset(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.calendarAsset, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "CalendarBackButton", bundle: ..., traitCollection: ...)`
+    static func calendarBackButton(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.calendarBackButton, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "CalendarFrontButton", bundle: ..., traitCollection: ...)`
+    static func calendarFrontButton(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.calendarFrontButton, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "DiaryDrawerButton", bundle: ..., traitCollection: ...)`
+    static func diaryDrawerButton(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.diaryDrawerButton, compatibleWith: traitCollection)
+    }
+    #endif
+
+    fileprivate init() {}
+  }
+
   /// This `R.info` struct is generated, and contains static references to 1 properties.
   struct info {
     struct uiApplicationSceneManifest {
