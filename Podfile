@@ -33,7 +33,7 @@ target 'diary' do
   pod 'R.swift'
   pod 'Then'
   pod 'Carte'
-
+  pod 'CGFloatLiteral'
   target 'diaryTests' do
     inherit! :search_paths
     # Pods for testing

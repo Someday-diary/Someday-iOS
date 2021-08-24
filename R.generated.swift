@@ -105,7 +105,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 6 colors.
+  /// This `R.color` struct is generated, and contains static references to 7 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
@@ -119,6 +119,8 @@ struct R: Rswift.Validatable {
     static let mainColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "MainColor")
     /// Color `WeekdayTextColor`.
     static let weekdayTextColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "WeekdayTextColor")
+    /// Color `separatorColor`.
+    static let separatorColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "separatorColor")
 
     #if os(iOS) || os(tvOS)
     /// `UIColor(named: "AccentColor", bundle: ..., traitCollection: ...)`
@@ -174,6 +176,15 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "separatorColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func separatorColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.separatorColor, compatibleWith: traitCollection)
+    }
+    #endif
+
     #if os(watchOS)
     /// `UIColor(named: "AccentColor", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
@@ -219,6 +230,14 @@ struct R: Rswift.Validatable {
     @available(watchOSApplicationExtension 4.0, *)
     static func weekdayTextColor(_: Void = ()) -> UIKit.UIColor? {
       return UIKit.UIColor(named: R.color.weekdayTextColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "separatorColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func separatorColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.separatorColor.name)
     }
     #endif
 
