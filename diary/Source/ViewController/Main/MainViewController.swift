@@ -19,25 +19,7 @@ final class MainViewController: BaseViewController, View {
     }
     
     // MARK: UI
-    let calendar = FSCalendar().then {
-        $0.scrollDirection = .horizontal
-        $0.today = nil
-        $0.select(Date())
-        $0.appearance.headerMinimumDissolvedAlpha = 0
-        $0.appearance.selectionColor = R.color.mainColor()
-        $0.appearance.titleSelectionColor = .systemBackground
-        $0.appearance.headerTitleColor = R.color.calendarHeaderColor()
-        $0.appearance.headerTitleFont = Font.calendarTitle
-        $0.appearance.headerDateFormat = "MMM"
-        $0.headerHeight = 64
-        $0.appearance.weekdayTextColor = R.color.weekdayTextColor()
-        $0.appearance.titleDefaultColor = R.color.calendarTitleDefaultColor()
-        $0.appearance.titlePlaceholderColor = R.color.calendarTitlePlaceHolderColor()
-        $0.appearance.eventDefaultColor = R.color.mainColor()
-        $0.appearance.eventSelectionColor = R.color.mainColor()
-        $0.appearance.subtitleFont = UIFont.systemFont(ofSize: 0)
-        $0.locale = Locale(identifier: "ko_KR")
-    }
+    let calendarView = DiaryCalendar()
     let label = UILabel()
     
     // MARK: Initializing
@@ -56,7 +38,7 @@ final class MainViewController: BaseViewController, View {
     }
     
     override func setupLayout() {
-        self.view.addSubview(calendar)
+        self.view.addSubview(calendarView)
         self.view.addSubview(label)
     }
     
@@ -67,19 +49,24 @@ final class MainViewController: BaseViewController, View {
             $0.center.equalToSuperview()
         }
         
-        self.calendar.snp.makeConstraints {
+        self.calendarView.snp.makeConstraints {
             $0.bottom.equalTo(safeArea.snp.centerY)
             $0.top.equalTo(safeArea.snp.top)
-            $0.left.equalTo(safeArea.snp.left)
-            $0.right.equalTo(safeArea.snp.right)
+            $0.left.equalTo(safeArea.snp.left).offset(26)
+            $0.right.equalTo(safeArea.snp.right).offset(-26)
         }
+    }
+    
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        self.calendarView.calendar.reloadData()
+        self.calendarView.calendar.calendarHeaderView.reloadData()
     }
     
     // MARK: Configuring
     
     func bind(reactor: MainViewReactor) {
         // Input
-        self.calendar.rx.didSelect.asObservable()
+        self.calendarView.calendar.rx.didSelect.asObservable()
             .map { Reactor.Action.setDay($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -92,7 +79,7 @@ final class MainViewController: BaseViewController, View {
             .disposed(by: disposeBag)
         
         // View
-        self.calendar.rx.setDelegate(self)
+        self.calendarView.calendar.rx.setDelegate(self)
             .disposed(by: disposeBag)
     }
 
