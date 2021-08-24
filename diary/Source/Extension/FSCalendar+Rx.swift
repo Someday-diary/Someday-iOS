@@ -51,6 +51,13 @@ extension Reactive where Base: FSCalendar {
             }
     }
     
+    var boundingRectWillChange: Observable<CGRect> {
+        return delegate.methodInvoked(#selector(FSCalendarDelegateAppearance.calendar(_:boundingRectWillChange:animated:)))
+            .map { (params) in
+                return params[1] as! CGRect
+            }
+    }
+    
     func setDelegate(_ delegate: FSCalendarDelegateAppearance) -> Disposable {
         return RxFSCalendarDelegateProxy.installForwardDelegate(delegate, retainDelegate: false, onProxyForObject: self.base)
      }
