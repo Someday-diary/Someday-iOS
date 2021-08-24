@@ -10,13 +10,13 @@ import RxSwift
 import RxCocoa
 import FSCalendar
 
-class DiaryCalendar: UIView {
+final class DiaryCalendar: UIView {
     
     private var currentPage: Date?
     let disposeBag = DisposeBag()
     
     // MARK: Constants
-    struct Font {
+    fileprivate struct Font {
         static let calendarTitle = UIFont.systemFont(ofSize: 20, weight: .bold)
     }
     
