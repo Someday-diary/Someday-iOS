@@ -17,7 +17,7 @@ class DiaryCalendar: UIView {
     
     // MARK: Constants
     struct Font {
-        static let calendarTitle = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        static let calendarTitle = UIFont.systemFont(ofSize: 20, weight: .bold)
     }
     
     // MARK: UI
@@ -74,11 +74,13 @@ class DiaryCalendar: UIView {
         
         self.prevButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(33)
-            $0.left.equalToSuperview().offset(20)
+            $0.width.equalTo(calendar.snp.width).dividedBy(7)
+            $0.left.equalToSuperview().offset(0)
         }
         self.nextButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(33)
-            $0.right.equalToSuperview().offset(-20)
+            $0.width.equalTo(calendar.snp.width).dividedBy(7)
+            $0.right.equalToSuperview().offset(0)
         }
         self.calendarAsset.snp.makeConstraints {
             $0.centerX.equalToSuperview().offset(-30)
