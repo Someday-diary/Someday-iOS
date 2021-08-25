@@ -11,21 +11,26 @@ import RxCocoa
 
 final class DiaryTextField: UIView {
     
+    // MARK: - Properties
     let disposeBag = DisposeBag()
 
-    // MARK: Constants
-    struct Metric {
+    // MARK: - Constants
+    fileprivate struct Metric {
+        // textField
         static let textFieldTop = 10.f
+        static let textFieldSide = 11.f
+        
+        // separator
         static let separatorTop = 5.f
         static let separatorHeight = 2.f
     }
     
-    struct Font {
+    fileprivate struct Font {
         static let textFieldFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
         static let eventFont = UIFont.systemFont(ofSize: 10, weight: .medium)
     }
     
-    // MARK: UI
+    // MARK: - UI
     let eventLabel = UILabel().then {
         $0.font = Font.eventFont
         $0.textAlignment = .left
@@ -39,10 +44,10 @@ final class DiaryTextField: UIView {
     }
     
     let separatorView = UIView().then {
-        $0.backgroundColor = R.color.separatorColor()
+        $0.backgroundColor = R.color.textFieldSeparatorColor()
     }
     
-    // MARK: Initializing
+    // MARK: - Initializing
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
@@ -78,6 +83,7 @@ final class DiaryTextField: UIView {
         }
     }
     
+    // MARK: - Configuring
     func bind() {
         
         self.textField.rx.controlEvent([.editingDidBegin]).asObservable()
@@ -91,7 +97,7 @@ final class DiaryTextField: UIView {
         self.textField.rx.controlEvent([.editingDidEnd]).asObservable()
             .subscribe(onNext: {
                 UIView.animate(withDuration: 0.3) {
-                    self.separatorView.backgroundColor = R.color.separatorColor()
+                    self.separatorView.backgroundColor = R.color.textFieldSeparatorColor()
                 }
             })
             .disposed(by: disposeBag)

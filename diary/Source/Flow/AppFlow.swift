@@ -26,7 +26,7 @@ class AppFlow: Flow {
         case .splashIsRequired:
             return .none
             
-        case .introIsRequired:
+        case .loginIsRequired:
             return .none
             
         case .mainIsRequired:
@@ -41,7 +41,17 @@ class AppFlow: Flow {
 }
 
 extension AppFlow {
-//    private func navigateToSplash() -> FlowContributors {
-//        return
-//    }
+    
+    private func navigateToSplash() -> FlowContributors {
+        let reactor = SplashViewReactor()
+        let viewController = SplashViewController(reactor: reactor)
+        
+        self.window.rootViewController = viewController
+        
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
+    }
+    
+    private func navigateToLogin() -> FlowContributors {
+        let reactor = loginview
+    }
 }

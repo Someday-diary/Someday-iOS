@@ -10,8 +10,9 @@ import SwiftUI
 
 struct ViewControllerPreview: PreviewProvider {
     static var previews: some View {
-//        let reactor = MainViewReactor()
-        LoginViewController().showPreview(.iPhone12Pro)
+        let reactor = SplashViewReactor()
+        SplashViewController(reactor: reactor).showPreview(.iPhone12Pro)
+//        LoginViewController().showPreview(.iPhone12Pro)
     }
 }
 

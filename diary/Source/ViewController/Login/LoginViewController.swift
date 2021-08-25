@@ -9,11 +9,22 @@ import UIKit
 
 class LoginViewController: BaseViewController {
     
-    struct Font {
+    // MARK: - Constants
+    fileprivate struct Metric {
+        // titleLabel
+        static let titleLabelTop = 100.f
+        static let titleLabelLeft = 37.f
+        
+        // textField
+        static let textFieldSide = 50.f
+        static let textFieldHeight = 65.f
+    }
+    
+    fileprivate struct Font {
         static var titleFont = UIFont.systemFont(ofSize: 28, weight: .semibold)
     }
     
-    // MARK: UI
+    // MARK: - UI
     let titleLabel = UILabel().then {
         $0.text = "DIARY"
         $0.textAlignment = .left
@@ -32,7 +43,7 @@ class LoginViewController: BaseViewController {
         $0.textField.isSecureTextEntry = true
     }
     
-    // MARK: Initializing
+    // MARK: - Initializing
     override init() {
         super.init()
     }
@@ -41,7 +52,7 @@ class LoginViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: View Life Cycle
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,22 +69,22 @@ class LoginViewController: BaseViewController {
         let safeArea = self.view.safeAreaLayoutGuide
         
         self.titleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeArea).offset(100)
-            $0.left.equalTo(safeArea).offset(37)
+            $0.top.equalTo(safeArea).offset(Metric.titleLabelTop)
+            $0.left.equalTo(safeArea).offset(Metric.titleLabelLeft)
         }
         
         self.loginTextField.snp.makeConstraints {
-            $0.left.equalTo(safeArea).offset(50)
-            $0.right.equalTo(safeArea).offset(-50)
+            $0.left.equalTo(safeArea).offset(Metric.textFieldSide)
+            $0.right.equalTo(safeArea).offset(-Metric.textFieldSide)
             $0.bottom.equalTo(safeArea.snp.centerY)
-            $0.height.equalTo(65)
+            $0.height.equalTo(Metric.textFieldHeight)
         }
         
         self.PassWordTextField.snp.makeConstraints {
-            $0.left.equalTo(safeArea).offset(50)
-            $0.right.equalTo(safeArea).offset(-50)
+            $0.left.equalTo(safeArea).offset(Metric.textFieldSide)
+            $0.right.equalTo(safeArea).offset(-Metric.textFieldSide)
             $0.top.equalTo(safeArea.snp.centerY)
-            $0.height.equalTo(65)
+            $0.height.equalTo(Metric.textFieldHeight)
         }
     }
 }

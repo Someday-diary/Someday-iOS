@@ -12,15 +12,20 @@ import FSCalendar
 
 final class DiaryCalendar: UIView {
     
+    // MARK: - Properties
     private var currentPage: Date?
     let disposeBag = DisposeBag()
     
-    // MARK: Constants
+    // MARK: - Constants
+    fileprivate struct Metric {
+        
+    }
+    
     fileprivate struct Font {
         static let calendarTitle = UIFont.systemFont(ofSize: 20, weight: .bold)
     }
     
-    // MARK: UI
+    // MARK: - UI
     let calendar = FSCalendar().then {
         $0.scrollDirection = .horizontal
         $0.today = nil
@@ -50,7 +55,7 @@ final class DiaryCalendar: UIView {
         $0.image = R.image.calendarAsset()
     }
     
-    // MARK: Initializing
+    // MARK: - Initializing
     override init(frame: CGRect) {
         super.init(frame: .zero)
         self.bind()
@@ -60,6 +65,7 @@ final class DiaryCalendar: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Life Cycle
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -88,6 +94,7 @@ final class DiaryCalendar: UIView {
         }
     }
     
+    // MARK: - Configuring
     func bind() {
         self.nextButton.rx.tap
             .subscribe(onNext: { [weak self] in

@@ -11,18 +11,31 @@ import FSCalendar
 
 final class MainViewController: BaseViewController, View {
     
+    // MARK: - Properties
     typealias Reactor = MainViewReactor
     
-    // MARK: Constants
-    struct Font {
+    // MARK: - Constants
+    
+    fileprivate struct Metric {
+        // calendar
+        static let calendarSide = 26.f
+        
+        // separator
+        static let separatorHeight = 1.f
+    }
+    
+    fileprivate struct Font {
         static let calendarTitle = UIFont.systemFont(ofSize: 24)
     }
     
-    // MARK: UI
+    // MARK: - UI
     let calendarView = DiaryCalendar()
     let label = UILabel()
+    let separatorView = UIView().then {
+        $0.backgroundColor = R.color.textFieldSeparatorColor()
+    }
     
-    // MARK: Initializing
+    // MARK: - Initializing
     init(reactor: Reactor) {
         super.init()
         defer { self.reactor = reactor }
@@ -32,14 +45,15 @@ final class MainViewController: BaseViewController, View {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: View Life Cycle
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func setupLayout() {
-        self.view.addSubview(calendarView)
-        self.view.addSubview(label)
+        self.view.addSubview(self.calendarView)
+        self.view.addSubview(self.label)
+        self.view.addSubview(self.separatorView)
     }
     
     override func makeConstraints() {
@@ -52,8 +66,15 @@ final class MainViewController: BaseViewController, View {
         self.calendarView.snp.makeConstraints {
             $0.bottom.equalTo(safeArea.snp.centerY)
             $0.top.equalTo(safeArea.snp.top)
-            $0.left.equalTo(safeArea.snp.left).offset(26)
-            $0.right.equalTo(safeArea.snp.right).offset(-26)
+            $0.left.equalTo(safeArea.snp.left).offset(Metric.calendarSide)
+            $0.right.equalTo(safeArea.snp.right).offset(-Metric.calendarSide)
+        }
+        
+        self.separatorView.snp.makeConstraints {
+            $0.left.equalTo(safeArea)
+            $0.right.equalTo(safeArea)
+            $0.bottom.equalTo(safeArea.snp.centerY)
+            $0.height.equalTo(Metric.separatorHeight)
         }
     }
     
@@ -62,7 +83,7 @@ final class MainViewController: BaseViewController, View {
         self.calendarView.calendar.calendarHeaderView.reloadData()
     }
     
-    // MARK: Configuring
+    // MARK: - Configuring
     
     func bind(reactor: MainViewReactor) {
         // Input
@@ -85,6 +106,7 @@ final class MainViewController: BaseViewController, View {
 
 }
 
+// MARK: - Delegate
 extension MainViewController: FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         let dateFormatter = DateFormatter().then {

@@ -12,11 +12,11 @@ enum DiaryStep: Step {
     case popViewController
     
     //MARK: - Splash
-    case introIsRequired
-    case mainIsRequired
     case splashIsRequired
+    case mainIsRequired
     
     //MARK: - Intro
     case loginIsRequired
     case registerIsRequired
+    
 }
