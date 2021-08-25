@@ -34,6 +34,8 @@ final class DiaryTextField: UIView {
     let textField = UITextField().then {
         $0.clearButtonMode = .whileEditing
         $0.autocorrectionType = .no
+        $0.autocapitalizationType = .none
+        $0.tintColor = R.color.mainColor()
     }
     
     let separatorView = UIView().then {
@@ -77,14 +79,23 @@ final class DiaryTextField: UIView {
     }
     
     func bind() {
-        self.textField.rx.text.orEmpty
-            .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] text in
+        
+        self.textField.rx.controlEvent([.editingDidBegin]).asObservable()
+            .subscribe(onNext: {
                 UIView.animate(withDuration: 0.3) {
-                    self?.separatorView.backgroundColor = text.isEmpty ? R.color.separatorColor() : R.color.mainColor()
+                    self.separatorView.backgroundColor = R.color.mainColor()
                 }
             })
             .disposed(by: disposeBag)
+        
+        self.textField.rx.controlEvent([.editingDidEnd]).asObservable()
+            .subscribe(onNext: {
+                UIView.animate(withDuration: 0.3) {
+                    self.separatorView.backgroundColor = R.color.separatorColor()
+                }
+            })
+            .disposed(by: disposeBag)
+            
     }
     
 }
