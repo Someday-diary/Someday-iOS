@@ -13,8 +13,10 @@ import RxFlow
 class SplashViewReactor: Reactor, Stepper {
     var steps = PublishRelay<Step>()
     
+    let initialState: State
+    
     enum Action {
-        
+        case setNextView
     }
     
     enum Mutation {
@@ -25,11 +27,16 @@ class SplashViewReactor: Reactor, Stepper {
         
     }
     
-    let initialState: State = State()
-    
     init() {
-        
+        self.initialState = State()
     }
     
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .setNextView:
+            self.steps.accept(DiaryStep.loginIsRequired)
+            return Observable.empty()
+        }
+    }
     
 }

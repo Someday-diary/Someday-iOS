@@ -24,10 +24,10 @@ class AppFlow: Flow {
         
         switch step {
         case .splashIsRequired:
-            return .none
+            return navigateToSplash()
             
         case .loginIsRequired:
-            return .none
+            return navigateToLogin()
             
         case .mainIsRequired:
             return .none
@@ -52,6 +52,13 @@ extension AppFlow {
     }
     
     private func navigateToLogin() -> FlowContributors {
-        let reactor = loginview
+        let reactor = LoginViewReactor()
+        let viewController = LoginViewController(reactor: reactor)
+        
+        self.window.rootViewController = viewController
+        
+        UIView.transition(with: self.window, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
+        
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
 }
