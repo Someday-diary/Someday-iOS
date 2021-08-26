@@ -30,7 +30,7 @@ class AppFlow: Flow {
             return navigateToLogin()
             
         case .mainIsRequired:
-            return .none
+            return navigateToMain()
             
         default:
             return .none
@@ -52,8 +52,20 @@ extension AppFlow {
     }
     
     private func navigateToLogin() -> FlowContributors {
-        let reactor = LoginViewReactor()
-        let viewController = LoginViewController(reactor: reactor)
+        let loginFlow = LoginFlow()
+        
+        Flows.use(loginFlow, when: .created) { [unowned self] root in
+            self.window.rootViewController = root
+            
+            UIView.transition(with: self.window, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
+        }
+        
+        return .one(flowContributor: .contribute(withNextPresentable: loginFlow, withNextStepper: OneStepper(withSingleStep: DiaryStep.loginIsRequired)))
+    }
+    
+    private func navigateToMain() -> FlowContributors {
+        let reactor = MainViewReactor()
+        let viewController = MainViewController(reactor: reactor)
         
         self.window.rootViewController = viewController
         

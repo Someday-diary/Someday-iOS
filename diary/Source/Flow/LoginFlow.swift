@@ -34,6 +34,9 @@ class LoginFlow: Flow {
         guard let step = step as? DiaryStep else { return .none }
         
         switch step {
+        case .loginIsRequired:
+            return self.navigateToLogin()
+        
         case .splashIsRequired:
             return self.navigateToSplash()
 //        case .registerIsRequired:
@@ -53,11 +56,21 @@ class LoginFlow: Flow {
 
 extension LoginFlow {
     
+    private func navigateToLogin() -> FlowContributors {
+        let reactor = LoginViewReactor()
+        let viewController = LoginViewController(reactor: reactor)
+        
+        self.rootViewController.pushViewController(viewController, animated: false)
+        
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
+    }
+    
     private func navigateToSplash() -> FlowContributors {
         let reactor = SplashViewReactor()
         let viewController = SplashViewController(reactor: reactor)
         
         self.rootViewController.popToViewController(viewController, animated: true)
+        
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
