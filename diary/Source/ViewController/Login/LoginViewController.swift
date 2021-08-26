@@ -6,22 +6,29 @@
 //
 
 import UIKit
+import ReactorKit
 
-class LoginViewController: BaseViewController {
+class LoginViewController: BaseViewController, View {
+    typealias Reactor = LoginViewReactor
     
     // MARK: - Constants
     fileprivate struct Metric {
         // titleLabel
         static let titleLabelTop = 100.f
-        static let titleLabelLeft = 37.f
+//        static let titleLabelLeft = 37.f
         
         // textField
         static let textFieldSide = 50.f
-        static let textFieldHeight = 65.f
+        static let textFieldHeight = 60.f
+        
+        // button
+        static let buttonTop = 40.f
+        static let buttonHeight = 40.f
+        static let buttonSide = 44.f
     }
     
     fileprivate struct Font {
-        static var titleFont = UIFont.systemFont(ofSize: 28, weight: .semibold)
+        static var titleFont = UIFont.systemFont(ofSize: 32, weight: .semibold)
     }
     
     // MARK: - UI
@@ -43,9 +50,18 @@ class LoginViewController: BaseViewController {
         $0.textField.isSecureTextEntry = true
     }
     
+    let loginButton = UIButton().then {
+        $0.backgroundColor = R.color.mainColor()
+        $0.layer.cornerRadius = 7
+    }
+    
     // MARK: - Initializing
-    override init() {
+    init(reactor: Reactor) {
         super.init()
+        
+        defer {
+            self.reactor = reactor
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -63,6 +79,7 @@ class LoginViewController: BaseViewController {
         self.view.addSubview(self.loginTextField)
         self.view.addSubview(self.PassWordTextField)
         self.view.addSubview(self.titleLabel)
+        self.view.addSubview(self.loginButton)
     }
     
     override func makeConstraints() {
@@ -70,7 +87,7 @@ class LoginViewController: BaseViewController {
         
         self.titleLabel.snp.makeConstraints {
             $0.top.equalTo(safeArea).offset(Metric.titleLabelTop)
-            $0.left.equalTo(safeArea).offset(Metric.titleLabelLeft)
+            $0.centerX.equalTo(safeArea)
         }
         
         self.loginTextField.snp.makeConstraints {
@@ -86,5 +103,18 @@ class LoginViewController: BaseViewController {
             $0.top.equalTo(safeArea.snp.centerY)
             $0.height.equalTo(Metric.textFieldHeight)
         }
+        
+        self.loginButton.snp.makeConstraints {
+            $0.top.equalTo(self.PassWordTextField.snp.bottom).offset(Metric.buttonTop)
+            $0.left.equalTo(safeArea).offset(Metric.buttonSide)
+            $0.right.equalTo(safeArea).offset(-Metric.buttonSide)
+            $0.height.equalTo(Metric.buttonHeight)
+        }
     }
+    
+    // MARK: - Configuring
+    func bind(reactor: LoginViewReactor) {
+        
+    }
+    
 }
