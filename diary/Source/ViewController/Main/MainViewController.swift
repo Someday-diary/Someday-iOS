@@ -19,6 +19,10 @@ final class MainViewController: BaseViewController, View {
     fileprivate struct Metric {
         // calendar
         static let calendarSide = 26.f
+        static let calendarBottom = 10.f
+        
+        // BarButtonPadding
+        static let navigativePadding = 18.f
         
         // separator
         static let separatorHeight = 1.f
@@ -29,8 +33,22 @@ final class MainViewController: BaseViewController, View {
     }
     
     // MARK: - UI
+    let navigationAppearance = UINavigationBarAppearance().then {
+        $0.configureWithTransparentBackground()
+    }
+    
+    let navigativePadding = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil).then {
+        $0.width = Metric.navigativePadding
+    }
+    
+    let drawerButton = UIBarButtonItem(image: R.image.diaryDrawerButton(), style: .done, target: nil, action: nil).then {
+        $0.tintColor = R.color.drawerButtonColor()
+    }
+    
     let calendarView = DiaryCalendar()
+    
     let label = UILabel()
+    
     let separatorView = UIView().then {
         $0.backgroundColor = R.color.textFieldSeparatorColor()
     }
@@ -51,6 +69,8 @@ final class MainViewController: BaseViewController, View {
     }
     
     override func setupLayout() {
+        self.navigationController?.navigationBar.standardAppearance = navigationAppearance
+        self.navigationItem.leftBarButtonItems = [navigativePadding, drawerButton]
         self.view.addSubview(self.calendarView)
         self.view.addSubview(self.label)
         self.view.addSubview(self.separatorView)
@@ -60,11 +80,11 @@ final class MainViewController: BaseViewController, View {
         let safeArea = self.view.safeAreaLayoutGuide
         
         self.label.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.center.equalTo(safeArea)
         }
         
         self.calendarView.snp.makeConstraints {
-            $0.bottom.equalTo(safeArea.snp.centerY)
+            $0.bottom.equalTo(self.separatorView.snp.top).offset(-Metric.calendarBottom)
             $0.top.equalTo(safeArea.snp.top)
             $0.left.equalTo(safeArea.snp.left).offset(Metric.calendarSide)
             $0.right.equalTo(safeArea.snp.right).offset(-Metric.calendarSide)
@@ -107,6 +127,7 @@ final class MainViewController: BaseViewController, View {
 }
 
 // MARK: - Delegate
+
 extension MainViewController: FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         let dateFormatter = DateFormatter().then {
