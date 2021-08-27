@@ -47,6 +47,7 @@ class LoginFlow: Flow {
         case .dismiss:
             self.rootViewController.dismiss(animated: true, completion: nil)
             return .none
+            
         default:
             return .none
         }

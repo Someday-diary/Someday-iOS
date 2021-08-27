@@ -17,7 +17,7 @@ final class LoginViewReactor: Reactor, Stepper {
     var initialState: State
     
     enum Action {
-        
+        case login
     }
     
     enum Mutation {
@@ -30,5 +30,13 @@ final class LoginViewReactor: Reactor, Stepper {
     
     init() {
         self.initialState = State()
+    }
+    
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .login:
+            steps.accept(DiaryStep.mainIsRequired)
+        return Observable.empty()
+        }
     }
 }

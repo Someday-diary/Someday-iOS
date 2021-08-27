@@ -18,7 +18,12 @@ final class DiaryCalendar: UIView {
     
     // MARK: - Constants
     fileprivate struct Metric {
+        // Button
+        static let buttonTop = 18.f
         
+        //Asset
+        static let assetTop = 35.f
+        static let assetX = 30.f
     }
     
     fileprivate struct Font {
@@ -36,6 +41,7 @@ final class DiaryCalendar: UIView {
         $0.appearance.headerTitleColor = R.color.calendarHeaderColor()
         $0.appearance.headerTitleFont = Font.calendarTitle
         $0.appearance.headerDateFormat = "MMM"
+        $0.appearance.headerTitleOffset = CGPoint(x: 0, y: -15)
         $0.headerHeight = 80
         $0.appearance.weekdayTextColor = R.color.weekdayTextColor()
         $0.appearance.titleDefaultColor = R.color.calendarTitleDefaultColor()
@@ -79,18 +85,18 @@ final class DiaryCalendar: UIView {
         }
         
         self.prevButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(33)
+            $0.top.equalToSuperview().offset(Metric.buttonTop)
             $0.width.equalTo(calendar.snp.width).dividedBy(7)
-            $0.left.equalToSuperview().offset(0)
+            $0.left.equalToSuperview()
         }
         self.nextButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(33)
+            $0.top.equalToSuperview().offset(Metric.buttonTop)
             $0.width.equalTo(calendar.snp.width).dividedBy(7)
-            $0.right.equalToSuperview().offset(0)
+            $0.right.equalToSuperview()
         }
         self.calendarAsset.snp.makeConstraints {
-            $0.centerX.equalToSuperview().offset(-30)
-            $0.top.equalToSuperview().offset(50)
+            $0.centerX.equalToSuperview().offset(-Metric.assetX)
+            $0.top.equalToSuperview().offset(Metric.assetTop)
         }
     }
     

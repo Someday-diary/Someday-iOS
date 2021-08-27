@@ -7,10 +7,12 @@
 
 import UIKit
 
+import RxSwift
 import RxFlow
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
+    var disposeBag = DisposeBag()
     var window: UIWindow?
     var coordinator: FlowCoordinator = .init()
 
@@ -22,6 +24,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         
         let appFlow = AppFlow(window: window)
+        
+        coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
+            print ("did navigate to flow=\(flow) and step=\(step)")
+        }).disposed(by: self.disposeBag)
         
         self.coordinator.coordinate(flow: appFlow, with: AppSteppeer())
         window.makeKeyAndVisible()

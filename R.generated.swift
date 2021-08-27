@@ -105,7 +105,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 8 colors.
+  /// This `R.color` struct is generated, and contains static references to 9 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
@@ -115,6 +115,8 @@ struct R: Rswift.Validatable {
     static let calendarTitleDefaultColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "CalendarTitleDefaultColor")
     /// Color `CalendarTitlePlaceHolderColor`.
     static let calendarTitlePlaceHolderColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "CalendarTitlePlaceHolderColor")
+    /// Color `DrawerButtonColor`.
+    static let drawerButtonColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "DrawerButtonColor")
     /// Color `MainColor`.
     static let mainColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "MainColor")
     /// Color `MainViewSeparatorColor`.
@@ -157,6 +159,15 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func calendarTitlePlaceHolderColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.calendarTitlePlaceHolderColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "DrawerButtonColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func drawerButtonColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.drawerButtonColor, compatibleWith: traitCollection)
     }
     #endif
 
@@ -225,6 +236,14 @@ struct R: Rswift.Validatable {
     @available(watchOSApplicationExtension 4.0, *)
     static func calendarTitlePlaceHolderColor(_: Void = ()) -> UIKit.UIColor? {
       return UIKit.UIColor(named: R.color.calendarTitlePlaceHolderColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "DrawerButtonColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func drawerButtonColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.drawerButtonColor.name)
     }
     #endif
 

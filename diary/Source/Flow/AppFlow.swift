@@ -64,13 +64,14 @@ extension AppFlow {
     }
     
     private func navigateToMain() -> FlowContributors {
-        let reactor = MainViewReactor()
-        let viewController = MainViewController(reactor: reactor)
+        let mainFlow = MainFlow()
         
-        self.window.rootViewController = viewController
+        Flows.use(mainFlow, when: .created) { [unowned self] root in
+            self.window.rootViewController = root
+            
+            UIView.transition(with: self.window, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
+        }
         
-        UIView.transition(with: self.window, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
-        
-        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
+        return .one(flowContributor: .contribute(withNextPresentable: mainFlow, withNextStepper: OneStepper(withSingleStep: DiaryStep.mainIsRequired)))
     }
 }

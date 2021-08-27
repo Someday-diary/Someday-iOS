@@ -114,7 +114,10 @@ class LoginViewController: BaseViewController, View {
     
     // MARK: - Configuring
     func bind(reactor: LoginViewReactor) {
-        
+        loginButton.rx.tap.asObservable()
+            .map { Reactor.Action.login }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     
 }
