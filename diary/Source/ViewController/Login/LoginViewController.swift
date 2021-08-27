@@ -13,18 +13,22 @@ class LoginViewController: BaseViewController, View {
     
     // MARK: - Constants
     fileprivate struct Metric {
-        // titleLabel
+        // TitleLabel
         static let titleLabelTop = 100.f
-//        static let titleLabelLeft = 37.f
         
-        // textField
+        // TextField
         static let textFieldSide = 50.f
         static let textFieldHeight = 60.f
         
-        // button
+        // Button
         static let buttonTop = 40.f
         static let buttonHeight = 40.f
         static let buttonSide = 44.f
+        
+        // Image
+        static let imageHeight = 173.f
+        static let imageWidth = 242.f
+        static let imageLeft = 33.f
     }
     
     fileprivate struct Font {
@@ -55,6 +59,10 @@ class LoginViewController: BaseViewController, View {
         $0.layer.cornerRadius = 7
     }
     
+    let loginImage = UIImageView().then {
+        $0.image = R.image.loginIllustration()
+    }
+    
     // MARK: - Initializing
     init(reactor: Reactor) {
         super.init()
@@ -80,6 +88,7 @@ class LoginViewController: BaseViewController, View {
         self.view.addSubview(self.PassWordTextField)
         self.view.addSubview(self.titleLabel)
         self.view.addSubview(self.loginButton)
+        self.view.addSubview(self.loginImage)
     }
     
     override func makeConstraints() {
@@ -93,14 +102,14 @@ class LoginViewController: BaseViewController, View {
         self.loginTextField.snp.makeConstraints {
             $0.left.equalTo(safeArea).offset(Metric.textFieldSide)
             $0.right.equalTo(safeArea).offset(-Metric.textFieldSide)
-            $0.bottom.equalTo(safeArea.snp.centerY)
+            $0.bottom.equalTo(self.titleLabel.snp.bottom).offset(self.view.frame.height / 5)
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
         self.PassWordTextField.snp.makeConstraints {
             $0.left.equalTo(safeArea).offset(Metric.textFieldSide)
             $0.right.equalTo(safeArea).offset(-Metric.textFieldSide)
-            $0.top.equalTo(safeArea.snp.centerY)
+            $0.top.equalTo(self.loginTextField.snp.bottom)
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
@@ -109,6 +118,13 @@ class LoginViewController: BaseViewController, View {
             $0.left.equalTo(safeArea).offset(Metric.buttonSide)
             $0.right.equalTo(safeArea).offset(-Metric.buttonSide)
             $0.height.equalTo(Metric.buttonHeight)
+        }
+        
+        self.loginImage.snp.makeConstraints {
+            $0.height.equalTo(Metric.imageHeight)
+            $0.width.equalTo(Metric.imageWidth)
+            $0.bottom.equalTo(safeArea)
+            $0.left.equalTo(safeArea).offset(Metric.imageLeft)
         }
     }
     
