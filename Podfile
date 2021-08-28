@@ -11,6 +11,7 @@ target 'diary' do
   pod 'SnapKit'
   pod 'RxFlow'
   pod 'FSCalendar'
+  pod 'SideMenu'
  
   # Architecture
   pod 'ReactorKit'
@@ -20,6 +21,7 @@ target 'diary' do
   pod 'RxCocoa'
   pod 'RxDataSources'
   pod 'RxViewController'
+  pod 'RxKeyboard'
   
   # Network
   pod 'Moya/RxSwift'
@@ -28,7 +30,7 @@ target 'diary' do
   pod 'KeychainAccess'
 
   # DB
-  pod 'RealmSwift'
+  #pod 'RealmSwift'
 
   # ETC
   pod 'R.swift'
