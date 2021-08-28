@@ -46,8 +46,7 @@ final class LoginViewReactor: Reactor, Stepper {
         
         case .login:
             steps.accept(DiaryStep.mainIsRequired)
-        return Observable.empty()
-            
+            return Observable.empty()
         
         }
         

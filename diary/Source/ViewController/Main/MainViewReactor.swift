@@ -11,8 +11,8 @@ import ReactorKit
 import RxFlow
 
 final class MainViewReactor: Reactor, Stepper {
-    var steps = PublishRelay<Step>()
     
+    var steps = PublishRelay<Step>()
     
     var initialState: State
     

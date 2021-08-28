@@ -118,6 +118,7 @@ final class MainViewController: BaseViewController, View {
     func bind(reactor: MainViewReactor) {
         // Input
         self.calendarView.calendar.rx.didSelect.asObservable()
+            .distinctUntilChanged()
             .map { Reactor.Action.setDay($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)

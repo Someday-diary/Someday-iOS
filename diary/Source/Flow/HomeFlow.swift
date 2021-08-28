@@ -49,13 +49,15 @@ extension MainFlow {
     }
     
     private func navigateToSideMenu() -> FlowContributors {
-        let viewController = SideMenuNavigationController(rootViewController: UIViewController()).then {
+        let reactor = SideMenuViewReactor()
+        let viewController = SideMenuViewController(reactor: reactor)
+        let sideMenuNavController = SideMenuNavigationController(rootViewController: viewController).then {
             $0.leftSide = true
             $0.presentationStyle = .menuSlideIn
             $0.presentationStyle.presentingEndAlpha = 0.5
         }
         
-        self.rootViewController.present(viewController, animated: true, completion: nil)
-        return .none
+        self.rootViewController.present(sideMenuNavController, animated: true, completion: nil)
+        return .one(flowContributor: .contribute(withNextPresentable: sideMenuNavController, withNextStepper: reactor))
     }
 }
