@@ -17,14 +17,20 @@ final class LoginViewReactor: Reactor, Stepper {
     var initialState: State
     
     enum Action {
+        case updateTextField([String])
         case login
     }
     
     enum Mutation {
-        
+        case checkValids([String])
     }
     
     struct State {
+        var id: String = ""
+        var password: String = ""
+        
+        var idValidation: CheckValidation?
+        var passwordValidation: CheckValidation?
         
     }
     
@@ -33,10 +39,33 @@ final class LoginViewReactor: Reactor, Stepper {
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
+        
         switch action {
+        case let .updateTextField(data):
+            return Observable.just(Mutation.checkValids(data))
+        
         case .login:
             steps.accept(DiaryStep.mainIsRequired)
         return Observable.empty()
+            
+        
         }
+        
+    }
+    
+    func reduce(state: State, mutation: Mutation) -> State {
+        
+        var state = state
+        
+        switch mutation {
+        case let .checkValids(data):
+            state.id = data[0]
+            state.password = data[1]
+            
+            state.idValidation = state.id.isValidEmail
+            state.passwordValidation = state.password.isValidPassword
+        }
+        
+        return state
     }
 }
