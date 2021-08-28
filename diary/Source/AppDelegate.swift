@@ -10,8 +10,6 @@ import UIKit
 import SnapKit
 import Then
 import CGFloatLiteral
-import RxSwift
-import RxFlow
 import Rswift
 
 @main

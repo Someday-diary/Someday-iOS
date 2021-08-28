@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2926D6299B004A6624 /* LoginFlow.swift */; };
+		624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2B26D6350A004A6624 /* AppStepper.swift */; };
+		624E4D3326D63685004A6624 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D3226D63685004A6624 /* SplashViewController.swift */; };
+		624E4D3526D66EB5004A6624 /* LoginViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D3426D66EB5004A6624 /* LoginViewReactor.swift */; };
+		624E4D3726D66EF1004A6624 /* SplashViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D3626D66EF1004A6624 /* SplashViewReactor.swift */; };
+		624E4D3926D85F40004A6624 /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D3826D85F40004A6624 /* HomeFlow.swift */; };
+		625A9EB226D9213800D65840 /* DiaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625A9EB126D9213800D65840 /* DiaryButton.swift */; };
+		625A9EB626D9382000D65840 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 625A9EB526D9382000D65840 /* Colors.xcassets */; };
 		625F4C5526CF22D300DC5978 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5426CF22D300DC5978 /* Preview.swift */; };
 		625F4C5726CF235F00DC5978 /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5626CF235F00DC5978 /* UIViewControllerPreview.swift */; };
 		625F4C5926CF238600DC5978 /* UIViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5826CF238600DC5978 /* UIViewPreview.swift */; };
@@ -27,6 +35,8 @@
 		62BA402B2690B0FC009B77F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62BA402A2690B0FC009B77F3 /* Assets.xcassets */; };
 		62BA40392690B0FD009B77F3 /* diaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40382690B0FD009B77F3 /* diaryTests.swift */; };
 		62BA40442690B0FD009B77F3 /* diaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40432690B0FD009B77F3 /* diaryUITests.swift */; };
+		62D388A626D9E9FA00A8D185 /* CheckValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D388A526D9E9FA00A8D185 /* CheckValidation.swift */; };
+		62D388A926DA1F7C00A8D185 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 62D388AB26DA1F7C00A8D185 /* InfoPlist.strings */; };
 		9D432695EA98D656B099F4B1 /* Pods_diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B894E3AA684F49C439F7258 /* Pods_diary.framework */; };
 		F263AB4337D64113775670AC /* Pods_diary_diaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663A927CEE2B1BAC95B5F21D /* Pods_diary_diaryUITests.framework */; };
 		FF2A5C8036161455B9F2D13E /* Pods_diaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61203E3BB236EAAB98001720 /* Pods_diaryTests.framework */; };
@@ -56,6 +66,14 @@
 		5E0D0EF1C767475EB03B257B /* Pods-diaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diaryTests.release.xcconfig"; path = "Target Support Files/Pods-diaryTests/Pods-diaryTests.release.xcconfig"; sourceTree = "<group>"; };
 		601756147E85EE8A3E70851A /* Pods-diary-diaryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diary-diaryUITests.debug.xcconfig"; path = "Target Support Files/Pods-diary-diaryUITests/Pods-diary-diaryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		61203E3BB236EAAB98001720 /* Pods_diaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_diaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		624E4D2926D6299B004A6624 /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
+		624E4D2B26D6350A004A6624 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
+		624E4D3226D63685004A6624 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		624E4D3426D66EB5004A6624 /* LoginViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewReactor.swift; sourceTree = "<group>"; };
+		624E4D3626D66EF1004A6624 /* SplashViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewReactor.swift; sourceTree = "<group>"; };
+		624E4D3826D85F40004A6624 /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
+		625A9EB126D9213800D65840 /* DiaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryButton.swift; sourceTree = "<group>"; };
+		625A9EB526D9382000D65840 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		625F4C5426CF22D300DC5978 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		625F4C5626CF235F00DC5978 /* UIViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerPreview.swift; sourceTree = "<group>"; };
 		625F4C5826CF238600DC5978 /* UIViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPreview.swift; sourceTree = "<group>"; };
@@ -82,6 +100,9 @@
 		62BA403F2690B0FD009B77F3 /* diaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = diaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62BA40432690B0FD009B77F3 /* diaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diaryUITests.swift; sourceTree = "<group>"; };
 		62BA40452690B0FD009B77F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62D388A526D9E9FA00A8D185 /* CheckValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckValidation.swift; sourceTree = "<group>"; };
+		62D388AA26DA1F7C00A8D185 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		62D388AC26DA1FAD00A8D185 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		649B15496766866789EDBF0E /* Pods-diaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diaryTests.debug.xcconfig"; path = "Target Support Files/Pods-diaryTests/Pods-diaryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		663A927CEE2B1BAC95B5F21D /* Pods_diary_diaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_diary_diaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70775F1D6D22D28F29AC597C /* Pods-diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diary.debug.xcconfig"; path = "Target Support Files/Pods-diary/Pods-diary.debug.xcconfig"; sourceTree = "<group>"; };
@@ -115,6 +136,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		624E4D3126D63663004A6624 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				624E4D3226D63685004A6624 /* SplashViewController.swift */,
+				624E4D3626D66EF1004A6624 /* SplashViewReactor.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		625A9EB026D8B77A00D65840 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
 		625F4C6226CF94A300DC5978 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				625F4C8926D51F4D00DC5978 /* LoginViewController.swift */,
+				624E4D3426D66EB5004A6624 /* LoginViewReactor.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -161,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				62BA402A2690B0FC009B77F3 /* Assets.xcassets */,
+				625A9EB526D9382000D65840 /* Colors.xcassets */,
 				627E200826CE8F4D00550D59 /* LaunchScreen.storyboard */,
 			);
 			path = Resource;
@@ -171,6 +210,7 @@
 			children = (
 				625F4C7626D233F100DC5978 /* R.generated.swift */,
 				62BA402F2690B0FC009B77F3 /* Info.plist */,
+				62D388AB26DA1F7C00A8D185 /* InfoPlist.strings */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -187,7 +227,10 @@
 			isa = PBXGroup;
 			children = (
 				625F4C5E26CF6DAA00DC5978 /* DiaryStep.swift */,
+				624E4D2B26D6350A004A6624 /* AppStepper.swift */,
 				625F4C6026CF8CEC00DC5978 /* AppFlow.swift */,
+				624E4D2926D6299B004A6624 /* LoginFlow.swift */,
+				624E4D3826D85F40004A6624 /* HomeFlow.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -195,8 +238,10 @@
 		627E201126CE945600550D59 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				624E4D3126D63663004A6624 /* Splash */,
 				625F4C8826D51F2F00DC5978 /* Login */,
 				625F4C6226CF94A300DC5978 /* Main */,
+				625A9EB026D8B77A00D65840 /* SideMenu */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -206,6 +251,7 @@
 			children = (
 				625F4C8226D4675B00DC5978 /* DiaryCalendar.swift */,
 				625F4C8626D4D2AB00DC5978 /* DiaryTextField.swift */,
+				625A9EB126D9213800D65840 /* DiaryButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -230,6 +276,7 @@
 				625F4C5626CF235F00DC5978 /* UIViewControllerPreview.swift */,
 				625F4C5826CF238600DC5978 /* UIViewPreview.swift */,
 				625F4C5A26CF23AC00DC5978 /* DeviceType.swift */,
+				62D388A526D9E9FA00A8D185 /* CheckValidation.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -399,6 +446,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 62BA40152690B0FA009B77F3;
 			productRefGroup = 62BA401F2690B0FA009B77F3 /* Products */;
@@ -417,6 +465,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				625A9EB626D9382000D65840 /* Colors.xcassets in Resources */,
+				62D388A926DA1F7C00A8D185 /* InfoPlist.strings in Resources */,
 				62BA402B2690B0FC009B77F3 /* Assets.xcassets in Resources */,
 				627E200926CE8F4D00550D59 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -565,11 +615,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */,
+				62D388A626D9E9FA00A8D185 /* CheckValidation.swift in Sources */,
 				625F4C5F26CF6DAA00DC5978 /* DiaryStep.swift in Sources */,
 				62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */,
 				62BA40242690B0FA009B77F3 /* SceneDelegate.swift in Sources */,
 				625F4C6126CF8CEC00DC5978 /* AppFlow.swift in Sources */,
+				624E4D3526D66EB5004A6624 /* LoginViewReactor.swift in Sources */,
+				624E4D3926D85F40004A6624 /* HomeFlow.swift in Sources */,
+				624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */,
+				624E4D3726D66EF1004A6624 /* SplashViewReactor.swift in Sources */,
 				625F4C8726D4D2AB00DC5978 /* DiaryTextField.swift in Sources */,
+				625A9EB226D9213800D65840 /* DiaryButton.swift in Sources */,
 				625F4C8326D4675B00DC5978 /* DiaryCalendar.swift in Sources */,
 				625F4C5726CF235F00DC5978 /* UIViewControllerPreview.swift in Sources */,
 				625F4C7726D233F100DC5978 /* R.generated.swift in Sources */,
@@ -581,6 +638,7 @@
 				627E200F26CE93DC00550D59 /* BaseViewController.swift in Sources */,
 				625F4C5926CF238600DC5978 /* UIViewPreview.swift in Sources */,
 				625F4C5D26CF242600DC5978 /* MainViewController.swift in Sources */,
+				624E4D3326D63685004A6624 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,11 +673,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		62D388AB26DA1F7C00A8D185 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62D388AA26DA1F7C00A8D185 /* en */,
+				62D388AC26DA1FAD00A8D185 /* ko */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		62BA40462690B0FD009B77F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -681,6 +752,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

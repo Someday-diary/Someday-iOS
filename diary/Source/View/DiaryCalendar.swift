@@ -12,15 +12,25 @@ import FSCalendar
 
 final class DiaryCalendar: UIView {
     
+    // MARK: - Properties
     private var currentPage: Date?
     let disposeBag = DisposeBag()
     
-    // MARK: Constants
+    // MARK: - Constants
+    fileprivate struct Metric {
+        // Button
+        static let buttonTop = 18.f
+        
+        //Asset
+        static let assetTop = 35.f
+        static let assetX = 30.f
+    }
+    
     fileprivate struct Font {
         static let calendarTitle = UIFont.systemFont(ofSize: 20, weight: .bold)
     }
     
-    // MARK: UI
+    // MARK: - UI
     let calendar = FSCalendar().then {
         $0.scrollDirection = .horizontal
         $0.today = nil
@@ -31,6 +41,7 @@ final class DiaryCalendar: UIView {
         $0.appearance.headerTitleColor = R.color.calendarHeaderColor()
         $0.appearance.headerTitleFont = Font.calendarTitle
         $0.appearance.headerDateFormat = "MMM"
+        $0.appearance.headerTitleOffset = CGPoint(x: 0, y: -15)
         $0.headerHeight = 80
         $0.appearance.weekdayTextColor = R.color.weekdayTextColor()
         $0.appearance.titleDefaultColor = R.color.calendarTitleDefaultColor()
@@ -50,7 +61,7 @@ final class DiaryCalendar: UIView {
         $0.image = R.image.calendarAsset()
     }
     
-    // MARK: Initializing
+    // MARK: - Initializing
     override init(frame: CGRect) {
         super.init(frame: .zero)
         self.bind()
@@ -60,6 +71,7 @@ final class DiaryCalendar: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Life Cycle
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -73,21 +85,22 @@ final class DiaryCalendar: UIView {
         }
         
         self.prevButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(33)
+            $0.top.equalToSuperview().offset(Metric.buttonTop)
             $0.width.equalTo(calendar.snp.width).dividedBy(7)
-            $0.left.equalToSuperview().offset(0)
+            $0.left.equalToSuperview()
         }
         self.nextButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(33)
+            $0.top.equalToSuperview().offset(Metric.buttonTop)
             $0.width.equalTo(calendar.snp.width).dividedBy(7)
-            $0.right.equalToSuperview().offset(0)
+            $0.right.equalToSuperview()
         }
         self.calendarAsset.snp.makeConstraints {
-            $0.centerX.equalToSuperview().offset(-30)
-            $0.top.equalToSuperview().offset(50)
+            $0.centerX.equalToSuperview().offset(-Metric.assetX)
+            $0.top.equalToSuperview().offset(Metric.assetTop)
         }
     }
     
+    // MARK: - Configuring
     func bind() {
         self.nextButton.rx.tap
             .subscribe(onNext: { [weak self] in

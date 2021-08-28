@@ -11,18 +11,56 @@ import FSCalendar
 
 final class MainViewController: BaseViewController, View {
     
+    // MARK: - Properties
     typealias Reactor = MainViewReactor
     
-    // MARK: Constants
-    struct Font {
+    // MARK: - Constants
+    
+    fileprivate struct Metric {
+        // Calendar
+        static let calendarSide = 26.f
+        static let calendarBottom = 13.f
+        
+        // BarButtonPadding
+        static let navigativePadding = 18.f
+        
+        // Separator
+        static let separatorHeight = 1.f
+        
+        // IamgeView
+        static let imageHeight = 170.f
+        static let imageWidth = 180.f
+        static let imageRight = 25.f
+    }
+    
+    fileprivate struct Font {
         static let calendarTitle = UIFont.systemFont(ofSize: 24)
     }
     
-    // MARK: UI
-    let calendarView = DiaryCalendar()
-    let label = UILabel()
+    // MARK: - UI
+    let navigationAppearance = UINavigationBarAppearance().then {
+        $0.configureWithTransparentBackground()
+    }
     
-    // MARK: Initializing
+    let navigativePadding = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil).then {
+        $0.width = Metric.navigativePadding
+    }
+    
+    let drawerButton = UIBarButtonItem(image: R.image.diaryDrawerButton(), style: .done, target: nil, action: nil).then {
+        $0.tintColor = R.color.drawerButtonColor()
+    }
+    
+    let calendarView = DiaryCalendar()
+    
+    let separatorView = UIView().then {
+        $0.backgroundColor = R.color.textFieldSeparatorColor()
+    }
+    
+    let mainImageView = UIImageView().then {
+        $0.image = R.image.mainIllustration()
+    }
+    
+    // MARK: - Initializing
     init(reactor: Reactor) {
         super.init()
         defer { self.reactor = reactor }
@@ -32,28 +70,41 @@ final class MainViewController: BaseViewController, View {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: View Life Cycle
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func setupLayout() {
-        self.view.addSubview(calendarView)
-        self.view.addSubview(label)
+        self.navigationController?.navigationBar.standardAppearance = navigationAppearance
+        self.navigationItem.leftBarButtonItems = [navigativePadding, drawerButton]
+        self.view.addSubview(self.calendarView)
+        self.view.addSubview(self.separatorView)
+        self.view.addSubview(self.mainImageView)
     }
     
     override func makeConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
         
-        self.label.snp.makeConstraints {
-            $0.center.equalToSuperview()
+        self.calendarView.snp.makeConstraints {
+            $0.bottom.equalTo(self.separatorView.snp.top).offset(-Metric.calendarBottom)
+            $0.top.equalTo(safeArea.snp.top)
+            $0.left.equalTo(safeArea.snp.left).offset(Metric.calendarSide)
+            $0.right.equalTo(safeArea.snp.right).offset(-Metric.calendarSide)
         }
         
-        self.calendarView.snp.makeConstraints {
+        self.separatorView.snp.makeConstraints {
+            $0.left.equalTo(safeArea)
+            $0.right.equalTo(safeArea)
             $0.bottom.equalTo(safeArea.snp.centerY)
-            $0.top.equalTo(safeArea.snp.top)
-            $0.left.equalTo(safeArea.snp.left).offset(26)
-            $0.right.equalTo(safeArea.snp.right).offset(-26)
+            $0.height.equalTo(Metric.separatorHeight)
+        }
+        
+        self.mainImageView.snp.makeConstraints {
+            $0.width.equalTo(Metric.imageWidth)
+            $0.height.equalTo(Metric.imageHeight)
+            $0.right.equalTo(safeArea).offset(-Metric.imageRight)
+            $0.bottom.equalTo(safeArea)
         }
     }
     
@@ -62,7 +113,7 @@ final class MainViewController: BaseViewController, View {
         self.calendarView.calendar.calendarHeaderView.reloadData()
     }
     
-    // MARK: Configuring
+    // MARK: - Configuring
     
     func bind(reactor: MainViewReactor) {
         // Input
@@ -72,11 +123,6 @@ final class MainViewController: BaseViewController, View {
             .disposed(by: disposeBag)
         
         // Output
-        reactor.state
-            .map { "\($0.selectedDay)" }
-            .distinctUntilChanged()
-            .bind(to: label.rx.text)
-            .disposed(by: disposeBag)
         
         // View
         self.calendarView.calendar.rx.setDelegate(self)
@@ -84,6 +130,8 @@ final class MainViewController: BaseViewController, View {
     }
 
 }
+
+// MARK: - Delegate
 
 extension MainViewController: FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {

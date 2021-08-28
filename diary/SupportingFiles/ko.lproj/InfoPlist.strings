@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  diary
+
+  Created by 김부성 on 2021/08/28.
+  
+*/
+
+"CFBundleDisplayName" = "오늘하루";

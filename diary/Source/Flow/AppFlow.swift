@@ -24,13 +24,13 @@ class AppFlow: Flow {
         
         switch step {
         case .splashIsRequired:
-            return .none
+            return navigateToSplash()
             
-        case .introIsRequired:
-            return .none
+        case .loginIsRequired:
+            return navigateToLogin()
             
         case .mainIsRequired:
-            return .none
+            return navigateToMain()
             
         default:
             return .none
@@ -41,7 +41,37 @@ class AppFlow: Flow {
 }
 
 extension AppFlow {
-//    private func navigateToSplash() -> FlowContributors {
-//        return
-//    }
+    
+    private func navigateToSplash() -> FlowContributors {
+        let reactor = SplashViewReactor()
+        let viewController = SplashViewController(reactor: reactor)
+        
+        self.window.rootViewController = viewController
+        
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
+    }
+    
+    private func navigateToLogin() -> FlowContributors {
+        let loginFlow = LoginFlow()
+        
+        Flows.use(loginFlow, when: .created) { [unowned self] root in
+            self.window.rootViewController = root
+            
+            UIView.transition(with: self.window, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
+        }
+        
+        return .one(flowContributor: .contribute(withNextPresentable: loginFlow, withNextStepper: OneStepper(withSingleStep: DiaryStep.loginIsRequired)))
+    }
+    
+    private func navigateToMain() -> FlowContributors {
+        let mainFlow = MainFlow()
+        
+        Flows.use(mainFlow, when: .created) { [unowned self] root in
+            self.window.rootViewController = root
+            
+            UIView.transition(with: self.window, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
+        }
+        
+        return .one(flowContributor: .contribute(withNextPresentable: mainFlow, withNextStepper: OneStepper(withSingleStep: DiaryStep.mainIsRequired)))
+    }
 }
