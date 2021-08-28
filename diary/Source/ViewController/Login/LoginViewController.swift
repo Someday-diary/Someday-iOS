@@ -7,6 +7,7 @@
 
 import UIKit
 import ReactorKit
+import RxKeyboard
 
 class LoginViewController: BaseViewController, View {
     typealias Reactor = LoginViewReactor
@@ -43,23 +44,20 @@ class LoginViewController: BaseViewController, View {
         $0.font = Font.titleFont
     }
     
-    let loginTextField = DiaryTextField().then {
+    let idTextField = DiaryTextField().then {
         $0.textField.placeholder = "ID"
         $0.textField.keyboardType = .emailAddress
     }
     
-    let PassWordTextField = DiaryTextField().then {
+    let passwordTextField = DiaryTextField().then {
         $0.textField.placeholder = "Password"
         $0.textField.keyboardType = .default
         $0.textField.isSecureTextEntry = true
     }
     
-    let loginButton = UIButton().then {
-        $0.backgroundColor = R.color.mainColor()
-        $0.layer.cornerRadius = 7
-    }
+    let loginButton = DiaryButton()
     
-    let loginImage = UIImageView().then {
+    let loginImageView = UIImageView().then {
         $0.image = R.image.loginIllustration()
     }
     
@@ -84,11 +82,11 @@ class LoginViewController: BaseViewController, View {
     }
     
     override func setupLayout() {
-        self.view.addSubview(self.loginTextField)
-        self.view.addSubview(self.PassWordTextField)
+        self.view.addSubview(self.idTextField)
+        self.view.addSubview(self.passwordTextField)
         self.view.addSubview(self.titleLabel)
         self.view.addSubview(self.loginButton)
-        self.view.addSubview(self.loginImage)
+        self.view.addSubview(self.loginImageView)
     }
     
     override func makeConstraints() {
@@ -99,28 +97,28 @@ class LoginViewController: BaseViewController, View {
             $0.centerX.equalTo(safeArea)
         }
         
-        self.loginTextField.snp.makeConstraints {
+        self.idTextField.snp.makeConstraints {
             $0.left.equalTo(safeArea).offset(Metric.textFieldSide)
             $0.right.equalTo(safeArea).offset(-Metric.textFieldSide)
             $0.bottom.equalTo(self.titleLabel.snp.bottom).offset(self.view.frame.height / 5)
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
-        self.PassWordTextField.snp.makeConstraints {
+        self.passwordTextField.snp.makeConstraints {
             $0.left.equalTo(safeArea).offset(Metric.textFieldSide)
             $0.right.equalTo(safeArea).offset(-Metric.textFieldSide)
-            $0.top.equalTo(self.loginTextField.snp.bottom)
+            $0.top.equalTo(self.idTextField.snp.bottom)
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
         self.loginButton.snp.makeConstraints {
-            $0.top.equalTo(self.PassWordTextField.snp.bottom).offset(Metric.buttonTop)
+            $0.top.equalTo(self.passwordTextField.snp.bottom).offset(Metric.buttonTop)
             $0.left.equalTo(safeArea).offset(Metric.buttonSide)
             $0.right.equalTo(safeArea).offset(-Metric.buttonSide)
             $0.height.equalTo(Metric.buttonHeight)
         }
         
-        self.loginImage.snp.makeConstraints {
+        self.loginImageView.snp.makeConstraints {
             $0.height.equalTo(Metric.imageHeight)
             $0.width.equalTo(Metric.imageWidth)
             $0.bottom.equalTo(safeArea)
@@ -129,10 +127,39 @@ class LoginViewController: BaseViewController, View {
     }
     
     // MARK: - Configuring
+    
     func bind(reactor: LoginViewReactor) {
+        
+        // Input
+        Observable.combineLatest(
+            idTextField.textField.rx.text.orEmpty,
+            passwordTextField.textField.rx.text.orEmpty
+        )
+        .map { Reactor.Action.updateTextField([$0, $1]) }
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
+        
         loginButton.rx.tap.asObservable()
             .map { Reactor.Action.login }
             .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        // Output
+        let idValidation = reactor.state.map { $0.idValidation }.distinctUntilChanged()
+        let passwordValidation = reactor.state.map { $0.passwordValidation }.distinctUntilChanged()
+        
+        // View
+        Observable.combineLatest(
+            idValidation.map { $0 == .correct },
+            passwordValidation.map { $0 == .correct }
+        ) { $0 && $1 }
+        .bind(to: loginButton.rx.isEnabled)
+        .disposed(by: disposeBag)
+        
+        RxKeyboard.instance.visibleHeight
+            .drive(onNext: { [weak self] height in
+                self?.view.frame.origin.y = 0 - height / 2.5
+            })
             .disposed(by: disposeBag)
     }
     
