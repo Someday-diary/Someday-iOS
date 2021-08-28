@@ -18,6 +18,7 @@ final class MainViewReactor: Reactor, Stepper {
     
     enum Action {
         case setDay(Date)
+        case presentSideMenu
     }
     
     enum Mutation {
@@ -33,13 +34,17 @@ final class MainViewReactor: Reactor, Stepper {
     }
     
     
-//    func mutate(action: Action) -> Observable<Mutation> {
-//        switch action {
-//
-//        case let .setDay(selectedDay):
-//            return Observable.just(Mutation.changeDay(selectedDay))
-//        }
-//    }
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+
+        case let .setDay(selectedDay):
+            return Observable.just(Mutation.changeDay(selectedDay))
+        
+        case .presentSideMenu:
+            steps.accept(DiaryStep.sideMenuIsRequired)
+            return Observable.empty()
+        }
+    }
     
     // update state
     func reduce(state: State, mutation: Mutation) -> State {

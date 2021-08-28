@@ -6,6 +6,7 @@
 //
 
 import RxFlow
+import SideMenu
 
 class MainFlow: Flow {
     
@@ -23,7 +24,7 @@ class MainFlow: Flow {
             return navigateToMain()
             
         case .sideMenuIsRequired:
-            return .none
+            return navigateToSideMenu()
             
         case .dismiss:
             self.rootViewController.dismiss(animated: true, completion: nil)
@@ -47,5 +48,14 @@ extension MainFlow {
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
-    
+    private func navigateToSideMenu() -> FlowContributors {
+        let viewController = SideMenuNavigationController(rootViewController: UIViewController()).then {
+            $0.leftSide = true
+            $0.presentationStyle = .menuSlideIn
+            $0.presentationStyle.presentingEndAlpha = 0.5
+        }
+        
+        self.rootViewController.present(viewController, animated: true, completion: nil)
+        return .none
+    }
 }
