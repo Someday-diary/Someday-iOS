@@ -17,15 +17,20 @@ final class MainViewController: BaseViewController, View {
     // MARK: - Constants
     
     fileprivate struct Metric {
-        // calendar
+        // Calendar
         static let calendarSide = 26.f
-        static let calendarBottom = 10.f
+        static let calendarBottom = 13.f
         
         // BarButtonPadding
         static let navigativePadding = 18.f
         
-        // separator
+        // Separator
         static let separatorHeight = 1.f
+        
+        // IamgeView
+        static let imageHeight = 170.f
+        static let imageWidth = 180.f
+        static let imageRight = 25.f
     }
     
     fileprivate struct Font {
@@ -47,10 +52,12 @@ final class MainViewController: BaseViewController, View {
     
     let calendarView = DiaryCalendar()
     
-    let label = UILabel()
-    
     let separatorView = UIView().then {
         $0.backgroundColor = R.color.textFieldSeparatorColor()
+    }
+    
+    let mainImageView = UIImageView().then {
+        $0.image = R.image.mainIllustration()
     }
     
     // MARK: - Initializing
@@ -72,16 +79,12 @@ final class MainViewController: BaseViewController, View {
         self.navigationController?.navigationBar.standardAppearance = navigationAppearance
         self.navigationItem.leftBarButtonItems = [navigativePadding, drawerButton]
         self.view.addSubview(self.calendarView)
-        self.view.addSubview(self.label)
         self.view.addSubview(self.separatorView)
+        self.view.addSubview(self.mainImageView)
     }
     
     override func makeConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
-        
-        self.label.snp.makeConstraints {
-            $0.center.equalTo(safeArea)
-        }
         
         self.calendarView.snp.makeConstraints {
             $0.bottom.equalTo(self.separatorView.snp.top).offset(-Metric.calendarBottom)
@@ -95,6 +98,13 @@ final class MainViewController: BaseViewController, View {
             $0.right.equalTo(safeArea)
             $0.bottom.equalTo(safeArea.snp.centerY)
             $0.height.equalTo(Metric.separatorHeight)
+        }
+        
+        self.mainImageView.snp.makeConstraints {
+            $0.width.equalTo(Metric.imageWidth)
+            $0.height.equalTo(Metric.imageHeight)
+            $0.right.equalTo(safeArea).offset(-Metric.imageRight)
+            $0.bottom.equalTo(safeArea)
         }
     }
     
@@ -113,11 +123,6 @@ final class MainViewController: BaseViewController, View {
             .disposed(by: disposeBag)
         
         // Output
-        reactor.state
-            .map { "\($0.selectedDay)" }
-            .distinctUntilChanged()
-            .bind(to: label.rx.text)
-            .disposed(by: disposeBag)
         
         // View
         self.calendarView.calendar.rx.setDelegate(self)

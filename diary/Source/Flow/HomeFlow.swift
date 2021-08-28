@@ -21,6 +21,14 @@ class MainFlow: Flow {
         switch step {
         case .mainIsRequired:
             return navigateToMain()
+            
+        case .sideMenuIsRequired:
+            return .none
+            
+        case .dismiss:
+            self.rootViewController.dismiss(animated: true, completion: nil)
+            return .none
+            
         default:
             return .none
         }
@@ -38,5 +46,6 @@ extension MainFlow {
         self.rootViewController.pushViewController(viewController, animated: false)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
+    
     
 }

@@ -20,6 +20,6 @@ enum DiaryStep: Step {
     case registerIsRequired
     
     // MARK: - Home
-    case drawerIsRequired
+    case sideMenuIsRequired
     
 }
