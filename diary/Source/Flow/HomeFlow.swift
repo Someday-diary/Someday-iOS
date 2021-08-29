@@ -5,6 +5,7 @@
 //  Created by 김부성 on 2021/08/27.
 //
 
+import UIKit
 import RxFlow
 import SideMenu
 
@@ -54,7 +55,8 @@ extension MainFlow {
         let sideMenuNavController = SideMenuNavigationController(rootViewController: viewController).then {
             $0.leftSide = true
             $0.presentationStyle = .menuSlideIn
-            $0.presentationStyle.presentingEndAlpha = 0.5
+            $0.presentationStyle.presentingEndAlpha = 0.3
+            $0.menuWidth = UIScreen.main.bounds.width / 2
         }
         
         self.rootViewController.present(sideMenuNavController, animated: true, completion: nil)
