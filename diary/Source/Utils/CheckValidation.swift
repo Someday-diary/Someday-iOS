@@ -20,6 +20,6 @@ extension String {
     }
     
     var isValidPassword: CheckValidation {
-        return self.count >= 5 ? .correct : .error(message: "비밀번호가 짧습니다.")
+        return self.count >= 5 ? .correct : .error(message: "비밀번호가 4자리 이하입니다.")
     }
 }

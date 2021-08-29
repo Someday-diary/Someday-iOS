@@ -17,7 +17,7 @@ final class DiaryTextField: UIView {
     // MARK: - Constants
     fileprivate struct Metric {
         // textField
-        static let textFieldTop = 10.f
+        static let textFieldTop = 5.f
         static let textFieldSide = 11.f
         
         // separator
