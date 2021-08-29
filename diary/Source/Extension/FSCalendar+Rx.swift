@@ -10,14 +10,6 @@ import RxSwift
 import RxCocoa
 import FSCalendar
 
-// selector nil error handling
-class CustomDelegateProxy<P: AnyObject, D>: DelegateProxy<P, D> {
-    override open func responds(to aSelector: Selector!) -> Bool {
-        guard aSelector != nil else { return false }
-        return super.responds(to: aSelector)
-    }
-}
-
 final class RxFSCalendarDelegateProxy: CustomDelegateProxy<FSCalendar, FSCalendarDelegateAppearance>, DelegateProxyType, FSCalendarDelegateAppearance {
     
     static func registerKnownImplementations() {

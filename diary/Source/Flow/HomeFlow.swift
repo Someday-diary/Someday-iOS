@@ -5,7 +5,9 @@
 //  Created by 김부성 on 2021/08/27.
 //
 
+import UIKit
 import RxFlow
+import SideMenu
 
 class MainFlow: Flow {
     
@@ -23,7 +25,7 @@ class MainFlow: Flow {
             return navigateToMain()
             
         case .sideMenuIsRequired:
-            return .none
+            return navigateToSideMenu()
             
         case .dismiss:
             self.rootViewController.dismiss(animated: true, completion: nil)
@@ -47,5 +49,17 @@ extension MainFlow {
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
-    
+    private func navigateToSideMenu() -> FlowContributors {
+        let reactor = SideMenuViewReactor()
+        let viewController = SideMenuViewController(reactor: reactor)
+        let sideMenuNavController = SideMenuNavigationController(rootViewController: viewController).then {
+            $0.leftSide = true
+            $0.presentationStyle = .menuSlideIn
+            $0.presentationStyle.presentingEndAlpha = 0.3
+            $0.menuWidth = UIScreen.main.bounds.width / 2
+        }
+        
+        self.rootViewController.present(sideMenuNavController, animated: true, completion: nil)
+        return .one(flowContributor: .contribute(withNextPresentable: sideMenuNavController, withNextStepper: reactor))
+    }
 }

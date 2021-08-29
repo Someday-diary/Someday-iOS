@@ -1,22 +1,24 @@
 //
-//  SplashViewReactor.swift
+//  SideMenuViewReactor.swift
 //  diary
 //
-//  Created by 김부성 on 2021/08/25.
+//  Created by 김부성 on 2021/08/28.
 //
 
 import Foundation
+
 import ReactorKit
-import RxRelay
+import RxCocoa
 import RxFlow
 
-class SplashViewReactor: Reactor, Stepper {
+final class SideMenuViewReactor: Reactor, Stepper {
+
     var steps = PublishRelay<Step>()
     
-    let initialState: State
+    var initialState: State
     
     enum Action {
-        case setNextView
+        case dismiss
     }
     
     enum Mutation {
@@ -32,12 +34,16 @@ class SplashViewReactor: Reactor, Stepper {
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
+        
         switch action {
-        case .setNextView:
-//            self.steps.accept(DiaryStep.loginIsRequired)
-            self.steps.accept(DiaryStep.mainIsRequired)
+        
+        case .dismiss:
+            steps.accept(DiaryStep.dismiss)
             return Observable.empty()
+            
         }
     }
+    
+    
     
 }

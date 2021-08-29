@@ -39,7 +39,9 @@ class LoginFlow: Flow {
         
         case .splashIsRequired:
             return self.navigateToSplash()
-//        case .registerIsRequired:
+            
+        case .registerIsRequired:
+            return .none
             
         case .mainIsRequired:
             return .end(forwardToParentFlowWithStep: DiaryStep.mainIsRequired)

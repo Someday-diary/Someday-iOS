@@ -135,6 +135,7 @@ class LoginViewController: BaseViewController, View {
             idTextField.textField.rx.text.orEmpty,
             passwordTextField.textField.rx.text.orEmpty
         )
+        .observeOn(MainScheduler.asyncInstance)
         .map { Reactor.Action.updateTextField([$0, $1]) }
         .bind(to: reactor.action)
         .disposed(by: disposeBag)

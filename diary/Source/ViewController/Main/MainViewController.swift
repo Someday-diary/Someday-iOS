@@ -46,7 +46,7 @@ final class MainViewController: BaseViewController, View {
         $0.width = Metric.navigativePadding
     }
     
-    let drawerButton = UIBarButtonItem(image: R.image.diaryDrawerButton(), style: .done, target: nil, action: nil).then {
+    let sideMenuButton = UIBarButtonItem(image: R.image.diaryDrawerButton(), style: .done, target: nil, action: nil).then {
         $0.tintColor = R.color.drawerButtonColor()
     }
     
@@ -77,7 +77,7 @@ final class MainViewController: BaseViewController, View {
     
     override func setupLayout() {
         self.navigationController?.navigationBar.standardAppearance = navigationAppearance
-        self.navigationItem.leftBarButtonItems = [navigativePadding, drawerButton]
+        self.navigationItem.leftBarButtonItems = [navigativePadding, sideMenuButton]
         self.view.addSubview(self.calendarView)
         self.view.addSubview(self.separatorView)
         self.view.addSubview(self.mainImageView)
@@ -118,7 +118,13 @@ final class MainViewController: BaseViewController, View {
     func bind(reactor: MainViewReactor) {
         // Input
         self.calendarView.calendar.rx.didSelect.asObservable()
+            .distinctUntilChanged()
             .map { Reactor.Action.setDay($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        self.sideMenuButton.rx.tap.asObservable()
+            .map { Reactor.Action.presentSideMenu }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
