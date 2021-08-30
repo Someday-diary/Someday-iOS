@@ -10,13 +10,15 @@ import RxFlow
 class AppFlow: Flow {
     
     private let window: UIWindow
+    private let services: AppServices
     
     var root: Presentable {
         return self.window
     }
     
-    init(window: UIWindow) {
+    init(window: UIWindow, services: AppServices) {
         self.window = window
+        self.services = services
     }
     
     func navigate(to step: Step) -> FlowContributors {

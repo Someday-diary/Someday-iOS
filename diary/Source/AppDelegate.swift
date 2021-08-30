@@ -7,18 +7,46 @@
 
 import UIKit
 
-import SnapKit
-import Then
-import CGFloatLiteral
-import Rswift
+import RxSwift
+import RxFlow
+import RxCocoa
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    var window: UIWindow?
+    
+    var coordinator: FlowCoordinator = .init()
+    fileprivate let disposeBag = DisposeBag()
+    
+    lazy var appSerivces = {
+        return AppServices()
+    }()
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.backgroundColor = .systemBackground
+        self.window?.makeKeyAndVisible()
+        
+        guard let window = self.window else { return false }
+        
+        let appFlow = AppFlow(window: window, services: appSerivces)
+        
+        let appStepper = OneStepper(withSingleStep: DiaryStep.splashIsRequired)
+        
+        // Setup Rxflow
+        self.coordinator.coordinate(flow: appFlow, with: appStepper)
+        
+        
+        coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
+            print ("did navigate to flow=\(flow) and step=\(step)")
+        }).disposed(by: self.disposeBag)
+        
+        coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
+            print ("did navigate to flow=\(flow) and step=\(step)")
+        }).disposed(by: self.disposeBag)
+        
         return true
     }
 
