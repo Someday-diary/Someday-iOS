@@ -149,7 +149,6 @@ class LoginViewController: BaseViewController, View {
         let idValidation = reactor.state.map { $0.idValidation }.distinctUntilChanged()
         let passwordValidation = reactor.state.map { $0.passwordValidation }.distinctUntilChanged()
         
-        // View
         Observable.combineLatest(
             idValidation.map { $0 == .correct },
             passwordValidation.map { $0 == .correct }
@@ -157,6 +156,17 @@ class LoginViewController: BaseViewController, View {
         .bind(to: loginButton.rx.isEnabled)
         .disposed(by: disposeBag)
         
+        reactor.state.map { $0.idValidation }
+            .distinctUntilChanged()
+            .bind(to: self.idTextField.rx.animated.fade(duration: 0.3).error)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.passwordValidation }
+            .distinctUntilChanged()
+            .bind(to: self.passwordTextField.rx.animated.fade(duration: 0.3).error)
+            .disposed(by: disposeBag)
+        
+        // View
         RxKeyboard.instance.visibleHeight
             .drive(onNext: { [weak self] height in
                 self?.view.frame.origin.y = 0 - height / 2.5

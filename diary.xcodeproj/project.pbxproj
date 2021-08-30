@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62183EEC26DB3A6600F22EC6 /* DiaryTextField+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62183EEB26DB3A6600F22EC6 /* DiaryTextField+Rx.swift */; };
 		624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2926D6299B004A6624 /* LoginFlow.swift */; };
 		624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2B26D6350A004A6624 /* AppStepper.swift */; };
 		624E4D3326D63685004A6624 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D3226D63685004A6624 /* SplashViewController.swift */; };
@@ -69,6 +70,7 @@
 		5E0D0EF1C767475EB03B257B /* Pods-diaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diaryTests.release.xcconfig"; path = "Target Support Files/Pods-diaryTests/Pods-diaryTests.release.xcconfig"; sourceTree = "<group>"; };
 		601756147E85EE8A3E70851A /* Pods-diary-diaryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diary-diaryUITests.debug.xcconfig"; path = "Target Support Files/Pods-diary-diaryUITests/Pods-diary-diaryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		61203E3BB236EAAB98001720 /* Pods_diaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_diaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		62183EEB26DB3A6600F22EC6 /* DiaryTextField+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryTextField+Rx.swift"; sourceTree = "<group>"; };
 		624E4D2926D6299B004A6624 /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
 		624E4D2B26D6350A004A6624 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		624E4D3226D63685004A6624 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -172,8 +174,9 @@
 		625F4C6626CFCB1C00DC5978 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				625F4C7A26D39FA500DC5978 /* FSCalendar+Rx.swift */,
 				62CB1D3A26DA4F4200B1BA32 /* CustomDelegateProxy.swift */,
+				625F4C7A26D39FA500DC5978 /* FSCalendar+Rx.swift */,
+				62183EEB26DB3A6600F22EC6 /* DiaryTextField+Rx.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */,
+				62183EEC26DB3A6600F22EC6 /* DiaryTextField+Rx.swift in Sources */,
 				62CB1D3726DA4D3500B1BA32 /* SideMenuViewReactor.swift in Sources */,
 				62D388A626D9E9FA00A8D185 /* CheckValidation.swift in Sources */,
 				625F4C5F26CF6DAA00DC5978 /* DiaryStep.swift in Sources */,
