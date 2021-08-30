@@ -31,6 +31,7 @@
 		625F4C8A26D51F4D00DC5978 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C8926D51F4D00DC5978 /* LoginViewController.swift */; };
 		627E200926CE8F4D00550D59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 627E200826CE8F4D00550D59 /* LaunchScreen.storyboard */; };
 		627E200F26CE93DC00550D59 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E200E26CE93DC00550D59 /* BaseViewController.swift */; };
+		62816AF026DCD0B100365348 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62816AEF26DCD0B100365348 /* Themes.swift */; };
 		62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40212690B0FA009B77F3 /* AppDelegate.swift */; };
 		62BA40242690B0FA009B77F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40232690B0FA009B77F3 /* SceneDelegate.swift */; };
 		62BA402B2690B0FC009B77F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62BA402A2690B0FC009B77F3 /* Assets.xcassets */; };
@@ -94,6 +95,7 @@
 		625F4C8926D51F4D00DC5978 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		627E200826CE8F4D00550D59 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		627E200E26CE93DC00550D59 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		62816AEF26DCD0B100365348 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		62BA401E2690B0FA009B77F3 /* diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62BA40212690B0FA009B77F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62BA40232690B0FA009B77F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				627E201326CE948200550D59 /* Model */,
 				627E201426CE948E00550D59 /* Network */,
 				627E200D26CE93A800550D59 /* Base */,
+				62816AE426DCB8DD00365348 /* Theme */,
 				625F4C6626CFCB1C00DC5978 /* Extension */,
 				627E201526CE949900550D59 /* Utils */,
 			);
@@ -291,6 +294,14 @@
 				62D388A526D9E9FA00A8D185 /* CheckValidation.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		62816AE426DCB8DD00365348 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				62816AEF26DCD0B100365348 /* Themes.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		62BA40152690B0FA009B77F3 = {
@@ -632,6 +643,7 @@
 				62CB1D3726DA4D3500B1BA32 /* SideMenuViewReactor.swift in Sources */,
 				62D388A626D9E9FA00A8D185 /* CheckValidation.swift in Sources */,
 				625F4C5F26CF6DAA00DC5978 /* DiaryStep.swift in Sources */,
+				62816AF026DCD0B100365348 /* Themes.swift in Sources */,
 				62CB1D3B26DA4F4200B1BA32 /* CustomDelegateProxy.swift in Sources */,
 				62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */,
 				62BA40242690B0FA009B77F3 /* SceneDelegate.swift in Sources */,

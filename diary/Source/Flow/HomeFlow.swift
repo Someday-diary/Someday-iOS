@@ -55,8 +55,8 @@ extension MainFlow {
         let sideMenuNavController = SideMenuNavigationController(rootViewController: viewController).then {
             $0.leftSide = true
             $0.presentationStyle = .menuSlideIn
-            $0.presentationStyle.presentingEndAlpha = 0.3
-            $0.menuWidth = UIScreen.main.bounds.width / 2
+            $0.presentationStyle.presentingEndAlpha = 0.6
+            $0.menuWidth = 280
         }
         
         self.rootViewController.present(sideMenuNavController, animated: true, completion: nil)
