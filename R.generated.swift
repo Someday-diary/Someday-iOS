@@ -105,7 +105,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 10 colors.
+  /// This `R.color` struct is generated, and contains static references to 12 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
@@ -125,6 +125,10 @@ struct R: Rswift.Validatable {
     static let mainViewSeparatorColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "MainViewSeparatorColor")
     /// Color `TextFieldSeparatorColor`.
     static let textFieldSeparatorColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "TextFieldSeparatorColor")
+    /// Color `ThemeBlueColor`.
+    static let themeBlueColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "ThemeBlueColor")
+    /// Color `ThemeGreenColor`.
+    static let themeGreenColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "ThemeGreenColor")
     /// Color `WeekdayTextColor`.
     static let weekdayTextColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "WeekdayTextColor")
 
@@ -210,6 +214,24 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "ThemeBlueColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func themeBlueColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.themeBlueColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "ThemeGreenColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func themeGreenColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.themeGreenColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIColor(named: "WeekdayTextColor", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
@@ -291,6 +313,22 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(watchOS)
+    /// `UIColor(named: "ThemeBlueColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func themeBlueColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.themeBlueColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "ThemeGreenColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func themeGreenColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.themeGreenColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
     /// `UIColor(named: "WeekdayTextColor", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
     static func weekdayTextColor(_: Void = ()) -> UIKit.UIColor? {
@@ -357,36 +395,6 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.mainIllustration, compatibleWith: traitCollection)
     }
     #endif
-
-    fileprivate init() {}
-  }
-
-  /// This `R.info` struct is generated, and contains static references to 1 properties.
-  struct info {
-    struct uiApplicationSceneManifest {
-      static let _key = "UIApplicationSceneManifest"
-      static let uiApplicationSupportsMultipleScenes = false
-
-      struct uiSceneConfigurations {
-        static let _key = "UISceneConfigurations"
-
-        struct uiWindowSceneSessionRoleApplication {
-          struct defaultConfiguration {
-            static let _key = "Default Configuration"
-            static let uiSceneConfigurationName = infoPlistString(path: ["UIApplicationSceneManifest", "UISceneConfigurations", "UIWindowSceneSessionRoleApplication", "Default Configuration"], key: "UISceneConfigurationName") ?? "Default Configuration"
-            static let uiSceneDelegateClassName = infoPlistString(path: ["UIApplicationSceneManifest", "UISceneConfigurations", "UIWindowSceneSessionRoleApplication", "Default Configuration"], key: "UISceneDelegateClassName") ?? "$(PRODUCT_MODULE_NAME).SceneDelegate"
-
-            fileprivate init() {}
-          }
-
-          fileprivate init() {}
-        }
-
-        fileprivate init() {}
-      }
-
-      fileprivate init() {}
-    }
 
     fileprivate init() {}
   }
