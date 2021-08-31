@@ -47,18 +47,15 @@ final class SideMenuViewController: BaseViewController, View {
         self.button.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
-        
-        self.button.rx.tap
-            .subscribe(onNext: {
-                print("button tapped")
-                themeService.switch(.blue)
-            })
-            .disposed(by: disposeBag)
     }
     
     // MARK: - Configuring
     func bind(reactor: SideMenuViewReactor) {
-        
+        //input
+        self.button.rx.tap.asObservable()
+            .map { Reactor.Action.changeTheme(ThemeType.blue) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 
 }

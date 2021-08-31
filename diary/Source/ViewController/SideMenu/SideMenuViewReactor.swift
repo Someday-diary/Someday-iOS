@@ -16,6 +16,7 @@ final class SideMenuViewReactor: Reactor, Stepper {
     var steps = PublishRelay<Step>()
     
     enum Action {
+        case changeTheme(ThemeType)
         case dismiss
     }
     
@@ -36,7 +37,10 @@ final class SideMenuViewReactor: Reactor, Stepper {
     func mutate(action: Action) -> Observable<Mutation> {
         
         switch action {
-        
+        case let .changeTheme(theme):
+            themeService.switch(theme)
+            return Observable.empty()
+            
         case .dismiss:
             steps.accept(DiaryStep.dismiss)
             return Observable.empty()

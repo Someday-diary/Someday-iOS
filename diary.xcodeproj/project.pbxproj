@@ -35,6 +35,7 @@
 		62816AF026DCD0B100365348 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62816AEF26DCD0B100365348 /* Themes.swift */; };
 		629ED5A626DD108600EA7A98 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */; };
 		629ED5A726DDAA9800EA7A98 /* FSCalendar+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */; };
+		629ED5B326DE2B1000EA7A98 /* DiaryThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5B226DE2B1000EA7A98 /* DiaryThemeButton.swift */; };
 		62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40212690B0FA009B77F3 /* AppDelegate.swift */; };
 		62BA402B2690B0FC009B77F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62BA402A2690B0FC009B77F3 /* Assets.xcassets */; };
 		62BA40392690B0FD009B77F3 /* diaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40382690B0FD009B77F3 /* diaryTests.swift */; };
@@ -101,6 +102,7 @@
 		62816AEF26DCD0B100365348 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FSCalendar+RxTheme.swift"; sourceTree = "<group>"; };
 		629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		629ED5B226DE2B1000EA7A98 /* DiaryThemeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryThemeButton.swift; sourceTree = "<group>"; };
 		62BA401E2690B0FA009B77F3 /* diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62BA40212690B0FA009B77F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62BA402A2690B0FC009B77F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -202,9 +204,9 @@
 				627E201026CE944D00550D59 /* Flow */,
 				627E201226CE947700550D59 /* View */,
 				627E201126CE945600550D59 /* ViewController */,
-				627E201326CE948200550D59 /* Model */,
-				627E201426CE948E00550D59 /* Network */,
-				629ED5AA26DDD2A800EA7A98 /* Service */,
+				629ED5AF26DDEDC600EA7A98 /* Model */,
+				629ED5B026DDEDD300EA7A98 /* Network */,
+				629ED5B126DDEDDA00EA7A98 /* Services */,
 				627E200D26CE93A800550D59 /* Base */,
 				62816AE426DCB8DD00365348 /* Theme */,
 				625F4C6626CFCB1C00DC5978 /* Extension */,
@@ -268,24 +270,11 @@
 			isa = PBXGroup;
 			children = (
 				625F4C8226D4675B00DC5978 /* DiaryCalendar.swift */,
+				629ED5B226DE2B1000EA7A98 /* DiaryThemeButton.swift */,
 				625F4C8626D4D2AB00DC5978 /* DiaryTextField.swift */,
 				625A9EB126D9213800D65840 /* DiaryButton.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		627E201326CE948200550D59 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		627E201426CE948E00550D59 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		627E201526CE949900550D59 /* Utils */ = {
@@ -335,11 +324,25 @@
 			path = RxTheme;
 			sourceTree = "<group>";
 		};
-		629ED5AA26DDD2A800EA7A98 /* Service */ = {
+		629ED5AF26DDEDC600EA7A98 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Service;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		629ED5B026DDEDD300EA7A98 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		629ED5B126DDEDDA00EA7A98 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		62BA40152690B0FA009B77F3 = {
@@ -701,6 +704,7 @@
 				625F4C6426CF94CC00DC5978 /* MainViewReactor.swift in Sources */,
 				625F4C5B26CF23AC00DC5978 /* DeviceType.swift in Sources */,
 				625F4C5526CF22D300DC5978 /* Preview.swift in Sources */,
+				629ED5B326DE2B1000EA7A98 /* DiaryThemeButton.swift in Sources */,
 				625F4C8A26D51F4D00DC5978 /* LoginViewController.swift in Sources */,
 				627E200F26CE93DC00550D59 /* BaseViewController.swift in Sources */,
 				625F4C5926CF238600DC5978 /* UIViewPreview.swift in Sources */,
