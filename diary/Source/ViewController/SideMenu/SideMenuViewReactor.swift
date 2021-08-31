@@ -28,11 +28,9 @@ final class SideMenuViewReactor: Reactor, Stepper {
     }
     
     let initialState: State
-    let themeService: ThemeServiceType
     
-    init(themeService: ThemeServiceType) {
+    init() {
         self.initialState = State()
-        self.themeService = themeService
     }
     
     func mutate(action: Action) -> Observable<Mutation> {

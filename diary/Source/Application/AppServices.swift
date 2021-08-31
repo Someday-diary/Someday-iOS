@@ -13,9 +13,8 @@ import CGFloatLiteral
 import Rswift
 
 struct AppServices {
-    let themeService: ThemeServiceType
     
     init() {
-        self.themeService = ThemeService()
+        
     }
 }

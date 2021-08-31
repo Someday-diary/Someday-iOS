@@ -4,6 +4,7 @@
 //
 //  Created by 김부성 on 2021/08/20.
 //
+import UIKit
 
 import RxSwift
 import RxCocoa
@@ -15,12 +16,14 @@ final class MainViewReactor: Reactor, Stepper {
     var steps = PublishRelay<Step>()
     
     enum Action {
-        case setDay(Date)
+        case changeDay(Date)
+        case changeColor(UIColor)
         case presentSideMenu
     }
     
     enum Mutation {
-        case changeDay(Date)
+        case setDay(Date)
+        case setColor(UIColor)
     }
     
     struct State {
@@ -29,19 +32,20 @@ final class MainViewReactor: Reactor, Stepper {
     }
     
     let initialState: State
-    let themeService: ThemeServiceType
     
-    init(themeService: ThemeServiceType) {
+    init() {
         self.initialState = State()
-        self.themeService = themeService
     }
     
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
+        
+        case let .changeColor(newColor):
+            return Observable.just(Mutation.setColor(newColor))
 
-        case let .setDay(selectedDay):
-            return Observable.just(Mutation.changeDay(selectedDay))
+        case let .changeDay(newDay):
+            return Observable.just(Mutation.setDay(newDay))
         
         case .presentSideMenu:
             steps.accept(DiaryStep.sideMenuIsRequired)
@@ -54,8 +58,10 @@ final class MainViewReactor: Reactor, Stepper {
         var state = state
         
         switch mutation {
-        case let .changeDay(selectedDay):
-            state.selectedDay = selectedDay
+        case let .setDay(newDay):
+            state.selectedDay = newDay
+        case let .setColor(newColor):
+            state.themeColor = newColor
         }
         
         return state

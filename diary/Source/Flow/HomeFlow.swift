@@ -54,7 +54,7 @@ class MainFlow: Flow {
 extension MainFlow {
     
     private func navigateToMain() -> FlowContributors {
-        let reactor = MainViewReactor(themeService: services.themeService)
+        let reactor = MainViewReactor()
         let viewController = MainViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: false)
@@ -69,6 +69,7 @@ extension MainFlow {
             $0.presentationStyle = .menuSlideIn
             $0.presentationStyle.presentingEndAlpha = 0.6
             $0.menuWidth = 280
+            $0.navigationBar.standardAppearance = navigationAppearance
         }
         
         self.rootViewController.present(sideMenuNavController, animated: true, completion: nil)

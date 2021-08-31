@@ -8,8 +8,9 @@
 import UIKit
 
 import RxSwift
-import RxFlow
 import RxCocoa
+import RxFlow
+import RxViewController
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

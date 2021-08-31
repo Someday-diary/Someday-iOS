@@ -16,6 +16,10 @@ final class SideMenuViewController: BaseViewController, View {
     // MARK: - Constants
     
     // MARK: - UI
+    let button = UIButton().then {
+        $0.setTitleColor(.blue, for: .normal)
+        $0.setTitle("색상 변경", for: .normal)
+    }
     
     // MARK: - Initializing
     init(reactor: Reactor) {
@@ -36,7 +40,20 @@ final class SideMenuViewController: BaseViewController, View {
     }
     
     override func setupLayout() {
+        self.view.addSubview(button)
+    }
+    
+    override func makeConstraints() {
+        self.button.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
         
+        self.button.rx.tap
+            .subscribe(onNext: {
+                print("button tapped")
+                themeService.switch(.blue)
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Configuring

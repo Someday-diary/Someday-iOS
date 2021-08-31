@@ -66,7 +66,7 @@ extension AppFlow {
     }
     
     private func navigateToMain() -> FlowContributors {
-        let mainFlow = MainFlow()
+        let mainFlow = MainFlow(services)
         
         Flows.use(mainFlow, when: .created) { [unowned self] root in
             self.window.rootViewController = root

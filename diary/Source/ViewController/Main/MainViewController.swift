@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import ReactorKit
 import FSCalendar
 
@@ -61,7 +62,6 @@ final class MainViewController: BaseViewController, View {
     // MARK: - Initializing
     init(reactor: Reactor) {
         super.init()
-        theme.themeColor = themed { $0.mainColor }
         defer { self.reactor = reactor }
     }
     
@@ -112,7 +112,7 @@ final class MainViewController: BaseViewController, View {
         // Input
         self.calendarView.calendar.rx.didSelect.asObservable()
             .distinctUntilChanged()
-            .map { Reactor.Action.setDay($0) }
+            .map { Reactor.Action.changeDay($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -121,7 +121,19 @@ final class MainViewController: BaseViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        themed { $0.mainColor }.asObservable()
+            .map { Reactor.Action.changeColor($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag )
+        
         // Output
+        
+        reactor.state.map { $0.themeColor }
+            .subscribe(onNext: { [weak self] in
+                self?.themeColor = $0
+                self?.calendarView.calendar.reloadData()
+            })
+            .disposed(by: disposeBag)
         
         // View
         self.rx.didRotate
