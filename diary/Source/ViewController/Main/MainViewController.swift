@@ -106,11 +106,6 @@ final class MainViewController: BaseViewController, View {
         }
     }
     
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        self.calendarView.calendar.reloadData()
-        self.calendarView.calendar.calendarHeaderView.reloadData()
-    }
-    
     // MARK: - Configuring
     
     func bind(reactor: MainViewReactor) {
@@ -129,6 +124,13 @@ final class MainViewController: BaseViewController, View {
         // Output
         
         // View
+        self.rx.didRotate
+            .subscribe({ [weak self] _ in
+                self?.calendarView.calendar.reloadData()
+                self?.calendarView.calendar.calendarHeaderView.reloadData()
+            })
+            .disposed(by: disposeBag)
+        
         self.calendarView.calendar.rx.setDelegate(self)
             .disposed(by: disposeBag)
     }
