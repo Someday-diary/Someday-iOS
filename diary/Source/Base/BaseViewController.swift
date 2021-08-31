@@ -12,6 +12,8 @@ import RxCocoa
 
 class BaseViewController: UIViewController {
     
+    var themeColor: UIColor?
+    
     // MARK: - UI
     let activityIndicatorView = UIActivityIndicatorView(style: .large).then {
         $0.color = .secondarySystemBackground
@@ -20,6 +22,7 @@ class BaseViewController: UIViewController {
     // MARK: - Initializing
     init() {
         super.init(nibName: nil, bundle: nil)
+        theme.themeColor = themed { $0.mainColor }
     }
     
     required init?(coder: NSCoder) {

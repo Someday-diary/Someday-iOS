@@ -153,7 +153,7 @@ extension MainViewController: FSCalendarDelegateAppearance {
                         "2021-08-25"]
         let dateString : String = dateFormatter.string(from: newDate)
         
-        if somedays.contains(dateString) { return R.color.mainColor() }
+        if somedays.contains(dateString) { return themeColor }
         return nil
     }
 }

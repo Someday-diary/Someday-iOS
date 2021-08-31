@@ -13,16 +13,26 @@ protocol Theme {
     var mainColor: UIColor { get }
 }
 
+protocol FontTheme {
+    var appFont: UIFont { get }
+}
+
 struct GreenTheme: Theme {
-    let mainColor: UIColor = R.color.mainColor()!
+    let mainColor: UIColor = R.color.themeGreenColor()!
+}
+
+struct BlueTheme: Theme {
+    let mainColor: UIColor = R.color.themeBlueColor()!
 }
 
 enum ThemeType: ThemeProvider {
-    case green
+    case green, blue
     var associatedObject: Theme {
         switch self {
         case .green:
             return GreenTheme()
+        case .blue:
+            return BlueTheme()
         }
     }
 }
