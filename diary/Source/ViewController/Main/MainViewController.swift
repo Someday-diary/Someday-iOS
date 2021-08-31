@@ -13,6 +13,7 @@ final class MainViewController: BaseViewController, View {
     
     // MARK: - Properties
     typealias Reactor = MainViewReactor
+    var themeColor: UIColor?
     
     // MARK: - Constants
     
@@ -38,9 +39,6 @@ final class MainViewController: BaseViewController, View {
     }
     
     // MARK: - UI
-    let navigationAppearance = UINavigationBarAppearance().then {
-        $0.configureWithTransparentBackground()
-    }
     
     let navigativePadding = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil).then {
         $0.width = Metric.navigativePadding
@@ -63,6 +61,7 @@ final class MainViewController: BaseViewController, View {
     // MARK: - Initializing
     init(reactor: Reactor) {
         super.init()
+        theme.themeColor = themed { $0.mainColor }
         defer { self.reactor = reactor }
     }
     
@@ -76,7 +75,6 @@ final class MainViewController: BaseViewController, View {
     }
     
     override func setupLayout() {
-        self.navigationController?.navigationBar.standardAppearance = navigationAppearance
         self.navigationItem.leftBarButtonItems = [navigativePadding, sideMenuButton]
         self.view.addSubview(self.calendarView)
         self.view.addSubview(self.separatorView)

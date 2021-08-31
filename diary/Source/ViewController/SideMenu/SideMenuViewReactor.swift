@@ -15,8 +15,6 @@ final class SideMenuViewReactor: Reactor, Stepper {
 
     var steps = PublishRelay<Step>()
     
-    var initialState: State
-    
     enum Action {
         case dismiss
     }
@@ -29,8 +27,12 @@ final class SideMenuViewReactor: Reactor, Stepper {
         
     }
     
-    init() {
+    let initialState: State
+    let themeService: ThemeServiceType
+    
+    init(themeService: ThemeServiceType) {
         self.initialState = State()
+        self.themeService = themeService
     }
     
     func mutate(action: Action) -> Observable<Mutation> {

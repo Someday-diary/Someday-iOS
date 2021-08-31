@@ -1,5 +1,5 @@
 //
-//  BaseViewController+RxTheme.swift
+//  MainViewController+RxTheme.swift
 //  diary
 //
 //  Created by 김부성 on 2021/08/31.
@@ -12,12 +12,11 @@ import RxSwift
 import RxCocoa
 import FSCalendar
 
-extension ThemeProxy where Base: BaseViewController {
+extension ThemeProxy where Base: MainViewController {
     var themeColor: Observable<UIColor?> {
         get { return .empty() }
         set {
             let disposable = newValue
-                // DisposeBag 사용불가
                 .takeUntil(base.rx.deallocating)
                 .observeOn(MainScheduler.instance)
                 .bind(to: base.rx.themeColor)
@@ -26,7 +25,7 @@ extension ThemeProxy where Base: BaseViewController {
     }
 }
 
-extension Reactive where Base: BaseViewController {
+extension Reactive where Base: MainViewController {
     
     var themeColor: Binder<UIColor?> {
         return Binder(self.base) { view, attr in

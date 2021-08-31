@@ -16,9 +16,6 @@ final class SideMenuViewController: BaseViewController, View {
     // MARK: - Constants
     
     // MARK: - UI
-    let navigationAppearance = UINavigationBarAppearance().then {
-        $0.configureWithTransparentBackground()
-    }
     
     // MARK: - Initializing
     init(reactor: Reactor) {
@@ -39,7 +36,7 @@ final class SideMenuViewController: BaseViewController, View {
     }
     
     override func setupLayout() {
-        self.navigationController?.navigationBar.standardAppearance = navigationAppearance
+        
     }
     
     // MARK: - Configuring

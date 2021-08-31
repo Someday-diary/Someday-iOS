@@ -14,8 +14,6 @@ final class MainViewReactor: Reactor, Stepper {
     
     var steps = PublishRelay<Step>()
     
-    var initialState: State
-    
     enum Action {
         case setDay(Date)
         case presentSideMenu
@@ -27,10 +25,15 @@ final class MainViewReactor: Reactor, Stepper {
     
     struct State {
         var selectedDay: Date = Date()
+        var themeColor: UIColor?
     }
     
-    init() {
+    let initialState: State
+    let themeService: ThemeServiceType
+    
+    init(themeService: ThemeServiceType) {
         self.initialState = State()
+        self.themeService = themeService
     }
     
     

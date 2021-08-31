@@ -11,10 +11,22 @@ import SideMenu
 
 class MainFlow: Flow {
     
-    private lazy var rootViewController = UINavigationController()
+    private let services: AppServices
     
     var root: Presentable {
         return self.rootViewController
+    }
+    
+    let navigationAppearance = UINavigationBarAppearance().then {
+        $0.configureWithTransparentBackground()
+    }
+    
+    private lazy var rootViewController = UINavigationController().then {
+        $0.navigationBar.standardAppearance = navigationAppearance
+    }
+    
+    init(_ services: AppServices) {
+        self.services = services
     }
     
     func navigate(to step: Step) -> FlowContributors {
@@ -42,7 +54,7 @@ class MainFlow: Flow {
 extension MainFlow {
     
     private func navigateToMain() -> FlowContributors {
-        let reactor = MainViewReactor()
+        let reactor = MainViewReactor(themeService: services.themeService)
         let viewController = MainViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: false)
