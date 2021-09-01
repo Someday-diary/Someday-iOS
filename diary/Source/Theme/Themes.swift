@@ -27,9 +27,9 @@ struct GreenTheme: Theme {
 }
 
 struct BlueTheme: Theme {
-    let mainColor: UIColor = R.color.themeBlueColor()!
-    let subColor: UIColor = R.color.themeBlueColor()!
-    let thirdColor: UIColor = R.color.themeBlueColor()!
+    let mainColor: UIColor = R.color.blueThemeMainColor()!
+    let subColor: UIColor = R.color.blueThemeSubColor()!
+    let thirdColor: UIColor = R.color.blueThemeThirdColor()!
 }
 
 enum ThemeType: ThemeProvider {

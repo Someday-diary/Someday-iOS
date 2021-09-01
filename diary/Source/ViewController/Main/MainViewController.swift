@@ -45,7 +45,7 @@ final class MainViewController: BaseViewController, View {
         $0.width = Metric.navigativePadding
     }
     
-    let sideMenuButton = UIBarButtonItem(image: R.image.diaryDrawerButton(), style: .done, target: nil, action: nil).then {
+    let sideMenuButton = UIBarButtonItem(image: R.image.diarySideMenuButton(), style: .done, target: nil, action: nil).then {
         $0.tintColor = R.color.drawerButtonColor()
     }
     
@@ -82,27 +82,26 @@ final class MainViewController: BaseViewController, View {
     }
     
     override func setupConstraints() {
-        let safeArea = self.view.safeAreaLayoutGuide
         
         self.calendarView.snp.makeConstraints {
             $0.bottom.equalTo(self.separatorView.snp.top).offset(-Metric.calendarBottom)
-            $0.top.equalTo(safeArea.snp.top)
-            $0.left.equalTo(safeArea.snp.left).offset(Metric.calendarSide)
-            $0.right.equalTo(safeArea.snp.right).offset(-Metric.calendarSide)
+            $0.top.equalToSafeArea(self.view)
+            $0.left.equalToSafeArea(self.view).offset(Metric.calendarSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.calendarSide)
         }
         
         self.separatorView.snp.makeConstraints {
-            $0.left.equalTo(safeArea)
-            $0.right.equalTo(safeArea)
-            $0.bottom.equalTo(safeArea.snp.centerY)
+            $0.left.equalToSafeArea(self.view)
+            $0.right.equalToSafeArea(self.view)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.centerY)
             $0.height.equalTo(Metric.separatorHeight)
         }
         
         self.mainImageView.snp.makeConstraints {
             $0.width.equalTo(Metric.imageWidth)
             $0.height.equalTo(Metric.imageHeight)
-            $0.right.equalTo(safeArea).offset(-Metric.imageRight)
-            $0.bottom.equalTo(safeArea)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.imageRight)
+            $0.bottom.equalToSafeArea(self.view)
         }
     }
     
