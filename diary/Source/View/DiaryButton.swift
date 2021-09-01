@@ -17,7 +17,7 @@ final class DiaryButton: UIButton {
         super.init(frame: frame)
         
         self.layer.cornerRadius = 7
-        self.backgroundColor = R.color.mainColor()
+        self.theme.backgroundColor = themed { $0.mainColor }
     }
     
     required init?(coder: NSCoder) {
@@ -27,7 +27,7 @@ final class DiaryButton: UIButton {
     override public var isHighlighted: Bool {
         didSet {
             UIView.animate(withDuration: 0.3) {
-                self.backgroundColor = self.backgroundColor?.withAlphaComponent(self.isHighlighted ? 0.3 : 0.7)
+                self.backgroundColor = self.backgroundColor?.withAlphaComponent(self.isHighlighted ? 0.5 : 1)
             }
         }
     }
@@ -35,7 +35,7 @@ final class DiaryButton: UIButton {
     override public var isEnabled: Bool {
         didSet {
             UIView.animate(withDuration: 0.3) {
-                self.backgroundColor = self.isEnabled ? R.color.mainColor() : R.color.diaryButtonDisabled()
+                self.theme.backgroundColor = self.isEnabled ? themed { $0.mainColor } : themed { $0.buttonDisableColor }
             }
         }
     }

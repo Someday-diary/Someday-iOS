@@ -11,18 +11,25 @@ import Rswift
 
 protocol Theme {
     var mainColor: UIColor { get }
+    var subColor: UIColor { get }
+    var thirdColor: UIColor { get }
+    var buttonDisableColor: UIColor { get }
 }
 
-protocol FontTheme {
-    var appFont: UIFont { get }
+extension Theme {
+    var buttonDisableColor: UIColor { R.color.diaryButtonDisabled()! }
 }
 
 struct GreenTheme: Theme {
-    let mainColor: UIColor = R.color.themeGreenColor()!
+    let mainColor: UIColor = R.color.greenThemeMainColor()!
+    let subColor: UIColor = R.color.greenThemeSubColor()!
+    let thirdColor: UIColor = R.color.greenThemeThirdColor()!
 }
 
 struct BlueTheme: Theme {
     let mainColor: UIColor = R.color.themeBlueColor()!
+    let subColor: UIColor = R.color.themeBlueColor()!
+    let thirdColor: UIColor = R.color.themeBlueColor()!
 }
 
 enum ThemeType: ThemeProvider {

@@ -105,7 +105,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 12 colors.
+  /// This `R.color` struct is generated, and contains static references to 14 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
@@ -119,6 +119,12 @@ struct R: Rswift.Validatable {
     static let diaryButtonDisabled = Rswift.ColorResource(bundle: R.hostingBundle, name: "DiaryButtonDisabled")
     /// Color `DrawerButtonColor`.
     static let drawerButtonColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "DrawerButtonColor")
+    /// Color `GreenThemeMainColor`.
+    static let greenThemeMainColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "GreenThemeMainColor")
+    /// Color `GreenThemeSubColor`.
+    static let greenThemeSubColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "GreenThemeSubColor")
+    /// Color `GreenThemeThirdColor`.
+    static let greenThemeThirdColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "GreenThemeThirdColor")
     /// Color `MainColor`.
     static let mainColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "MainColor")
     /// Color `MainViewSeparatorColor`.
@@ -127,8 +133,6 @@ struct R: Rswift.Validatable {
     static let textFieldSeparatorColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "TextFieldSeparatorColor")
     /// Color `ThemeBlueColor`.
     static let themeBlueColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "ThemeBlueColor")
-    /// Color `ThemeGreenColor`.
-    static let themeGreenColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "ThemeGreenColor")
     /// Color `WeekdayTextColor`.
     static let weekdayTextColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "WeekdayTextColor")
 
@@ -187,6 +191,33 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "GreenThemeMainColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func greenThemeMainColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.greenThemeMainColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "GreenThemeSubColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func greenThemeSubColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.greenThemeSubColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "GreenThemeThirdColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func greenThemeThirdColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.greenThemeThirdColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIColor(named: "MainColor", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
@@ -219,15 +250,6 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func themeBlueColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.themeBlueColor, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "ThemeGreenColor", bundle: ..., traitCollection: ...)`
-    @available(tvOS 11.0, *)
-    @available(iOS 11.0, *)
-    static func themeGreenColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
-      return UIKit.UIColor(resource: R.color.themeGreenColor, compatibleWith: traitCollection)
     }
     #endif
 
@@ -289,6 +311,30 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(watchOS)
+    /// `UIColor(named: "GreenThemeMainColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func greenThemeMainColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.greenThemeMainColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "GreenThemeSubColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func greenThemeSubColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.greenThemeSubColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "GreenThemeThirdColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func greenThemeThirdColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.greenThemeThirdColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
     /// `UIColor(named: "MainColor", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
     static func mainColor(_: Void = ()) -> UIKit.UIColor? {
@@ -321,14 +367,6 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(watchOS)
-    /// `UIColor(named: "ThemeGreenColor", bundle: ..., traitCollection: ...)`
-    @available(watchOSApplicationExtension 4.0, *)
-    static func themeGreenColor(_: Void = ()) -> UIKit.UIColor? {
-      return UIKit.UIColor(named: R.color.themeGreenColor.name)
-    }
-    #endif
-
-    #if os(watchOS)
     /// `UIColor(named: "WeekdayTextColor", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
     static func weekdayTextColor(_: Void = ()) -> UIKit.UIColor? {
@@ -339,7 +377,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 6 images.
+  /// This `R.image` struct is generated, and contains static references to 8 images.
   struct image {
     /// Image `CalendarAsset`.
     static let calendarAsset = Rswift.ImageResource(bundle: R.hostingBundle, name: "CalendarAsset")
@@ -349,10 +387,14 @@ struct R: Rswift.Validatable {
     static let calendarFrontButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "CalendarFrontButton")
     /// Image `DiaryDrawerButton`.
     static let diaryDrawerButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "DiaryDrawerButton")
+    /// Image `DismissButton`.
+    static let dismissButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "DismissButton")
     /// Image `LoginIllustration`.
     static let loginIllustration = Rswift.ImageResource(bundle: R.hostingBundle, name: "LoginIllustration")
     /// Image `MainIllustration`.
     static let mainIllustration = Rswift.ImageResource(bundle: R.hostingBundle, name: "MainIllustration")
+    /// Image `ThemeButton`.
+    static let themeButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "ThemeButton")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "CalendarAsset", bundle: ..., traitCollection: ...)`
@@ -383,6 +425,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "DismissButton", bundle: ..., traitCollection: ...)`
+    static func dismissButton(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.dismissButton, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "LoginIllustration", bundle: ..., traitCollection: ...)`
     static func loginIllustration(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.loginIllustration, compatibleWith: traitCollection)
@@ -393,6 +442,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "MainIllustration", bundle: ..., traitCollection: ...)`
     static func mainIllustration(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.mainIllustration, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "ThemeButton", bundle: ..., traitCollection: ...)`
+    static func themeButton(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.themeButton, compatibleWith: traitCollection)
     }
     #endif
 

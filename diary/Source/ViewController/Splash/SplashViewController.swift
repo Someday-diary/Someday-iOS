@@ -60,6 +60,8 @@ class SplashViewController: BaseViewController, View {
     }
     
     override func setupLayout() {
+        super.setupLayout()
+        
         self.view.addSubview(self.splashImage)
         self.view.addSubview(self.titleLabel)
     }

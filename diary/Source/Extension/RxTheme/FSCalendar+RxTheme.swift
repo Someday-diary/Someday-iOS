@@ -17,7 +17,6 @@ extension ThemeProxy where Base: FSCalendarAppearance {
         get { return .empty() }
         set {
             let disposable = newValue
-                // DisposeBag 사용불가
                 .takeUntil(base.rx.deallocating)
                 .observeOn(MainScheduler.instance)
                 .bind(to: base.rx.selectionColor)

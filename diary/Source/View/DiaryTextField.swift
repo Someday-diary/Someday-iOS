@@ -40,7 +40,7 @@ final class DiaryTextField: UIView {
         $0.clearButtonMode = .whileEditing
         $0.autocorrectionType = .no
         $0.autocapitalizationType = .none
-        $0.tintColor = R.color.mainColor()
+        $0.theme.tintColor = themed { $0.mainColor }
     }
     
     let separatorView = UIView().then {
@@ -89,7 +89,7 @@ final class DiaryTextField: UIView {
         self.textField.rx.controlEvent([.editingDidBegin]).asObservable()
             .subscribe(onNext: {
                 UIView.animate(withDuration: 0.3) {
-                    self.separatorView.backgroundColor = R.color.mainColor()
+                    self.separatorView.theme.backgroundColor = themed { $0.mainColor }
                 }
             })
             .disposed(by: disposeBag)
