@@ -14,7 +14,7 @@ final class MainViewController: BaseViewController, View {
     
     // MARK: - Properties
     typealias Reactor = MainViewReactor
-    var themeColor: UIColor?
+    var themeColor: [UIColor]?
     
     // MARK: - Constants
     
@@ -121,14 +121,19 @@ final class MainViewController: BaseViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
-        themed { $0.mainColor }.asObservable()
-            .map { Reactor.Action.changeColor($0) }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag )
+        Observable.combineLatest(
+            themed { $0.mainColor },
+            themed { $0.subColor },
+            themed { $0.thirdColor }
+        ).map { Reactor.Action.changeColor([$0, $1, $2]) }
+        .observeOn(MainScheduler.asyncInstance)
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
         
         // Output
         
         reactor.state.map { $0.themeColor }
+            .distinctUntilChanged()
             .subscribe(onNext: { [weak self] in
                 self?.themeColor = $0
                 self?.calendarView.calendar.reloadData()
@@ -165,7 +170,24 @@ extension MainViewController: FSCalendarDelegateAppearance {
                         "2021-08-25"]
         let dateString : String = dateFormatter.string(from: newDate)
         
-        if somedays.contains(dateString) { return themeColor }
+        if somedays.contains(dateString) { return themeColor![1] }
+        return nil
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
+        let dateFormatter = DateFormatter().then {
+            $0.dateFormat = "yyyy-MM-dd"
+        }
+        
+        let newDate = date.addingTimeInterval(TimeInterval(TimeZone.current.secondsFromGMT(for: date)))
+        
+        let somedays = ["2021-08-03",
+                        "2021-08-06",
+                        "2021-08-12",
+                        "2021-08-25"]
+        let dateString : String = dateFormatter.string(from: newDate)
+        
+        if somedays.contains(dateString) { return themeColor![2] }
         return nil
     }
 }

@@ -17,18 +17,18 @@ final class MainViewReactor: Reactor, Stepper {
     
     enum Action {
         case changeDay(Date)
-        case changeColor(UIColor)
+        case changeColor([UIColor])
         case presentSideMenu
     }
     
     enum Mutation {
         case setDay(Date)
-        case setColor(UIColor)
+        case setColor([UIColor])
     }
     
     struct State {
         var selectedDay: Date = Date()
-        var themeColor: UIColor?
+        var themeColor: [UIColor]?
     }
     
     let initialState: State
@@ -58,8 +58,10 @@ final class MainViewReactor: Reactor, Stepper {
         var state = state
         
         switch mutation {
+        
         case let .setDay(newDay):
             state.selectedDay = newDay
+            
         case let .setColor(newColor):
             state.themeColor = newColor
         }
