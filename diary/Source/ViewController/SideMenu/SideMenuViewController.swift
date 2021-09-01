@@ -43,7 +43,7 @@ final class SideMenuViewController: BaseViewController, View {
         self.view.addSubview(button)
     }
     
-    override func makeConstraints() {
+    override func setupConstraints() {
         self.button.snp.makeConstraints {
             $0.center.equalToSuperview()
         }

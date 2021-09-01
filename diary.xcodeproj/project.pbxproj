@@ -33,6 +33,7 @@
 		627E200926CE8F4D00550D59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 627E200826CE8F4D00550D59 /* LaunchScreen.storyboard */; };
 		627E200F26CE93DC00550D59 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E200E26CE93DC00550D59 /* BaseViewController.swift */; };
 		62816AF026DCD0B100365348 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62816AEF26DCD0B100365348 /* Themes.swift */; };
+		6291498C26DEF4FF003CDDE9 /* SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6291498B26DEF4FF003CDDE9 /* SnapKit.swift */; };
 		629ED5A626DD108600EA7A98 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */; };
 		629ED5A726DDAA9800EA7A98 /* FSCalendar+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */; };
 		629ED5B326DE2B1000EA7A98 /* DiaryThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5B226DE2B1000EA7A98 /* DiaryThemeButton.swift */; };
@@ -100,6 +101,7 @@
 		627E200826CE8F4D00550D59 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		627E200E26CE93DC00550D59 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		62816AEF26DCD0B100365348 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
+		6291498B26DEF4FF003CDDE9 /* SnapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapKit.swift; sourceTree = "<group>"; };
 		629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FSCalendar+RxTheme.swift"; sourceTree = "<group>"; };
 		629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		629ED5B226DE2B1000EA7A98 /* DiaryThemeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryThemeButton.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			children = (
 				629ED5A226DCFEF100EA7A98 /* RxTheme */,
 				629ED5A126DCFEAF00EA7A98 /* Rx */,
+				6291498A26DEF4E7003CDDE9 /* SnapKit */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -294,6 +297,14 @@
 				62816AEF26DCD0B100365348 /* Themes.swift */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		6291498A26DEF4E7003CDDE9 /* SnapKit */ = {
+			isa = PBXGroup;
+			children = (
+				6291498B26DEF4FF003CDDE9 /* SnapKit.swift */,
+			);
+			path = SnapKit;
 			sourceTree = "<group>";
 		};
 		629ED5A026DCFDF000EA7A98 /* Application */ = {
@@ -695,6 +706,7 @@
 				625F4C8726D4D2AB00DC5978 /* DiaryTextField.swift in Sources */,
 				629ED5A726DDAA9800EA7A98 /* FSCalendar+RxTheme.swift in Sources */,
 				625A9EB226D9213800D65840 /* DiaryButton.swift in Sources */,
+				6291498C26DEF4FF003CDDE9 /* SnapKit.swift in Sources */,
 				625F4C8326D4675B00DC5978 /* DiaryCalendar.swift in Sources */,
 				62CB1D3526DA4CCB00B1BA32 /* SideMenuViewController.swift in Sources */,
 				625F4C5726CF235F00DC5978 /* UIViewControllerPreview.swift in Sources */,

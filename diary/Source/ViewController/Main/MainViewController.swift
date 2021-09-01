@@ -81,7 +81,7 @@ final class MainViewController: BaseViewController, View {
         self.view.addSubview(self.mainImageView)
     }
     
-    override func makeConstraints() {
+    override func setupConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
         
         self.calendarView.snp.makeConstraints {

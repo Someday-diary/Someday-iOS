@@ -89,7 +89,7 @@ class LoginViewController: BaseViewController, View {
         self.view.addSubview(self.loginImageView)
     }
     
-    override func makeConstraints() {
+    override func setupConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
         
         self.titleLabel.snp.makeConstraints {
