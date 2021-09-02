@@ -13,8 +13,27 @@ class DiarySideMenuListButton: UIView {
 
     // MARK: - Constants
     fileprivate struct Metric {
+        // Image
         static let imageWidth = 29.f
         static let imageHeight = 27.f
+        
+        // ImageBackGround
+        static let backgroundCornerRadius = 11.f
+        static let backgroundTop = 5.f
+        static let backgroundLeft = 7.f
+        
+        // Icon
+        static let iconBottom = 3.f
+        
+        // Button
+        static let buttonLeft = 20.f
+        
+        // Height
+        static let height = 35.f
+    }
+    
+    fileprivate struct Font {
+        static let buttonFont = UIFont.systemFont(ofSize: 20, weight: .regular)
     }
     
     // MARK: - UI
@@ -26,12 +45,14 @@ class DiarySideMenuListButton: UIView {
     
     let imageBackground = UIView().then {
         $0.theme.backgroundColor = themed { $0.subColor }
-        $0.layer.cornerRadius = 11
+        $0.layer.cornerRadius = Metric.backgroundCornerRadius
     }
     
     let button = UIButton().then {
         $0.contentHorizontalAlignment = .left
         $0.setTitleColor(.black, for: .normal)
+        $0.titleLabel?.font = Font.buttonFont
+        $0.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
     // MARK: - Inititalizing
@@ -59,19 +80,22 @@ class DiarySideMenuListButton: UIView {
         
         self.icon.snp.makeConstraints {
             $0.left.top.equalToSuperview()
-            $0.right.equalToSuperview().offset(-5)
-            $0.bottom.equalToSuperview().offset(-3)
+            $0.bottom.equalToSuperview().offset(-Metric.iconBottom)
         }
         
         self.imageBackground.snp.makeConstraints {
-            $0.left.equalToSuperview().offset(7)
+            $0.left.equalToSuperview().offset(Metric.backgroundLeft)
             $0.right.bottom.equalToSuperview()
-            $0.top.equalToSuperview().offset(5)
+            $0.top.equalToSuperview().offset(Metric.backgroundTop)
         }
         
         self.button.snp.makeConstraints {
             $0.top.right.bottom.equalToSuperview()
-            $0.left.equalTo(self.imageArea.snp.right).offset(20)
+            $0.left.equalTo(self.imageArea.snp.right).offset(Metric.buttonLeft)
+        }
+        
+        self.snp.makeConstraints {
+            $0.height.equalTo(Metric.height)
         }
     }
     

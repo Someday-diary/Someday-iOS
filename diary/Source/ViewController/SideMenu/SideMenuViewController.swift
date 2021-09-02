@@ -15,14 +15,47 @@ final class SideMenuViewController: BaseViewController, View {
     
     // MARK: - Constants
     fileprivate struct Metric {
-        static let themeButtonSize = 30.f
+        // Title
+        static let titleTop = 40.f
+        static let titleBottom = 80.f
+        // ListButton
+        static let listButtonSide = 20.f
+        static let listButtonTop = 50.f
+    }
+    
+    fileprivate struct Font {
+        static let titleFont = UIFont.systemFont(ofSize: 32, weight: .ultraLight)
     }
     
     // MARK: - UI
-    let listButton = DiarySideMenuListButton().then {
+    let titleLabel = UILabel().then {
+        $0.text = "오늘 하루"
+        $0.font = Font.titleFont
+    }
+    
+    let themeButton = DiarySideMenuListButton().then {
         $0.icon.image = R.image.themeIcon()
         $0.button.setTitle("테마 설정", for: .normal)
-        $0.button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+    }
+    
+    let alarmButton = DiarySideMenuListButton().then {
+        $0.icon.image = R.image.alarmIcon()
+        $0.button.setTitle("일기 알람 설정", for: .normal)
+    }
+    
+    let lockButton = DiarySideMenuListButton().then {
+        $0.icon.image = R.image.lockIcon()
+        $0.button.setTitle("잠금 설정", for: .normal)
+    }
+    
+    let openSourceButton = DiarySideMenuListButton().then {
+        $0.icon.image = R.image.openSourceIcon()
+        $0.button.setTitle("오픈소스 라이센스 / 버전", for: .normal)
+    }
+    
+    let feedbackButton = DiarySideMenuListButton().then {
+        $0.icon.image = R.image.feedbackIcon()
+        $0.button.setTitle("사용자 피드백", for: .normal)
     }
     
     let dismissButton = UIBarButtonItem().then {
@@ -51,29 +84,57 @@ final class SideMenuViewController: BaseViewController, View {
     override func setupLayout() {
         super.setupLayout()
         
-        self.view.addSubview(self.listButton)
+        self.view.addSubview(titleLabel)
+        self.view.addSubview(self.themeButton)
+        self.view.addSubview(self.alarmButton)
+        self.view.addSubview(self.lockButton)
+        self.view.addSubview(self.openSourceButton)
+        self.view.addSubview(self.feedbackButton)
         self.navigationItem.rightBarButtonItem = dismissButton
     }
     
     override func setupConstraints() {
         super.setupConstraints()
         
-        self.listButton.snp.makeConstraints {
-            $0.centerY.equalToSafeArea(self.view)
-            $0.left.equalToSafeArea(self.view).offset(20)
-            $0.right.equalToSafeArea(self.view).offset(-20)
-            $0.height.equalTo(35)
+        self.titleLabel.snp.makeConstraints {
+            $0.top.equalToSafeArea(self.view).offset(Metric.titleTop)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(self.themeButton.snp.top).offset(-Metric.titleBottom)
+        }
+        
+        self.themeButton.snp.makeConstraints {
+            $0.left.equalToSafeArea(self.view).offset(Metric.listButtonSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
+        }
+        
+        self.alarmButton.snp.makeConstraints {
+            $0.top.equalTo(self.themeButton.snp.bottom).offset(Metric.listButtonTop)
+            $0.left.equalToSafeArea(self.view).offset(Metric.listButtonSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
+        }
+        
+        self.lockButton.snp.makeConstraints {
+            $0.top.equalTo(self.alarmButton.snp.bottom).offset(Metric.listButtonTop)
+            $0.left.equalToSafeArea(self.view).offset(Metric.listButtonSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
+        }
+        
+        self.openSourceButton.snp.makeConstraints {
+            $0.top.equalTo(self.lockButton.snp.bottom).offset(Metric.listButtonTop)
+            $0.left.equalToSafeArea(self.view).offset(Metric.listButtonSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
+        }
+        
+        self.feedbackButton.snp.makeConstraints {
+            $0.top.equalTo(self.openSourceButton.snp.bottom).offset(Metric.listButtonTop)
+            $0.left.equalToSafeArea(self.view).offset(Metric.listButtonSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
         }
     }
     
     // MARK: - Configuring
     func bind(reactor: SideMenuViewReactor) {
         //input
-        self.listButton.button.rx.tap.asObservable()
-            .subscribe(onNext: {
-                print("tapped!")
-            })
-            .disposed(by: disposeBag)
         
         self.dismissButton.rx.tap.asObservable()
             .map { Reactor.Action.dismiss }
