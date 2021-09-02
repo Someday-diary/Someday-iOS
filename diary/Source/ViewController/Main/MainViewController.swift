@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import ReactorKit
 import FSCalendar
 
@@ -13,6 +14,7 @@ final class MainViewController: BaseViewController, View {
     
     // MARK: - Properties
     typealias Reactor = MainViewReactor
+    var themeColor: [UIColor]?
     
     // MARK: - Constants
     
@@ -38,15 +40,12 @@ final class MainViewController: BaseViewController, View {
     }
     
     // MARK: - UI
-    let navigationAppearance = UINavigationBarAppearance().then {
-        $0.configureWithTransparentBackground()
-    }
     
     let navigativePadding = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil).then {
         $0.width = Metric.navigativePadding
     }
     
-    let sideMenuButton = UIBarButtonItem(image: R.image.diaryDrawerButton(), style: .done, target: nil, action: nil).then {
+    let sideMenuButton = UIBarButtonItem(image: R.image.diarySideMenuButton(), style: .done, target: nil, action: nil).then {
         $0.tintColor = R.color.drawerButtonColor()
     }
     
@@ -76,41 +75,34 @@ final class MainViewController: BaseViewController, View {
     }
     
     override func setupLayout() {
-        self.navigationController?.navigationBar.standardAppearance = navigationAppearance
         self.navigationItem.leftBarButtonItems = [navigativePadding, sideMenuButton]
         self.view.addSubview(self.calendarView)
         self.view.addSubview(self.separatorView)
         self.view.addSubview(self.mainImageView)
     }
     
-    override func makeConstraints() {
-        let safeArea = self.view.safeAreaLayoutGuide
+    override func setupConstraints() {
         
         self.calendarView.snp.makeConstraints {
             $0.bottom.equalTo(self.separatorView.snp.top).offset(-Metric.calendarBottom)
-            $0.top.equalTo(safeArea.snp.top)
-            $0.left.equalTo(safeArea.snp.left).offset(Metric.calendarSide)
-            $0.right.equalTo(safeArea.snp.right).offset(-Metric.calendarSide)
+            $0.top.equalToSafeArea(self.view)
+            $0.left.equalToSafeArea(self.view).offset(Metric.calendarSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.calendarSide)
         }
         
         self.separatorView.snp.makeConstraints {
-            $0.left.equalTo(safeArea)
-            $0.right.equalTo(safeArea)
-            $0.bottom.equalTo(safeArea.snp.centerY)
+            $0.left.equalToSafeArea(self.view)
+            $0.right.equalToSafeArea(self.view)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.centerY)
             $0.height.equalTo(Metric.separatorHeight)
         }
         
         self.mainImageView.snp.makeConstraints {
             $0.width.equalTo(Metric.imageWidth)
             $0.height.equalTo(Metric.imageHeight)
-            $0.right.equalTo(safeArea).offset(-Metric.imageRight)
-            $0.bottom.equalTo(safeArea)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.imageRight)
+            $0.bottom.equalToSafeArea(self.view)
         }
-    }
-    
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        self.calendarView.calendar.reloadData()
-        self.calendarView.calendar.calendarHeaderView.reloadData()
     }
     
     // MARK: - Configuring
@@ -119,7 +111,7 @@ final class MainViewController: BaseViewController, View {
         // Input
         self.calendarView.calendar.rx.didSelect.asObservable()
             .distinctUntilChanged()
-            .map { Reactor.Action.setDay($0) }
+            .map { Reactor.Action.changeDay($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -128,9 +120,33 @@ final class MainViewController: BaseViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        Observable.combineLatest(
+            themed { $0.mainColor },
+            themed { $0.subColor },
+            themed { $0.thirdColor }
+        ).map { Reactor.Action.changeColor([$0, $1, $2]) }
+        .observeOn(MainScheduler.asyncInstance)
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
+        
         // Output
         
+        reactor.state.map { $0.themeColor }
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] in
+                self?.themeColor = $0
+                self?.calendarView.calendar.reloadData()
+            })
+            .disposed(by: disposeBag)
+        
         // View
+        self.rx.didRotate
+            .subscribe({ [weak self] _ in
+                self?.calendarView.calendar.reloadData()
+                self?.calendarView.calendar.calendarHeaderView.reloadData()
+            })
+            .disposed(by: disposeBag)
+        
         self.calendarView.calendar.rx.setDelegate(self)
             .disposed(by: disposeBag)
     }
@@ -153,7 +169,24 @@ extension MainViewController: FSCalendarDelegateAppearance {
                         "2021-08-25"]
         let dateString : String = dateFormatter.string(from: newDate)
         
-        if somedays.contains(dateString) { return R.color.mainColor() }
+        if somedays.contains(dateString) { return themeColor![1] }
+        return nil
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
+        let dateFormatter = DateFormatter().then {
+            $0.dateFormat = "yyyy-MM-dd"
+        }
+        
+        let newDate = date.addingTimeInterval(TimeInterval(TimeZone.current.secondsFromGMT(for: date)))
+        
+        let somedays = ["2021-08-03",
+                        "2021-08-06",
+                        "2021-08-12",
+                        "2021-08-25"]
+        let dateString : String = dateFormatter.string(from: newDate)
+        
+        if somedays.contains(dateString) { return themeColor![2] }
         return nil
     }
 }

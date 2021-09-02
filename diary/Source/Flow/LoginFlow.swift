@@ -36,9 +36,6 @@ class LoginFlow: Flow {
         switch step {
         case .loginIsRequired:
             return self.navigateToLogin()
-        
-        case .splashIsRequired:
-            return self.navigateToSplash()
             
         case .registerIsRequired:
             return .none
@@ -64,15 +61,6 @@ extension LoginFlow {
         let viewController = LoginViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: false)
-        
-        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
-    }
-    
-    private func navigateToSplash() -> FlowContributors {
-        let reactor = SplashViewReactor()
-        let viewController = SplashViewController(reactor: reactor)
-        
-        self.rootViewController.popToViewController(viewController, animated: true)
         
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }

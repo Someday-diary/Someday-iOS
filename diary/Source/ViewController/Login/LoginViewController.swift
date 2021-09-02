@@ -40,7 +40,7 @@ class LoginViewController: BaseViewController, View {
     let titleLabel = UILabel().then {
         $0.text = "DIARY"
         $0.textAlignment = .left
-        $0.textColor = R.color.mainColor()
+        $0.theme.textColor = themed { $0.mainColor }
         $0.font = Font.titleFont
     }
     
@@ -58,7 +58,7 @@ class LoginViewController: BaseViewController, View {
     let loginButton = DiaryButton()
     
     let loginImageView = UIImageView().then {
-        $0.image = R.image.loginIllustration()
+        $0.theme.image = themed { $0.loginIllustration }
     }
     
     // MARK: - Initializing
@@ -82,6 +82,8 @@ class LoginViewController: BaseViewController, View {
     }
     
     override func setupLayout() {
+        super.setupLayout()
+        
         self.view.addSubview(self.idTextField)
         self.view.addSubview(self.passwordTextField)
         self.view.addSubview(self.titleLabel)
@@ -89,40 +91,40 @@ class LoginViewController: BaseViewController, View {
         self.view.addSubview(self.loginImageView)
     }
     
-    override func makeConstraints() {
-        let safeArea = self.view.safeAreaLayoutGuide
+    override func setupConstraints() {
+        super.setupConstraints()
         
         self.titleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeArea).offset(Metric.titleLabelTop)
-            $0.centerX.equalTo(safeArea)
+            $0.top.equalToSafeArea(self.view).offset(Metric.titleLabelTop)
+            $0.centerX.equalToSafeArea(self.view)
         }
         
         self.idTextField.snp.makeConstraints {
-            $0.left.equalTo(safeArea).offset(Metric.textFieldSide)
-            $0.right.equalTo(safeArea).offset(-Metric.textFieldSide)
+            $0.left.equalToSafeArea(self.view).offset(Metric.textFieldSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.textFieldSide)
             $0.bottom.equalTo(self.titleLabel.snp.bottom).offset(self.view.frame.height / 5)
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
         self.passwordTextField.snp.makeConstraints {
-            $0.left.equalTo(safeArea).offset(Metric.textFieldSide)
-            $0.right.equalTo(safeArea).offset(-Metric.textFieldSide)
+            $0.left.equalToSafeArea(self.view).offset(Metric.textFieldSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.textFieldSide)
             $0.top.equalTo(self.idTextField.snp.bottom)
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
         self.loginButton.snp.makeConstraints {
             $0.top.equalTo(self.passwordTextField.snp.bottom).offset(Metric.buttonTop)
-            $0.left.equalTo(safeArea).offset(Metric.buttonSide)
-            $0.right.equalTo(safeArea).offset(-Metric.buttonSide)
+            $0.left.equalToSafeArea(self.view).offset(Metric.buttonSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.buttonSide)
             $0.height.equalTo(Metric.buttonHeight)
         }
         
         self.loginImageView.snp.makeConstraints {
             $0.height.equalTo(Metric.imageHeight)
             $0.width.equalTo(Metric.imageWidth)
-            $0.bottom.equalTo(safeArea)
-            $0.left.equalTo(safeArea).offset(Metric.imageLeft)
+            $0.bottom.equalToSafeArea(self.view)
+            $0.left.equalToSafeArea(self.view).offset(Metric.imageLeft)
         }
     }
     

@@ -36,7 +36,7 @@ final class DiaryCalendar: UIView {
         $0.today = nil
         $0.select(Date())
         $0.appearance.headerMinimumDissolvedAlpha = 0
-        $0.appearance.selectionColor = R.color.mainColor()
+        $0.appearance.theme.selectionColor = themed { $0.mainColor }
         $0.appearance.titleSelectionColor = .systemBackground
         $0.appearance.headerTitleColor = R.color.calendarHeaderColor()
         $0.appearance.headerTitleFont = Font.calendarTitle
@@ -46,8 +46,6 @@ final class DiaryCalendar: UIView {
         $0.appearance.weekdayTextColor = R.color.weekdayTextColor()
         $0.appearance.titleDefaultColor = R.color.calendarTitleDefaultColor()
         $0.appearance.titlePlaceholderColor = R.color.calendarTitlePlaceHolderColor()
-        $0.appearance.eventDefaultColor = R.color.mainColor()
-        $0.appearance.eventSelectionColor = R.color.mainColor()
         $0.appearance.subtitleFont = UIFont.systemFont(ofSize: 0)
         $0.locale = Locale(identifier: "ko_KR")
     }
@@ -59,6 +57,7 @@ final class DiaryCalendar: UIView {
     }
     let calendarAsset = UIImageView().then {
         $0.image = R.image.calendarAsset()
+        $0.theme.tintColor = themed { $0.mainColor }
     }
     
     // MARK: - Initializing

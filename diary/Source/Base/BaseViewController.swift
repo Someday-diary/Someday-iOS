@@ -12,6 +12,7 @@ import RxCocoa
 
 class BaseViewController: UIViewController {
     
+    
     // MARK: - UI
     let activityIndicatorView = UIActivityIndicatorView(style: .large).then {
         $0.color = .secondarySystemBackground
@@ -25,43 +26,55 @@ class BaseViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+        
+    // MARK: - Rx
+    var disposeBag = DisposeBag.init()
     
+    // MARK: - View Life Cycle
     deinit {
         print("deinit : \(type(of: self)): \(#function)")
         self.activityIndicatorView.stopAnimating()
     }
     
-    // MARK: - Rx
-    var disposeBag = DisposeBag()
+    // MARK: - Layout Constraint
+    private(set) var didSetupConstraints = false
     
-    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupLayout()
-        self.makeConstraints()
-        self.setupLocalization()
-
-        view.backgroundColor = .systemBackground
+        self.view.setNeedsUpdateConstraints()
         
+        self.setupStyle()
+    }
+    
+    override func updateViewConstraints() {
+        if !self.didSetupConstraints {
+            self.setupLayout()
+            self.setupConstraints()
+            self.didSetupConstraints = true
+        }
+        super.updateViewConstraints()
+    }
+    
+    func setupLayout() {
+        // add Views
         view.addSubview(self.activityIndicatorView)
+    }
+    
+    func setupConstraints() {
+        // Constraints
         activityIndicatorView.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
-    }
-    
-    // MARK: - Methods
-    func setupLayout() {
-        // add Views
-    }
-    
-    func makeConstraints() {
-        // Constraints
     }
     
     func setupLocalization() {
         // localizations
     }
     
+    // MARK: - Setup
+    func setupStyle() {
+        view.backgroundColor = .systemBackground
+    }
     
 
 }

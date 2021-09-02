@@ -11,10 +11,22 @@ import SideMenu
 
 class MainFlow: Flow {
     
-    private lazy var rootViewController = UINavigationController()
+    private let services: AppServices
     
     var root: Presentable {
         return self.rootViewController
+    }
+    
+    let navigationAppearance = UINavigationBarAppearance().then {
+        $0.configureWithTransparentBackground()
+    }
+    
+    private lazy var rootViewController = UINavigationController().then {
+        $0.navigationBar.standardAppearance = navigationAppearance
+    }
+    
+    init(_ services: AppServices) {
+        self.services = services
     }
     
     func navigate(to step: Step) -> FlowContributors {
@@ -55,8 +67,9 @@ extension MainFlow {
         let sideMenuNavController = SideMenuNavigationController(rootViewController: viewController).then {
             $0.leftSide = true
             $0.presentationStyle = .menuSlideIn
-            $0.presentationStyle.presentingEndAlpha = 0.3
-            $0.menuWidth = UIScreen.main.bounds.width / 2
+            $0.presentationStyle.presentingEndAlpha = 0.6
+            $0.menuWidth = 280
+            $0.navigationBar.standardAppearance = navigationAppearance
         }
         
         self.rootViewController.present(sideMenuNavController, animated: true, completion: nil)

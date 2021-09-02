@@ -22,7 +22,8 @@ target 'diary' do
   pod 'RxDataSources'
   pod 'RxViewController'
   pod 'RxKeyboard'
-  pod "RxAnimated"
+  pod 'RxAnimated'
+  pod 'RxTheme'
   
   # Network
   pod 'Moya/RxSwift'

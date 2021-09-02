@@ -14,6 +14,7 @@
 		624E4D3526D66EB5004A6624 /* LoginViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D3426D66EB5004A6624 /* LoginViewReactor.swift */; };
 		624E4D3726D66EF1004A6624 /* SplashViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D3626D66EF1004A6624 /* SplashViewReactor.swift */; };
 		624E4D3926D85F40004A6624 /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D3826D85F40004A6624 /* HomeFlow.swift */; };
+		6250FE4426DCE26100A0277B /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6250FE4326DCE26100A0277B /* AppServices.swift */; };
 		625A9EB226D9213800D65840 /* DiaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625A9EB126D9213800D65840 /* DiaryButton.swift */; };
 		625A9EB626D9382000D65840 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 625A9EB526D9382000D65840 /* Colors.xcassets */; };
 		625F4C5526CF22D300DC5978 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5426CF22D300DC5978 /* Preview.swift */; };
@@ -31,8 +32,13 @@
 		625F4C8A26D51F4D00DC5978 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C8926D51F4D00DC5978 /* LoginViewController.swift */; };
 		627E200926CE8F4D00550D59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 627E200826CE8F4D00550D59 /* LaunchScreen.storyboard */; };
 		627E200F26CE93DC00550D59 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E200E26CE93DC00550D59 /* BaseViewController.swift */; };
+		62816AF026DCD0B100365348 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62816AEF26DCD0B100365348 /* Themes.swift */; };
+		6291498C26DEF4FF003CDDE9 /* SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6291498B26DEF4FF003CDDE9 /* SnapKit.swift */; };
+		6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */; };
+		629AE09D26DFA0DF003B8891 /* UIImageView+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */; };
+		629ED5A626DD108600EA7A98 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */; };
+		629ED5B326DE2B1000EA7A98 /* DiaryThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5B226DE2B1000EA7A98 /* DiaryThemeButton.swift */; };
 		62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40212690B0FA009B77F3 /* AppDelegate.swift */; };
-		62BA40242690B0FA009B77F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40232690B0FA009B77F3 /* SceneDelegate.swift */; };
 		62BA402B2690B0FC009B77F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62BA402A2690B0FC009B77F3 /* Assets.xcassets */; };
 		62BA40392690B0FD009B77F3 /* diaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40382690B0FD009B77F3 /* diaryTests.swift */; };
 		62BA40442690B0FD009B77F3 /* diaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40432690B0FD009B77F3 /* diaryUITests.swift */; };
@@ -77,6 +83,7 @@
 		624E4D3426D66EB5004A6624 /* LoginViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewReactor.swift; sourceTree = "<group>"; };
 		624E4D3626D66EF1004A6624 /* SplashViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewReactor.swift; sourceTree = "<group>"; };
 		624E4D3826D85F40004A6624 /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
+		6250FE4326DCE26100A0277B /* AppServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServices.swift; sourceTree = "<group>"; };
 		625A9EB126D9213800D65840 /* DiaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryButton.swift; sourceTree = "<group>"; };
 		625A9EB526D9382000D65840 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		625F4C5426CF22D300DC5978 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
@@ -94,9 +101,14 @@
 		625F4C8926D51F4D00DC5978 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		627E200826CE8F4D00550D59 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		627E200E26CE93DC00550D59 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		62816AEF26DCD0B100365348 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
+		6291498B26DEF4FF003CDDE9 /* SnapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapKit.swift; sourceTree = "<group>"; };
+		629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+RxTheme.swift"; sourceTree = "<group>"; };
+		629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FSCalendar+RxTheme.swift"; sourceTree = "<group>"; };
+		629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		629ED5B226DE2B1000EA7A98 /* DiaryThemeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryThemeButton.swift; sourceTree = "<group>"; };
 		62BA401E2690B0FA009B77F3 /* diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62BA40212690B0FA009B77F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		62BA40232690B0FA009B77F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		62BA402A2690B0FC009B77F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62BA402F2690B0FC009B77F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62BA40342690B0FD009B77F3 /* diaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = diaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,9 +186,9 @@
 		625F4C6626CFCB1C00DC5978 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				62CB1D3A26DA4F4200B1BA32 /* CustomDelegateProxy.swift */,
-				625F4C7A26D39FA500DC5978 /* FSCalendar+Rx.swift */,
-				62183EEB26DB3A6600F22EC6 /* DiaryTextField+Rx.swift */,
+				629ED5A226DCFEF100EA7A98 /* RxTheme */,
+				629ED5A126DCFEAF00EA7A98 /* Rx */,
+				6291498A26DEF4E7003CDDE9 /* SnapKit */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -193,14 +205,12 @@
 		627E200A26CE928100550D59 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				62BA40212690B0FA009B77F3 /* AppDelegate.swift */,
-				62BA40232690B0FA009B77F3 /* SceneDelegate.swift */,
+				629ED5A026DCFDF000EA7A98 /* Application */,
 				627E201026CE944D00550D59 /* Flow */,
 				627E201226CE947700550D59 /* View */,
 				627E201126CE945600550D59 /* ViewController */,
-				627E201326CE948200550D59 /* Model */,
-				627E201426CE948E00550D59 /* Network */,
 				627E200D26CE93A800550D59 /* Base */,
+				62816AE426DCB8DD00365348 /* Theme */,
 				625F4C6626CFCB1C00DC5978 /* Extension */,
 				627E201526CE949900550D59 /* Utils */,
 			);
@@ -262,24 +272,11 @@
 			isa = PBXGroup;
 			children = (
 				625F4C8226D4675B00DC5978 /* DiaryCalendar.swift */,
+				629ED5B226DE2B1000EA7A98 /* DiaryThemeButton.swift */,
 				625F4C8626D4D2AB00DC5978 /* DiaryTextField.swift */,
 				625A9EB126D9213800D65840 /* DiaryButton.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		627E201326CE948200550D59 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		627E201426CE948E00550D59 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		627E201526CE949900550D59 /* Utils */ = {
@@ -291,6 +288,51 @@
 				62D388A526D9E9FA00A8D185 /* CheckValidation.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		62816AE426DCB8DD00365348 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				62816AEF26DCD0B100365348 /* Themes.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		6291498A26DEF4E7003CDDE9 /* SnapKit */ = {
+			isa = PBXGroup;
+			children = (
+				6291498B26DEF4FF003CDDE9 /* SnapKit.swift */,
+			);
+			path = SnapKit;
+			sourceTree = "<group>";
+		};
+		629ED5A026DCFDF000EA7A98 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				62BA40212690B0FA009B77F3 /* AppDelegate.swift */,
+				6250FE4326DCE26100A0277B /* AppServices.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		629ED5A126DCFEAF00EA7A98 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				62CB1D3A26DA4F4200B1BA32 /* CustomDelegateProxy.swift */,
+				625F4C7A26D39FA500DC5978 /* FSCalendar+Rx.swift */,
+				62183EEB26DB3A6600F22EC6 /* DiaryTextField+Rx.swift */,
+				629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */,
+			);
+			path = Rx;
+			sourceTree = "<group>";
+		};
+		629ED5A226DCFEF100EA7A98 /* RxTheme */ = {
+			isa = PBXGroup;
+			children = (
+				629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */,
+				629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */,
+			);
+			path = RxTheme;
 			sourceTree = "<group>";
 		};
 		62BA40152690B0FA009B77F3 = {
@@ -631,10 +673,11 @@
 				62183EEC26DB3A6600F22EC6 /* DiaryTextField+Rx.swift in Sources */,
 				62CB1D3726DA4D3500B1BA32 /* SideMenuViewReactor.swift in Sources */,
 				62D388A626D9E9FA00A8D185 /* CheckValidation.swift in Sources */,
+				629AE09D26DFA0DF003B8891 /* UIImageView+RxTheme.swift in Sources */,
 				625F4C5F26CF6DAA00DC5978 /* DiaryStep.swift in Sources */,
+				62816AF026DCD0B100365348 /* Themes.swift in Sources */,
 				62CB1D3B26DA4F4200B1BA32 /* CustomDelegateProxy.swift in Sources */,
 				62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */,
-				62BA40242690B0FA009B77F3 /* SceneDelegate.swift in Sources */,
 				625F4C6126CF8CEC00DC5978 /* AppFlow.swift in Sources */,
 				624E4D3526D66EB5004A6624 /* LoginViewReactor.swift in Sources */,
 				624E4D3926D85F40004A6624 /* HomeFlow.swift in Sources */,
@@ -642,17 +685,22 @@
 				624E4D3726D66EF1004A6624 /* SplashViewReactor.swift in Sources */,
 				625F4C8726D4D2AB00DC5978 /* DiaryTextField.swift in Sources */,
 				625A9EB226D9213800D65840 /* DiaryButton.swift in Sources */,
+				6291498C26DEF4FF003CDDE9 /* SnapKit.swift in Sources */,
 				625F4C8326D4675B00DC5978 /* DiaryCalendar.swift in Sources */,
 				62CB1D3526DA4CCB00B1BA32 /* SideMenuViewController.swift in Sources */,
 				625F4C5726CF235F00DC5978 /* UIViewControllerPreview.swift in Sources */,
 				625F4C7726D233F100DC5978 /* R.generated.swift in Sources */,
+				629ED5A626DD108600EA7A98 /* UIViewController+Rx.swift in Sources */,
 				625F4C7B26D39FA500DC5978 /* FSCalendar+Rx.swift in Sources */,
 				625F4C6426CF94CC00DC5978 /* MainViewReactor.swift in Sources */,
 				625F4C5B26CF23AC00DC5978 /* DeviceType.swift in Sources */,
 				625F4C5526CF22D300DC5978 /* Preview.swift in Sources */,
+				629ED5B326DE2B1000EA7A98 /* DiaryThemeButton.swift in Sources */,
 				625F4C8A26D51F4D00DC5978 /* LoginViewController.swift in Sources */,
 				627E200F26CE93DC00550D59 /* BaseViewController.swift in Sources */,
+				6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */,
 				625F4C5926CF238600DC5978 /* UIViewPreview.swift in Sources */,
+				6250FE4426DCE26100A0277B /* AppServices.swift in Sources */,
 				625F4C5D26CF242600DC5978 /* MainViewController.swift in Sources */,
 				624E4D3326D63685004A6624 /* SplashViewController.swift in Sources */,
 			);

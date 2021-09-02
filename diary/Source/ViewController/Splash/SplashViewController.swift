@@ -60,24 +60,27 @@ class SplashViewController: BaseViewController, View {
     }
     
     override func setupLayout() {
+        super.setupLayout()
+        
         self.view.addSubview(self.splashImage)
         self.view.addSubview(self.titleLabel)
     }
     
-    override func makeConstraints() {
-        let safeArea = self.view.safeAreaLayoutGuide
+    override func setupConstraints() {
+        super.setupConstraints()
         
         self.splashImage.snp.makeConstraints {
             $0.width.equalTo(Metric.imageWidth)
             $0.height.equalTo(Metric.imageHeight)
-            $0.bottom.equalTo(safeArea).offset(-Metric.imageBottom)
-            $0.right.equalTo(safeArea).offset(Metric.imageRight)
+            $0.bottom.equalToSafeArea(self.view).offset(-Metric.imageBottom)
+            $0.right.equalToSafeArea(self.view).offset(Metric.imageRight)
         }
         
         self.titleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeArea).offset(Metric.labelTop)
-            $0.left.equalTo(safeArea).offset(Metric.labelLeft)
+            $0.top.equalToSafeArea(self.view).offset(Metric.labelTop)
+            $0.left.equalToSafeArea(self.view).offset(Metric.labelLeft)
         }
+        
     }
     
     // MARK: - Configuring

@@ -15,8 +15,6 @@ final class SideMenuViewReactor: Reactor, Stepper {
 
     var steps = PublishRelay<Step>()
     
-    var initialState: State
-    
     enum Action {
         case dismiss
     }
@@ -29,6 +27,8 @@ final class SideMenuViewReactor: Reactor, Stepper {
         
     }
     
+    let initialState: State
+    
     init() {
         self.initialState = State()
     }
@@ -36,7 +36,7 @@ final class SideMenuViewReactor: Reactor, Stepper {
     func mutate(action: Action) -> Observable<Mutation> {
         
         switch action {
-        
+            
         case .dismiss:
             steps.accept(DiaryStep.dismiss)
             return Observable.empty()
