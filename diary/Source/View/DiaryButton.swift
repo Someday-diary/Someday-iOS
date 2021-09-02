@@ -11,7 +11,7 @@ final class DiaryButton: UIButton {
     
     // MARK: - Constants
     fileprivate struct Style {
-        
+        static let cornerRadius = 7.f
     }
 
     // MARK: - UI
@@ -28,7 +28,7 @@ final class DiaryButton: UIButton {
     
     // MARK: - Life Cycle
     override func layoutSubviews() {
-        self.layer.cornerRadius = 7
+        self.layer.cornerRadius = Style.cornerRadius
         self.theme.backgroundColor = themed { $0.mainColor }
     }
     

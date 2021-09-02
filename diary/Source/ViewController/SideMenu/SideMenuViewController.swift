@@ -19,12 +19,10 @@ final class SideMenuViewController: BaseViewController, View {
     }
     
     // MARK: - UI
-    let blueButton = DiaryThemeButton().then {
-        $0.backgroundColor = R.color.blueThemeMainColor()
-    }
-    
-    let greenButton = DiaryThemeButton().then {
-        $0.backgroundColor = R.color.greenThemeMainColor()
+    let listButton = DiarySideMenuListButton().then {
+        $0.icon.image = R.image.themeIcon()
+        $0.button.setTitle("테마 설정", for: .normal)
+        $0.button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
     }
     
     let dismissButton = UIBarButtonItem().then {
@@ -53,47 +51,27 @@ final class SideMenuViewController: BaseViewController, View {
     override func setupLayout() {
         super.setupLayout()
         
-        self.view.addSubview(blueButton)
-        self.view.addSubview(greenButton)
+        self.view.addSubview(self.listButton)
         self.navigationItem.rightBarButtonItem = dismissButton
     }
     
     override func setupConstraints() {
         super.setupConstraints()
         
-        self.blueButton.snp.makeConstraints {
+        self.listButton.snp.makeConstraints {
             $0.centerY.equalToSafeArea(self.view)
-            $0.left.equalTo(self.view.safeAreaLayoutGuide.snp.centerX).offset(25)
-            $0.height.equalTo(Metric.themeButtonSize)
-            $0.width.equalTo(Metric.themeButtonSize)
-        }
-        
-        self.greenButton.snp.makeConstraints {
-            $0.centerY.equalToSafeArea(self.view)
-            $0.right.equalTo(self.view.safeAreaLayoutGuide.snp.centerX).offset(-25)
-            $0.height.equalTo(Metric.themeButtonSize)
-            $0.width.equalTo(Metric.themeButtonSize)
+            $0.left.equalToSafeArea(self.view).offset(20)
+            $0.right.equalToSafeArea(self.view).offset(-20)
+            $0.height.equalTo(35)
         }
     }
     
     // MARK: - Configuring
     func bind(reactor: SideMenuViewReactor) {
         //input
-        self.blueButton.rx.tap.asObservable()
-            .subscribe(onNext: { _ in
-                themeService.switch(.blue)
-                UIApplication.shared.windows.forEach { window in
-                    window.overrideUserInterfaceStyle = .light
-                }
-            })
-            .disposed(by: disposeBag)
-        
-        self.greenButton.rx.tap.asObservable()
-            .subscribe(onNext: { _ in
-                themeService.switch(.green)
-                UIApplication.shared.windows.forEach { window in
-                    window.overrideUserInterfaceStyle = .dark
-                }
+        self.listButton.button.rx.tap.asObservable()
+            .subscribe(onNext: {
+                print("tapped!")
             })
             .disposed(by: disposeBag)
         
