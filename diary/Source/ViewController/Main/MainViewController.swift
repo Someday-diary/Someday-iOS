@@ -124,25 +124,20 @@ final class MainViewController: BaseViewController, View {
             themed { $0.mainColor },
             themed { $0.subColor },
             themed { $0.thirdColor }
-        ).map { Reactor.Action.changeColor([$0, $1, $2]) }
+        ).asObservable()
+        .observeOn(MainScheduler.asyncInstance)
+        .map { Reactor.Action.changeColor([$0, $1, $2]) }
         .bind(to: reactor.action)
         .disposed(by: disposeBag)
         
         // Output
         
-        reactor.state.map { $0.themeColor }
+        reactor.state.map { $0.themeColor }.asObservable()
             .distinctUntilChanged()
+            .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] in
                 self?.themeColor = $0
                 self?.calendarView.calendar.reloadData()
-            })
-            .disposed(by: disposeBag)
-        
-        // View
-        self.rx.didRotate
-            .subscribe({ [weak self] _ in
-                self?.calendarView.calendar.reloadData()
-                self?.calendarView.calendar.calendarHeaderView.reloadData()
             })
             .disposed(by: disposeBag)
         
@@ -168,7 +163,7 @@ extension MainViewController: FSCalendarDelegateAppearance {
                         "2021-09-25"]
         let dateString : String = dateFormatter.string(from: newDate)
         
-        if somedays.contains(dateString) { return themeColor![2] }
+        if somedays.contains(dateString) { return themeColor?[2] ?? nil }
         return nil
     }
     
@@ -185,7 +180,7 @@ extension MainViewController: FSCalendarDelegateAppearance {
                         "2021-09-25"]
         let dateString : String = dateFormatter.string(from: newDate)
         
-        if somedays.contains(dateString) { return themeColor![1] }
+        if somedays.contains(dateString) { return themeColor?[1] ?? nil }
         return nil
     }
 }

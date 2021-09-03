@@ -29,7 +29,6 @@ final class DiaryButton: UIButton {
     // MARK: - Life Cycle
     override func layoutSubviews() {
         self.layer.cornerRadius = Style.cornerRadius
-        self.theme.backgroundColor = themed { $0.mainColor }
     }
     
     override public var isHighlighted: Bool {
@@ -44,6 +43,7 @@ final class DiaryButton: UIButton {
         didSet {
             UIView.animate(withDuration: 0.3) {
                 self.theme.backgroundColor = self.isEnabled ? themed { $0.mainColor } : themed { $0.buttonDisableColor }
+
             }
         }
     }
