@@ -2,20 +2,19 @@
 //  DiarySideMenuListButton.swift
 //  diary
 //
-//  Created by 김부성 on 2021/09/02.
+//  Created by 김부성 on 2021/09/03.
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 
-class DiarySideMenuListButton: UIView {
+class DiarySideMenuListButton: UIButton {
 
     // MARK: - Constants
     fileprivate struct Metric {
         // Image
         static let imageWidth = 29.f
         static let imageHeight = 27.f
+        static let imageLeft = 8.f
         
         // ImageBackGround
         static let backgroundCornerRadius = 11.f
@@ -24,16 +23,17 @@ class DiarySideMenuListButton: UIView {
         
         // Icon
         static let iconBottom = 3.f
+        static let iconRight = 5.f
         
-        // Button
-        static let buttonLeft = 20.f
+        // Label
+        static let labelLeft = 20.f
         
         // Height
         static let height = 35.f
     }
     
     fileprivate struct Font {
-        static let buttonFont = UIFont.systemFont(ofSize: 20, weight: .regular)
+        static let buttonFont = UIFont.systemFont(ofSize: 18, weight: .light)
     }
     
     // MARK: - UI
@@ -48,11 +48,10 @@ class DiarySideMenuListButton: UIView {
         $0.layer.cornerRadius = Metric.backgroundCornerRadius
     }
     
-    let button = UIButton().then {
-        $0.contentHorizontalAlignment = .left
-        $0.setTitleColor(.black, for: .normal)
-        $0.titleLabel?.font = Font.buttonFont
-        $0.titleLabel?.adjustsFontSizeToFitWidth = true
+    let label = UILabel().then {
+        $0.textAlignment = .left
+        $0.font = Font.buttonFont
+        $0.adjustsFontSizeToFitWidth = true
     }
     
     // MARK: - Inititalizing
@@ -67,13 +66,16 @@ class DiarySideMenuListButton: UIView {
     
     // MARK: - Life Cycle
     override func layoutSubviews() {
+        self.layer.cornerRadius = 5
+        
         self.addSubview(imageArea)
         self.imageArea.addSubview(imageBackground)
         self.imageArea.addSubview(icon)
-        self.addSubview(button)
+        self.addSubview(label)
         
         self.imageArea.snp.makeConstraints {
-            $0.centerY.left.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.left.equalToSuperview().offset(Metric.imageLeft)
             $0.height.equalTo(Metric.imageHeight)
             $0.width.equalTo(Metric.imageWidth)
         }
@@ -89,9 +91,9 @@ class DiarySideMenuListButton: UIView {
             $0.top.equalToSuperview().offset(Metric.backgroundTop)
         }
         
-        self.button.snp.makeConstraints {
+        self.label.snp.makeConstraints {
             $0.top.right.bottom.equalToSuperview()
-            $0.left.equalTo(self.imageArea.snp.right).offset(Metric.buttonLeft)
+            $0.left.equalTo(self.imageArea.snp.right).offset(Metric.labelLeft)
         }
         
         self.snp.makeConstraints {
@@ -99,4 +101,13 @@ class DiarySideMenuListButton: UIView {
         }
     }
     
+    override public var isHighlighted: Bool {
+        didSet {
+            UIView.animate(withDuration: 0.3) {
+                self.backgroundColor = UIColor.black.withAlphaComponent(self.isHighlighted ? 0.05 : 0)
+            }
+        }
+    }
+    
 }
+

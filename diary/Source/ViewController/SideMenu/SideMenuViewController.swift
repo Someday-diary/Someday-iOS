@@ -19,7 +19,7 @@ final class SideMenuViewController: BaseViewController, View {
         static let titleTop = 40.f
         static let titleBottom = 80.f
         // ListButton
-        static let listButtonSide = 20.f
+        static let listButtonSide = 16.f
         static let listButtonTop = 50.f
     }
     
@@ -35,27 +35,27 @@ final class SideMenuViewController: BaseViewController, View {
     
     let themeButton = DiarySideMenuListButton().then {
         $0.icon.image = R.image.themeIcon()
-        $0.button.setTitle("테마 설정", for: .normal)
+        $0.label.text = "테마 설정"
     }
     
     let alarmButton = DiarySideMenuListButton().then {
         $0.icon.image = R.image.alarmIcon()
-        $0.button.setTitle("일기 알람 설정", for: .normal)
+        $0.label.text = "일기 알람 설정"
     }
     
     let lockButton = DiarySideMenuListButton().then {
         $0.icon.image = R.image.lockIcon()
-        $0.button.setTitle("잠금 설정", for: .normal)
+        $0.label.text = "잠금 설정"
     }
     
     let openSourceButton = DiarySideMenuListButton().then {
         $0.icon.image = R.image.openSourceIcon()
-        $0.button.setTitle("오픈소스 라이센스 / 버전", for: .normal)
+        $0.label.text = "앱 정보"
     }
     
     let feedbackButton = DiarySideMenuListButton().then {
         $0.icon.image = R.image.feedbackIcon()
-        $0.button.setTitle("사용자 피드백", for: .normal)
+        $0.label.text = "사용자 피드백"
     }
     
     let dismissButton = UIBarButtonItem().then {
@@ -135,6 +135,11 @@ final class SideMenuViewController: BaseViewController, View {
     // MARK: - Configuring
     func bind(reactor: SideMenuViewReactor) {
         //input
+        self.themeButton.rx.tap.asObservable()
+            .subscribe(onNext: {
+                print("tapped")
+            })
+            .disposed(by: disposeBag)
         
         self.dismissButton.rx.tap.asObservable()
             .map { Reactor.Action.dismiss }

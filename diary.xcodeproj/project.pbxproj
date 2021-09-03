@@ -46,7 +46,7 @@
 		62CB1D3B26DA4F4200B1BA32 /* CustomDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB1D3A26DA4F4200B1BA32 /* CustomDelegateProxy.swift */; };
 		62D388A626D9E9FA00A8D185 /* CheckValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D388A526D9E9FA00A8D185 /* CheckValidation.swift */; };
 		62D388A926DA1F7C00A8D185 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 62D388AB26DA1F7C00A8D185 /* InfoPlist.strings */; };
-		62D758C126E0BF5E009AE551 /* DiarySideMenuListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D758C026E0BF5E009AE551 /* DiarySideMenuListButton.swift */; };
+		62D758C326E1AE9C009AE551 /* DiarySideMenuListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D758C226E1AE9C009AE551 /* DiarySideMenuListButton.swift */; };
 		9D432695EA98D656B099F4B1 /* Pods_diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B894E3AA684F49C439F7258 /* Pods_diary.framework */; };
 		F263AB4337D64113775670AC /* Pods_diary_diaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663A927CEE2B1BAC95B5F21D /* Pods_diary_diaryUITests.framework */; };
 		FF2A5C8036161455B9F2D13E /* Pods_diaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61203E3BB236EAAB98001720 /* Pods_diaryTests.framework */; };
@@ -122,7 +122,7 @@
 		62D388A526D9E9FA00A8D185 /* CheckValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckValidation.swift; sourceTree = "<group>"; };
 		62D388AA26DA1F7C00A8D185 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		62D388AC26DA1FAD00A8D185 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		62D758C026E0BF5E009AE551 /* DiarySideMenuListButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiarySideMenuListButton.swift; sourceTree = "<group>"; };
+		62D758C226E1AE9C009AE551 /* DiarySideMenuListButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiarySideMenuListButton.swift; sourceTree = "<group>"; };
 		649B15496766866789EDBF0E /* Pods-diaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diaryTests.debug.xcconfig"; path = "Target Support Files/Pods-diaryTests/Pods-diaryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		663A927CEE2B1BAC95B5F21D /* Pods_diary_diaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_diary_diaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70775F1D6D22D28F29AC597C /* Pods-diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diary.debug.xcconfig"; path = "Target Support Files/Pods-diary/Pods-diary.debug.xcconfig"; sourceTree = "<group>"; };
@@ -274,7 +274,7 @@
 				625F4C8226D4675B00DC5978 /* DiaryCalendar.swift */,
 				625F4C8626D4D2AB00DC5978 /* DiaryTextField.swift */,
 				625A9EB126D9213800D65840 /* DiaryButton.swift */,
-				62D758C026E0BF5E009AE551 /* DiarySideMenuListButton.swift */,
+				62D758C226E1AE9C009AE551 /* DiarySideMenuListButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -669,6 +669,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62D758C326E1AE9C009AE551 /* DiarySideMenuListButton.swift in Sources */,
 				624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */,
 				62183EEC26DB3A6600F22EC6 /* DiaryTextField+Rx.swift in Sources */,
 				62CB1D3726DA4D3500B1BA32 /* SideMenuViewReactor.swift in Sources */,
@@ -696,7 +697,6 @@
 				625F4C5B26CF23AC00DC5978 /* DeviceType.swift in Sources */,
 				625F4C5526CF22D300DC5978 /* Preview.swift in Sources */,
 				625F4C8A26D51F4D00DC5978 /* LoginViewController.swift in Sources */,
-				62D758C126E0BF5E009AE551 /* DiarySideMenuListButton.swift in Sources */,
 				627E200F26CE93DC00550D59 /* BaseViewController.swift in Sources */,
 				6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */,
 				625F4C5926CF238600DC5978 /* UIViewPreview.swift in Sources */,
