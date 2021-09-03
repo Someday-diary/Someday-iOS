@@ -20,7 +20,7 @@ final class SideMenuViewController: BaseViewController, View {
         static let titleBottom = 80.f
         // ListButton
         static let listButtonSide = 16.f
-        static let listButtonTop = 50.f
+        static let listButtonTop = 25.f
     }
     
     fileprivate struct Font {
@@ -62,6 +62,8 @@ final class SideMenuViewController: BaseViewController, View {
         $0.image = R.image.dismissButton()
         $0.tintColor = R.color.drawerDismissButtonColor()
     }
+    
+    let logoutButton = LogoutButton()
     // MARK: - Initializing
     init(reactor: Reactor) {
         super.init()
@@ -90,6 +92,7 @@ final class SideMenuViewController: BaseViewController, View {
         self.view.addSubview(self.lockButton)
         self.view.addSubview(self.openSourceButton)
         self.view.addSubview(self.feedbackButton)
+        self.view.addSubview(self.logoutButton)
         self.navigationItem.rightBarButtonItem = dismissButton
     }
     
@@ -130,16 +133,17 @@ final class SideMenuViewController: BaseViewController, View {
             $0.left.equalToSafeArea(self.view).offset(Metric.listButtonSide)
             $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
         }
+        
+        self.logoutButton.snp.makeConstraints {
+            $0.bottom.equalToSafeArea(self.view).offset(-30)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
+            $0.width.equalTo(self.view.frame.width / 2)
+        }
     }
     
     // MARK: - Configuring
     func bind(reactor: SideMenuViewReactor) {
         //input
-        self.themeButton.rx.tap.asObservable()
-            .subscribe(onNext: {
-                print("tapped")
-            })
-            .disposed(by: disposeBag)
         
         self.dismissButton.rx.tap.asObservable()
             .map { Reactor.Action.dismiss }

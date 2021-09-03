@@ -10,7 +10,7 @@ import UIKit
 class DiarySideMenuListButton: UIButton {
 
     // MARK: - Constants
-    fileprivate struct Metric {
+    fileprivate struct Style {
         // Image
         static let imageWidth = 29.f
         static let imageHeight = 27.f
@@ -28,12 +28,13 @@ class DiarySideMenuListButton: UIButton {
         // Label
         static let labelLeft = 20.f
         
-        // Height
-        static let height = 35.f
+        // Button
+        static let height = 50.f
+        static let cornerRadius = 10.f
     }
     
     fileprivate struct Font {
-        static let buttonFont = UIFont.systemFont(ofSize: 18, weight: .light)
+        static let labelFont = UIFont.systemFont(ofSize: 18, weight: .medium)
     }
     
     // MARK: - UI
@@ -45,12 +46,12 @@ class DiarySideMenuListButton: UIButton {
     
     let imageBackground = UIView().then {
         $0.theme.backgroundColor = themed { $0.subColor }
-        $0.layer.cornerRadius = Metric.backgroundCornerRadius
+        $0.layer.cornerRadius = Style.backgroundCornerRadius
     }
     
     let label = UILabel().then {
         $0.textAlignment = .left
-        $0.font = Font.buttonFont
+        $0.font = Font.labelFont
         $0.adjustsFontSizeToFitWidth = true
     }
     
@@ -66,7 +67,10 @@ class DiarySideMenuListButton: UIButton {
     
     // MARK: - Life Cycle
     override func layoutSubviews() {
-        self.layer.cornerRadius = 5
+        super.layoutSubviews()
+        
+        self.layer.cornerRadius = Style.cornerRadius
+        self.clipsToBounds = true
         
         self.addSubview(imageArea)
         self.imageArea.addSubview(imageBackground)
@@ -75,29 +79,29 @@ class DiarySideMenuListButton: UIButton {
         
         self.imageArea.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.left.equalToSuperview().offset(Metric.imageLeft)
-            $0.height.equalTo(Metric.imageHeight)
-            $0.width.equalTo(Metric.imageWidth)
+            $0.left.equalToSuperview().offset(Style.imageLeft)
+            $0.height.equalTo(Style.imageHeight)
+            $0.width.equalTo(Style.imageWidth)
         }
         
         self.icon.snp.makeConstraints {
             $0.left.top.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-Metric.iconBottom)
+            $0.bottom.equalToSuperview().offset(-Style.iconBottom)
         }
         
         self.imageBackground.snp.makeConstraints {
-            $0.left.equalToSuperview().offset(Metric.backgroundLeft)
+            $0.left.equalToSuperview().offset(Style.backgroundLeft)
             $0.right.bottom.equalToSuperview()
-            $0.top.equalToSuperview().offset(Metric.backgroundTop)
+            $0.top.equalToSuperview().offset(Style.backgroundTop)
         }
         
         self.label.snp.makeConstraints {
             $0.top.right.bottom.equalToSuperview()
-            $0.left.equalTo(self.imageArea.snp.right).offset(Metric.labelLeft)
+            $0.left.equalTo(self.imageArea.snp.right).offset(Style.labelLeft)
         }
         
         self.snp.makeConstraints {
-            $0.height.equalTo(Metric.height)
+            $0.height.equalTo(Style.height)
         }
     }
     
