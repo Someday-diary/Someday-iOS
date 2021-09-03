@@ -125,7 +125,6 @@ final class MainViewController: BaseViewController, View {
             themed { $0.subColor },
             themed { $0.thirdColor }
         ).map { Reactor.Action.changeColor([$0, $1, $2]) }
-        .observeOn(MainScheduler.asyncInstance)
         .bind(to: reactor.action)
         .disposed(by: disposeBag)
         
@@ -163,10 +162,10 @@ extension MainViewController: FSCalendarDelegateAppearance {
         
         let newDate = date.addingTimeInterval(TimeInterval(TimeZone.current.secondsFromGMT(for: date)))
         
-        let somedays = ["2021-08-03",
-                        "2021-08-06",
-                        "2021-08-12",
-                        "2021-08-25"]
+        let somedays = ["2021-09-03",
+                        "2021-09-06",
+                        "2021-09-12",
+                        "2021-09-25"]
         let dateString : String = dateFormatter.string(from: newDate)
         
         if somedays.contains(dateString) { return themeColor![2] }
@@ -180,10 +179,10 @@ extension MainViewController: FSCalendarDelegateAppearance {
         
         let newDate = date.addingTimeInterval(TimeInterval(TimeZone.current.secondsFromGMT(for: date)))
         
-        let somedays = ["2021-08-03",
-                        "2021-08-06",
-                        "2021-08-12",
-                        "2021-08-25"]
+        let somedays = ["2021-09-03",
+                        "2021-09-06",
+                        "2021-09-12",
+                        "2021-09-25"]
         let dateString : String = dateFormatter.string(from: newDate)
         
         if somedays.contains(dateString) { return themeColor![1] }
