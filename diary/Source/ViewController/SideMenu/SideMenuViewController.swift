@@ -144,6 +144,10 @@ final class SideMenuViewController: BaseViewController, View {
     // MARK: - Configuring
     func bind(reactor: SideMenuViewReactor) {
         //input
+        self.logoutButton.rx.tap.asObservable()
+            .map { Reactor.Action.logout }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
         self.dismissButton.rx.tap.asObservable()
             .map { Reactor.Action.dismiss }

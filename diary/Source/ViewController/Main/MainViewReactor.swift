@@ -48,7 +48,7 @@ final class MainViewReactor: Reactor, Stepper {
             return Observable.just(Mutation.setDay(newDay))
         
         case .presentSideMenu:
-            steps.accept(DiaryStep.sideMenuIsRequired)
+            self.steps.accept(DiaryStep.sideMenuIsRequired)
             return Observable.empty()
         }
     }
