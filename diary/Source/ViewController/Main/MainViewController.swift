@@ -134,7 +134,6 @@ final class MainViewController: BaseViewController, View {
         
         reactor.state.map { $0.themeColor }.asObservable()
             .distinctUntilChanged()
-            .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] in
                 self?.themeColor = $0
                 self?.calendarView.calendar.reloadData()
