@@ -1,0 +1,130 @@
+PODS:
+  - Alamofire (5.4.3)
+  - Carte (2.2.1)
+  - CGFloatLiteral (0.5.0)
+  - Differentiator (4.0.1)
+  - FSCalendar (2.8.2)
+  - KeychainAccess (4.2.2)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (14.0.0):
+    - Moya/Core
+    - RxSwift (~> 5.0)
+  - R.swift (5.4.0):
+    - R.swift.Library (~> 5.3.0)
+  - R.swift.Library (5.3.0)
+  - ReactorKit (2.1.1):
+    - RxSwift (~> 5.0)
+    - WeakMapTable (~> 1.1)
+  - RxAnimated (0.7.0):
+    - RxAnimated/Core (= 0.7.0)
+    - RxCocoa (~> 5.1)
+    - RxSwift (~> 5.1)
+  - RxAnimated/Core (0.7.0):
+    - RxCocoa (~> 5.1)
+    - RxSwift (~> 5.1)
+  - RxCocoa (5.1.3):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxFlow (2.11.0):
+    - RxCocoa (>= 5.1.1)
+    - RxSwift (>= 5.1.1)
+  - RxKeyboard (1.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.1.3):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.3)
+  - RxTheme (4.1.1):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxViewController (1.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - SideMenu (6.5.0)
+  - SnapKit (5.0.1)
+  - Then (2.7.0)
+  - "UITextView+Placeholder (1.4.0)"
+  - WeakMapTable (1.2.0)
+
+DEPENDENCIES:
+  - Carte
+  - CGFloatLiteral
+  - FSCalendar
+  - KeychainAccess
+  - Moya/RxSwift
+  - R.swift
+  - ReactorKit
+  - RxAnimated
+  - RxCocoa
+  - RxDataSources
+  - RxFlow
+  - RxKeyboard
+  - RxSwift
+  - RxTheme
+  - RxViewController
+  - SideMenu
+  - SnapKit
+  - Then
+  - "UITextView+Placeholder"
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Carte
+    - CGFloatLiteral
+    - Differentiator
+    - FSCalendar
+    - KeychainAccess
+    - Moya
+    - R.swift
+    - R.swift.Library
+    - ReactorKit
+    - RxAnimated
+    - RxCocoa
+    - RxDataSources
+    - RxFlow
+    - RxKeyboard
+    - RxRelay
+    - RxSwift
+    - RxTheme
+    - RxViewController
+    - SideMenu
+    - SnapKit
+    - Then
+    - "UITextView+Placeholder"
+    - WeakMapTable
+
+SPEC CHECKSUMS:
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  Carte: 6bcff4eaa894ff5b979d646de833fec96e04a38c
+  CGFloatLiteral: 0328648f666e3cb2263d5ee3972df9d320786d25
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
+  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  ReactorKit: 6d894a20c3d508344320901cd8e386fde92df4b6
+  RxAnimated: 8540892468e906e7404595bc51ed4b36b3737ab5
+  RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxFlow: c5242626a73a03d0a0163f0ab795538c467b791f
+  RxKeyboard: 6683c4344304a00f943c158bd8a43ce5469c82a7
+  RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
+  RxSwift: 915abbdfb62214aa89ccd0b194d44fb478019b27
+  RxTheme: 7cda2f036363a0b620cf07b3480cbbbbb00c1d25
+  RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Then: acfe0be7e98221c6204e12f8161459606d5d822d
+  "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
+  WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
+
+PODFILE CHECKSUM: 3dcc83e929a129663e331dbbfa956eb1eab4e5a4
+
+COCOAPODS: 1.10.1

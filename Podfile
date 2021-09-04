@@ -12,6 +12,7 @@ target 'diary' do
   pod 'RxFlow'
   pod 'FSCalendar'
   pod 'SideMenu'
+  pod 'UITextView+Placeholder'
  
   # Architecture
   pod 'ReactorKit'
