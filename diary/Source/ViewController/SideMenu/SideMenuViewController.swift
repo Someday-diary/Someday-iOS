@@ -48,7 +48,7 @@ final class SideMenuViewController: BaseViewController, View {
         $0.label.text = "잠금 설정"
     }
     
-    let openSourceButton = DiarySideMenuListButton().then {
+    let infoButton = DiarySideMenuListButton().then {
         $0.icon.image = R.image.openSourceIcon()
         $0.label.text = "앱 정보"
     }
@@ -90,7 +90,7 @@ final class SideMenuViewController: BaseViewController, View {
         self.view.addSubview(self.themeButton)
         self.view.addSubview(self.alarmButton)
         self.view.addSubview(self.lockButton)
-        self.view.addSubview(self.openSourceButton)
+        self.view.addSubview(self.infoButton)
         self.view.addSubview(self.feedbackButton)
         self.view.addSubview(self.logoutButton)
         self.navigationItem.rightBarButtonItem = dismissButton
@@ -122,14 +122,14 @@ final class SideMenuViewController: BaseViewController, View {
             $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
         }
         
-        self.openSourceButton.snp.makeConstraints {
+        self.infoButton.snp.makeConstraints {
             $0.top.equalTo(self.lockButton.snp.bottom).offset(Metric.listButtonTop)
             $0.left.equalToSafeArea(self.view).offset(Metric.listButtonSide)
             $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
         }
         
         self.feedbackButton.snp.makeConstraints {
-            $0.top.equalTo(self.openSourceButton.snp.bottom).offset(Metric.listButtonTop)
+            $0.top.equalTo(self.infoButton.snp.bottom).offset(Metric.listButtonTop)
             $0.left.equalToSafeArea(self.view).offset(Metric.listButtonSide)
             $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
         }
@@ -153,6 +153,16 @@ final class SideMenuViewController: BaseViewController, View {
             .map { Reactor.Action.dismiss }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        Observable.merge(
+            themeButton.rx.tap.map { Reactor.Action.setTheme },
+            alarmButton.rx.tap.map { Reactor.Action.setAlarm },
+            lockButton.rx.tap.map { Reactor.Action.setLock },
+            infoButton.rx.tap.map { Reactor.Action.showInfo },
+            feedbackButton.rx.tap.map { Reactor.Action.userFeedBack }
+        ).asObservable()
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
     }
 
 }

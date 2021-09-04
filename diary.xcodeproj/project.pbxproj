@@ -273,11 +273,10 @@
 		627E201226CE947700550D59 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				625F4C8226D4675B00DC5978 /* DiaryCalendar.swift */,
+				62D758C926E367E8009AE551 /* SideMenu */,
+				62D758C826E367CC009AE551 /* Main */,
 				625F4C8626D4D2AB00DC5978 /* DiaryTextField.swift */,
 				625A9EB126D9213800D65840 /* DiaryButton.swift */,
-				62D758C226E1AE9C009AE551 /* DiarySideMenuListButton.swift */,
-				62D758C426E1DD48009AE551 /* LogoutButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -387,6 +386,23 @@
 				62BA40452690B0FD009B77F3 /* Info.plist */,
 			);
 			path = diaryUITests;
+			sourceTree = "<group>";
+		};
+		62D758C826E367CC009AE551 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				625F4C8226D4675B00DC5978 /* DiaryCalendar.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		62D758C926E367E8009AE551 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				62D758C426E1DD48009AE551 /* LogoutButton.swift */,
+				62D758C226E1AE9C009AE551 /* DiarySideMenuListButton.swift */,
+			);
+			path = SideMenu;
 			sourceTree = "<group>";
 		};
 		808F73691101F15575DE303E /* Pods */ = {
