@@ -17,6 +17,7 @@ final class SideMenuViewReactor: Reactor, Stepper {
     
     enum Action {
         case dismiss
+        case logout
     }
     
     enum Mutation {
@@ -38,9 +39,13 @@ final class SideMenuViewReactor: Reactor, Stepper {
         switch action {
             
         case .dismiss:
-            steps.accept(DiaryStep.dismiss)
+            self.steps.accept(DiaryStep.dismiss)
             return Observable.empty()
             
+        case .logout:
+            self.steps.accept(DiaryStep.dismiss)
+            self.steps.accept(DiaryStep.loginIsRequired)
+            return Observable.empty()
         }
     }
     
