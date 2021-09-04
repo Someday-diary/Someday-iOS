@@ -51,6 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func applicationWillResignActive(_ application: UIApplication) {
+        self.window?.endEditing(true)
+    }
 
 }
 
