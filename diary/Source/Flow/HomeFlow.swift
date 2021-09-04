@@ -42,6 +42,9 @@ class MainFlow: Flow {
         case .splashIsRequired:
             return .end(forwardToParentFlowWithStep: DiaryStep.splashIsRequired)
             
+        case .writeIsRequired:
+            return navigateToWrite()
+            
         case .dismiss:
             self.rootViewController.dismiss(animated: true, completion: nil)
             return .none
@@ -61,6 +64,14 @@ extension MainFlow {
         let viewController = MainViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: false)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
+    }
+    
+    private func navigateToWrite() -> FlowContributors {
+        let reactor = WriteViewReactor()
+        let viewController = WriteViewController(reactor: reactor)
+        
+        self.rootViewController.pushViewController(viewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
