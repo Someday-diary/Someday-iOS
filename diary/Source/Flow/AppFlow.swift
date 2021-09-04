@@ -49,6 +49,7 @@ extension AppFlow {
         let viewController = SplashViewController(reactor: reactor)
         
         self.window.rootViewController = viewController
+        UIView.transition(with: self.window, duration: 0.3, options: .transitionCrossDissolve, animations: nil ,completion: nil)
         
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }

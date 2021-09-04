@@ -39,8 +39,8 @@ class MainFlow: Flow {
         case .sideMenuIsRequired:
             return navigateToSideMenu()
             
-        case .loginIsRequired:
-            return .end(forwardToParentFlowWithStep: DiaryStep.loginIsRequired)
+        case .splashIsRequired:
+            return .end(forwardToParentFlowWithStep: DiaryStep.splashIsRequired)
             
         case .dismiss:
             self.rootViewController.dismiss(animated: true, completion: nil)
