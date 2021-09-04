@@ -44,7 +44,7 @@ final class SideMenuViewReactor: Reactor, Stepper {
             
         case .logout:
             self.steps.accept(DiaryStep.dismiss)
-            self.steps.accept(DiaryStep.loginIsRequired)
+            self.steps.accept(DiaryStep.splashIsRequired)
             return Observable.empty()
         }
     }
