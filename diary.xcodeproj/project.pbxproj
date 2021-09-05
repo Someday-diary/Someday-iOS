@@ -50,6 +50,7 @@
 		62D758C526E1DD48009AE551 /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D758C426E1DD48009AE551 /* LogoutButton.swift */; };
 		62D758CE26E37BAB009AE551 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D758CD26E37BAB009AE551 /* WriteViewController.swift */; };
 		62D758D026E37C2C009AE551 /* WriteViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D758CF26E37C2C009AE551 /* WriteViewReactor.swift */; };
+		62D758D226E474DE009AE551 /* UITextView+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D758D126E474DE009AE551 /* UITextView+RxTheme.swift */; };
 		9D432695EA98D656B099F4B1 /* Pods_diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B894E3AA684F49C439F7258 /* Pods_diary.framework */; };
 		F263AB4337D64113775670AC /* Pods_diary_diaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663A927CEE2B1BAC95B5F21D /* Pods_diary_diaryUITests.framework */; };
 		FF2A5C8036161455B9F2D13E /* Pods_diaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61203E3BB236EAAB98001720 /* Pods_diaryTests.framework */; };
@@ -129,6 +130,7 @@
 		62D758C426E1DD48009AE551 /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 		62D758CD26E37BAB009AE551 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		62D758CF26E37C2C009AE551 /* WriteViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewReactor.swift; sourceTree = "<group>"; };
+		62D758D126E474DE009AE551 /* UITextView+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+RxTheme.swift"; sourceTree = "<group>"; };
 		649B15496766866789EDBF0E /* Pods-diaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diaryTests.debug.xcconfig"; path = "Target Support Files/Pods-diaryTests/Pods-diaryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		663A927CEE2B1BAC95B5F21D /* Pods_diary_diaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_diary_diaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70775F1D6D22D28F29AC597C /* Pods-diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diary.debug.xcconfig"; path = "Target Support Files/Pods-diary/Pods-diary.debug.xcconfig"; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 			children = (
 				629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */,
 				629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */,
+				62D758D126E474DE009AE551 /* UITextView+RxTheme.swift */,
 			);
 			path = RxTheme;
 			sourceTree = "<group>";
@@ -715,6 +718,7 @@
 				62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */,
 				625F4C6126CF8CEC00DC5978 /* AppFlow.swift in Sources */,
 				624E4D3526D66EB5004A6624 /* LoginViewReactor.swift in Sources */,
+				62D758D226E474DE009AE551 /* UITextView+RxTheme.swift in Sources */,
 				624E4D3926D85F40004A6624 /* HomeFlow.swift in Sources */,
 				624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */,
 				624E4D3726D66EF1004A6624 /* SplashViewReactor.swift in Sources */,
