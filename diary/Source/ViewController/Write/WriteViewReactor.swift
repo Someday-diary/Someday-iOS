@@ -18,7 +18,7 @@ final class WriteViewReactor: Reactor, Stepper {
     
     
     enum Action {
-        
+        case popViewController
     }
     
     enum Mutation {
@@ -33,6 +33,18 @@ final class WriteViewReactor: Reactor, Stepper {
     
     init(_ date: Date) {
         self.initialState = State(date: date)
+    }
+    
+    func mutate(action: Action) -> Observable<Mutation> {
+        
+        switch action {
+        
+        case .popViewController:
+            self.steps.accept(DiaryStep.popViewController)
+            return Observable.empty()
+            
+        }
+        
     }
     
 }

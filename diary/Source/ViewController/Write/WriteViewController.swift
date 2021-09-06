@@ -18,6 +18,11 @@ final class WriteViewController: BaseViewController, View {
     
     // MARK: - Constants
     fileprivate struct Metric {
+        
+        // BackButtonPadding
+        static let leftNavigativePadding = 18.f
+        static let rightNavigativePadding = 20.f
+        
         // TextView
         static let textViewTop = 50.f
         static let textViewBottom = 50.f
@@ -44,6 +49,23 @@ final class WriteViewController: BaseViewController, View {
     }
     
     let hashtagTextField = HashtagTextField()
+    
+    let leftNavigativePadding = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil).then {
+        $0.width = Metric.leftNavigativePadding
+    }
+    
+    let rightNavigativePadding = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil).then {
+        $0.width = Metric.rightNavigativePadding
+    }
+    
+    let backButton = UIBarButtonItem(image: R.image.backButton(), style: .done, target: nil, action: nil).then {
+        $0.tintColor = R.color.navigationButtonColor()
+    }
+    
+    let submitButton = UIBarButtonItem(image: nil, style: .done, target: nil, action: nil).then {
+        $0.title = "확인"
+        $0.tintColor = R.color.navigationButtonColor()
+    }
     
     // MARK: - Inintializing
     init(reactor: WriteViewReactor) {
