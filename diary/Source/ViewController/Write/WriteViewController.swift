@@ -17,7 +17,16 @@ final class WriteViewController: BaseViewController, View {
     
     // MARK: - Constants
     fileprivate struct Metric {
+        // TextView
+        static let textViewTop = 50.f
+        static let textViewBottom = 50.f
         static let textViewSide = 32.f
+        
+        // HashtagTextField
+        static let textFieldTop = 50.f
+        static let textFieldBottom = 40.f
+        static let textFieldSide = 32.f
+        static let textFieldHeight = 25.f
     }
     
     fileprivate struct Font {
@@ -30,8 +39,10 @@ final class WriteViewController: BaseViewController, View {
         $0.placeholder = "오늘 하루를 기록하세요."
         $0.theme.tintColor = themed { $0.mainColor }
         $0.font = Font.textViewFont
-        $0.isScrollEnabled = false
+        $0.isScrollEnabled = true
     }
+    
+    let hashtagTextField = HashtagTextField()
     
     // MARK: - Inintializing
     init(reactor: WriteViewReactor) {
@@ -47,26 +58,50 @@ final class WriteViewController: BaseViewController, View {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.layoutIfNeeded()
     }
     
     override func setupLayout() {
         super.setupLayout()
         
-        self.view.addSubview(self.textView)
-        
+        self.view.addSubview(textView)
+        self.view.addSubview(hashtagTextField)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+
+        self.view.endEditing(true)
     }
     
     override func setupConstraints() {
         super.setupConstraints()
         
         self.textView.snp.makeConstraints {
-            $0.edges.equalToSafeArea(self.view)
+            $0.top.equalToSafeArea(self.view).offset(Metric.textViewTop)
+            $0.left.equalToSafeArea(self.view).offset(Metric.textViewSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.textViewSide)
+            $0.bottom.equalTo(self.hashtagTextField.snp.top).offset(-Metric.textViewBottom)
         }
         
+        self.hashtagTextField.snp.makeConstraints {
+            $0.left.equalToSafeArea(self.view).offset(Metric.textFieldSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.textFieldSide)
+            $0.top.equalTo(self.textView.snp.bottom).offset(Metric.textFieldTop)
+            $0.bottom.equalToSafeArea(self.view).offset(-Metric.textFieldBottom)
+            $0.height.equalTo(Metric.textFieldHeight)
+        }
     }
     
-    
+    // MARK: - Configuring
     func bind(reactor: WriteViewReactor) {
+        
+        themed { $0.thirdColor }.asObservable()
+            .subscribe(onNext: { [weak self] in
+                self?.hashtagTextField.textField.setPlaceholderColor($0)
+            })
+            .disposed(by: disposeBag)
         
     }
 
