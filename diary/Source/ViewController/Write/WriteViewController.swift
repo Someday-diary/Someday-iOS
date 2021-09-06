@@ -9,6 +9,7 @@ import UIKit
 
 import UITextView_Placeholder
 import ReactorKit
+import RxKeyboard
 
 final class WriteViewController: BaseViewController, View {
     
@@ -65,6 +66,8 @@ final class WriteViewController: BaseViewController, View {
     override func setupLayout() {
         super.setupLayout()
         
+        self.navigationItem.leftBarButtonItems = [leftNavigativePadding, backButton]
+        self.navigationItem.rightBarButtonItems = [rightNavigativePadding, submitButton]
         self.title = self.reactor?.currentState.date.toString
         self.view.addSubview(textView)
         self.view.addSubview(hashtagTextField)
@@ -97,13 +100,29 @@ final class WriteViewController: BaseViewController, View {
     
     // MARK: - Configuring
     func bind(reactor: WriteViewReactor) {
+        // input
+        self.backButton.rx.tap.asObservable()
+            .map { Reactor.Action.popViewController }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
         themed { $0.thirdColor }.asObservable()
             .subscribe(onNext: { [weak self] in
-                self?.hashtagTextField.textField.setPlaceholderColor($0)
+                guard let `self` = self else { return }
+                self.hashtagTextField.textField.setPlaceholderColor($0)
             })
             .disposed(by: disposeBag)
         
+        // view
+        RxKeyboard.instance.visibleHeight
+            .drive(onNext: { [weak self] keyboardHeight in
+                guard let `self` = self else { return }
+                self.hashtagTextField.snp.updateConstraints {
+                    $0.bottom.equalToSafeArea(self.view).offset(-keyboardHeight-Metric.textFieldBottom)
+                }
+                self.view.layoutIfNeeded()
+            })
+            .disposed(by: disposeBag)
     }
 
 }
