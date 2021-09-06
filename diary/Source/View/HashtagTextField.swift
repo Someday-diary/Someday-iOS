@@ -22,7 +22,7 @@ final class HashtagTextField: UIView {
     }
     
     fileprivate struct Font {
-        static let textFieldFont = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        static let textFieldFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
     }
     
     // MARK: - UI
@@ -30,7 +30,10 @@ final class HashtagTextField: UIView {
         var placeholder = NSAttributedString(string: "#태그 작성", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         $0.theme.tintColor = themed { $0.thirdColor }
         $0.theme.textColor = themed { $0.thirdColor }
+        $0.font = Font.textFieldFont
         $0.placeholder = "# 태그 작성"
+        $0.autocorrectionType = .default
+        $0.autocapitalizationType = .none
     }
     
     let separatorView = UIView().then {
@@ -68,6 +71,14 @@ final class HashtagTextField: UIView {
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] in
                 if $0.last == " " { self?.textField.text?.append("#")}
+            })
+            .disposed(by: disposeBag)
+        
+        self.textField.rx.controlEvent([.editingDidBegin]).asObservable()
+            .subscribe(onNext: { [weak self] in
+                if self?.textField.text == "" {
+                    self?.textField.text?.append("#")
+                }
             })
             .disposed(by: disposeBag)
     }
