@@ -39,14 +39,18 @@ class MainFlow: Flow {
         case .sideMenuIsRequired:
             return navigateToSideMenu()
             
-        case .splashIsRequired:
-            return .end(forwardToParentFlowWithStep: DiaryStep.splashIsRequired)
-            
         case let .writeIsRequired(date):
             return navigateToWrite(date)
             
+        case .splashIsRequired:
+            return .end(forwardToParentFlowWithStep: DiaryStep.splashIsRequired)
+            
         case .dismiss:
             self.rootViewController.dismiss(animated: true, completion: nil)
+            return .none
+            
+        case .popViewController:
+            self.rootViewController.popViewController(animated: true)
             return .none
             
         default:

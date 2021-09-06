@@ -19,6 +19,7 @@ final class MainViewReactor: Reactor, Stepper {
         case changeDay(Date)
         case changeColor([UIColor])
         case presentSideMenu
+        case presentWriteView
     }
     
     enum Mutation {
@@ -48,9 +49,13 @@ final class MainViewReactor: Reactor, Stepper {
             return Observable.just(Mutation.setDay(newDay))
         
         case .presentSideMenu:
-            self.steps.accept(DiaryStep.writeIsRequired)
-//            self.steps.accept(DiaryStep.sideMenuIsRequired)
+            self.steps.accept(DiaryStep.sideMenuIsRequired)
             return Observable.empty()
+            
+        case .presentWriteView:
+            self.steps.accept(DiaryStep.writeIsRequired(currentState.selectedDay))
+            return Observable.empty()
+            
         }
     }
     

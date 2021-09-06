@@ -29,10 +29,14 @@ final class MainViewController: BaseViewController, View {
         // Separator
         static let separatorHeight = 1.f
         
-        // IamgeView
+        // ImageView
         static let imageHeight = 170.f
         static let imageWidth = 180.f
         static let imageRight = 25.f
+        
+        // WriteButton
+        static let writeButtonTop = 30.f
+        static let writeButtonSide = 32.f
     }
     
     fileprivate struct Font {
@@ -46,8 +50,10 @@ final class MainViewController: BaseViewController, View {
     }
     
     let sideMenuButton = UIBarButtonItem(image: R.image.diarySideMenuButton(), style: .done, target: nil, action: nil).then {
-        $0.tintColor = R.color.drawerButtonColor()
+        $0.tintColor = R.color.navigationButtonColor()
     }
+    
+    let writeButton = WriteDiaryButton()
     
     let calendarView = DiaryCalendar()
     
@@ -79,6 +85,7 @@ final class MainViewController: BaseViewController, View {
         self.view.addSubview(self.calendarView)
         self.view.addSubview(self.separatorView)
         self.view.addSubview(self.mainImageView)
+        self.view.addSubview(self.writeButton)
     }
     
     override func setupConstraints() {
@@ -103,6 +110,12 @@ final class MainViewController: BaseViewController, View {
             $0.right.equalToSafeArea(self.view).offset(-Metric.imageRight)
             $0.bottom.equalToSafeArea(self.view)
         }
+        
+        self.writeButton.snp.makeConstraints {
+            $0.top.equalTo(self.separatorView.snp.bottom).offset(Metric.writeButtonTop)
+            $0.left.equalToSafeArea(self.view).offset(Metric.writeButtonSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.writeButtonSide)
+        }
     }
     
     // MARK: - Configuring
@@ -117,6 +130,11 @@ final class MainViewController: BaseViewController, View {
         
         self.sideMenuButton.rx.tap.asObservable()
             .map { Reactor.Action.presentSideMenu }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        self.writeButton.rx.tap.asObservable()
+            .map { Reactor.Action.presentWriteView }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
