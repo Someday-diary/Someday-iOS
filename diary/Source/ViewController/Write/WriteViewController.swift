@@ -48,7 +48,7 @@ final class WriteViewController: BaseViewController, View {
     init(reactor: WriteViewReactor) {
         super.init()
         
-        self.reactor = reactor
+        defer { self.reactor = reactor }
     }
     
     required init?(coder: NSCoder) {
@@ -65,6 +65,7 @@ final class WriteViewController: BaseViewController, View {
     override func setupLayout() {
         super.setupLayout()
         
+        self.title = self.reactor?.currentState.date.toString
         self.view.addSubview(textView)
         self.view.addSubview(hashtagTextField)
     }

@@ -26,13 +26,13 @@ final class WriteViewReactor: Reactor, Stepper {
     }
     
     struct State {
-        
+        var date: Date
     }
     
     let initialState: State
     
-    init() {
-        self.initialState = State()
+    init(_ date: Date) {
+        self.initialState = State(date: date)
     }
     
 }
