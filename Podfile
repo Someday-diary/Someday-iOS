@@ -25,6 +25,7 @@ target 'diary' do
   pod 'RxKeyboard'
   pod 'RxAnimated'
   pod 'RxTheme'
+  pod 'RxGesture'
   
   # Network
   pod 'Moya/RxSwift'
@@ -33,7 +34,7 @@ target 'diary' do
   pod 'KeychainAccess'
 
   # DB
-  #pod 'RealmSwift'
+  pod 'RxRealm'
 
   # ETC
   pod 'R.swift'

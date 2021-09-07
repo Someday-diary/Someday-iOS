@@ -11,7 +11,7 @@ import UITextView_Placeholder
 import ReactorKit
 import RxKeyboard
 
-final class WriteViewController: BaseViewController, View {
+final class WriteViewController: BaseViewController, ReactorKit.View {
     
     // MARK: - Properties
     typealias Reactor = WriteViewReactor
