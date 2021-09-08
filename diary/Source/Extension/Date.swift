@@ -15,4 +15,15 @@ extension Date {
         }
         return dateFormatter.string(from: self)
     }
+    
+    var realmString: String {
+        let dateFormatter = DateFormatter().then {
+            $0.dateFormat = "yyyy-MM-dd"
+        }
+        return dateFormatter.string(from: self)
+    }
+    
+    var changeTime: Date {
+        return self.addingTimeInterval(TimeInterval(TimeZone.current.secondsFromGMT()))
+    }
 }
