@@ -78,6 +78,8 @@ final class MainViewController: BaseViewController, View {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     override func setupLayout() {
@@ -149,7 +151,6 @@ final class MainViewController: BaseViewController, View {
         .disposed(by: disposeBag)
         
         // Output
-        
         reactor.state.map { $0.themeColor }.asObservable()
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] in

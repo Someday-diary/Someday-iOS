@@ -83,6 +83,7 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
         super.viewDidLoad()
         
         self.view.layoutIfNeeded()
+        print(self.getDocumentsDirectory())
     }
     
     override func setupLayout() {
@@ -122,9 +123,22 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
     
     // MARK: - Configuring
     func bind(reactor: WriteViewReactor) {
+        
         // input
+        Observable.combineLatest(
+            self.textView.rx.text.orEmpty.asObservable(),
+            self.hashtagTextField.textField.rx.text.orEmpty.asObservable()
+        ).map { Reactor.Action.writeDiary($0, $1) }
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
+        
         self.backButton.rx.tap.asObservable()
             .map { Reactor.Action.popViewController }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        self.submitButton.rx.tap.asObservable()
+            .map { Reactor.Action.saveDidary }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -146,5 +160,10 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
             })
             .disposed(by: disposeBag)
     }
-
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
 }
