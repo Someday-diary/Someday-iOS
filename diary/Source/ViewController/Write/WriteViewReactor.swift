@@ -55,7 +55,7 @@ final class WriteViewReactor: Reactor, Stepper {
             let realm = try! Realm()
             
             let diary = RealmDiary().then {
-                $0.date = self.currentState.date
+                $0.date = self.currentState.date.realmString
                 $0.data = self.currentState.data
                 $0.tags = self.currentState.tags
             }
