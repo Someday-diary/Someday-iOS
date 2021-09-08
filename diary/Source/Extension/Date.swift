@@ -9,6 +9,13 @@ import Foundation
 
 extension Date {
     
+    var titleString: String {
+        let dateFormatter = DateFormatter().then {
+            $0.dateFormat = "yyyy년"
+        }
+        return dateFormatter.string(from: self)
+    }
+    
     var toString: String {
         let dateFormatter = DateFormatter().then {
             $0.dateFormat = "yyyy년 MM월 dd일"

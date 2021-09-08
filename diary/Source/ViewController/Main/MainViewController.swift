@@ -126,6 +126,7 @@ final class MainViewController: BaseViewController, View {
         // Input
         self.rx.viewDidAppear.asObservable()
             .map { [weak self] _ in
+                self?.title = self?.calendarView.calendar.currentPage.titleString
                 return Reactor.Action.changeMonth((self?.calendarView.calendar.currentPage.changeTime)!)
             }
             .observeOn(MainScheduler.asyncInstance)
@@ -139,7 +140,9 @@ final class MainViewController: BaseViewController, View {
             .disposed(by: disposeBag)
         
         self.calendarView.calendar.rx.calendarCurrentPageDidChange.asObservable()
-            .map { Reactor.Action.changeMonth($0.currentPage.changeTime) }
+            .map { [weak self] in
+                self?.title = $0.currentPage.titleString
+                return Reactor.Action.changeMonth($0.currentPage.changeTime) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         

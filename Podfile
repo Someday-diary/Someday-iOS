@@ -13,6 +13,7 @@ target 'diary' do
   pod 'FSCalendar'
   pod 'SideMenu'
   pod 'UITextView+Placeholder'
+  pod 'FloatingPanel'
  
   # Architecture
   pod 'ReactorKit'
