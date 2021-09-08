@@ -124,9 +124,22 @@ final class MainViewController: BaseViewController, View {
     
     func bind(reactor: MainViewReactor) {
         // Input
+        self.rx.viewDidAppear.asObservable()
+            .map { [weak self] _ in
+                return Reactor.Action.changeMonth((self?.calendarView.calendar.currentPage.changeTime)!)
+            }
+            .observeOn(MainScheduler.asyncInstance)
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         self.calendarView.calendar.rx.didSelect.asObservable()
             .distinctUntilChanged()
             .map { Reactor.Action.changeDay($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        self.calendarView.calendar.rx.calendarCurrentPageDidChange.asObservable()
+            .map { Reactor.Action.changeMonth($0.currentPage.changeTime) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -159,6 +172,14 @@ final class MainViewController: BaseViewController, View {
             })
             .disposed(by: disposeBag)
         
+        reactor.state.map { $0.writedDays }.asObservable()
+            .distinctUntilChanged()
+            .observeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { _ in
+                self.calendarView.calendar.reloadData()
+            })
+            .disposed(by: disposeBag)
+        
         self.calendarView.calendar.rx.setDelegate(self)
             .disposed(by: disposeBag)
     }
@@ -169,36 +190,17 @@ final class MainViewController: BaseViewController, View {
 
 extension MainViewController: FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
-        let dateFormatter = DateFormatter().then {
-            $0.dateFormat = "yyyy-MM-dd"
-        }
         
-        let newDate = date.addingTimeInterval(TimeInterval(TimeZone.current.secondsFromGMT(for: date)))
-        
-        let somedays = ["2021-09-03",
-                        "2021-09-06",
-                        "2021-09-12",
-                        "2021-09-25"]
-        let dateString : String = dateFormatter.string(from: newDate)
-        
-        if somedays.contains(dateString) { return themeColor?[2] ?? nil }
+        guard let reactor = reactor else { return nil }
+        if reactor.currentState.writedDays.contains(date) { return themeColor?[0] ?? nil }
         return nil
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-        let dateFormatter = DateFormatter().then {
-            $0.dateFormat = "yyyy-MM-dd"
-        }
-        
-        let newDate = date.addingTimeInterval(TimeInterval(TimeZone.current.secondsFromGMT(for: date)))
-        
-        let somedays = ["2021-09-03",
-                        "2021-09-06",
-                        "2021-09-12",
-                        "2021-09-25"]
-        let dateString : String = dateFormatter.string(from: newDate)
-        
-        if somedays.contains(dateString) { return themeColor?[1] ?? nil }
+
+        guard let reactor = reactor else { return nil }
+        if reactor.currentState.writedDays.contains(date) { return themeColor?[1] ?? nil }
         return nil
     }
+    
 }

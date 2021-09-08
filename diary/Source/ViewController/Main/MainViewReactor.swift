@@ -8,6 +8,7 @@ import UIKit
 
 import RxSwift
 import RxCocoa
+import RealmSwift
 import ReactorKit
 import RxFlow
 
@@ -18,6 +19,7 @@ final class MainViewReactor: Reactor, Stepper {
     enum Action {
         case changeDay(Date)
         case changeColor([UIColor])
+        case changeMonth(Date)
         case presentSideMenu
         case presentWriteView
     }
@@ -25,11 +27,13 @@ final class MainViewReactor: Reactor, Stepper {
     enum Mutation {
         case setDay(Date)
         case setColor([UIColor])
+        case changeWritedDays(Date)
     }
     
     struct State {
         var selectedDay: Date = Date()
         var themeColor: [UIColor]?
+        var writedDays: [Date] = []
     }
     
     let initialState: State
@@ -47,6 +51,9 @@ final class MainViewReactor: Reactor, Stepper {
 
         case let .changeDay(newDay):
             return Observable.just(Mutation.setDay(newDay))
+            
+        case let .changeMonth(newmonth):
+            return Observable.just(Mutation.changeWritedDays(newmonth))
         
         case .presentSideMenu:
             self.steps.accept(DiaryStep.sideMenuIsRequired)
@@ -70,6 +77,18 @@ final class MainViewReactor: Reactor, Stepper {
             
         case let .setColor(newColor):
             state.themeColor = newColor
+            
+        case let .changeWritedDays(newMonth):
+            let dateFormatter = DateFormatter().then {
+                $0.dateFormat = "yyyy-MM"
+            }
+            let monthStr = dateFormatter.string(from: newMonth)
+            
+            let realm = try! Realm()
+            let query = NSPredicate(format: "date CONTAINS %@", monthStr)
+            let result = realm.objects(RealmDiary.self).filter(query)
+            
+            state.writedDays = Array(result).map { $0.date.realmDate }
         }
         
         return state
