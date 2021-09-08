@@ -60,7 +60,7 @@ final class SideMenuViewController: BaseViewController, View {
     
     let dismissButton = UIBarButtonItem().then {
         $0.image = R.image.dismissButton()
-        $0.tintColor = R.color.drawerDismissButtonColor()
+        $0.tintColor = R.color.navigationButtonColor()
     }
     
     let logoutButton = LogoutButton()

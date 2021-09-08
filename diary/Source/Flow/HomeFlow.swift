@@ -39,11 +39,18 @@ class MainFlow: Flow {
         case .sideMenuIsRequired:
             return navigateToSideMenu()
             
+        case let .writeIsRequired(date):
+            return navigateToWrite(date)
+            
         case .splashIsRequired:
             return .end(forwardToParentFlowWithStep: DiaryStep.splashIsRequired)
             
         case .dismiss:
             self.rootViewController.dismiss(animated: true, completion: nil)
+            return .none
+            
+        case .popViewController:
+            self.rootViewController.popViewController(animated: true)
             return .none
             
         default:
@@ -61,6 +68,14 @@ extension MainFlow {
         let viewController = MainViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: false)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
+    }
+    
+    private func navigateToWrite(_ date: Date) -> FlowContributors {
+        let reactor = WriteViewReactor(date)
+        let viewController = WriteViewController(reactor: reactor)
+        
+        self.rootViewController.pushViewController(viewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     

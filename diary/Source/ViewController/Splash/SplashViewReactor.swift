@@ -34,8 +34,8 @@ class SplashViewReactor: Reactor, Stepper {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .setNextView:
-            self.steps.accept(DiaryStep.loginIsRequired)
-//            self.steps.accept(DiaryStep.mainIsRequired)
+//            self.steps.accept(DiaryStep.loginIsRequired)
+            self.steps.accept(DiaryStep.mainIsRequired)
             return Observable.empty()
         }
     }
