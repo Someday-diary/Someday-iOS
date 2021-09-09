@@ -7,6 +7,7 @@
 
 import UIKit
 import RxFlow
+import FloatingPanel
 import SideMenu
 
 class MainFlow: Flow {
@@ -35,6 +36,10 @@ class MainFlow: Flow {
         switch step {
         case .mainIsRequired:
             return navigateToMain()
+            
+        case .floatingPanelIsRequird:
+            navigateToFloatingPanel()
+            return .none
             
         case .sideMenuIsRequired:
             return navigateToSideMenu()
@@ -69,6 +74,14 @@ extension MainFlow {
         
         self.rootViewController.pushViewController(viewController, animated: false)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
+    }
+    
+    private func navigateToFloatingPanel() {
+        let fpc = FloatingPanelController()
+        fpc.set(contentViewController: UIViewController())
+        
+        self.rootViewController.present(fpc, animated: true)
+//        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
     private func navigateToWrite(_ date: Date) -> FlowContributors {

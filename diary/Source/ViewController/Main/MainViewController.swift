@@ -14,7 +14,6 @@ final class MainViewController: BaseViewController, View {
     
     // MARK: - Properties
     typealias Reactor = MainViewReactor
-    var themeColor: [UIColor]?
     
     // MARK: - Constants
     
@@ -125,6 +124,11 @@ final class MainViewController: BaseViewController, View {
     func bind(reactor: MainViewReactor) {
         // Input
         self.rx.viewDidAppear.asObservable()
+            .map { _ in Reactor.Action.presentFloatingPanel }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        self.rx.viewDidAppear.asObservable()
             .map { [weak self] _ in
                 self?.title = self?.calendarView.calendar.currentPage.titleString
                 return Reactor.Action.changeMonth((self?.calendarView.calendar.currentPage.changeTime)!)
@@ -169,8 +173,7 @@ final class MainViewController: BaseViewController, View {
         // Output
         reactor.state.map { $0.themeColor }.asObservable()
             .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] in
-                self?.themeColor = $0
+            .subscribe(onNext: { [weak self] _ in
                 self?.calendarView.calendar.reloadData()
             })
             .disposed(by: disposeBag)
@@ -195,14 +198,14 @@ extension MainViewController: FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         
         guard let reactor = reactor else { return nil }
-        if reactor.currentState.writedDays.contains(date) { return themeColor?[0] ?? nil }
+        if reactor.currentState.writedDays.contains(date) { return reactor.currentState.themeColor?[0] ?? nil }
         return nil
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
 
         guard let reactor = reactor else { return nil }
-        if reactor.currentState.writedDays.contains(date) { return themeColor?[1] ?? nil }
+        if reactor.currentState.writedDays.contains(date) { return reactor.currentState.themeColor?[1] ?? nil }
         return nil
     }
     

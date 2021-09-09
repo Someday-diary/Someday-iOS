@@ -22,4 +22,5 @@ enum DiaryStep: Step {
     // MARK: - Home
     case sideMenuIsRequired
     case writeIsRequired(Date)
+    case floatingPanelIsRequird
 }

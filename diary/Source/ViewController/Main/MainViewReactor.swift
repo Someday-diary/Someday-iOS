@@ -20,6 +20,7 @@ final class MainViewReactor: Reactor, Stepper {
         case changeDay(Date)
         case changeColor([UIColor])
         case changeMonth(Date)
+        case presentFloatingPanel
         case presentSideMenu
         case presentWriteView
     }
@@ -31,7 +32,7 @@ final class MainViewReactor: Reactor, Stepper {
     }
     
     struct State {
-        var selectedDay: Date = Date()
+        var selectedDay: Date = Date().today
         var themeColor: [UIColor]?
         var writedDays: [Date] = []
     }
@@ -45,11 +46,15 @@ final class MainViewReactor: Reactor, Stepper {
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
+        case .presentFloatingPanel:
+            self.steps.accept(DiaryStep.floatingPanelIsRequird)
+            return Observable.empty()
         
         case let .changeColor(newColor):
             return Observable.just(Mutation.setColor(newColor))
 
         case let .changeDay(newDay):
+            if currentState.writedDays.contains(newDay) { print("this is day")}
             return Observable.just(Mutation.setDay(newDay))
             
         case let .changeMonth(newmonth):

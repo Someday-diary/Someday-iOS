@@ -30,6 +30,14 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    var today: Date {
+        let dateFormatter = DateFormatter().then {
+            $0.dateFormat = "yyyy-MM-dd"
+        }
+        
+        return dateFormatter.date(from: (dateFormatter.string(from: self)))!
+    }
+    
     var changeTime: Date {
         return self.addingTimeInterval(TimeInterval(TimeZone.current.secondsFromGMT()))
     }
