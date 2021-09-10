@@ -29,12 +29,14 @@ final class MainViewReactor: Reactor, Stepper {
         case setDay(Date)
         case setColor([UIColor])
         case changeWritedDays(Date)
+        case setMonth(Date)
     }
     
     struct State {
         var selectedDay: Date = Date().today
         var themeColor: [UIColor]?
         var writedDays: [Date] = []
+        var Month: Date = Date()
     }
     
     let initialState: State
@@ -94,6 +96,9 @@ final class MainViewReactor: Reactor, Stepper {
             let result = realm.objects(RealmDiary.self).filter(query)
             
             state.writedDays = Array(result).map { $0.date.realmDate }
+            
+        case let .setMonth(newMonth):
+            state.Month =  newMonth
         }
         
         return state

@@ -52,16 +52,10 @@ final class MainViewController: BaseViewController, View {
         $0.tintColor = R.color.navigationButtonColor()
     }
     
-    let writeButton = WriteDiaryButton()
-    
     let calendarView = DiaryCalendar()
     
     let separatorView = UIView().then {
         $0.backgroundColor = R.color.textFieldSeparatorColor()
-    }
-    
-    let mainImageView = UIImageView().then {
-        $0.image = R.image.mainIllustration()
     }
     
     // MARK: - Initializing
@@ -82,11 +76,11 @@ final class MainViewController: BaseViewController, View {
     }
     
     override func setupLayout() {
+        super.setupLayout()
+        
         self.navigationItem.leftBarButtonItems = [navigativePadding, sideMenuButton]
         self.view.addSubview(self.calendarView)
         self.view.addSubview(self.separatorView)
-        self.view.addSubview(self.mainImageView)
-        self.view.addSubview(self.writeButton)
     }
     
     override func setupConstraints() {
@@ -105,18 +99,6 @@ final class MainViewController: BaseViewController, View {
             $0.height.equalTo(Metric.separatorHeight)
         }
         
-        self.mainImageView.snp.makeConstraints {
-            $0.width.equalTo(Metric.imageWidth)
-            $0.height.equalTo(Metric.imageHeight)
-            $0.right.equalToSafeArea(self.view).offset(-Metric.imageRight)
-            $0.bottom.equalToSafeArea(self.view)
-        }
-        
-        self.writeButton.snp.makeConstraints {
-            $0.top.equalTo(self.separatorView.snp.bottom).offset(Metric.writeButtonTop)
-            $0.left.equalToSafeArea(self.view).offset(Metric.writeButtonSide)
-            $0.right.equalToSafeArea(self.view).offset(-Metric.writeButtonSide)
-        }
     }
     
     // MARK: - Configuring
@@ -154,11 +136,7 @@ final class MainViewController: BaseViewController, View {
             .map { Reactor.Action.presentSideMenu }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-        
-        self.writeButton.rx.tap.asObservable()
-            .map { Reactor.Action.presentWriteView }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
+    
         
         Observable.combineLatest(
             themed { $0.mainColor },

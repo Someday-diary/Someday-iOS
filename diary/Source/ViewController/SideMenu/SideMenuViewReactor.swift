@@ -23,6 +23,7 @@ final class SideMenuViewReactor: Reactor, Stepper {
         case setLock
         case showInfo
         case userFeedBack
+        case disappear
     }
     
     enum Mutation {
@@ -65,6 +66,10 @@ final class SideMenuViewReactor: Reactor, Stepper {
             return Observable.empty()
         
         case .userFeedBack:
+            return Observable.empty()
+            
+        case .disappear:
+            self.steps.accept(DiaryStep.floatingPanelIsRequird)
             return Observable.empty()
             
         }
