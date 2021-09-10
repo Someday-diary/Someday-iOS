@@ -81,7 +81,7 @@ extension MainFlow {
             $0.set(contentViewController: FloatingViewController(reactor: reactor))
             $0.layout = CustomFloatingPanelLayout()
             $0.surfaceView.appearance.cornerRadius = 15
-            $0.surfaceView.appearance.backgroundColor = .secondarySystemBackground
+            $0.surfaceView.appearance.theme.backgroundColor = themed { $0.subColor }
         }
         
         self.rootViewController.present(fpc, animated: true)

@@ -43,6 +43,7 @@
 		628BFD9526EB514F00851408 /* FloatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628BFD9426EB514F00851408 /* FloatingViewController.swift */; };
 		628BFD9726EB550700851408 /* FloatingViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628BFD9626EB550700851408 /* FloatingViewReactor.swift */; };
 		628BFD9926EB6A5300851408 /* CustomFloatingPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628BFD9826EB6A5300851408 /* CustomFloatingPanelLayout.swift */; };
+		628BFD9B26EB9D8B00851408 /* SurfaceAppearance+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628BFD9A26EB9D8B00851408 /* SurfaceAppearance+Rx.swift */; };
 		6291498C26DEF4FF003CDDE9 /* SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6291498B26DEF4FF003CDDE9 /* SnapKit.swift */; };
 		6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */; };
 		629AE09D26DFA0DF003B8891 /* UIImageView+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */; };
@@ -126,6 +127,7 @@
 		628BFD9426EB514F00851408 /* FloatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingViewController.swift; sourceTree = "<group>"; };
 		628BFD9626EB550700851408 /* FloatingViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingViewReactor.swift; sourceTree = "<group>"; };
 		628BFD9826EB6A5300851408 /* CustomFloatingPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFloatingPanelLayout.swift; sourceTree = "<group>"; };
+		628BFD9A26EB9D8B00851408 /* SurfaceAppearance+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SurfaceAppearance+Rx.swift"; sourceTree = "<group>"; };
 		6291498B26DEF4FF003CDDE9 /* SnapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapKit.swift; sourceTree = "<group>"; };
 		629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+RxTheme.swift"; sourceTree = "<group>"; };
 		629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FSCalendar+RxTheme.swift"; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */,
 				629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */,
 				62D758D126E474DE009AE551 /* UITextView+RxTheme.swift */,
+				628BFD9A26EB9D8B00851408 /* SurfaceAppearance+Rx.swift */,
 			);
 			path = RxTheme;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				62CB1D3B26DA4F4200B1BA32 /* CustomDelegateProxy.swift in Sources */,
 				62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */,
 				625F4C6126CF8CEC00DC5978 /* AppFlow.swift in Sources */,
+				628BFD9B26EB9D8B00851408 /* SurfaceAppearance+Rx.swift in Sources */,
 				620BCACB26E8819C0023499D /* String.swift in Sources */,
 				624E4D3526D66EB5004A6624 /* LoginViewReactor.swift in Sources */,
 				62D758D226E474DE009AE551 /* UITextView+RxTheme.swift in Sources */,
