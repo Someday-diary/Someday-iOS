@@ -42,6 +42,7 @@
 		62816AF026DCD0B100365348 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62816AEF26DCD0B100365348 /* Themes.swift */; };
 		628BFD9526EB514F00851408 /* FloatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628BFD9426EB514F00851408 /* FloatingViewController.swift */; };
 		628BFD9726EB550700851408 /* FloatingViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628BFD9626EB550700851408 /* FloatingViewReactor.swift */; };
+		628BFD9926EB6A5300851408 /* CustomFloatingPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628BFD9826EB6A5300851408 /* CustomFloatingPanelLayout.swift */; };
 		6291498C26DEF4FF003CDDE9 /* SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6291498B26DEF4FF003CDDE9 /* SnapKit.swift */; };
 		6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */; };
 		629AE09D26DFA0DF003B8891 /* UIImageView+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */; };
@@ -124,6 +125,7 @@
 		62816AEF26DCD0B100365348 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		628BFD9426EB514F00851408 /* FloatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingViewController.swift; sourceTree = "<group>"; };
 		628BFD9626EB550700851408 /* FloatingViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingViewReactor.swift; sourceTree = "<group>"; };
+		628BFD9826EB6A5300851408 /* CustomFloatingPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFloatingPanelLayout.swift; sourceTree = "<group>"; };
 		6291498B26DEF4FF003CDDE9 /* SnapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapKit.swift; sourceTree = "<group>"; };
 		629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+RxTheme.swift"; sourceTree = "<group>"; };
 		629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FSCalendar+RxTheme.swift"; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 			children = (
 				628BFD9426EB514F00851408 /* FloatingViewController.swift */,
 				628BFD9626EB550700851408 /* FloatingViewReactor.swift */,
+				628BFD9826EB6A5300851408 /* CustomFloatingPanelLayout.swift */,
 			);
 			path = FoatingView;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				625F4C8726D4D2AB00DC5978 /* DiaryTextField.swift in Sources */,
 				620BCAC726E5F4610023499D /* Date.swift in Sources */,
 				625A9EB226D9213800D65840 /* DiaryButton.swift in Sources */,
+				628BFD9926EB6A5300851408 /* CustomFloatingPanelLayout.swift in Sources */,
 				62D758CE26E37BAB009AE551 /* WriteViewController.swift in Sources */,
 				6291498C26DEF4FF003CDDE9 /* SnapKit.swift in Sources */,
 				620BCABF26E5D58C0023499D /* HashtagTextField.swift in Sources */,

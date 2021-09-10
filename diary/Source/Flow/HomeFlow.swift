@@ -76,9 +76,13 @@ extension MainFlow {
     }
     
     private func presentFloatingPanel() -> FlowContributors {
-        let fpc = FloatingPanelController()
         let reactor = FloatingViewReactor()
-        fpc.set(contentViewController: FloatingViewController(reactor: reactor))
+        let fpc = FloatingPanelController().then {
+            $0.set(contentViewController: FloatingViewController(reactor: reactor))
+            $0.layout = CustomFloatingPanelLayout()
+            $0.surfaceView.appearance.cornerRadius = 15
+            $0.surfaceView.appearance.backgroundColor = .secondarySystemBackground
+        }
         
         self.rootViewController.present(fpc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: fpc, withNextStepper: reactor))

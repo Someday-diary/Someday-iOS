@@ -50,17 +50,17 @@ final class MainViewReactor: Reactor, Stepper {
         case .presentFloatingPanel:
             self.steps.accept(DiaryStep.floatingPanelIsRequird)
             return Observable.empty()
-        
+            
         case let .changeColor(newColor):
             return Observable.just(Mutation.setColor(newColor))
-
+            
         case let .changeDay(newDay):
             if currentState.writedDays.contains(newDay) { print("this is day") }
             return Observable.just(Mutation.setDay(newDay))
             
         case let .changeMonth(newmonth):
             return Observable.just(Mutation.changeWritedDays(newmonth))
-        
+            
         case .presentSideMenu:
             self.steps.accept(DiaryStep.sideMenuIsRequired)
             return Observable.empty()

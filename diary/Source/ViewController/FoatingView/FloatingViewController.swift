@@ -47,6 +47,7 @@ final class FloatingViewController: BaseViewController, View {
     override func setupLayout() {
         super.setupLayout()
         
+        self.view.theme.backgroundColor = themed { $0.subColor }
     }
     
     override func setupConstraints() {
