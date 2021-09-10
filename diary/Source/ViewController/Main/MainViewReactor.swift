@@ -29,7 +29,6 @@ final class MainViewReactor: Reactor, Stepper {
         case setDay(Date)
         case setColor([UIColor])
         case changeWritedDays(Date)
-        case setMonth(Date)
     }
     
     struct State {
@@ -56,7 +55,7 @@ final class MainViewReactor: Reactor, Stepper {
             return Observable.just(Mutation.setColor(newColor))
 
         case let .changeDay(newDay):
-            if currentState.writedDays.contains(newDay) { print("this is day")}
+            if currentState.writedDays.contains(newDay) { print("this is day") }
             return Observable.just(Mutation.setDay(newDay))
             
         case let .changeMonth(newmonth):
@@ -96,9 +95,8 @@ final class MainViewReactor: Reactor, Stepper {
             let result = realm.objects(RealmDiary.self).filter(query)
             
             state.writedDays = Array(result).map { $0.date.realmDate }
+            state.Month = newMonth
             
-        case let .setMonth(newMonth):
-            state.Month =  newMonth
         }
         
         return state

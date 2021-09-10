@@ -38,8 +38,7 @@ class MainFlow: Flow {
             return navigateToMain()
             
         case .floatingPanelIsRequird:
-            presentFloatingPanel()
-            return .none
+            return presentFloatingPanel()
             
         case .sideMenuIsRequired:
             return navigateToSideMenu()
@@ -76,11 +75,13 @@ extension MainFlow {
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
-    private func presentFloatingPanel() {
+    private func presentFloatingPanel() -> FlowContributors {
         let fpc = FloatingPanelController()
-        fpc.set(contentViewController: UIViewController())
+        let reactor = FloatingViewReactor()
+        fpc.set(contentViewController: FloatingViewController(reactor: reactor))
         
         self.rootViewController.present(fpc, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: fpc, withNextStepper: reactor))
     }
     
     private func navigateToWrite(_ date: Date) -> FlowContributors {
