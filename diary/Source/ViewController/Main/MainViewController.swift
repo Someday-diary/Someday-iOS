@@ -14,7 +14,6 @@ final class MainViewController: BaseViewController, View {
     
     // MARK: - Properties
     typealias Reactor = MainViewReactor
-    var themeColor: [UIColor]?
     
     // MARK: - Constants
     
@@ -53,16 +52,10 @@ final class MainViewController: BaseViewController, View {
         $0.tintColor = R.color.navigationButtonColor()
     }
     
-    let writeButton = WriteDiaryButton()
-    
     let calendarView = DiaryCalendar()
     
     let separatorView = UIView().then {
         $0.backgroundColor = R.color.textFieldSeparatorColor()
-    }
-    
-    let mainImageView = UIImageView().then {
-        $0.image = R.image.mainIllustration()
     }
     
     // MARK: - Initializing
@@ -83,11 +76,11 @@ final class MainViewController: BaseViewController, View {
     }
     
     override func setupLayout() {
+        super.setupLayout()
+        
         self.navigationItem.leftBarButtonItems = [navigativePadding, sideMenuButton]
         self.view.addSubview(self.calendarView)
         self.view.addSubview(self.separatorView)
-        self.view.addSubview(self.mainImageView)
-        self.view.addSubview(self.writeButton)
     }
     
     override func setupConstraints() {
@@ -106,27 +99,33 @@ final class MainViewController: BaseViewController, View {
             $0.height.equalTo(Metric.separatorHeight)
         }
         
-        self.mainImageView.snp.makeConstraints {
-            $0.width.equalTo(Metric.imageWidth)
-            $0.height.equalTo(Metric.imageHeight)
-            $0.right.equalToSafeArea(self.view).offset(-Metric.imageRight)
-            $0.bottom.equalToSafeArea(self.view)
-        }
-        
-        self.writeButton.snp.makeConstraints {
-            $0.top.equalTo(self.separatorView.snp.bottom).offset(Metric.writeButtonTop)
-            $0.left.equalToSafeArea(self.view).offset(Metric.writeButtonSide)
-            $0.right.equalToSafeArea(self.view).offset(-Metric.writeButtonSide)
-        }
     }
     
     // MARK: - Configuring
     
     func bind(reactor: MainViewReactor) {
         // Input
+        self.rx.viewDidAppear.asObservable()
+            .map { _ in Reactor.Action.presentFloatingPanel }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        self.rx.viewDidAppear.asObservable()
+            .map { [weak self] _ in
+                return Reactor.Action.changeMonth((self?.calendarView.calendar.currentPage.changeTime)!)
+            }
+            .observeOn(MainScheduler.asyncInstance)
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         self.calendarView.calendar.rx.didSelect.asObservable()
             .distinctUntilChanged()
             .map { Reactor.Action.changeDay($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        self.calendarView.calendar.rx.calendarCurrentPageDidChange.asObservable()
+            .map { Reactor.Action.changeMonth($0.currentPage.changeTime) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -134,11 +133,7 @@ final class MainViewController: BaseViewController, View {
             .map { Reactor.Action.presentSideMenu }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-        
-        self.writeButton.rx.tap.asObservable()
-            .map { Reactor.Action.presentWriteView }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
+    
         
         Observable.combineLatest(
             themed { $0.mainColor },
@@ -153,12 +148,26 @@ final class MainViewController: BaseViewController, View {
         // Output
         reactor.state.map { $0.themeColor }.asObservable()
             .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] in
-                self?.themeColor = $0
+            .subscribe(onNext: { [weak self] _ in
+                self?.calendarView.calendar.reloadData()
+            })
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.writedDays }.asObservable()
+            .distinctUntilChanged()
+            .observeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] _ in
                 self?.calendarView.calendar.reloadData()
             })
             .disposed(by: disposeBag)
         
+        reactor.state.map { $0.Month }.asObservable()
+            .distinctUntilChanged()
+            .map { ($0).titleString }
+            .bind(to: self.rx.title)
+            .disposed(by: disposeBag)
+        
+        // View
         self.calendarView.calendar.rx.setDelegate(self)
             .disposed(by: disposeBag)
     }
@@ -169,36 +178,17 @@ final class MainViewController: BaseViewController, View {
 
 extension MainViewController: FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
-        let dateFormatter = DateFormatter().then {
-            $0.dateFormat = "yyyy-MM-dd"
-        }
         
-        let newDate = date.addingTimeInterval(TimeInterval(TimeZone.current.secondsFromGMT(for: date)))
-        
-        let somedays = ["2021-09-03",
-                        "2021-09-06",
-                        "2021-09-12",
-                        "2021-09-25"]
-        let dateString : String = dateFormatter.string(from: newDate)
-        
-        if somedays.contains(dateString) { return themeColor?[2] ?? nil }
+        guard let reactor = reactor else { return nil }
+        if reactor.currentState.writedDays.contains(date) { return reactor.currentState.themeColor?[0] ?? nil }
         return nil
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-        let dateFormatter = DateFormatter().then {
-            $0.dateFormat = "yyyy-MM-dd"
-        }
-        
-        let newDate = date.addingTimeInterval(TimeInterval(TimeZone.current.secondsFromGMT(for: date)))
-        
-        let somedays = ["2021-09-03",
-                        "2021-09-06",
-                        "2021-09-12",
-                        "2021-09-25"]
-        let dateString : String = dateFormatter.string(from: newDate)
-        
-        if somedays.contains(dateString) { return themeColor?[1] ?? nil }
+
+        guard let reactor = reactor else { return nil }
+        if reactor.currentState.writedDays.contains(date) { return reactor.currentState.themeColor?[1] ?? nil }
         return nil
     }
+    
 }

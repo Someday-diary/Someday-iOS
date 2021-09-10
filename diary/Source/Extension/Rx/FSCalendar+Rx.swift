@@ -43,6 +43,13 @@ extension Reactive where Base: FSCalendar {
             }
     }
     
+    var calendarCurrentPageDidChange: Observable<FSCalendar> {
+        return delegate.methodInvoked(#selector(FSCalendarDelegateAppearance.calendarCurrentPageDidChange(_:)))
+            .map { (params) in
+                return params[0] as! FSCalendar
+            }
+    }
+    
     func setDelegate(_ delegate: FSCalendarDelegateAppearance) -> Disposable {
         return RxFSCalendarDelegateProxy.installForwardDelegate(delegate, retainDelegate: false, onProxyForObject: self.base)
      }

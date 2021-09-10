@@ -163,6 +163,11 @@ final class SideMenuViewController: BaseViewController, View {
         ).asObservable()
         .bind(to: reactor.action)
         .disposed(by: disposeBag)
+        
+        self.rx.viewWillDisappear.asObservable()
+            .map { _ in Reactor.Action.disappear }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 
 }

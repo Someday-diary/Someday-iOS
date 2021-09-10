@@ -13,6 +13,7 @@
 		620BCAC526E5EC730023499D /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620BCAC426E5EC730023499D /* UITextField.swift */; };
 		620BCAC726E5F4610023499D /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620BCAC626E5F4610023499D /* Date.swift */; };
 		620BCAC926E601930023499D /* CreateDiaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620BCAC826E601930023499D /* CreateDiaryButton.swift */; };
+		620BCACB26E8819C0023499D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620BCACA26E8819C0023499D /* String.swift */; };
 		62183EEC26DB3A6600F22EC6 /* DiaryTextField+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62183EEB26DB3A6600F22EC6 /* DiaryTextField+Rx.swift */; };
 		624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2926D6299B004A6624 /* LoginFlow.swift */; };
 		624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2B26D6350A004A6624 /* AppStepper.swift */; };
@@ -92,6 +93,7 @@
 		620BCAC426E5EC730023499D /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		620BCAC626E5F4610023499D /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		620BCAC826E601930023499D /* CreateDiaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDiaryButton.swift; sourceTree = "<group>"; };
+		620BCACA26E8819C0023499D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		62183EEB26DB3A6600F22EC6 /* DiaryTextField+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryTextField+Rx.swift"; sourceTree = "<group>"; };
 		624E4D2926D6299B004A6624 /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
 		624E4D2B26D6350A004A6624 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				6291498A26DEF4E7003CDDE9 /* SnapKit */,
 				620BCAC426E5EC730023499D /* UITextField.swift */,
 				620BCAC626E5F4610023499D /* Date.swift */,
+				620BCACA26E8819C0023499D /* String.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -743,6 +746,7 @@
 				62CB1D3B26DA4F4200B1BA32 /* CustomDelegateProxy.swift in Sources */,
 				62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */,
 				625F4C6126CF8CEC00DC5978 /* AppFlow.swift in Sources */,
+				620BCACB26E8819C0023499D /* String.swift in Sources */,
 				624E4D3526D66EB5004A6624 /* LoginViewReactor.swift in Sources */,
 				62D758D226E474DE009AE551 /* UITextView+RxTheme.swift in Sources */,
 				624E4D3926D85F40004A6624 /* HomeFlow.swift in Sources */,
