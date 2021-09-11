@@ -15,10 +15,9 @@ import SwiftUI
 //    }
 //}
 
-struct ViewPreview: PreviewProvider {
-    static var previews: some View {
-        MainCell().showPreview(width: 400, height: 150)
-    }
-}
+//struct ViewPreview: PreviewProvider {
+//    static var previews: some View {
+//    }
+//}
 
 #endif
