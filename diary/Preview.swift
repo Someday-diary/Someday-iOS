@@ -17,7 +17,7 @@ import SwiftUI
 
 struct ViewPreview: PreviewProvider {
     static var previews: some View {
-        HashtagTextField().showPreview(width: 300, height: 100)
+        MainCell().showPreview(width: 400, height: 150)
     }
 }
 
