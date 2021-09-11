@@ -6,10 +6,9 @@
 //
 import UIKit
 
-import RxSwift
-import RxCocoa
-import RealmSwift
 import ReactorKit
+import RxRelay
+import RealmSwift
 import RxFlow
 
 final class MainViewReactor: Reactor, Stepper {

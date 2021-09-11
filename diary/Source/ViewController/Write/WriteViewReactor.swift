@@ -7,11 +7,10 @@
 
 import Foundation
 
-import RxSwift
-import RxCocoa
-import RxFlow
-import RealmSwift
 import ReactorKit
+import RxRelay
+import RealmSwift
+import RxFlow
 
 final class WriteViewReactor: Reactor, Stepper {
     
