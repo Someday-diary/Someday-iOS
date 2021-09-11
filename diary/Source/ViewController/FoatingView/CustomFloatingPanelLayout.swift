@@ -13,9 +13,8 @@ class CustomFloatingPanelLayout: FloatingPanelLayout {
     let initialState: FloatingPanelState = .tip
     var anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] {
         return [
-//            .full: FloatingPanelLayoutAnchor(absoluteInset: 60.0, edge: .top, referenceGuide: .safeArea),
-            .half: FloatingPanelLayoutAnchor(fractionalInset: 0.25, edge: .bottom, referenceGuide: .safeArea),
-            .tip: FloatingPanelLayoutAnchor(absoluteInset: 65.0, edge: .bottom, referenceGuide: .safeArea),
+            .full: FloatingPanelLayoutAnchor(absoluteInset: 60.0, edge: .top, referenceGuide: .safeArea),
+            .tip: FloatingPanelLayoutAnchor(absoluteInset: 40.0, edge: .bottom, referenceGuide: .safeArea),
         ]
     }
 }
