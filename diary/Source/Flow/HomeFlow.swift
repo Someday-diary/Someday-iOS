@@ -68,7 +68,7 @@ class MainFlow: Flow {
 extension MainFlow {
     
     private func navigateToMain() -> FlowContributors {
-        let reactor = MainViewReactor()
+        let reactor = MainViewReactor(userService: services.userService)
         let viewController = MainViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: false)

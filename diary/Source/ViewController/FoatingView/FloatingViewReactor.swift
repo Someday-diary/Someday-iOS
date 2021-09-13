@@ -17,7 +17,7 @@ final class FloatingViewReactor: Reactor, Stepper {
     let initialState: State
     
     enum Action {
-        
+        case write
     }
     
     enum Mutation {
@@ -25,7 +25,7 @@ final class FloatingViewReactor: Reactor, Stepper {
     }
     
     struct State {
-        
+        var selectedDay: Date = Date().today
     }
     
     init() {
@@ -33,7 +33,11 @@ final class FloatingViewReactor: Reactor, Stepper {
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
-        
+        switch action {
+        case .write:
+            self.steps.accept(DiaryStep.writeIsRequired(self.currentState.selectedDay))
+            return Observable.empty()
+        }
     }
     
     func reduce(state: State, mutation: Mutation) -> State {

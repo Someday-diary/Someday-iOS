@@ -38,9 +38,12 @@ final class MainViewReactor: Reactor, Stepper {
     }
     
     let initialState: State
+    let userService: UserServiceType
     
-    init() {
+    init(userService: UserServiceType) {
         self.initialState = State()
+        
+        self.userService = userService
     }
     
     
@@ -55,7 +58,9 @@ final class MainViewReactor: Reactor, Stepper {
             
         case let .changeDay(newDay):
             if currentState.writedDays.contains(newDay) { print("this is day") }
-            return Observable.just(Mutation.setDay(newDay))
+            
+            return Observable.just(userService.updateDate(to: newDay))
+                .flatMap { _ in Observable.empty() }
             
         case let .changeMonth(newmonth):
             return Observable.just(Mutation.changeWritedDays(newmonth))
