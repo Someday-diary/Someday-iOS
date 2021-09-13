@@ -21,7 +21,7 @@ final class RealmService: RealmServiceType {
     }
     
     func write(_ date: Date, _ data: String, _ tags: String) -> Single<Void> {
-        return Single<Void>.create { single in
+        return Single<Void>.create { (single) -> Disposable in
             
             let diary = RealmDiary().then {
                 $0.date = date.realmString
@@ -42,5 +42,6 @@ final class RealmService: RealmServiceType {
         }
         
     }
+
     
 }
