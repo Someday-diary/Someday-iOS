@@ -8,6 +8,7 @@
 
 import UIKit
 
+import RxAnimated
 import ReactorKit
 
 final class FloatingViewController: BaseViewController, View {
@@ -129,6 +130,8 @@ final class FloatingViewController: BaseViewController, View {
     
     // MARK: - Configuring
     func bind(reactor: FloatingViewReactor) {
-        
+        reactor.state.map { $0.selectedDay.date }
+            .bind(animated: self.dateLabel.rx.animated.flip(.top, duration: 0.3).text)
+            .disposed(by: disposeBag)
     }
 }

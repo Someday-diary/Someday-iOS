@@ -21,15 +21,19 @@ final class FloatingViewReactor: Reactor, Stepper {
     }
     
     enum Mutation {
-        
+        case updateDate(Date)
     }
     
     struct State {
         var selectedDay: Date = Date().today
     }
     
-    init() {
+    let userService: UserServiceType
+    
+    init(userService: UserServiceType) {
         self.initialState = State()
+        
+        self.userService = userService
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -40,7 +44,26 @@ final class FloatingViewReactor: Reactor, Stepper {
         }
     }
     
-    func reduce(state: State, mutation: Mutation) -> State {
+    // Global State
+    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+        let eventMutation = userService.event.flatMap { event -> Observable<Mutation> in
+            switch event {
+            case let .updateDate(newDay):
+                return Observable.just(Mutation.updateDate(newDay))
+            }
+        }
         
+        return Observable.merge(mutation, eventMutation)
+    }
+    
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        
+        switch mutation {
+        case let .updateDate(newDay):
+            state.selectedDay = newDay
+        }
+        
+        return state
     }
 }

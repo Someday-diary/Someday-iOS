@@ -314,9 +314,9 @@
 				624E4D3126D63663004A6624 /* Splash */,
 				625F4C8826D51F2F00DC5978 /* Login */,
 				625F4C6226CF94A300DC5978 /* Main */,
+				628BFD9326EB4F3A00851408 /* FoatingView */,
 				62D758CC26E37B7D009AE551 /* Write */,
 				625A9EB026D8B77A00D65840 /* SideMenu */,
-				628BFD9326EB4F3A00851408 /* FoatingView */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";

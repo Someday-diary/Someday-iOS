@@ -76,7 +76,7 @@ extension MainFlow {
     }
     
     private func presentFloatingPanel() -> FlowContributors {
-        let reactor = FloatingViewReactor()
+        let reactor = FloatingViewReactor(userService: services.userService)
         let fpc = FloatingPanelController().then {
             $0.set(contentViewController: FloatingViewController(reactor: reactor))
             $0.layout = CustomFloatingPanelLayout()

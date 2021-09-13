@@ -21,17 +21,14 @@ final class MainViewReactor: Reactor, Stepper {
         case changeMonth(Date)
         case presentFloatingPanel
         case presentSideMenu
-        case presentWriteView
     }
     
     enum Mutation {
-        case setDay(Date)
         case setColor([UIColor])
         case changeWritedDays(Date)
     }
     
     struct State {
-        var selectedDay: Date = Date().today
         var themeColor: [UIColor]?
         var writedDays: [Date] = []
         var Month: Date = Date()
@@ -69,10 +66,6 @@ final class MainViewReactor: Reactor, Stepper {
             self.steps.accept(DiaryStep.sideMenuIsRequired)
             return Observable.empty()
             
-        case .presentWriteView:
-            self.steps.accept(DiaryStep.writeIsRequired(currentState.selectedDay))
-            return Observable.empty()
-            
         }
     }
     
@@ -81,9 +74,6 @@ final class MainViewReactor: Reactor, Stepper {
         var state = state
         
         switch mutation {
-        
-        case let .setDay(newDay):
-            state.selectedDay = newDay
             
         case let .setColor(newColor):
             state.themeColor = newColor

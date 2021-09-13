@@ -10,4 +10,3 @@ import Then
 protocol ModelType: Codable ,Then {
     
 }
-
