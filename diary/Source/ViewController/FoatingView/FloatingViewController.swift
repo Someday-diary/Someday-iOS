@@ -88,7 +88,7 @@ final class FloatingViewController: BaseViewController, View {
     override func setupLayout() {
         super.setupLayout()
         
-        self.view.theme.backgroundColor = themed { $0.subColor }
+        self.view.backgroundColor = .clear
         self.view.addSubview(self.headerView)
         self.view.addSubview(self.textView)
         self.headerView.addSubview(self.dateView)
@@ -130,6 +130,14 @@ final class FloatingViewController: BaseViewController, View {
     
     // MARK: - Configuring
     func bind(reactor: FloatingViewReactor) {
+        // Input
+        self.editButton.rx.tap.asObservable()
+            .map { Reactor.Action.write }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        
+        // Output
         reactor.state.map { $0.selectedDay.date }
             .bind(animated: self.dateLabel.rx.animated.flip(.top, duration: 0.3).text)
             .disposed(by: disposeBag)

@@ -10,7 +10,7 @@ import RxFlow
 import FloatingPanel
 import SideMenu
 
-class MainFlow: Flow {
+class HomeFlow: Flow {
     
     private let services: AppServices
     
@@ -65,7 +65,7 @@ class MainFlow: Flow {
     
 }
 
-extension MainFlow {
+extension HomeFlow: FloatingPanelControllerDelegate {
     
     private func navigateToMain() -> FlowContributors {
         let reactor = MainViewReactor(userService: services.userService)
@@ -81,7 +81,8 @@ extension MainFlow {
             $0.set(contentViewController: FloatingViewController(reactor: reactor))
             $0.layout = CustomFloatingPanelLayout()
             $0.surfaceView.appearance.cornerRadius = 15
-            $0.surfaceView.appearance.theme.backgroundColor = themed { $0.subColor }
+            $0.delegate = self
+//            $0.surfaceView.appearance.theme.backgroundColor = themed { $0.subColor }
         }
         
         self.rootViewController.present(fpc, animated: true)
@@ -111,5 +112,9 @@ extension MainFlow {
         self.rootViewController.dismiss(animated: true)
         self.rootViewController.present(sideMenuNavController, animated: true, completion: nil)
         return .one(flowContributor: .contribute(withNextPresentable: sideMenuNavController, withNextStepper: reactor))
+    }
+    
+    func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
+        fpc.surfaceView.theme.backgroundColor = fpc.state == .tip ? themed { $0.subColor } : themed { $0.backgroundColor }
     }
 }
