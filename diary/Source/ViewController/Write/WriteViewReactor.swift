@@ -35,7 +35,7 @@ final class WriteViewReactor: Reactor, Stepper {
     
     let initialState: State
     
-    init(_ date: Date) {
+    init(date: Date) {
         self.initialState = State(date: date)
     }
     

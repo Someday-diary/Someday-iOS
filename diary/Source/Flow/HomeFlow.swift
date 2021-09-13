@@ -89,7 +89,7 @@ extension MainFlow {
     }
     
     private func navigateToWrite(_ date: Date) -> FlowContributors {
-        let reactor = WriteViewReactor(date: date, realmService: services.realmService)
+        let reactor = WriteViewReactor(date: date)
         let viewController = WriteViewController(reactor: reactor)
         
         self.rootViewController.dismiss(animated: true)

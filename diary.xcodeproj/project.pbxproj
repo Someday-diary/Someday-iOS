@@ -54,6 +54,7 @@
 		62BA40392690B0FD009B77F3 /* diaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40382690B0FD009B77F3 /* diaryTests.swift */; };
 		62BA40442690B0FD009B77F3 /* diaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40432690B0FD009B77F3 /* diaryUITests.swift */; };
 		62C7D76426ED20B600C3E257 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7D76326ED20B600C3E257 /* DBService.swift */; };
+		62C7D7A226EF4AEB00C3E257 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7D7A126EF4AEB00C3E257 /* UserService.swift */; };
 		62CB1D3526DA4CCB00B1BA32 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB1D3426DA4CCB00B1BA32 /* SideMenuViewController.swift */; };
 		62CB1D3726DA4D3500B1BA32 /* SideMenuViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB1D3626DA4D3500B1BA32 /* SideMenuViewReactor.swift */; };
 		62CB1D3B26DA4F4200B1BA32 /* CustomDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB1D3A26DA4F4200B1BA32 /* CustomDelegateProxy.swift */; };
@@ -146,6 +147,7 @@
 		62BA40432690B0FD009B77F3 /* diaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diaryUITests.swift; sourceTree = "<group>"; };
 		62BA40452690B0FD009B77F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62C7D76326ED20B600C3E257 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
+		62C7D7A126EF4AEB00C3E257 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		62CB1D3426DA4CCB00B1BA32 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		62CB1D3626DA4D3500B1BA32 /* SideMenuViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewReactor.swift; sourceTree = "<group>"; };
 		62CB1D3A26DA4F4200B1BA32 /* CustomDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDelegateProxy.swift; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				62C7D76326ED20B600C3E257 /* DBService.swift */,
+				62C7D7A126EF4AEB00C3E257 /* UserService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -808,6 +811,7 @@
 				628BFD9E26EBA49600851408 /* BaseTableViewCell.swift in Sources */,
 				620BCABB26E4F9F70023499D /* ModelType.swift in Sources */,
 				620BCAC526E5EC730023499D /* UITextField.swift in Sources */,
+				62C7D7A226EF4AEB00C3E257 /* UserService.swift in Sources */,
 				625F4C8326D4675B00DC5978 /* DiaryCalendar.swift in Sources */,
 				62CB1D3526DA4CCB00B1BA32 /* SideMenuViewController.swift in Sources */,
 				625F4C5726CF235F00DC5978 /* UIViewControllerPreview.swift in Sources */,
