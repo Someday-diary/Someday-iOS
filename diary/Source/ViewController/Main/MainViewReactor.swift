@@ -25,22 +25,27 @@ final class MainViewReactor: Reactor, Stepper {
     
     enum Mutation {
         case setColor([UIColor])
-        case changeWritedDays(Date)
+        case setLoading(Bool)
+        case setMonth(Date)
+        case changeWritedDays([RealmDiary])
     }
     
     struct State {
         var themeColor: [UIColor]?
         var writedDays: [Date] = []
-        var Month: Date = Date()
+        var month: Date = Date()
+        var isLoading: Bool = false
     }
     
     let initialState: State
     let userService: UserServiceType
+    let realmService: RealmServiceType
     
-    init(userService: UserServiceType) {
+    init(userService: UserServiceType, realmService: RealmServiceType) {
         self.initialState = State()
         
         self.userService = userService
+        self.realmService = realmService
     }
     
     
@@ -54,13 +59,21 @@ final class MainViewReactor: Reactor, Stepper {
             return Observable.just(Mutation.setColor(newColor))
             
         case let .changeDay(newDay):
-            if currentState.writedDays.contains(newDay) { print("this is day") }
-            
             return Observable.just(userService.updateDate(to: newDay))
                 .flatMap { _ in Observable.empty() }
             
-        case let .changeMonth(newmonth):
-            return Observable.just(Mutation.changeWritedDays(newmonth))
+        case let .changeMonth(newMonth):
+            return Observable.concat([
+                Observable.just(Mutation.setLoading(true)),
+                
+                Observable.just(Mutation.setMonth(newMonth)),
+                
+                realmService.read(query: NSPredicate(format: "date CONTAINS %@", newMonth.toMonthString))
+                    .asObservable()
+                    .flatMap { result in Observable.just(Mutation.changeWritedDays(result)).catchErrorJustReturn(Mutation.changeWritedDays([])) },
+                
+                Observable.just(Mutation.setLoading(false))
+            ])
             
         case .presentSideMenu:
             self.steps.accept(DiaryStep.sideMenuIsRequired)
@@ -78,19 +91,14 @@ final class MainViewReactor: Reactor, Stepper {
         case let .setColor(newColor):
             state.themeColor = newColor
             
-        case let .changeWritedDays(newMonth):
-            let dateFormatter = DateFormatter().then {
-                $0.dateFormat = "yyyy-MM"
-            }
-            let monthStr = dateFormatter.string(from: newMonth)
+        case let .changeWritedDays(month):
+            state.writedDays = month.map { $0.date.realmDate }
             
-            let realm = try! Realm()
-            let query = NSPredicate(format: "date CONTAINS %@", monthStr)
-            let result = realm.objects(RealmDiary.self).filter(query)
+        case let .setMonth(month):
+            state.month = month
             
-            state.writedDays = Array(result).map { $0.date.realmDate }
-            state.Month = newMonth
-            
+        case let .setLoading(isLoading):
+            state.isLoading = isLoading
         }
         
         return state

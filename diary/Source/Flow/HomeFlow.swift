@@ -68,7 +68,7 @@ class HomeFlow: Flow {
 extension HomeFlow: FloatingPanelControllerDelegate {
     
     private func navigateToMain() -> FlowContributors {
-        let reactor = MainViewReactor(userService: services.userService)
+        let reactor = MainViewReactor(userService: services.userService, realmService: services.realmService)
         let viewController = MainViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: false)
@@ -82,7 +82,6 @@ extension HomeFlow: FloatingPanelControllerDelegate {
             $0.layout = CustomFloatingPanelLayout()
             $0.surfaceView.appearance.cornerRadius = 15
             $0.delegate = self
-//            $0.surfaceView.appearance.theme.backgroundColor = themed { $0.subColor }
         }
         
         self.rootViewController.present(fpc, animated: true)

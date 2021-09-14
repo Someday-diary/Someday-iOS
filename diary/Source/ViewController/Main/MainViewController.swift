@@ -161,7 +161,7 @@ final class MainViewController: BaseViewController, View {
             })
             .disposed(by: disposeBag)
         
-        reactor.state.map { $0.Month }.asObservable()
+        reactor.state.map { $0.month }.asObservable()
             .distinctUntilChanged()
             .map { ($0).titleString }
             .bind(to: self.rx.title)

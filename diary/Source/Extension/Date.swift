@@ -48,4 +48,11 @@ extension Date {
         }
         return dateFormatter.string(from: self)
     }
+    
+    var toMonthString: String {
+        let dateFormatter = DateFormatter().then {
+            $0.dateFormat = "yyyy-MM"
+        }
+        return dateFormatter.string(from: self)
+    }
 }
