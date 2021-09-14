@@ -37,11 +37,11 @@ class HomeFlow: Flow {
         case .mainIsRequired:
             return navigateToMain()
             
-        case .floatingPanelIsRequird:
-            return presentFloatingPanel()
+        case let .floatingPanelIsRequird(date):
+            return presentFloatingPanel(date: date)
             
-        case .sideMenuIsRequired:
-            return navigateToSideMenu()
+        case let .sideMenuIsRequired(date):
+            return navigateToSideMenu(date: date)
             
         case let .writeIsRequired(date):
             return navigateToWrite(date)
@@ -75,8 +75,8 @@ extension HomeFlow: FloatingPanelControllerDelegate {
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
-    private func presentFloatingPanel() -> FlowContributors {
-        let reactor = FloatingViewReactor(userService: services.userService)
+    private func presentFloatingPanel(date: Date) -> FlowContributors {
+        let reactor = FloatingViewReactor(userService: services.userService, date: date)
         let fpc = FloatingPanelController().then {
             $0.set(contentViewController: FloatingViewController(reactor: reactor))
             $0.layout = CustomFloatingPanelLayout()
@@ -97,8 +97,8 @@ extension HomeFlow: FloatingPanelControllerDelegate {
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
-    private func navigateToSideMenu() -> FlowContributors {
-        let reactor = SideMenuViewReactor()
+    private func navigateToSideMenu(date: Date) -> FlowContributors {
+        let reactor = SideMenuViewReactor(date: date)
         let viewController = SideMenuViewController(reactor: reactor)
         let sideMenuNavController = SideMenuNavigationController(rootViewController: viewController).then {
             $0.leftSide = true

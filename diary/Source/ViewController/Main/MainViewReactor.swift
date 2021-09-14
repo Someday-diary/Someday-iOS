@@ -27,12 +27,14 @@ final class MainViewReactor: Reactor, Stepper {
         case setColor([UIColor])
         case setLoading(Bool)
         case setMonth(Date)
+        case setCurrentDay(Date)
         case changeWritedDays([RealmDiary])
     }
     
     struct State {
         var themeColor: [UIColor]?
         var writedDays: [Date] = []
+        var currentDay: Date = Date().today
         var month: Date = Date()
         var isLoading: Bool = false
     }
@@ -52,7 +54,7 @@ final class MainViewReactor: Reactor, Stepper {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .presentFloatingPanel:
-            self.steps.accept(DiaryStep.floatingPanelIsRequird)
+            self.steps.accept(DiaryStep.floatingPanelIsRequird(currentState.currentDay))
             return Observable.empty()
             
         case let .changeColor(newColor):
@@ -60,7 +62,7 @@ final class MainViewReactor: Reactor, Stepper {
             
         case let .changeDay(newDay):
             return Observable.just(userService.updateDate(to: newDay))
-                .flatMap { _ in Observable.empty() }
+                .flatMap { _ in Observable.just(Mutation.setCurrentDay(newDay)) }
             
         case let .changeMonth(newMonth):
             return Observable.concat([
@@ -76,7 +78,7 @@ final class MainViewReactor: Reactor, Stepper {
             ])
             
         case .presentSideMenu:
-            self.steps.accept(DiaryStep.sideMenuIsRequired)
+            self.steps.accept(DiaryStep.sideMenuIsRequired(currentState.currentDay))
             return Observable.empty()
             
         }
@@ -96,6 +98,9 @@ final class MainViewReactor: Reactor, Stepper {
             
         case let .setMonth(month):
             state.month = month
+            
+        case let .setCurrentDay(currentDay):
+            state.currentDay = currentDay
             
         case let .setLoading(isLoading):
             state.isLoading = isLoading

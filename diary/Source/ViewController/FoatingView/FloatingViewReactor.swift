@@ -25,13 +25,13 @@ final class FloatingViewReactor: Reactor, Stepper {
     }
     
     struct State {
-        var selectedDay: Date = Date().today
+        var selectedDay: Date
     }
     
     let userService: UserServiceType
     
-    init(userService: UserServiceType) {
-        self.initialState = State()
+    init(userService: UserServiceType, date: Date) {
+        self.initialState = State(selectedDay: date)
         
         self.userService = userService
     }
