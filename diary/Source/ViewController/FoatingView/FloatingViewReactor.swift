@@ -60,7 +60,7 @@ final class FloatingViewReactor: Reactor, Stepper {
                 return Observable.concat([
                     Observable.just(Mutation.updateDate(newDay)),
                     
-                    self.realmService.read(query: NSPredicate(format: "date CONTAINS %@", self.currentState.selectedDay.realmString)).asObservable()
+                    self.realmService.read(query: NSPredicate(format: "date CONTAINS %@", newDay.realmString)).asObservable()
                         .flatMap { result in
                             Observable.just(Mutation.updateDiary(result)).catchErrorJustReturn(Mutation.updateDiary([]))
                         }
@@ -78,11 +78,17 @@ final class FloatingViewReactor: Reactor, Stepper {
         switch mutation {
         
         case let .updateDiary(diary):
-            state.diaryData = diary[0].data
-            state.diaryTags = diary[0].tags
+            if diary.isEmpty {
+                state.diaryData = ""
+                state.diaryTags = ""
+            } else {
+                state.diaryData = diary[0].data
+                state.diaryTags = diary[0].tags
+            }
         
         case let .updateDate(newDay):
             state.selectedDay = newDay
+            
         }
         
         return state
