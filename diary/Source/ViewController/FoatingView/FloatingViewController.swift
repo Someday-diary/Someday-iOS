@@ -141,5 +141,9 @@ final class FloatingViewController: BaseViewController, View {
         reactor.state.map { $0.selectedDay.date }
             .bind(animated: self.dateLabel.rx.animated.flip(.top, duration: 0.3).text)
             .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.diaryData }
+            .bind(to: self.textView.rx.text)
+            .disposed(by: disposeBag)
     }
 }

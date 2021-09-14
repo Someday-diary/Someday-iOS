@@ -22,18 +22,23 @@ final class FloatingViewReactor: Reactor, Stepper {
     
     enum Mutation {
         case updateDate(Date)
+        case updateDiary([RealmDiary])
     }
     
     struct State {
         var selectedDay: Date
+        var diaryData: String = String()
+        var diaryTags: String = String()
     }
     
     let userService: UserServiceType
+    let realmService: RealmServiceType
     
-    init(userService: UserServiceType, date: Date) {
+    init(date: Date, userService: UserServiceType, realmService: RealmServiceType) {
         self.initialState = State(selectedDay: date)
         
         self.userService = userService
+        self.realmService = realmService
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -46,10 +51,21 @@ final class FloatingViewReactor: Reactor, Stepper {
     
     // Global State
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-        let eventMutation = userService.event.flatMap { event -> Observable<Mutation> in
+        let eventMutation = userService.event.flatMap { [weak self] event -> Observable<Mutation> in
+            guard let `self` = self else { return Observable.empty() }
+            
             switch event {
+            
             case let .updateDate(newDay):
-                return Observable.just(Mutation.updateDate(newDay))
+                return Observable.concat([
+                    Observable.just(Mutation.updateDate(newDay)),
+                    
+                    self.realmService.read(query: NSPredicate(format: "date CONTAINS %@", self.currentState.selectedDay.realmString)).asObservable()
+                        .flatMap { result in
+                            Observable.just(Mutation.updateDiary(result)).catchErrorJustReturn(Mutation.updateDiary([]))
+                        }
+                ])
+                
             }
         }
         
@@ -60,6 +76,11 @@ final class FloatingViewReactor: Reactor, Stepper {
         var state = state
         
         switch mutation {
+        
+        case let .updateDiary(diary):
+            state.diaryData = diary[0].data
+            state.diaryTags = diary[0].tags
+        
         case let .updateDate(newDay):
             state.selectedDay = newDay
         }

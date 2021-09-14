@@ -76,7 +76,7 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     }
     
     private func presentFloatingPanel(date: Date) -> FlowContributors {
-        let reactor = FloatingViewReactor(userService: services.userService, date: date)
+        let reactor = FloatingViewReactor(date: date, userService: services.userService, realmService: services.realmService)
         let fpc = FloatingPanelController().then {
             $0.set(contentViewController: FloatingViewController(reactor: reactor))
             $0.layout = CustomFloatingPanelLayout()
