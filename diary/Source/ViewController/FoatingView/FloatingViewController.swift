@@ -8,6 +8,7 @@
 
 import UIKit
 
+import ActiveLabel
 import RxAnimated
 import ReactorKit
 
@@ -21,11 +22,11 @@ final class FloatingViewController: BaseViewController, View {
         static let side = 30.f
         
         // HeaderView
-        static let headerTop = 20.f
+        static let headerTop = 30.f
         static let headerHeight = 30.f
         
         // DateView
-        static let dateViewTop = 25.f
+        static let dateViewTop = 35.f
         static let dateViewSize = 30.f
     }
     
@@ -34,6 +35,10 @@ final class FloatingViewController: BaseViewController, View {
         static let dateFont = UIFont.systemFont(ofSize: 14, weight: .medium)
         // Edit Button
         static let buttonFont = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        // Text View
+        static let textViewFont = UIFont.systemFont(ofSize: 16, weight: .regular)
+        // Tag Label
+        static let tagLabelFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
     }
     
     
@@ -61,10 +66,29 @@ final class FloatingViewController: BaseViewController, View {
         $0.titleLabel?.font = Font.buttonFont
     }
     
+    let hashtagLabel = ActiveLabel().then {
+        $0.enabledTypes = [.hashtag]
+        $0.hashtagColor = R.color.greenThemeMainColor()!
+        $0.adjustsFontForContentSizeCategory = true
+        $0.handleHashtagTap {
+            print("\($0) tapped")
+        }
+        $0.configureLinkAttribute = { type, attributes, isSelected in
+            var atts = attributes
+            switch type {
+            case .hashtag:
+                atts[NSAttributedString.Key.font] = Font.tagLabelFont
+            default: ()
+            }
+            return atts
+        }
+    }
+    
     let textView = UITextView().then {
         $0.isEditable = false
         $0.isScrollEnabled = false
         $0.backgroundColor = .clear
+        $0.font = Font.textViewFont
     }
     
     // MARK: - Inintializing
@@ -92,6 +116,7 @@ final class FloatingViewController: BaseViewController, View {
         self.view.addSubview(self.headerView)
         self.view.addSubview(self.textView)
         self.headerView.addSubview(self.dateView)
+        self.headerView.addSubview(self.hashtagLabel)
         self.headerView.addSubview(self.editButton)
         self.dateView.addSubview(self.dateLabel)
     }
@@ -121,9 +146,16 @@ final class FloatingViewController: BaseViewController, View {
         self.dateLabel.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
+        self.hashtagLabel.snp.makeConstraints {
+            $0.left.equalTo(self.dateView.snp.right).offset(20)
+            $0.right.equalTo(self.editButton.snp.left).offset(-20)
+            $0.centerY.equalToSuperview()
+        }
 
         self.editButton.snp.makeConstraints {
             $0.right.centerY.equalToSuperview()
+            $0.width.equalTo(30)
         }
         
     }
@@ -144,6 +176,10 @@ final class FloatingViewController: BaseViewController, View {
         
         reactor.state.map { $0.diaryData }
             .bind(to: self.textView.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.diaryTags }
+            .bind(to: self.hashtagLabel.rx.text)
             .disposed(by: disposeBag)
     }
 }

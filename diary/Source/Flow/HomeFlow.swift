@@ -76,11 +76,15 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     }
     
     private func presentFloatingPanel(date: Date) -> FlowContributors {
+        let shadow = SurfaceAppearance.Shadow().then {
+            $0.color = #colorLiteral(red: 0.2352941176, green: 0.2352941176, blue: 0.2352941176, alpha: 1)
+        }
         let reactor = FloatingViewReactor(date: date, userService: services.userService, realmService: services.realmService)
         let fpc = FloatingPanelController().then {
             $0.set(contentViewController: FloatingViewController(reactor: reactor))
             $0.layout = CustomFloatingPanelLayout()
-            $0.surfaceView.appearance.cornerRadius = 15
+            $0.surfaceView.appearance.cornerRadius = 25
+            $0.surfaceView.appearance.shadows = [shadow]
             $0.delegate = self
         }
         
