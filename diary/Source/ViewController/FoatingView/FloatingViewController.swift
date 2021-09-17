@@ -60,6 +60,12 @@ final class FloatingViewController: BaseViewController, View {
         $0.text = "24"
     }
     
+    let createButton = UIButton().then {
+        $0.setTitle("일기 작성", for: .normal)
+        $0.setTitleColor(.black, for: .normal)
+        $0.titleLabel?.font = Font.buttonFont
+    }
+    
     let editButton = UIButton().then {
         $0.setTitle("수정", for: .normal)
         $0.setTitleColor(.black, for: .normal)
@@ -68,7 +74,9 @@ final class FloatingViewController: BaseViewController, View {
     
     let hashtagLabel = ActiveLabel().then {
         $0.enabledTypes = [.hashtag]
-        $0.hashtagColor = R.color.greenThemeMainColor()!
+        $0.theme.textColor = themed { $0.thirdColor }
+        $0.hashtagColor = R.color.greenThemeThirdColor()!
+        $0.font = Font.tagLabelFont
         $0.adjustsFontForContentSizeCategory = true
         $0.handleHashtagTap {
             print("\($0) tapped")
@@ -117,6 +125,7 @@ final class FloatingViewController: BaseViewController, View {
         self.view.addSubview(self.textView)
         self.headerView.addSubview(self.dateView)
         self.headerView.addSubview(self.hashtagLabel)
+        self.headerView.addSubview(self.createButton)
         self.headerView.addSubview(self.editButton)
         self.dateView.addSubview(self.dateLabel)
     }
@@ -148,14 +157,19 @@ final class FloatingViewController: BaseViewController, View {
         }
         
         self.hashtagLabel.snp.makeConstraints {
-            $0.left.equalTo(self.dateView.snp.right).offset(20)
-            $0.right.equalTo(self.editButton.snp.left).offset(-20)
+            $0.left.equalTo(self.dateView.snp.right).offset(15)
+            $0.right.equalTo(self.editButton.snp.left).offset(-5)
             $0.centerY.equalToSuperview()
         }
 
         self.editButton.snp.makeConstraints {
             $0.right.centerY.equalToSuperview()
-            $0.width.equalTo(30)
+            $0.width.equalTo(50)
+        }
+        
+        self.createButton.snp.makeConstraints {
+            $0.right.centerY.equalToSuperview()
+            $0.width.equalTo(70)
         }
         
     }
@@ -163,11 +177,15 @@ final class FloatingViewController: BaseViewController, View {
     // MARK: - Configuring
     func bind(reactor: FloatingViewReactor) {
         // Input
-        self.editButton.rx.tap.asObservable()
+        self.createButton.rx.tap.asObservable()
             .map { Reactor.Action.write }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        self.rx.viewDidLoad.asObservable()
+            .map { _ in Reactor.Action.updateDiary }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
         // Output
         reactor.state.map { $0.selectedDay.date }
@@ -180,6 +198,15 @@ final class FloatingViewController: BaseViewController, View {
         
         reactor.state.map { $0.diaryTags }
             .bind(to: self.hashtagLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.createState }
+            .map { !$0 }
+            .bind(to: self.createButton.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.createState }
+            .bind(to: self.editButton.rx.isHidden)
             .disposed(by: disposeBag)
     }
 }
