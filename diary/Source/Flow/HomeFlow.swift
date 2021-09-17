@@ -10,7 +10,7 @@ import RxFlow
 import FloatingPanel
 import SideMenu
 
-class MainFlow: Flow {
+class HomeFlow: Flow {
     
     private let services: AppServices
     
@@ -37,12 +37,11 @@ class MainFlow: Flow {
         case .mainIsRequired:
             return navigateToMain()
             
-        case .floatingPanelIsRequird:
-            presentFloatingPanel()
-            return .none
+        case let .floatingPanelIsRequird(date):
+            return presentFloatingPanel(date: date)
             
-        case .sideMenuIsRequired:
-            return navigateToSideMenu()
+        case let .sideMenuIsRequired(date):
+            return navigateToSideMenu(date: date)
             
         case let .writeIsRequired(date):
             return navigateToWrite(date)
@@ -66,25 +65,35 @@ class MainFlow: Flow {
     
 }
 
-extension MainFlow {
+extension HomeFlow: FloatingPanelControllerDelegate {
     
     private func navigateToMain() -> FlowContributors {
-        let reactor = MainViewReactor()
+        let reactor = MainViewReactor(userService: services.userService, realmService: services.realmService)
         let viewController = MainViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: false)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
-    private func presentFloatingPanel() {
-        let fpc = FloatingPanelController()
-        fpc.set(contentViewController: UIViewController())
+    private func presentFloatingPanel(date: Date) -> FlowContributors {
+        let shadow = SurfaceAppearance.Shadow().then {
+            $0.color = #colorLiteral(red: 0.2352941176, green: 0.2352941176, blue: 0.2352941176, alpha: 1)
+        }
+        let reactor = FloatingViewReactor(date: date, userService: services.userService, realmService: services.realmService)
+        let fpc = FloatingPanelController().then {
+            $0.set(contentViewController: FloatingViewController(reactor: reactor))
+            $0.layout = CustomFloatingPanelLayout()
+            $0.surfaceView.appearance.cornerRadius = 25
+            $0.surfaceView.appearance.shadows = [shadow]
+            $0.delegate = self
+        }
         
         self.rootViewController.present(fpc, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: fpc, withNextStepper: reactor))
     }
     
     private func navigateToWrite(_ date: Date) -> FlowContributors {
-        let reactor = WriteViewReactor(date)
+        let reactor = WriteViewReactor(date: date)
         let viewController = WriteViewController(reactor: reactor)
         
         self.rootViewController.dismiss(animated: true)
@@ -92,8 +101,8 @@ extension MainFlow {
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
-    private func navigateToSideMenu() -> FlowContributors {
-        let reactor = SideMenuViewReactor()
+    private func navigateToSideMenu(date: Date) -> FlowContributors {
+        let reactor = SideMenuViewReactor(date: date)
         let viewController = SideMenuViewController(reactor: reactor)
         let sideMenuNavController = SideMenuNavigationController(rootViewController: viewController).then {
             $0.leftSide = true
@@ -106,5 +115,9 @@ extension MainFlow {
         self.rootViewController.dismiss(animated: true)
         self.rootViewController.present(sideMenuNavController, animated: true, completion: nil)
         return .one(flowContributor: .contribute(withNextPresentable: sideMenuNavController, withNextStepper: reactor))
+    }
+    
+    func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
+        fpc.surfaceView.theme.backgroundColor = fpc.state == .tip ? themed { $0.subColor } : themed { $0.backgroundColor }
     }
 }

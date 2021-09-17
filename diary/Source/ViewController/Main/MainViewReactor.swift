@@ -6,10 +6,9 @@
 //
 import UIKit
 
-import RxSwift
-import RxCocoa
-import RealmSwift
 import ReactorKit
+import RxRelay
+import RealmSwift
 import RxFlow
 
 final class MainViewReactor: Reactor, Stepper {
@@ -22,52 +21,64 @@ final class MainViewReactor: Reactor, Stepper {
         case changeMonth(Date)
         case presentFloatingPanel
         case presentSideMenu
-        case presentWriteView
     }
     
     enum Mutation {
-        case setDay(Date)
         case setColor([UIColor])
-        case changeWritedDays(Date)
+        case setLoading(Bool)
         case setMonth(Date)
+        case setCurrentDay(Date)
+        case changeWritedDays([RealmDiary])
     }
     
     struct State {
-        var selectedDay: Date = Date().today
         var themeColor: [UIColor]?
         var writedDays: [Date] = []
-        var Month: Date = Date()
+        var currentDay: Date = Date().today
+        var month: Date = Date()
+        var isLoading: Bool = false
     }
     
     let initialState: State
+    let userService: UserServiceType
+    let realmService: RealmServiceType
     
-    init() {
+    init(userService: UserServiceType, realmService: RealmServiceType) {
         self.initialState = State()
+        
+        self.userService = userService
+        self.realmService = realmService
     }
     
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .presentFloatingPanel:
-            self.steps.accept(DiaryStep.floatingPanelIsRequird)
+            self.steps.accept(DiaryStep.floatingPanelIsRequird(currentState.currentDay))
             return Observable.empty()
-        
+            
         case let .changeColor(newColor):
             return Observable.just(Mutation.setColor(newColor))
-
+            
         case let .changeDay(newDay):
-            if currentState.writedDays.contains(newDay) { print("this is day")}
-            return Observable.just(Mutation.setDay(newDay))
+            return Observable.just(userService.updateDate(to: newDay))
+                .flatMap { _ in Observable.just(Mutation.setCurrentDay(newDay)) }
             
-        case let .changeMonth(newmonth):
-            return Observable.just(Mutation.changeWritedDays(newmonth))
-        
+        case let .changeMonth(newMonth):
+            return Observable.concat([
+                Observable.just(Mutation.setLoading(true)),
+                
+                Observable.just(Mutation.setMonth(newMonth)),
+                
+                realmService.read(query: NSPredicate(format: "date CONTAINS %@", newMonth.toMonthString))
+                    .asObservable()
+                    .flatMap { result in Observable.just(Mutation.changeWritedDays(result)).catchErrorJustReturn(Mutation.changeWritedDays([])) },
+                
+                Observable.just(Mutation.setLoading(false))
+            ])
+            
         case .presentSideMenu:
-            self.steps.accept(DiaryStep.sideMenuIsRequired)
-            return Observable.empty()
-            
-        case .presentWriteView:
-            self.steps.accept(DiaryStep.writeIsRequired(currentState.selectedDay))
+            self.steps.accept(DiaryStep.sideMenuIsRequired(currentState.currentDay))
             return Observable.empty()
             
         }
@@ -78,27 +89,21 @@ final class MainViewReactor: Reactor, Stepper {
         var state = state
         
         switch mutation {
-        
-        case let .setDay(newDay):
-            state.selectedDay = newDay
             
         case let .setColor(newColor):
             state.themeColor = newColor
             
-        case let .changeWritedDays(newMonth):
-            let dateFormatter = DateFormatter().then {
-                $0.dateFormat = "yyyy-MM"
-            }
-            let monthStr = dateFormatter.string(from: newMonth)
+        case let .changeWritedDays(month):
+            state.writedDays = month.map { $0.date.realmDate }
             
-            let realm = try! Realm()
-            let query = NSPredicate(format: "date CONTAINS %@", monthStr)
-            let result = realm.objects(RealmDiary.self).filter(query)
+        case let .setMonth(month):
+            state.month = month
             
-            state.writedDays = Array(result).map { $0.date.realmDate }
+        case let .setCurrentDay(currentDay):
+            state.currentDay = currentDay
             
-        case let .setMonth(newMonth):
-            state.Month =  newMonth
+        case let .setLoading(isLoading):
+            state.isLoading = isLoading
         }
         
         return state

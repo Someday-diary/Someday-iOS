@@ -84,6 +84,7 @@ final class MainViewController: BaseViewController, View {
     }
     
     override func setupConstraints() {
+        super.setupConstraints()
         
         self.calendarView.snp.makeConstraints {
             $0.bottom.equalTo(self.separatorView.snp.top).offset(-Metric.calendarBottom)
@@ -161,10 +162,15 @@ final class MainViewController: BaseViewController, View {
             })
             .disposed(by: disposeBag)
         
-        reactor.state.map { $0.Month }.asObservable()
+        reactor.state.map { $0.month }.asObservable()
             .distinctUntilChanged()
             .map { ($0).titleString }
             .bind(to: self.rx.title)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isLoading }.asObservable()
+            .distinctUntilChanged()
+            .bind(to: self.activityIndicatorView.rx.isAnimating)
             .disposed(by: disposeBag)
         
         // View

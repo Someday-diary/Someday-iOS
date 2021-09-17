@@ -1,4 +1,5 @@
 PODS:
+  - ActiveLabel (1.1.0)
   - Alamofire (5.4.3)
   - Carte (2.2.1)
   - CGFloatLiteral (0.5.0)
@@ -66,6 +67,7 @@ PODS:
   - WeakMapTable (1.2.0)
 
 DEPENDENCIES:
+  - ActiveLabel
   - Carte
   - CGFloatLiteral
   - FloatingPanel
@@ -91,6 +93,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ActiveLabel
     - Alamofire
     - Carte
     - CGFloatLiteral
@@ -122,6 +125,7 @@ SPEC REPOS:
     - WeakMapTable
 
 SPEC CHECKSUMS:
+  ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   Carte: 6bcff4eaa894ff5b979d646de833fec96e04a38c
   CGFloatLiteral: 0328648f666e3cb2263d5ee3972df9d320786d25
@@ -152,6 +156,6 @@ SPEC CHECKSUMS:
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 90ab275675568e7e56252351120075e76e10fc61
+PODFILE CHECKSUM: b3bcb8f16fb327b746cb9f133d8fb444aa5aad35
 
 COCOAPODS: 1.10.1

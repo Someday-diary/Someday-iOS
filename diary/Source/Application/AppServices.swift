@@ -10,11 +10,17 @@ import SnapKit
 import Then
 import RxTheme
 import CGFloatLiteral
+import RealmSwift
 import Rswift
 
 struct AppServices {
+    let realmService: RealmServiceType
+    let userService: UserServiceType
     
     init() {
+        let realm = try! Realm()
         
+        self.realmService = RealmService(realm: realm)
+        self.userService = UserService()
     }
 }

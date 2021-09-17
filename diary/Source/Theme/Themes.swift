@@ -15,10 +15,12 @@ protocol Theme {
     var thirdColor: UIColor { get }
     var buttonDisableColor: UIColor { get }
     var loginIllustration: UIImage { get }
+    var backgroundColor: UIColor { get }
 }
 
 extension Theme {
     var buttonDisableColor: UIColor { R.color.diaryButtonDisabled()! }
+    var backgroundColor: UIColor { .systemBackground }
 }
 
 struct GreenTheme: Theme {

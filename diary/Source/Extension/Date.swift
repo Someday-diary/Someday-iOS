@@ -41,4 +41,18 @@ extension Date {
     var changeTime: Date {
         return self.addingTimeInterval(TimeInterval(TimeZone.current.secondsFromGMT()))
     }
+    
+    var date: String {
+        let dateFormatter = DateFormatter().then {
+            $0.dateFormat = "dd"
+        }
+        return dateFormatter.string(from: self)
+    }
+    
+    var toMonthString: String {
+        let dateFormatter = DateFormatter().then {
+            $0.dateFormat = "yyyy-MM"
+        }
+        return dateFormatter.string(from: self)
+    }
 }

@@ -7,11 +7,10 @@
 
 import Foundation
 
-import RxSwift
-import RxCocoa
-import RxFlow
-import RealmSwift
 import ReactorKit
+import RxRelay
+import RealmSwift
+import RxFlow
 
 final class WriteViewReactor: Reactor, Stepper {
     
@@ -36,7 +35,7 @@ final class WriteViewReactor: Reactor, Stepper {
     
     let initialState: State
     
-    init(_ date: Date) {
+    init(date: Date) {
         self.initialState = State(date: date)
     }
     

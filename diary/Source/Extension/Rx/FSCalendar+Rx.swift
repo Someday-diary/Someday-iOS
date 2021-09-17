@@ -36,10 +36,7 @@ extension Reactive where Base: FSCalendar {
     var didSelect: Observable<Date> {
         return delegate.methodInvoked(#selector(FSCalendarDelegateAppearance.calendar(_:didSelect:at:)))
             .map { (params) in
-                // date time adding
-                let date = params[1] as! Date
-                let newDate = date.addingTimeInterval(TimeInterval(TimeZone.current.secondsFromGMT(for: date)))
-                return newDate
+                return params[1] as! Date
             }
     }
     

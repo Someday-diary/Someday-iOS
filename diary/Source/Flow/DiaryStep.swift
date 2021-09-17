@@ -20,7 +20,7 @@ enum DiaryStep: Step {
     case registerIsRequired
     
     // MARK: - Home
-    case sideMenuIsRequired
+    case sideMenuIsRequired(Date)
     case writeIsRequired(Date)
-    case floatingPanelIsRequird
+    case floatingPanelIsRequird(Date)
 }

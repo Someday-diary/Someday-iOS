@@ -31,13 +31,13 @@ final class SideMenuViewReactor: Reactor, Stepper {
     }
     
     struct State {
-        
+        var date: Date
     }
     
     let initialState: State
     
-    init() {
-        self.initialState = State()
+    init(date: Date) {
+        self.initialState = State(date: date)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -69,7 +69,7 @@ final class SideMenuViewReactor: Reactor, Stepper {
             return Observable.empty()
             
         case .disappear:
-            self.steps.accept(DiaryStep.floatingPanelIsRequird)
+            self.steps.accept(DiaryStep.floatingPanelIsRequird(currentState.date))
             return Observable.empty()
             
         }
