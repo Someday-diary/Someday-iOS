@@ -16,13 +16,12 @@ class SplashViewController: BaseViewController, View {
     // MARK: - Constants
     fileprivate struct Metric {
         // Image
-        static let imageHeight = 291.f
-        static let imageWidth = 315.f
-        static let imageRight = 33.f
-        static let imageBottom = 75.f
+        static let imageHeight = 130.f
+        static let imageWidth = 94.f
+        static let imageTop = 250.f
         
         // Title Label
-        static let labelTop = 140.f
+        static let labelTop = 30.f
         static let labelLeft = 50.f
     }
     
@@ -34,11 +33,12 @@ class SplashViewController: BaseViewController, View {
     
     // MARK: - UI
     let splashImage = UIImageView().then {
-        $0.image = R.image.mainIllustration()
+        $0.theme.image = themed { $0.mainIllustration }
     }
     
     let titleLabel = UILabel().then {
-        $0.text = "DIARY"
+        $0.text = "오늘 하루"
+        $0.theme.textColor = themed { $0.thirdColor }
         $0.font = Font.titleFont
     }
     
@@ -72,13 +72,13 @@ class SplashViewController: BaseViewController, View {
         self.splashImage.snp.makeConstraints {
             $0.width.equalTo(Metric.imageWidth)
             $0.height.equalTo(Metric.imageHeight)
-            $0.bottom.equalToSafeArea(self.view).offset(-Metric.imageBottom)
-            $0.right.equalToSafeArea(self.view).offset(Metric.imageRight)
+            $0.top.equalToSafeArea(self.view).offset(Metric.imageTop)
+            $0.centerX.equalToSafeArea(self.view)
         }
         
         self.titleLabel.snp.makeConstraints {
-            $0.top.equalToSafeArea(self.view).offset(Metric.labelTop)
-            $0.left.equalToSafeArea(self.view).offset(Metric.labelLeft)
+            $0.top.equalTo(self.splashImage.snp.bottom).offset(Metric.labelTop)
+            $0.centerX.equalToSafeArea(self.view)
         }
         
     }
