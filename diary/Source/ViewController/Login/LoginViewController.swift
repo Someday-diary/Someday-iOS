@@ -27,9 +27,9 @@ class LoginViewController: BaseViewController, View {
         static let buttonSide = 44.f
         
         // Image
-        static let imageHeight = 173.f
-        static let imageWidth = 242.f
-        static let imageLeft = 33.f
+        static let imageHeight = 70.f
+        static let imageWidth = 50.f
+        static let imageTop = 60.f
     }
     
     fileprivate struct Font {
@@ -37,13 +37,6 @@ class LoginViewController: BaseViewController, View {
     }
     
     // MARK: - UI
-    let titleLabel = UILabel().then {
-        $0.text = "DIARY"
-        $0.textAlignment = .left
-        $0.theme.textColor = themed { $0.mainColor }
-        $0.font = Font.titleFont
-    }
-    
     let idTextField = DiaryTextField().then {
         $0.textField.placeholder = "ID"
         $0.textField.keyboardType = .emailAddress
@@ -86,7 +79,6 @@ class LoginViewController: BaseViewController, View {
         
         self.view.addSubview(self.idTextField)
         self.view.addSubview(self.passwordTextField)
-        self.view.addSubview(self.titleLabel)
         self.view.addSubview(self.loginButton)
         self.view.addSubview(self.loginImageView)
     }
@@ -94,15 +86,10 @@ class LoginViewController: BaseViewController, View {
     override func setupConstraints() {
         super.setupConstraints()
         
-        self.titleLabel.snp.makeConstraints {
-            $0.top.equalToSafeArea(self.view).offset(Metric.titleLabelTop)
-            $0.centerX.equalToSafeArea(self.view)
-        }
-        
         self.idTextField.snp.makeConstraints {
             $0.left.equalToSafeArea(self.view).offset(Metric.textFieldSide)
             $0.right.equalToSafeArea(self.view).offset(-Metric.textFieldSide)
-            $0.bottom.equalTo(self.titleLabel.snp.bottom).offset(self.view.frame.height / 5)
+            $0.bottom.equalTo(self.loginImageView.snp.bottom).offset(self.view.frame.height / 5.5)
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
@@ -123,8 +110,8 @@ class LoginViewController: BaseViewController, View {
         self.loginImageView.snp.makeConstraints {
             $0.height.equalTo(Metric.imageHeight)
             $0.width.equalTo(Metric.imageWidth)
-            $0.bottom.equalToSafeArea(self.view)
-            $0.left.equalToSafeArea(self.view).offset(Metric.imageLeft)
+            $0.top.equalToSafeArea(self.view).offset(Metric.imageTop)
+            $0.centerX.equalToSafeArea(self.view)
         }
     }
     
