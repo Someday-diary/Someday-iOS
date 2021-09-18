@@ -26,7 +26,7 @@ class SplashViewController: BaseViewController, View {
     }
     
     fileprivate struct Font {
-        static let titleFont = UIFont.systemFont(ofSize: 32, weight: .regular)
+        static let titleFont = UIFont.systemFont(ofSize: 28, weight: .light)
     }
     
     // MARK: - Properties
