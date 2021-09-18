@@ -8,12 +8,12 @@
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
 
-//struct ViewControllerPreview: PreviewProvider {
-//    static var previews: some View {
-//        let reactor = WriteViewReactor()
-//        WriteViewController(reactor: reactor).showPreview(.iPhone12Pro)
-//    }
-//}
+struct ViewControllerPreview: PreviewProvider {
+    static var previews: some View {
+        let reactor = SplashViewReactor()
+        SplashViewController(reactor: reactor).showPreview(.iPhone12Pro)
+    }
+}
 
 //struct ViewPreview: PreviewProvider {
 //    static var previews: some View {

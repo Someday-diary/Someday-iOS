@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "BlueIllustration@1x.png",
+      "filename" : "MainIconBlueTheme.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "BlueIllustration@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "BlueIllustration@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
