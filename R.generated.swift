@@ -415,7 +415,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 16 images.
+  /// This `R.image` struct is generated, and contains static references to 15 images.
   struct image {
     /// Image `Add`.
     static let add = Rswift.ImageResource(bundle: R.hostingBundle, name: "Add")
@@ -423,8 +423,6 @@ struct R: Rswift.Validatable {
     static let alarmIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "AlarmIcon")
     /// Image `BackButton`.
     static let backButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "BackButton")
-    /// Image `BlueIllustration`.
-    static let blueIllustration = Rswift.ImageResource(bundle: R.hostingBundle, name: "BlueIllustration")
     /// Image `CalendarAsset`.
     static let calendarAsset = Rswift.ImageResource(bundle: R.hostingBundle, name: "CalendarAsset")
     /// Image `CalendarBackButton`.
@@ -437,14 +435,14 @@ struct R: Rswift.Validatable {
     static let dismissButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "DismissButton")
     /// Image `FeedbackIcon`.
     static let feedbackIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "FeedbackIcon")
-    /// Image `GreenIllustration`.
-    static let greenIllustration = Rswift.ImageResource(bundle: R.hostingBundle, name: "GreenIllustration")
     /// Image `LockIcon`.
     static let lockIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "LockIcon")
     /// Image `LogoutIcon`.
     static let logoutIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "LogoutIcon")
-    /// Image `MainIllustration`.
-    static let mainIllustration = Rswift.ImageResource(bundle: R.hostingBundle, name: "MainIllustration")
+    /// Image `MainIconBlueTheme`.
+    static let mainIconBlueTheme = Rswift.ImageResource(bundle: R.hostingBundle, name: "MainIconBlueTheme")
+    /// Image `MainIconGreenTheme`.
+    static let mainIconGreenTheme = Rswift.ImageResource(bundle: R.hostingBundle, name: "MainIconGreenTheme")
     /// Image `OpenSourceIcon`.
     static let openSourceIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "OpenSourceIcon")
     /// Image `ThemeIcon`.
@@ -468,13 +466,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "BackButton", bundle: ..., traitCollection: ...)`
     static func backButton(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.backButton, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "BlueIllustration", bundle: ..., traitCollection: ...)`
-    static func blueIllustration(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.blueIllustration, compatibleWith: traitCollection)
     }
     #endif
 
@@ -521,13 +512,6 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "GreenIllustration", bundle: ..., traitCollection: ...)`
-    static func greenIllustration(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.greenIllustration, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "LockIcon", bundle: ..., traitCollection: ...)`
     static func lockIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.lockIcon, compatibleWith: traitCollection)
@@ -542,9 +526,16 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "MainIllustration", bundle: ..., traitCollection: ...)`
-    static func mainIllustration(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.mainIllustration, compatibleWith: traitCollection)
+    /// `UIImage(named: "MainIconBlueTheme", bundle: ..., traitCollection: ...)`
+    static func mainIconBlueTheme(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.mainIconBlueTheme, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "MainIconGreenTheme", bundle: ..., traitCollection: ...)`
+    static func mainIconGreenTheme(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.mainIconGreenTheme, compatibleWith: traitCollection)
     }
     #endif
 

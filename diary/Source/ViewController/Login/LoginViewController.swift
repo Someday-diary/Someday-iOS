@@ -58,7 +58,7 @@ class LoginViewController: BaseViewController, View {
     let loginButton = DiaryButton()
     
     let loginImageView = UIImageView().then {
-        $0.theme.image = themed { $0.loginIllustration }
+        $0.theme.image = themed { $0.mainIllustration }
     }
     
     // MARK: - Initializing

@@ -14,7 +14,7 @@ protocol Theme {
     var subColor: UIColor { get }
     var thirdColor: UIColor { get }
     var buttonDisableColor: UIColor { get }
-    var loginIllustration: UIImage { get }
+    var mainIllustration: UIImage { get }
     var backgroundColor: UIColor { get }
 }
 
@@ -27,14 +27,14 @@ struct GreenTheme: Theme {
     let mainColor: UIColor = R.color.greenThemeMainColor()!
     let subColor: UIColor = R.color.greenThemeSubColor()!
     let thirdColor: UIColor = R.color.greenThemeThirdColor()!
-    let loginIllustration: UIImage = R.image.greenIllustration()!
+    let mainIllustration: UIImage = R.image.mainIconGreenTheme()!
 }
 
 struct BlueTheme: Theme {
     let mainColor: UIColor = R.color.blueThemeMainColor()!
     let subColor: UIColor = R.color.blueThemeSubColor()!
     let thirdColor: UIColor = R.color.blueThemeThirdColor()!
-    let loginIllustration: UIImage = R.image.blueIllustration()!
+    let mainIllustration: UIImage = R.image.mainIconBlueTheme()!
 }
 
 enum ThemeType: ThemeProvider {
