@@ -18,11 +18,11 @@ final class DiaryTextField: UIView {
     fileprivate struct Metric {
         // textField
         static let textFieldTop = 5.f
-        static let textFieldSide = 11.f
+        static let textFieldSide = 7.f
         
         // separator
-        static let separatorTop = 5.f
-        static let separatorHeight = 2.f
+        static let separatorTop = 4.f
+        static let separatorHeight = 1.f
     }
     
     fileprivate struct Font {
@@ -71,8 +71,8 @@ final class DiaryTextField: UIView {
         
         self.textField.snp.makeConstraints {
             $0.top.equalTo(self.eventLabel.snp.bottom).offset(Metric.textFieldTop)
-            $0.left.equalToSuperview().offset(11)
-            $0.right.equalToSuperview().offset(-11)
+            $0.left.equalToSuperview().offset(Metric.textFieldSide)
+            $0.right.equalToSuperview().offset(-Metric.textFieldSide)
         }
         
         self.separatorView.snp.makeConstraints {
