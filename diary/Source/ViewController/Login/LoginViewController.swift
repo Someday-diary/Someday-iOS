@@ -34,6 +34,7 @@ class LoginViewController: BaseViewController, View {
     
     fileprivate struct Font {
         static var titleFont = UIFont.systemFont(ofSize: 32, weight: .semibold)
+        static var buttonFont = UIFont.systemFont(ofSize: 18, weight: .bold)
     }
     
     // MARK: - UI
@@ -48,7 +49,11 @@ class LoginViewController: BaseViewController, View {
         $0.textField.isSecureTextEntry = true
     }
     
-    let loginButton = DiaryButton()
+    let loginButton = DiaryButton(type: .system).then {
+        $0.setTitle("로그인", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = Font.buttonFont
+    }
     
     let loginImageView = UIImageView().then {
         $0.theme.image = themed { $0.mainIllustration }
@@ -86,6 +91,13 @@ class LoginViewController: BaseViewController, View {
     override func setupConstraints() {
         super.setupConstraints()
         
+        self.loginImageView.snp.makeConstraints {
+            $0.height.equalTo(Metric.imageHeight)
+            $0.width.equalTo(Metric.imageWidth)
+            $0.top.equalToSafeArea(self.view).offset(Metric.imageTop)
+            $0.centerX.equalToSafeArea(self.view)
+        }
+        
         self.idTextField.snp.makeConstraints {
             $0.left.equalToSafeArea(self.view).offset(Metric.textFieldSide)
             $0.right.equalToSafeArea(self.view).offset(-Metric.textFieldSide)
@@ -107,12 +119,6 @@ class LoginViewController: BaseViewController, View {
             $0.height.equalTo(Metric.buttonHeight)
         }
         
-        self.loginImageView.snp.makeConstraints {
-            $0.height.equalTo(Metric.imageHeight)
-            $0.width.equalTo(Metric.imageWidth)
-            $0.top.equalToSafeArea(self.view).offset(Metric.imageTop)
-            $0.centerX.equalToSafeArea(self.view)
-        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -163,7 +169,8 @@ class LoginViewController: BaseViewController, View {
         // View
         RxKeyboard.instance.visibleHeight
             .drive(onNext: { [weak self] height in
-                self?.view.frame.origin.y = 0 - height / 2.5
+                guard let `self` = self else { return }
+                self.view.frame.origin.y = 0 - height / 2.5
             })
             .disposed(by: disposeBag)
     }
