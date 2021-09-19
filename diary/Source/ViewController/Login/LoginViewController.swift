@@ -27,12 +27,12 @@ class LoginViewController: BaseViewController, View {
         static let textFieldHeight = 60.f
         
         // Login
-        static let loginTop = 40.f
         static let loginHeight = 40.f
         static let loginSide = 44.f
         
         // Register
         static let registerTop = 15.f
+        static let registerBottom = 40.f
         static let registerSide = 75.f
         static let registerHeight = 20.f
     }
@@ -78,9 +78,7 @@ class LoginViewController: BaseViewController, View {
     init(reactor: Reactor) {
         super.init()
         
-        defer {
-            self.reactor = reactor
-        }
+        defer { self.reactor = reactor }
     }
     
     required init?(coder: NSCoder) {
@@ -102,6 +100,9 @@ class LoginViewController: BaseViewController, View {
         self.view.addSubview(self.loginButton)
         self.view.addSubview(self.loginImageView)
         self.view.addSubview(self.registerButton)
+        
+        // Bind
+        self.UIBind()
     }
     
     override func setupConstraints() {
@@ -129,7 +130,6 @@ class LoginViewController: BaseViewController, View {
         }
         
         self.loginButton.snp.makeConstraints {
-            $0.top.equalTo(self.passwordTextField.snp.bottom).offset(Metric.loginTop)
             $0.left.equalToSafeArea(self.view).offset(Metric.loginSide)
             $0.right.equalToSafeArea(self.view).offset(-Metric.loginSide)
             $0.height.equalTo(Metric.loginHeight)
@@ -137,6 +137,7 @@ class LoginViewController: BaseViewController, View {
         
         self.registerButton.snp.makeConstraints {
             $0.top.equalTo(self.loginButton.snp.bottom).offset(Metric.registerTop)
+            $0.bottom.equalToSafeArea(self.view).offset(-Metric.registerBottom)
             $0.left.equalToSafeArea(self.view).offset(Metric.registerSide)
             $0.right.equalToSafeArea(self.view).offset(-Metric.registerSide)
             $0.height.equalTo(Metric.registerHeight)
@@ -188,16 +189,31 @@ class LoginViewController: BaseViewController, View {
             .distinctUntilChanged()
             .bind(to: self.passwordTextField.rx.animated.fade(duration: 0.3).error)
             .disposed(by: disposeBag)
-        
-        // View
+    }
+    
+}
+
+extension LoginViewController {
+    fileprivate func UIBind() {
         RxKeyboard.instance.visibleHeight
+            .distinctUntilChanged()
             .drive(onNext: { [weak self] height in
                 guard let `self` = self else { return }
-                self.view.frame.origin.y = 0 - height / 2.5
+                
+                // update
+                self.registerButton.snp.updateConstraints {
+                    $0.bottom.equalTo(self.view.snp.bottom).offset(-Metric.registerBottom-height)
+                }
+                
+                // animation
+                UIView.animate(withDuration: 0.3) {
+                    self.view.layoutIfNeeded()
+                }
             })
             .disposed(by: disposeBag)
         
         themed { $0.thirdColor }.asObservable()
+            .distinctUntilChanged()
             .subscribe (onNext: { [weak self] color in
                 guard let `self` = self else { return }
                 let text = "아직 회원이 아니신가요? <h>회원가입하기</h>".style(tags: Font.registerHighlight.foregroundColor(color)).styleAll(Font.registerAll).attributedString
@@ -205,5 +221,4 @@ class LoginViewController: BaseViewController, View {
             })
             .disposed(by: disposeBag)
     }
-    
 }
