@@ -6,6 +6,8 @@
 //
 
 import UIKit
+
+import Atributika
 import ReactorKit
 import RxKeyboard
 
@@ -14,30 +16,43 @@ class LoginViewController: BaseViewController, View {
     
     // MARK: - Constants
     fileprivate struct Metric {
-        // TitleLabel
-        static let titleLabelTop = 100.f
-        
-        // TextField
-        static let textFieldSide = 50.f
-        static let textFieldHeight = 60.f
-        
-        // Button
-        static let buttonTop = 40.f
-        static let buttonHeight = 40.f
-        static let buttonSide = 44.f
         
         // Image
         static let imageHeight = 70.f
         static let imageWidth = 50.f
         static let imageTop = 60.f
+        
+        // TextField
+        static let textFieldSide = 30.f
+        static let textFieldHeight = 60.f
+        
+        // Login
+        static let loginTop = 40.f
+        static let loginHeight = 40.f
+        static let loginSide = 44.f
+        
+        // Register
+        static let registerTop = 15.f
+        static let registerSide = 75.f
+        static let registerHeight = 20.f
     }
     
     fileprivate struct Font {
-        static var titleFont = UIFont.systemFont(ofSize: 32, weight: .semibold)
-        static var buttonFont = UIFont.systemFont(ofSize: 18, weight: .bold)
+        // Login Button
+        static let loginFont = UIFont.systemFont(ofSize: 18, weight: .bold)
+        
+        // Register Button
+        static let registerHighlight = Style("h")
+            .font(.systemFont(ofSize: 14, weight: .semibold))
+            .underlineStyle(.single)
+        static let registerAll = Style.font(.systemFont(ofSize: 14)).foregroundColor(.black)
     }
     
     // MARK: - UI
+    let loginImageView = UIImageView().then {
+        $0.theme.image = themed { $0.mainIllustration }
+    }
+    
     let idTextField = DiaryTextField().then {
         $0.textField.placeholder = "ID"
         $0.textField.keyboardType = .emailAddress
@@ -52,11 +67,11 @@ class LoginViewController: BaseViewController, View {
     let loginButton = DiaryButton(type: .system).then {
         $0.setTitle("로그인", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = Font.buttonFont
+        $0.titleLabel?.font = Font.loginFont
     }
     
-    let loginImageView = UIImageView().then {
-        $0.theme.image = themed { $0.mainIllustration }
+    let registerButton = UIButton(type: .system).then {
+        $0.backgroundColor = .clear
     }
     
     // MARK: - Initializing
@@ -86,6 +101,7 @@ class LoginViewController: BaseViewController, View {
         self.view.addSubview(self.passwordTextField)
         self.view.addSubview(self.loginButton)
         self.view.addSubview(self.loginImageView)
+        self.view.addSubview(self.registerButton)
     }
     
     override func setupConstraints() {
@@ -113,10 +129,17 @@ class LoginViewController: BaseViewController, View {
         }
         
         self.loginButton.snp.makeConstraints {
-            $0.top.equalTo(self.passwordTextField.snp.bottom).offset(Metric.buttonTop)
-            $0.left.equalToSafeArea(self.view).offset(Metric.buttonSide)
-            $0.right.equalToSafeArea(self.view).offset(-Metric.buttonSide)
-            $0.height.equalTo(Metric.buttonHeight)
+            $0.top.equalTo(self.passwordTextField.snp.bottom).offset(Metric.loginTop)
+            $0.left.equalToSafeArea(self.view).offset(Metric.loginSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.loginSide)
+            $0.height.equalTo(Metric.loginHeight)
+        }
+        
+        self.registerButton.snp.makeConstraints {
+            $0.top.equalTo(self.loginButton.snp.bottom).offset(Metric.registerTop)
+            $0.left.equalToSafeArea(self.view).offset(Metric.registerSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.registerSide)
+            $0.height.equalTo(Metric.registerHeight)
         }
         
     }
@@ -171,6 +194,14 @@ class LoginViewController: BaseViewController, View {
             .drive(onNext: { [weak self] height in
                 guard let `self` = self else { return }
                 self.view.frame.origin.y = 0 - height / 2.5
+            })
+            .disposed(by: disposeBag)
+        
+        themed { $0.thirdColor }.asObservable()
+            .subscribe (onNext: { [weak self] color in
+                guard let `self` = self else { return }
+                let text = "아직 회원이 아니신가요? <h>회원가입하기</h>".style(tags: Font.registerHighlight.foregroundColor(color)).styleAll(Font.registerAll).attributedString
+                self.registerButton.setAttributedTitle(text, for: .normal)
             })
             .disposed(by: disposeBag)
     }

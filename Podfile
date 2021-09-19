@@ -15,6 +15,7 @@ target 'diary' do
   pod 'UITextView+Placeholder'
   pod 'FloatingPanel'
   pod 'ActiveLabel'
+  pod 'Atributika'
  
   # Architecture
   pod 'ReactorKit'
