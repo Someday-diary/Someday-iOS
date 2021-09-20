@@ -20,13 +20,10 @@ final class MainViewController: BaseViewController, View {
     fileprivate struct Metric {
         // Calendar
         static let calendarSide = 26.f
-        static let calendarBottom = 13.f
+        static let calendarHight = 320.f
         
         // BarButtonPadding
         static let navigativePadding = 18.f
-        
-        // Separator
-        static let separatorHeight = 1.f
         
         // ImageView
         static let imageHeight = 170.f
@@ -54,10 +51,6 @@ final class MainViewController: BaseViewController, View {
     
     let calendarView = DiaryCalendar()
     
-    let separatorView = UIView().then {
-        $0.backgroundColor = R.color.textFieldSeparatorColor()
-    }
-    
     // MARK: - Initializing
     init(reactor: Reactor) {
         super.init()
@@ -80,24 +73,17 @@ final class MainViewController: BaseViewController, View {
         
         self.navigationItem.leftBarButtonItems = [navigativePadding, sideMenuButton]
         self.view.addSubview(self.calendarView)
-        self.view.addSubview(self.separatorView)
     }
     
     override func setupConstraints() {
         super.setupConstraints()
         
         self.calendarView.snp.makeConstraints {
-            $0.bottom.equalTo(self.separatorView.snp.top).offset(-Metric.calendarBottom)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.centerY).priority(.low)
+            $0.height.greaterThanOrEqualTo(Metric.calendarHight).priority(.high)
             $0.top.equalToSafeArea(self.view)
             $0.left.equalToSafeArea(self.view).offset(Metric.calendarSide)
             $0.right.equalToSafeArea(self.view).offset(-Metric.calendarSide)
-        }
-        
-        self.separatorView.snp.makeConstraints {
-            $0.left.equalToSafeArea(self.view)
-            $0.right.equalToSafeArea(self.view)
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.centerY)
-            $0.height.equalTo(Metric.separatorHeight)
         }
         
     }
