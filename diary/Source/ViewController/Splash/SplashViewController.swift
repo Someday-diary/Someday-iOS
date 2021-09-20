@@ -18,7 +18,7 @@ class SplashViewController: BaseViewController, View {
         // Image
         static let imageHeight = 130.f
         static let imageWidth = 94.f
-        static let imageTop = 250.f
+        static let imageY = 50.f
         
         // Title Label
         static let labelTop = 30.f
@@ -72,7 +72,7 @@ class SplashViewController: BaseViewController, View {
         self.splashImage.snp.makeConstraints {
             $0.width.equalTo(Metric.imageWidth)
             $0.height.equalTo(Metric.imageHeight)
-            $0.top.equalToSafeArea(self.view).offset(Metric.imageTop)
+            $0.centerY.equalToSafeArea(self.view).offset(-Metric.imageY)
             $0.centerX.equalToSafeArea(self.view)
         }
         
