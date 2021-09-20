@@ -105,7 +105,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 16 colors.
+  /// This `R.color` struct is generated, and contains static references to 17 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
@@ -135,6 +135,8 @@ struct R: Rswift.Validatable {
     static let mainViewSeparatorColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "MainViewSeparatorColor")
     /// Color `NavigationButtonColor`.
     static let navigationButtonColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "NavigationButtonColor")
+    /// Color `SystemWhiteColor`.
+    static let systemWhiteColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "SystemWhiteColor")
     /// Color `TextFieldSeparatorColor`.
     static let textFieldSeparatorColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "TextFieldSeparatorColor")
     /// Color `WeekdayTextColor`.
@@ -267,6 +269,15 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "SystemWhiteColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func systemWhiteColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.systemWhiteColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIColor(named: "TextFieldSeparatorColor", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
@@ -393,6 +404,14 @@ struct R: Rswift.Validatable {
     @available(watchOSApplicationExtension 4.0, *)
     static func navigationButtonColor(_: Void = ()) -> UIKit.UIColor? {
       return UIKit.UIColor(named: R.color.navigationButtonColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "SystemWhiteColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func systemWhiteColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.systemWhiteColor.name)
     }
     #endif
 

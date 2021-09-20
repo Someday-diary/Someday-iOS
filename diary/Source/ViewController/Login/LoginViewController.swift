@@ -6,6 +6,8 @@
 //
 
 import UIKit
+
+import Atributika
 import ReactorKit
 import RxKeyboard
 
@@ -14,34 +16,42 @@ class LoginViewController: BaseViewController, View {
     
     // MARK: - Constants
     fileprivate struct Metric {
-        // TitleLabel
-        static let titleLabelTop = 100.f
-        
-        // TextField
-        static let textFieldSide = 50.f
-        static let textFieldHeight = 60.f
-        
-        // Button
-        static let buttonTop = 40.f
-        static let buttonHeight = 40.f
-        static let buttonSide = 44.f
         
         // Image
-        static let imageHeight = 173.f
-        static let imageWidth = 242.f
-        static let imageLeft = 33.f
+        static let imageRatio = (50 / 70).f
+        static let imageHeight = 70.f
+        static let imageWidth = 50.f
+        static let imageTop = 60.f
+        
+        // TextField
+        static let textFieldSide = 30.f
+        static let textFieldHeight = 60.f
+        
+        // Login
+        static let loginHeight = 40.f
+        static let loginSide = 30.f
+        static let loginBottom = 100.f
+        static let loginKeyboard = 10.f
+        
+        // Register
+        static let registerBottom = 70.f
+        static let registerHeight = 20.f
     }
     
     fileprivate struct Font {
-        static var titleFont = UIFont.systemFont(ofSize: 32, weight: .semibold)
+        // Login Button
+        static let loginFont = UIFont.systemFont(ofSize: 18, weight: .bold)
+        
+        // Register Button
+        static let registerHighlight = Style("h")
+            .font(.systemFont(ofSize: 14, weight: .semibold))
+            .underlineStyle(.single)
+        static let registerAll = Style.font(.systemFont(ofSize: 14)).foregroundColor(.black)
     }
     
     // MARK: - UI
-    let titleLabel = UILabel().then {
-        $0.text = "DIARY"
-        $0.textAlignment = .left
-        $0.theme.textColor = themed { $0.mainColor }
-        $0.font = Font.titleFont
+    let loginImageView = UIImageView().then {
+        $0.theme.image = themed { $0.mainIllustration }
     }
     
     let idTextField = DiaryTextField().then {
@@ -55,19 +65,21 @@ class LoginViewController: BaseViewController, View {
         $0.textField.isSecureTextEntry = true
     }
     
-    let loginButton = DiaryButton()
+    let loginButton = DiaryButton(type: .system).then {
+        $0.setTitle("로그인", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = Font.loginFont
+    }
     
-    let loginImageView = UIImageView().then {
-        $0.theme.image = themed { $0.mainIllustration }
+    let registerButton = UIButton(type: .system).then {
+        $0.backgroundColor = .clear
     }
     
     // MARK: - Initializing
     init(reactor: Reactor) {
         super.init()
         
-        defer {
-            self.reactor = reactor
-        }
+        defer { self.reactor = reactor }
     }
     
     required init?(coder: NSCoder) {
@@ -86,23 +98,27 @@ class LoginViewController: BaseViewController, View {
         
         self.view.addSubview(self.idTextField)
         self.view.addSubview(self.passwordTextField)
-        self.view.addSubview(self.titleLabel)
         self.view.addSubview(self.loginButton)
         self.view.addSubview(self.loginImageView)
+        self.view.addSubview(self.registerButton)
+        
+        // Bind
+        self.UIBind()
     }
     
     override func setupConstraints() {
         super.setupConstraints()
         
-        self.titleLabel.snp.makeConstraints {
-            $0.top.equalToSafeArea(self.view).offset(Metric.titleLabelTop)
+        self.loginImageView.snp.makeConstraints {
+            $0.height.equalTo(Metric.imageHeight)
+            $0.width.equalTo(Metric.imageWidth)
             $0.centerX.equalToSafeArea(self.view)
         }
         
         self.idTextField.snp.makeConstraints {
             $0.left.equalToSafeArea(self.view).offset(Metric.textFieldSide)
             $0.right.equalToSafeArea(self.view).offset(-Metric.textFieldSide)
-            $0.bottom.equalTo(self.titleLabel.snp.bottom).offset(self.view.frame.height / 5)
+            $0.bottom.equalTo(self.loginImageView.snp.bottom).offset(self.view.frame.height / 5.5)
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
@@ -114,18 +130,17 @@ class LoginViewController: BaseViewController, View {
         }
         
         self.loginButton.snp.makeConstraints {
-            $0.top.equalTo(self.passwordTextField.snp.bottom).offset(Metric.buttonTop)
-            $0.left.equalToSafeArea(self.view).offset(Metric.buttonSide)
-            $0.right.equalToSafeArea(self.view).offset(-Metric.buttonSide)
-            $0.height.equalTo(Metric.buttonHeight)
+            $0.left.equalToSafeArea(self.view).offset(Metric.loginSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.loginSide)
+            $0.height.equalTo(Metric.loginHeight)
         }
         
-        self.loginImageView.snp.makeConstraints {
-            $0.height.equalTo(Metric.imageHeight)
-            $0.width.equalTo(Metric.imageWidth)
-            $0.bottom.equalToSafeArea(self.view)
-            $0.left.equalToSafeArea(self.view).offset(Metric.imageLeft)
+        self.registerButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview().offset(-Metric.registerBottom)
+            $0.centerX.equalToSafeArea(self.view)
+            $0.height.equalTo(Metric.registerHeight)
         }
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -172,13 +187,40 @@ class LoginViewController: BaseViewController, View {
             .distinctUntilChanged()
             .bind(to: self.passwordTextField.rx.animated.fade(duration: 0.3).error)
             .disposed(by: disposeBag)
-        
-        // View
+    }
+    
+}
+
+extension LoginViewController {
+    fileprivate func UIBind() {
         RxKeyboard.instance.visibleHeight
+            .distinctUntilChanged()
             .drive(onNext: { [weak self] height in
-                self?.view.frame.origin.y = 0 - height / 2.5
+                guard let `self` = self else { return }
+                
+                // update
+                self.loginImageView.snp.updateConstraints {
+                    $0.top.equalToSafeArea(self.view).offset(height == 0 ? self.view.frame.height/20 : -25)
+                }
+                
+                self.loginButton.snp.updateConstraints {
+                    $0.bottom.equalToSuperview().offset(height == 0 ? -Metric.loginBottom : -height-Metric.loginKeyboard)
+                }
+                
+                // animation
+                UIView.animate(withDuration: 0.1) {
+                    self.view.layoutIfNeeded()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        themed { $0.thirdColor }.asObservable()
+            .distinctUntilChanged()
+            .subscribe (onNext: { [weak self] color in
+                guard let `self` = self else { return }
+                let text = "아직 회원이 아니신가요? <h>회원가입하기</h>".style(tags: Font.registerHighlight.foregroundColor(color)).styleAll(Font.registerAll).attributedString
+                self.registerButton.setAttributedTitle(text, for: .normal)
             })
             .disposed(by: disposeBag)
     }
-    
 }

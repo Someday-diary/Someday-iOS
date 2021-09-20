@@ -28,7 +28,10 @@ final class DiaryButton: UIButton {
     
     // MARK: - Life Cycle
     override func layoutSubviews() {
+        super.layoutSubviews()
+        
         self.layer.cornerRadius = Style.cornerRadius
+        self.clipsToBounds = true
     }
     
     override public var isHighlighted: Bool {

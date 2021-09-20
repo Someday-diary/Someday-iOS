@@ -324,7 +324,6 @@
 		627E201226CE947700550D59 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				628BFD9C26EBA45700851408 /* TableView */,
 				62D758C926E367E8009AE551 /* SideMenu */,
 				62D758C826E367CC009AE551 /* Main */,
 				620BCABE26E5D58C0023499D /* HashtagTextField.swift */,
@@ -361,13 +360,6 @@
 				628BFD9826EB6A5300851408 /* CustomFloatingPanelLayout.swift */,
 			);
 			path = FoatingView;
-			sourceTree = "<group>";
-		};
-		628BFD9C26EBA45700851408 /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TableView;
 			sourceTree = "<group>";
 		};
 		6291498A26DEF4E7003CDDE9 /* SnapKit */ = {

@@ -31,7 +31,6 @@ final class LoginViewReactor: Reactor, Stepper {
         
         var idValidation: CheckValidation?
         var passwordValidation: CheckValidation?
-        
     }
     
     init() {

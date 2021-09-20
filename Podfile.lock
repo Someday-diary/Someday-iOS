@@ -1,6 +1,7 @@
 PODS:
   - ActiveLabel (1.1.0)
   - Alamofire (5.4.3)
+  - Atributika (4.10.1)
   - Carte (2.2.1)
   - CGFloatLiteral (0.5.0)
   - Differentiator (4.0.1)
@@ -68,6 +69,7 @@ PODS:
 
 DEPENDENCIES:
   - ActiveLabel
+  - Atributika
   - Carte
   - CGFloatLiteral
   - FloatingPanel
@@ -95,6 +97,7 @@ SPEC REPOS:
   trunk:
     - ActiveLabel
     - Alamofire
+    - Atributika
     - Carte
     - CGFloatLiteral
     - Differentiator
@@ -127,6 +130,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  Atributika: 47e778507cfb3cd2c996278b0285221a62e97d71
   Carte: 6bcff4eaa894ff5b979d646de833fec96e04a38c
   CGFloatLiteral: 0328648f666e3cb2263d5ee3972df9d320786d25
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
@@ -156,6 +160,6 @@ SPEC CHECKSUMS:
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: b3bcb8f16fb327b746cb9f133d8fb444aa5aad35
+PODFILE CHECKSUM: 864f99a9bc318b4551c0e8106d94be4a850e7e64
 
 COCOAPODS: 1.10.1
