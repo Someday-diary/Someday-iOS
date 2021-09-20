@@ -18,6 +18,7 @@ class LoginViewController: BaseViewController, View {
     fileprivate struct Metric {
         
         // Image
+        static let imageRatio = (50 / 70).f
         static let imageHeight = 70.f
         static let imageWidth = 50.f
         static let imageTop = 60.f
@@ -28,12 +29,12 @@ class LoginViewController: BaseViewController, View {
         
         // Login
         static let loginHeight = 40.f
-        static let loginSide = 44.f
+        static let loginSide = 30.f
+        static let loginBottom = 100.f
+        static let loginKeyboard = 10.f
         
         // Register
-        static let registerTop = 15.f
-        static let registerBottom = 40.f
-        static let registerSide = 75.f
+        static let registerBottom = 70.f
         static let registerHeight = 20.f
     }
     
@@ -111,7 +112,6 @@ class LoginViewController: BaseViewController, View {
         self.loginImageView.snp.makeConstraints {
             $0.height.equalTo(Metric.imageHeight)
             $0.width.equalTo(Metric.imageWidth)
-            $0.top.equalToSafeArea(self.view).offset(Metric.imageTop)
             $0.centerX.equalToSafeArea(self.view)
         }
         
@@ -136,10 +136,8 @@ class LoginViewController: BaseViewController, View {
         }
         
         self.registerButton.snp.makeConstraints {
-            $0.top.equalTo(self.loginButton.snp.bottom).offset(Metric.registerTop)
-            $0.bottom.equalToSafeArea(self.view).offset(-Metric.registerBottom)
-            $0.left.equalToSafeArea(self.view).offset(Metric.registerSide)
-            $0.right.equalToSafeArea(self.view).offset(-Metric.registerSide)
+            $0.bottom.equalToSuperview().offset(-Metric.registerBottom)
+            $0.centerX.equalToSafeArea(self.view)
             $0.height.equalTo(Metric.registerHeight)
         }
         
@@ -201,12 +199,16 @@ extension LoginViewController {
                 guard let `self` = self else { return }
                 
                 // update
-                self.registerButton.snp.updateConstraints {
-                    $0.bottom.equalTo(self.view.snp.bottom).offset(-Metric.registerBottom-height)
+                self.loginImageView.snp.updateConstraints {
+                    $0.top.equalToSafeArea(self.view).offset(height == 0 ? self.view.frame.height/20 : -25)
+                }
+                
+                self.loginButton.snp.updateConstraints {
+                    $0.bottom.equalToSuperview().offset(height == 0 ? -Metric.loginBottom : -height-Metric.loginKeyboard)
                 }
                 
                 // animation
-                UIView.animate(withDuration: 0.3) {
+                UIView.animate(withDuration: 0.1) {
                     self.view.layoutIfNeeded()
                 }
             })
