@@ -94,7 +94,6 @@ final class FloatingViewController: BaseViewController, View {
     
     let textView = UITextView().then {
         $0.isEditable = false
-        $0.isScrollEnabled = false
         $0.backgroundColor = .clear
         $0.font = Font.textViewFont
     }
