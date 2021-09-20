@@ -75,7 +75,7 @@ final class FloatingViewController: BaseViewController, View {
     let hashtagLabel = ActiveLabel().then {
         $0.enabledTypes = [.hashtag]
         $0.theme.textColor = themed { $0.thirdColor }
-        $0.hashtagColor = R.color.greenThemeThirdColor()!
+        $0.theme.hashtagColor = themed { $0.thirdColor }
         $0.font = Font.tagLabelFont
         $0.adjustsFontForContentSizeCategory = true
         $0.handleHashtagTap {
