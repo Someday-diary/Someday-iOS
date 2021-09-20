@@ -197,16 +197,19 @@ final class FloatingViewController: BaseViewController, View {
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.diaryTags }
-            .bind(to: self.hashtagLabel.rx.text)
+            .distinctUntilChanged()
+            .bind(to: self.hashtagLabel.rx.animated.fade(duration: 0.2).text)
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.createState }
+            .distinctUntilChanged()
             .map { !$0 }
-            .bind(to: self.createButton.rx.isHidden)
+            .bind(to: self.createButton.rx.animated.flip(.top, duration: 0.3).isHidden)
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.createState }
-            .bind(to: self.editButton.rx.isHidden)
+            .distinctUntilChanged()
+            .bind(to: self.editButton.rx.animated.flip(.top, duration: 0.3).isHidden)
             .disposed(by: disposeBag)
     }
 }
