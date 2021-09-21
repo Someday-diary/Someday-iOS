@@ -23,7 +23,7 @@ final class FloatingViewController: BaseViewController, View {
         
         // HeaderView
         static let headerTop = 30.f
-        static let headerHeight = 30.f
+        static let headerHeight = 70.f
         
         // DateView
         static let dateViewTop = 35.f
@@ -75,7 +75,7 @@ final class FloatingViewController: BaseViewController, View {
     let hashtagLabel = ActiveLabel().then {
         $0.enabledTypes = [.hashtag]
         $0.theme.textColor = themed { $0.thirdColor }
-        $0.hashtagColor = R.color.greenThemeThirdColor()!
+        $0.theme.hashtagColor = themed { $0.thirdColor }
         $0.font = Font.tagLabelFont
         $0.adjustsFontForContentSizeCategory = true
         $0.handleHashtagTap {
@@ -94,7 +94,6 @@ final class FloatingViewController: BaseViewController, View {
     
     let textView = UITextView().then {
         $0.isEditable = false
-        $0.isScrollEnabled = false
         $0.backgroundColor = .clear
         $0.font = Font.textViewFont
     }
@@ -137,7 +136,7 @@ final class FloatingViewController: BaseViewController, View {
             $0.left.equalToSuperview().offset(Metric.side)
             $0.right.equalToSuperview().offset(-Metric.side)
             $0.height.equalTo(Metric.headerHeight)
-            $0.top.equalToSuperview().offset(Metric.headerTop)
+            $0.top.equalToSuperview()//.offset(Metric.headerTop)
         }
 
         self.textView.snp.makeConstraints {
@@ -197,16 +196,19 @@ final class FloatingViewController: BaseViewController, View {
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.diaryTags }
-            .bind(to: self.hashtagLabel.rx.text)
+            .distinctUntilChanged()
+            .bind(to: self.hashtagLabel.rx.animated.fade(duration: 0.2).text)
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.createState }
+            .distinctUntilChanged()
             .map { !$0 }
-            .bind(to: self.createButton.rx.isHidden)
+            .bind(to: self.createButton.rx.animated.flip(.top, duration: 0.3).isHidden)
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.createState }
-            .bind(to: self.editButton.rx.isHidden)
+            .distinctUntilChanged()
+            .bind(to: self.editButton.rx.animated.flip(.top, duration: 0.3).isHidden)
             .disposed(by: disposeBag)
     }
 }
