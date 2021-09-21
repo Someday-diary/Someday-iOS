@@ -23,7 +23,7 @@ final class FloatingViewController: BaseViewController, View {
         
         // HeaderView
         static let headerTop = 30.f
-        static let headerHeight = 30.f
+        static let headerHeight = 70.f
         
         // DateView
         static let dateViewTop = 35.f
@@ -136,7 +136,7 @@ final class FloatingViewController: BaseViewController, View {
             $0.left.equalToSuperview().offset(Metric.side)
             $0.right.equalToSuperview().offset(-Metric.side)
             $0.height.equalTo(Metric.headerHeight)
-            $0.top.equalToSuperview().offset(Metric.headerTop)
+            $0.top.equalToSuperview()//.offset(Metric.headerTop)
         }
 
         self.textView.snp.makeConstraints {
