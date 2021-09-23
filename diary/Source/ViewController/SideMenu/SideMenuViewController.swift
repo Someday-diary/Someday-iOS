@@ -16,8 +16,8 @@ final class SideMenuViewController: BaseViewController, View {
     // MARK: - Constants
     fileprivate struct Metric {
         // Title
-        static let titleTop = 40.f
-        static let titleBottom = 80.f
+        static let titleTopRatio = 20.f
+        static let titleBottomRatio = 10.f
         
         // ListButton
         static let listButtonSide = 16.f
@@ -105,9 +105,9 @@ final class SideMenuViewController: BaseViewController, View {
         super.setupConstraints()
         
         self.titleLabel.snp.makeConstraints {
-            $0.top.equalToSafeArea(self.view).offset(Metric.titleTop)
-            $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(self.themeButton.snp.top).offset(-Metric.titleBottom)
+            $0.top.equalToSafeArea(self.view).offset(self.view.frame.height / Metric.titleTopRatio)
+            $0.centerX.equalToSafeArea(self.view)
+            $0.bottom.equalTo(self.themeButton.snp.top).offset(-self.view.frame.height / Metric.titleBottomRatio)
         }
         
         self.themeButton.snp.makeConstraints {
