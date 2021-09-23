@@ -118,6 +118,9 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     }
     
     func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
-        fpc.surfaceView.theme.backgroundColor = fpc.state == .tip ? themed { $0.subColor } : themed { $0.backgroundColor }
+        UIView.animate(withDuration: 0.5) {
+            fpc.surfaceView.theme.backgroundColor = fpc.state == .tip ? themed { $0.subColor } : themed { $0.backgroundColor }
+            fpc.surfaceView.layoutIfNeeded()
+        }
     }
 }

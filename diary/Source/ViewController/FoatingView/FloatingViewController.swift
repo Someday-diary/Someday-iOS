@@ -25,9 +25,22 @@ final class FloatingViewController: BaseViewController, View {
         static let headerTop = 30.f
         static let headerHeight = 70.f
         
+        // Hashtag Label
+        static let hashtagLeft = 15.f
+        static let hashtagRight = 5.f
+        
+        // Create Button
+        static let createButtonWidth = 70.f
+        
+        // Edit Button
+        static let editButtonWidth = 50.f
+        
         // DateView
         static let dateViewTop = 35.f
         static let dateViewSize = 30.f
+        
+        // TextView
+        static let textViewBottom = 60.f
     }
     
     fileprivate struct Font {
@@ -136,14 +149,14 @@ final class FloatingViewController: BaseViewController, View {
             $0.left.equalToSuperview().offset(Metric.side)
             $0.right.equalToSuperview().offset(-Metric.side)
             $0.height.equalTo(Metric.headerHeight)
-            $0.top.equalToSuperview()//.offset(Metric.headerTop)
+            $0.top.equalToSuperview()
         }
 
         self.textView.snp.makeConstraints {
             $0.left.equalToSuperview().offset(Metric.side)
             $0.right.equalToSuperview().offset(-Metric.side)
             $0.top.equalTo(self.headerView.snp.bottom).offset(Metric.dateViewTop)
-            $0.bottom.equalToSuperview().offset(-60)
+            $0.bottom.equalToSuperview().offset(-Metric.textViewBottom)
         }
 
         self.dateView.snp.makeConstraints {
@@ -156,19 +169,19 @@ final class FloatingViewController: BaseViewController, View {
         }
         
         self.hashtagLabel.snp.makeConstraints {
-            $0.left.equalTo(self.dateView.snp.right).offset(15)
-            $0.right.equalTo(self.editButton.snp.left).offset(-5)
+            $0.left.equalTo(self.dateView.snp.right).offset(Metric.hashtagLeft)
+            $0.right.equalTo(self.editButton.snp.left).offset(-Metric.hashtagRight)
             $0.centerY.equalToSuperview()
         }
 
         self.editButton.snp.makeConstraints {
             $0.right.centerY.equalToSuperview()
-            $0.width.equalTo(50)
+            $0.width.equalTo(Metric.editButtonWidth)
         }
         
         self.createButton.snp.makeConstraints {
             $0.right.centerY.equalToSuperview()
-            $0.width.equalTo(70)
+            $0.width.equalTo(Metric.createButtonWidth)
         }
         
     }
