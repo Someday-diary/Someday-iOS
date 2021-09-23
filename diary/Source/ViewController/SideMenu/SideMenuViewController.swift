@@ -18,9 +18,13 @@ final class SideMenuViewController: BaseViewController, View {
         // Title
         static let titleTop = 40.f
         static let titleBottom = 80.f
+        
         // ListButton
         static let listButtonSide = 16.f
         static let listButtonTop = 25.f
+        
+        // Logout Button
+        static let logoutButtonBottom = 30.f
     }
     
     fileprivate struct Font {
@@ -64,6 +68,7 @@ final class SideMenuViewController: BaseViewController, View {
     }
     
     let logoutButton = LogoutButton()
+    
     // MARK: - Initializing
     init(reactor: Reactor) {
         super.init()
@@ -135,7 +140,7 @@ final class SideMenuViewController: BaseViewController, View {
         }
         
         self.logoutButton.snp.makeConstraints {
-            $0.bottom.equalToSafeArea(self.view).offset(-30)
+            $0.bottom.equalToSafeArea(self.view).offset(-Metric.logoutButtonBottom)
             $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
             $0.width.equalTo(self.view.frame.width / 2)
         }
