@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		620A106026FCABB10073D580 /* FadeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620A105F26FCABB10073D580 /* FadeScrollView.swift */; };
+		620A106026FCABB10073D580 /* SieMenuScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620A105F26FCABB10073D580 /* SieMenuScrollView.swift */; };
 		620BCAB926E4F9B10023499D /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620BCAB826E4F9B10023499D /* Diary.swift */; };
 		620BCABB26E4F9F70023499D /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620BCABA26E4F9F70023499D /* ModelType.swift */; };
 		620BCABF26E5D58C0023499D /* HashtagTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620BCABE26E5D58C0023499D /* HashtagTextField.swift */; };
@@ -96,7 +96,7 @@
 		5E0D0EF1C767475EB03B257B /* Pods-diaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diaryTests.release.xcconfig"; path = "Target Support Files/Pods-diaryTests/Pods-diaryTests.release.xcconfig"; sourceTree = "<group>"; };
 		601756147E85EE8A3E70851A /* Pods-diary-diaryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diary-diaryUITests.debug.xcconfig"; path = "Target Support Files/Pods-diary-diaryUITests/Pods-diary-diaryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		61203E3BB236EAAB98001720 /* Pods_diaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_diaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		620A105F26FCABB10073D580 /* FadeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeScrollView.swift; sourceTree = "<group>"; };
+		620A105F26FCABB10073D580 /* SieMenuScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SieMenuScrollView.swift; sourceTree = "<group>"; };
 		620BCAB826E4F9B10023499D /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		620BCABA26E4F9F70023499D /* ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
 		620BCABE26E5D58C0023499D /* HashtagTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagTextField.swift; sourceTree = "<group>"; };
@@ -480,7 +480,7 @@
 			children = (
 				62D758C426E1DD48009AE551 /* LogoutButton.swift */,
 				62D758C226E1AE9C009AE551 /* DiarySideMenuListButton.swift */,
-				620A105F26FCABB10073D580 /* FadeScrollView.swift */,
+				620A105F26FCABB10073D580 /* SieMenuScrollView.swift */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -780,7 +780,7 @@
 				62D758C326E1AE9C009AE551 /* DiarySideMenuListButton.swift in Sources */,
 				62D758C526E1DD48009AE551 /* LogoutButton.swift in Sources */,
 				624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */,
-				620A106026FCABB10073D580 /* FadeScrollView.swift in Sources */,
+				620A106026FCABB10073D580 /* SieMenuScrollView.swift in Sources */,
 				62183EEC26DB3A6600F22EC6 /* DiaryTextField+Rx.swift in Sources */,
 				62CB1D3726DA4D3500B1BA32 /* SideMenuViewReactor.swift in Sources */,
 				62D388A626D9E9FA00A8D185 /* CheckValidation.swift in Sources */,
