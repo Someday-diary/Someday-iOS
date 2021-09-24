@@ -27,7 +27,7 @@ final class SideMenuViewController: BaseViewController, View {
     }
     
     fileprivate struct Font {
-        static let titleFont = UIFont.systemFont(ofSize: 32, weight: .ultraLight)
+        static let titleFont = UIFont.systemFont(ofSize: 26, weight: .regular)
     }
     
     // MARK: - UI
