@@ -17,11 +17,10 @@ final class SideMenuViewController: BaseViewController, View {
     fileprivate struct Metric {
         // Title
         static let titleTopRatio = 20.f
-        static let titleBottomRatio = 10.f
+        static let titleBottomRatio = 20.f
         
-        // ListButton
-        static let listButtonSide = 16.f
-        static let listButtonTop = 25.f
+        // Scroll View
+        static let scrollViewSide = 16.f
         
         // Logout Button
         static let logoutButtonBottom = 30.f
@@ -37,30 +36,7 @@ final class SideMenuViewController: BaseViewController, View {
         $0.font = Font.titleFont
     }
     
-    let themeButton = DiarySideMenuListButton().then {
-        $0.icon.image = R.image.themeIcon()
-        $0.label.text = "테마 설정"
-    }
-    
-    let alarmButton = DiarySideMenuListButton().then {
-        $0.icon.image = R.image.alarmIcon()
-        $0.label.text = "일기 알람 설정"
-    }
-    
-    let lockButton = DiarySideMenuListButton().then {
-        $0.icon.image = R.image.lockIcon()
-        $0.label.text = "잠금 설정"
-    }
-    
-    let infoButton = DiarySideMenuListButton().then {
-        $0.icon.image = R.image.openSourceIcon()
-        $0.label.text = "앱 정보"
-    }
-    
-    let feedbackButton = DiarySideMenuListButton().then {
-        $0.icon.image = R.image.feedbackIcon()
-        $0.label.text = "사용자 피드백"
-    }
+    let scrollView = SideMenuScrollView()
     
     let dismissButton = UIBarButtonItem().then {
         $0.image = R.image.dismissButton()
@@ -91,13 +67,9 @@ final class SideMenuViewController: BaseViewController, View {
     override func setupLayout() {
         super.setupLayout()
         
-        self.view.addSubview(titleLabel)
-        self.view.addSubview(self.themeButton)
-        self.view.addSubview(self.alarmButton)
-        self.view.addSubview(self.lockButton)
-        self.view.addSubview(self.infoButton)
-        self.view.addSubview(self.feedbackButton)
+        self.view.addSubview(self.titleLabel)
         self.view.addSubview(self.logoutButton)
+        self.view.addSubview(self.scrollView)
         self.navigationItem.rightBarButtonItem = dismissButton
     }
     
@@ -107,41 +79,18 @@ final class SideMenuViewController: BaseViewController, View {
         self.titleLabel.snp.makeConstraints {
             $0.top.equalToSafeArea(self.view).offset(self.view.frame.height / Metric.titleTopRatio)
             $0.centerX.equalToSafeArea(self.view)
-            $0.bottom.equalTo(self.themeButton.snp.top).offset(-self.view.frame.height / Metric.titleBottomRatio)
+            $0.bottom.equalTo(self.scrollView.snp.top).offset(-self.view.frame.height / Metric.titleBottomRatio)
         }
         
-        self.themeButton.snp.makeConstraints {
-            $0.left.equalToSafeArea(self.view).offset(Metric.listButtonSide)
-            $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
-        }
-        
-        self.alarmButton.snp.makeConstraints {
-            $0.top.equalTo(self.themeButton.snp.bottom).offset(Metric.listButtonTop)
-            $0.left.equalToSafeArea(self.view).offset(Metric.listButtonSide)
-            $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
-        }
-        
-        self.lockButton.snp.makeConstraints {
-            $0.top.equalTo(self.alarmButton.snp.bottom).offset(Metric.listButtonTop)
-            $0.left.equalToSafeArea(self.view).offset(Metric.listButtonSide)
-            $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
-        }
-        
-        self.infoButton.snp.makeConstraints {
-            $0.top.equalTo(self.lockButton.snp.bottom).offset(Metric.listButtonTop)
-            $0.left.equalToSafeArea(self.view).offset(Metric.listButtonSide)
-            $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
-        }
-        
-        self.feedbackButton.snp.makeConstraints {
-            $0.top.equalTo(self.infoButton.snp.bottom).offset(Metric.listButtonTop)
-            $0.left.equalToSafeArea(self.view).offset(Metric.listButtonSide)
-            $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
+        self.scrollView.snp.makeConstraints {
+            $0.left.equalToSafeArea(self.view).offset(Metric.scrollViewSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.scrollViewSide)
+            $0.bottom.equalTo(self.logoutButton.snp.top)
         }
         
         self.logoutButton.snp.makeConstraints {
             $0.bottom.equalToSafeArea(self.view).offset(-Metric.logoutButtonBottom)
-            $0.right.equalToSafeArea(self.view).offset(-Metric.listButtonSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.scrollViewSide)
             $0.width.equalTo(self.view.frame.width / 2)
         }
     }
@@ -160,11 +109,11 @@ final class SideMenuViewController: BaseViewController, View {
             .disposed(by: disposeBag)
         
         Observable.merge(
-            themeButton.rx.tap.map { Reactor.Action.setTheme },
-            alarmButton.rx.tap.map { Reactor.Action.setAlarm },
-            lockButton.rx.tap.map { Reactor.Action.setLock },
-            infoButton.rx.tap.map { Reactor.Action.showInfo },
-            feedbackButton.rx.tap.map { Reactor.Action.userFeedBack }
+            scrollView.themeButton.rx.tap.map { Reactor.Action.setTheme },
+            scrollView.alarmButton.rx.tap.map { Reactor.Action.setAlarm },
+            scrollView.lockButton.rx.tap.map { Reactor.Action.setLock },
+            scrollView.infoButton.rx.tap.map { Reactor.Action.showInfo },
+            scrollView.feedbackButton.rx.tap.map { Reactor.Action.userFeedBack }
         ).asObservable()
         .bind(to: reactor.action)
         .disposed(by: disposeBag)
