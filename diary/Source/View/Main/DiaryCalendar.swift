@@ -113,11 +113,8 @@ final class DiaryCalendar: UIView {
     }
     
     private func moveCurrentPage(moveUp: Bool) {
-        let calendar = Calendar.current
-        var dateComponents = DateComponents()
-        dateComponents.month = moveUp ? 1 : -1
-        
-        self.currentPage = calendar.date(byAdding: dateComponents, to: self.currentPage ?? Date())
-        self.calendar.setCurrentPage(self.currentPage!, animated: true)
+        let newPage = Calendar.current.date(byAdding: .month, value: moveUp ? 1 : -1, to: self.calendar.currentPage)!
+        self.calendar.setCurrentPage(newPage, animated: true)
     }
+    
 }
