@@ -125,21 +125,25 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
     func bind(reactor: WriteViewReactor) {
         
         // input
-        Observable.combineLatest(
-            self.textView.rx.text.orEmpty.asObservable(),
-            self.hashtagTextField.textField.rx.text.orEmpty.asObservable()
-        ).map { Reactor.Action.writeDiary($0, $1) }
-        .bind(to: reactor.action)
-        .disposed(by: disposeBag)
-        
         self.backButton.rx.tap.asObservable()
             .map { Reactor.Action.popViewController }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
         self.submitButton.rx.tap.asObservable()
-            .map { Reactor.Action.saveDidary }
+            .map { Reactor.Action.saveDidary(self.textView.text ?? "", self.hashtagTextField.textField.text ?? "") }
             .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        // output
+        reactor.state.map { $0.data }.asObservable()
+            .distinctUntilChanged()
+            .bind(to: self.textView.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.tags }.asObservable()
+            .distinctUntilChanged()
+            .bind(to: self.hashtagTextField.textField.rx.text)
             .disposed(by: disposeBag)
         
         themed { $0.thirdColor }.asObservable()
