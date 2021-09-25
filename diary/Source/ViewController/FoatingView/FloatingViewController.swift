@@ -194,6 +194,13 @@ final class FloatingViewController: BaseViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        Observable.merge(
+            self.createButton.rx.tap.map { Reactor.Action.write },
+            self.editButton.rx.tap.map { Reactor.Action.edit }
+        ).asObservable()
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
+        
         self.rx.viewDidLoad.asObservable()
             .map { _ in Reactor.Action.updateDiary }
             .bind(to: reactor.action)

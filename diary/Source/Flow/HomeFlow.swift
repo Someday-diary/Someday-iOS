@@ -43,8 +43,8 @@ class HomeFlow: Flow {
         case let .sideMenuIsRequired(date):
             return navigateToSideMenu(date: date)
             
-        case let .writeIsRequired(date):
-            return navigateToWrite(date)
+        case let .writeIsRequired(date, diary):
+            return navigateToWrite(date, diary)
             
         case .splashIsRequired:
             return .end(forwardToParentFlowWithStep: DiaryStep.splashIsRequired)
@@ -92,8 +92,8 @@ extension HomeFlow: FloatingPanelControllerDelegate {
         return .one(flowContributor: .contribute(withNextPresentable: fpc, withNextStepper: reactor))
     }
     
-    private func navigateToWrite(_ date: Date) -> FlowContributors {
-        let reactor = WriteViewReactor(date: date)
+    private func navigateToWrite(_ date: Date, _ diary: RealmDiary?) -> FlowContributors {
+        let reactor = WriteViewReactor(date: date, diary: diary)
         let viewController = WriteViewController(reactor: reactor)
         
         self.rootViewController.dismiss(animated: true)

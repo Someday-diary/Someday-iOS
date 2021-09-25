@@ -29,14 +29,18 @@ final class WriteViewReactor: Reactor, Stepper {
     
     struct State {
         var date: Date
-        var data: String = String()
-        var tags: String = String()
+        var data: String
+        var tags: String
     }
     
     let initialState: State
     
-    init(date: Date) {
-        self.initialState = State(date: date)
+    init(date: Date, diary: RealmDiary?) {
+        if diary != nil {
+            self.initialState = State(date: date, data: diary!.data, tags: diary!.tags)
+        } else {
+            self.initialState = State(date: date, data: String(), tags: String())
+        }
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
