@@ -162,6 +162,16 @@ final class MainViewController: BaseViewController, View {
         // View
         self.calendarView.calendar.rx.setDelegate(self)
             .disposed(by: disposeBag)
+        
+        self.rx.didRotate.asObservable()
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                
+                self.calendarView.calendar.reloadData()
+                self.calendarView.calendar.calendarHeaderView.reloadData()
+            })
+            .disposed(by: disposeBag)
+            
     }
 
 }
