@@ -19,12 +19,11 @@ final class WriteViewReactor: Reactor, Stepper {
     
     enum Action {
         case popViewController
-        case writeDiary(String, String)
-        case saveDidary
+        case saveDidary(String, String)
     }
     
     enum Mutation {
-        case updateDiary(String, String)
+        
     }
     
     struct State {
@@ -51,21 +50,18 @@ final class WriteViewReactor: Reactor, Stepper {
             self.steps.accept(DiaryStep.popViewController)
             return Observable.empty()
             
-        case let .writeDiary(data, tags):
-            return Observable.just(Mutation.updateDiary(data, tags))
-            
-        case .saveDidary:
+        case let .saveDidary(data, tags):
             let realm = try! Realm()
             
             let diary = RealmDiary().then {
                 $0.date = self.currentState.date.realmString
-                $0.data = self.currentState.data
-                $0.tags = self.currentState.tags
+                $0.data = data
+                $0.tags = tags
             }
             
             do {
                 try realm.write {
-                    realm.add(diary)
+                    realm.add(diary, update: .modified)
                 }
             } catch {
                 print("이미 일기가 있어요")
@@ -75,18 +71,6 @@ final class WriteViewReactor: Reactor, Stepper {
             return Observable.empty()
         }
         
-    }
-    
-    func reduce(state: State, mutation: Mutation) -> State {
-        var state = state
-        
-        switch mutation {
-        case let .updateDiary(data, tags):
-            state.data = data
-            state.tags = tags
-        }
-        
-        return state
     }
     
 }
