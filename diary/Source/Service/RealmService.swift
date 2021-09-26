@@ -36,7 +36,7 @@ final class RealmService: RealmServiceType {
             
             do {
                 try self?.realm.write {
-                    self?.realm.add(diary)
+                    self?.realm.add(diary, update: .modified)
                 }
                 single(.success(Void()))
             } catch {
