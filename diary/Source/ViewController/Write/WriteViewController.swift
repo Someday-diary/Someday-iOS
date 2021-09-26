@@ -116,7 +116,6 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
             $0.left.equalToSafeArea(self.view).offset(Metric.textFieldSide)
             $0.right.equalToSafeArea(self.view).offset(-Metric.textFieldSide)
             $0.top.equalTo(self.textView.snp.bottom).offset(Metric.textFieldTop)
-            $0.bottom.equalToSafeArea(self.view).offset(-Metric.textFieldBottom)
             $0.height.equalTo(Metric.textFieldHeight)
         }
     }
