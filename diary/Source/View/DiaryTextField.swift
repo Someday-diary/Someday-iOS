@@ -64,7 +64,6 @@ final class DiaryTextField: UIView {
         self.addSubview(self.separatorView)
         
         self.eventLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
             $0.left.equalToSuperview()
             $0.right.equalToSuperview()
         }
@@ -73,6 +72,7 @@ final class DiaryTextField: UIView {
             $0.top.equalTo(self.eventLabel.snp.bottom).offset(Metric.textFieldTop)
             $0.left.equalToSuperview().offset(Metric.textFieldSide)
             $0.right.equalToSuperview().offset(-Metric.textFieldSide)
+            $0.centerY.equalToSuperview()
         }
         
         self.separatorView.snp.makeConstraints {
