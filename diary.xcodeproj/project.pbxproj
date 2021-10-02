@@ -17,6 +17,7 @@
 		620BCACB26E8819C0023499D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620BCACA26E8819C0023499D /* String.swift */; };
 		62183EEC26DB3A6600F22EC6 /* DiaryTextField+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62183EEB26DB3A6600F22EC6 /* DiaryTextField+Rx.swift */; };
 		621CF20F27083BC400B7EB5D /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621CF20E27083BC400B7EB5D /* CGFloat.swift */; };
+		621CF211270881A200B7EB5D /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621CF210270881A200B7EB5D /* UIDevice.swift */; };
 		624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2926D6299B004A6624 /* LoginFlow.swift */; };
 		624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2B26D6350A004A6624 /* AppStepper.swift */; };
 		624E4D3326D63685004A6624 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D3226D63685004A6624 /* SplashViewController.swift */; };
@@ -107,6 +108,7 @@
 		620BCACA26E8819C0023499D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		62183EEB26DB3A6600F22EC6 /* DiaryTextField+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryTextField+Rx.swift"; sourceTree = "<group>"; };
 		621CF20E27083BC400B7EB5D /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
+		621CF210270881A200B7EB5D /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		624E4D2926D6299B004A6624 /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
 		624E4D2B26D6350A004A6624 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		624E4D3226D63685004A6624 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				620BCAC426E5EC730023499D /* UITextField.swift */,
 				620BCAC626E5F4610023499D /* Date.swift */,
 				620BCACA26E8819C0023499D /* String.swift */,
+				621CF210270881A200B7EB5D /* UIDevice.swift */,
 				621CF20E27083BC400B7EB5D /* CGFloat.swift */,
 			);
 			path = Extension;
@@ -804,6 +807,7 @@
 				624E4D3726D66EF1004A6624 /* SplashViewReactor.swift in Sources */,
 				625F4C8726D4D2AB00DC5978 /* DiaryTextField.swift in Sources */,
 				620BCAC726E5F4610023499D /* Date.swift in Sources */,
+				621CF211270881A200B7EB5D /* UIDevice.swift in Sources */,
 				625A9EB226D9213800D65840 /* DiaryButton.swift in Sources */,
 				628BFD9926EB6A5300851408 /* CustomFloatingPanelLayout.swift in Sources */,
 				62D758CE26E37BAB009AE551 /* WriteViewController.swift in Sources */,

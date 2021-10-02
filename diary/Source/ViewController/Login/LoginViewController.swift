@@ -26,6 +26,7 @@ class LoginViewController: BaseViewController, View {
         // TextField
         static let textFieldSide = 30.f
         static let textFieldHeight = 50.f
+        static let textFieldBetween = 15.f
         
         // Login
         static let loginHeight = 40.f
@@ -44,7 +45,7 @@ class LoginViewController: BaseViewController, View {
         
         // Register Button
         static let registerHighlight = Style("h")
-            .font(.systemFont(ofSize: 14, weight: .semibold))
+            .font(.systemFont(ofSize: 14, weight: .bold))
             .underlineStyle(.single)
         static let registerAll = Style.font(.systemFont(ofSize: 14)).foregroundColor(.black)
     }
@@ -129,7 +130,7 @@ class LoginViewController: BaseViewController, View {
         self.passwordTextField.snp.makeConstraints {
             $0.left.equalToSafeArea(self.view).offset(Metric.textFieldSide)
             $0.right.equalToSafeArea(self.view).offset(-Metric.textFieldSide)
-            $0.top.equalTo(self.idTextField.snp.bottom)
+            $0.top.equalTo(self.idTextField.snp.bottom).offset(Metric.textFieldBetween.loginTextFieldBetween)
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
@@ -215,7 +216,7 @@ extension LoginViewController {
                 }
                 
                 self.idTextField.snp.updateConstraints {
-                    $0.top.equalTo(self.loginImageView.snp.bottom).offset(height == 0 ? self.view.frame.height / 10 : ((self.view.frame.height - height) / 12).iPhoneSETop )
+                    $0.top.equalTo(self.loginImageView.snp.bottom).offset(height == 0 ? self.view.frame.height / 10 : ((self.view.frame.height - height) / 12).loginTextFieldTop )
                 }
                 
                 self.registerButton.snp.updateConstraints {
@@ -227,6 +228,7 @@ extension LoginViewController {
                     self.socialLogin.alpha = height == 0 ? 1 : 0
                     self.view.layoutIfNeeded()
                 }
+                
             })
             .disposed(by: disposeBag)
         

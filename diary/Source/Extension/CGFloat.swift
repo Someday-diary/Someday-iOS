@@ -8,8 +8,21 @@
 import UIKit
 
 extension CGFloat {
-    var iPhoneSETop: Int {
-        guard self < 30 else { return Int(self) }
-        return 15
+    var loginTextFieldTop: Int {
+        switch UIDevice().type {
+        case .iPod7, .iPhoneSE2:
+            return 15
+        default:
+            return Int(self)
+        }
+    }
+    
+    var loginTextFieldBetween: Int {
+        switch UIDevice().type {
+        case .iPod7, .iPhoneSE2:
+            return 0
+        default:
+            return Int(self)
+        }
     }
 }
