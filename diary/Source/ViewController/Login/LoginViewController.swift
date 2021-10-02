@@ -25,17 +25,17 @@ class LoginViewController: BaseViewController, View {
         
         // TextField
         static let textFieldSide = 30.f
-        static let textFieldHeight = 60.f
+        static let textFieldHeight = 50.f
         
         // Login
         static let loginHeight = 40.f
         static let loginSide = 30.f
-        static let loginBottom = 100.f
-        static let loginKeyboard = 10.f
+        static let loginBottom = 10.f
         
         // Register
         static let registerBottom = 70.f
         static let registerHeight = 20.f
+        static let registerKeyboard = 10.f
     }
     
     fileprivate struct Font {
@@ -75,6 +75,10 @@ class LoginViewController: BaseViewController, View {
         $0.backgroundColor = .clear
     }
     
+    let socialLogin = UIView().then {
+        $0.backgroundColor = .lightGray
+    }
+    
     // MARK: - Initializing
     init(reactor: Reactor) {
         super.init()
@@ -101,6 +105,7 @@ class LoginViewController: BaseViewController, View {
         self.view.addSubview(self.loginButton)
         self.view.addSubview(self.loginImageView)
         self.view.addSubview(self.registerButton)
+        self.view.addSubview(self.socialLogin)
         
         // Bind
         self.UIBind()
@@ -118,7 +123,6 @@ class LoginViewController: BaseViewController, View {
         self.idTextField.snp.makeConstraints {
             $0.left.equalToSafeArea(self.view).offset(Metric.textFieldSide)
             $0.right.equalToSafeArea(self.view).offset(-Metric.textFieldSide)
-            $0.bottom.equalTo(self.loginImageView.snp.bottom).offset(self.view.frame.height / 5.5)
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
@@ -129,14 +133,21 @@ class LoginViewController: BaseViewController, View {
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
+        self.socialLogin.snp.makeConstraints {
+            $0.centerX.equalToSafeArea(self.view)
+            $0.width.equalTo(125)
+            $0.height.equalTo(75)
+            $0.bottom.equalTo(self.loginButton.snp.top).offset(-25)
+        }
+        
         self.loginButton.snp.makeConstraints {
             $0.left.equalToSafeArea(self.view).offset(Metric.loginSide)
             $0.right.equalToSafeArea(self.view).offset(-Metric.loginSide)
             $0.height.equalTo(Metric.loginHeight)
+            $0.bottom.equalTo(self.registerButton.snp.top).offset(-Metric.loginBottom)
         }
         
         self.registerButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().offset(-Metric.registerBottom)
             $0.centerX.equalToSafeArea(self.view)
             $0.height.equalTo(Metric.registerHeight)
         }
@@ -203,12 +214,17 @@ extension LoginViewController {
                     $0.top.equalToSafeArea(self.view).offset(height == 0 ? self.view.frame.height/20 : -25)
                 }
                 
-                self.loginButton.snp.updateConstraints {
-                    $0.bottom.equalToSuperview().offset(height == 0 ? -Metric.loginBottom : -height-Metric.loginKeyboard)
+                self.idTextField.snp.updateConstraints {
+                    $0.top.equalTo(self.loginImageView.snp.bottom).offset(height == 0 ? self.view.frame.height / 10 : ((self.view.frame.height - height) / 12).iPhoneSETop )
+                }
+                
+                self.registerButton.snp.updateConstraints {
+                    $0.bottom.equalToSuperview().offset(height == 0 ? -Metric.registerBottom : -height-Metric.registerKeyboard)
                 }
                 
                 // animation
                 UIView.animate(withDuration: 0.1) {
+                    self.socialLogin.alpha = height == 0 ? 1 : 0
                     self.view.layoutIfNeeded()
                 }
             })
@@ -222,5 +238,12 @@ extension LoginViewController {
                 self.registerButton.setAttributedTitle(text, for: .normal)
             })
             .disposed(by: disposeBag)
+    }
+}
+
+extension CGFloat {
+    var iPhoneSETop: Int {
+        guard self < 30 else { return Int(self) }
+        return 15
     }
 }
