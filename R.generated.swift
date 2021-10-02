@@ -434,7 +434,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 15 images.
+  /// This `R.image` struct is generated, and contains static references to 16 images.
   struct image {
     /// Image `Add`.
     static let add = Rswift.ImageResource(bundle: R.hostingBundle, name: "Add")
@@ -464,6 +464,8 @@ struct R: Rswift.Validatable {
     static let mainIconGreenTheme = Rswift.ImageResource(bundle: R.hostingBundle, name: "MainIconGreenTheme")
     /// Image `OpenSourceIcon`.
     static let openSourceIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "OpenSourceIcon")
+    /// Image `SocialLoginHolderImage`.
+    static let socialLoginHolderImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "SocialLoginHolderImage")
     /// Image `ThemeIcon`.
     static let themeIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "ThemeIcon")
 
@@ -562,6 +564,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "OpenSourceIcon", bundle: ..., traitCollection: ...)`
     static func openSourceIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.openSourceIcon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "SocialLoginHolderImage", bundle: ..., traitCollection: ...)`
+    static func socialLoginHolderImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.socialLoginHolderImage, compatibleWith: traitCollection)
     }
     #endif
 

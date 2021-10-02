@@ -75,8 +75,8 @@ class LoginViewController: BaseViewController, View {
         $0.backgroundColor = .clear
     }
     
-    let socialLogin = UIView().then {
-        $0.backgroundColor = .lightGray
+    let socialLogin = UIImageView().then {
+        $0.image = R.image.socialLoginHolderImage()
     }
     
     // MARK: - Initializing
