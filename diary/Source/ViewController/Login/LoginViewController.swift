@@ -184,8 +184,8 @@ class LoginViewController: BaseViewController, View {
         let passwordValidation = reactor.state.map { $0.passwordValidation }.distinctUntilChanged()
         
         Observable.combineLatest(
-            idValidation.map { $0 == .correct },
-            passwordValidation.map { $0 == .correct }
+            idValidation.map { $0 == .correct(.email) },
+            passwordValidation.map { $0 == .correct(.password) }
         ) { $0 && $1 }
         .bind(to: loginButton.rx.isEnabled)
         .disposed(by: disposeBag)
