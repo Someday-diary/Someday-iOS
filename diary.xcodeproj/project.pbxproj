@@ -16,6 +16,7 @@
 		620BCAC926E601930023499D /* CreateDiaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620BCAC826E601930023499D /* CreateDiaryButton.swift */; };
 		620BCACB26E8819C0023499D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620BCACA26E8819C0023499D /* String.swift */; };
 		62183EEC26DB3A6600F22EC6 /* DiaryTextField+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62183EEB26DB3A6600F22EC6 /* DiaryTextField+Rx.swift */; };
+		621CF20F27083BC400B7EB5D /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621CF20E27083BC400B7EB5D /* CGFloat.swift */; };
 		624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2926D6299B004A6624 /* LoginFlow.swift */; };
 		624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2B26D6350A004A6624 /* AppStepper.swift */; };
 		624E4D3326D63685004A6624 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D3226D63685004A6624 /* SplashViewController.swift */; };
@@ -105,6 +106,7 @@
 		620BCAC826E601930023499D /* CreateDiaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDiaryButton.swift; sourceTree = "<group>"; };
 		620BCACA26E8819C0023499D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		62183EEB26DB3A6600F22EC6 /* DiaryTextField+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryTextField+Rx.swift"; sourceTree = "<group>"; };
+		621CF20E27083BC400B7EB5D /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
 		624E4D2926D6299B004A6624 /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
 		624E4D2B26D6350A004A6624 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		624E4D3226D63685004A6624 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				620BCAC426E5EC730023499D /* UITextField.swift */,
 				620BCAC626E5F4610023499D /* Date.swift */,
 				620BCACA26E8819C0023499D /* String.swift */,
+				621CF20E27083BC400B7EB5D /* CGFloat.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -812,6 +815,7 @@
 				620BCAC526E5EC730023499D /* UITextField.swift in Sources */,
 				62F6681C26F8DAF800110E35 /* ActiveLabel+RxTheme.swift in Sources */,
 				62C7D7A226EF4AEB00C3E257 /* UserService.swift in Sources */,
+				621CF20F27083BC400B7EB5D /* CGFloat.swift in Sources */,
 				625F4C8326D4675B00DC5978 /* DiaryCalendar.swift in Sources */,
 				62CB1D3526DA4CCB00B1BA32 /* SideMenuViewController.swift in Sources */,
 				625F4C5726CF235F00DC5978 /* UIViewControllerPreview.swift in Sources */,

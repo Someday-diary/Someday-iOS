@@ -240,10 +240,3 @@ extension LoginViewController {
             .disposed(by: disposeBag)
     }
 }
-
-extension CGFloat {
-    var iPhoneSETop: Int {
-        guard self < 30 else { return Int(self) }
-        return 15
-    }
-}
