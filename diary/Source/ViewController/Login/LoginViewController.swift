@@ -219,7 +219,7 @@ extension LoginViewController {
                 }
                 
                 self.registerButton.snp.updateConstraints {
-                    $0.bottom.equalToSuperview().offset(height == 0 ? -Metric.registerBottom : -height-Metric.registerKeyboard)
+                    $0.bottom.equalToSafeArea(self.view).offset(height == 0 ? -self.view.frame.height / 20 : -height-Metric.registerKeyboard)
                 }
                 
                 // animation
