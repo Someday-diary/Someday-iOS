@@ -17,7 +17,9 @@ extension AnimatedSink where Base: DiaryTextField {
         return Binder(self.base) { textfield, validation in
             animation.animate(view: textfield.eventLabel, binding: {
                 switch validation {
-                case let .error(message: message):
+                case let .correct(type):
+                    textfield.eventLabel.text = type.rawValue
+                case let .error(message):
                     textfield.eventLabel.text = message
                 default:
                     textfield.eventLabel.text = " "

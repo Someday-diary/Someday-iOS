@@ -13,16 +13,18 @@ protocol Theme {
     var mainColor: UIColor { get }
     var subColor: UIColor { get }
     var thirdColor: UIColor { get }
-    var buttonDisableColor: UIColor { get }
+    var diaryDisableColor: UIColor { get }
     var mainIllustration: UIImage { get }
     var systemWhiteColor: UIColor { get }
     var backgroundColor: UIColor { get }
+    var clearColor: UIColor { get }
 }
 
 extension Theme {
-    var buttonDisableColor: UIColor { R.color.diaryButtonDisabled()! }
+    var diaryDisableColor: UIColor { R.color.diaryDisabledColor()! }
     var systemWhiteColor: UIColor { R.color.systemWhiteColor()! }
     var backgroundColor: UIColor { .systemBackground }
+    var clearColor: UIColor { .clear }
 }
 
 struct GreenTheme: Theme {
