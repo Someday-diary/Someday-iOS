@@ -53,7 +53,7 @@ enum ThemeType: ThemeProvider {
     }
 }
 
-let themeService = ThemeType.service(initial: .blue)
+let themeService = ThemeType.service(initial: .green)
 func themed<T>(_ mapper: @escaping ((Theme) -> T)) -> Observable<T> {
   return themeService.attrStream(mapper)
 }

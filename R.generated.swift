@@ -396,7 +396,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 16 images.
+  /// This `R.image` struct is generated, and contains static references to 17 images.
   struct image {
     /// Image `Add`.
     static let add = Rswift.ImageResource(bundle: R.hostingBundle, name: "Add")
@@ -410,8 +410,8 @@ struct R: Rswift.Validatable {
     static let calendarBackButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "CalendarBackButton")
     /// Image `CalendarFrontButton`.
     static let calendarFrontButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "CalendarFrontButton")
-    /// Image `DiarySideMenuButton`.
-    static let diarySideMenuButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "DiarySideMenuButton")
+    /// Image `DiaryDrawerButton`.
+    static let diaryDrawerButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "DiaryDrawerButton")
     /// Image `DismissButton`.
     static let dismissButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "DismissButton")
     /// Image `FeedbackIcon`.
@@ -430,6 +430,8 @@ struct R: Rswift.Validatable {
     static let socialLoginHolderImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "SocialLoginHolderImage")
     /// Image `ThemeIcon`.
     static let themeIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "ThemeIcon")
+    /// Image `searchButton`.
+    static let searchButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "searchButton")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "Add", bundle: ..., traitCollection: ...)`
@@ -474,9 +476,9 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "DiarySideMenuButton", bundle: ..., traitCollection: ...)`
-    static func diarySideMenuButton(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.diarySideMenuButton, compatibleWith: traitCollection)
+    /// `UIImage(named: "DiaryDrawerButton", bundle: ..., traitCollection: ...)`
+    static func diaryDrawerButton(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.diaryDrawerButton, compatibleWith: traitCollection)
     }
     #endif
 
@@ -540,6 +542,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "ThemeIcon", bundle: ..., traitCollection: ...)`
     static func themeIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.themeIcon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "searchButton", bundle: ..., traitCollection: ...)`
+    static func searchButton(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.searchButton, compatibleWith: traitCollection)
     }
     #endif
 
