@@ -48,6 +48,9 @@ class LoginViewController: BaseViewController, View {
             .font(.systemFont(ofSize: 14, weight: .bold))
             .underlineStyle(.single)
         static let registerAll = Style.font(.systemFont(ofSize: 14)).foregroundColor(.black)
+        
+        // TextField
+        static let textFieldAll = Style.font(.systemFont(ofSize: 14)).foregroundColor(R.color.textFieldTextColor()!)
     }
     
     // MARK: - UI
@@ -56,12 +59,12 @@ class LoginViewController: BaseViewController, View {
     }
     
     let idTextField = DiaryTextField().then {
-        $0.textField.placeholder = "ID"
+        $0.textField.attributedPlaceholder = "이메일".styleAll(Font.textFieldAll).attributedString
         $0.textField.keyboardType = .emailAddress
     }
     
     let passwordTextField = DiaryTextField().then {
-        $0.textField.placeholder = "Password"
+        $0.textField.attributedPlaceholder = "비밀번호".styleAll(Font.textFieldAll).attributedString
         $0.textField.keyboardType = .default
         $0.textField.isSecureTextEntry = true
     }

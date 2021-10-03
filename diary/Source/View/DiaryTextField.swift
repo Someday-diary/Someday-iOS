@@ -26,7 +26,7 @@ final class DiaryTextField: UIView {
     }
     
     fileprivate struct Font {
-        static let textFieldFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        static let textFieldFont = UIFont.systemFont(ofSize: 16, weight: .regular)
         static let eventFont = UIFont.systemFont(ofSize: 10, weight: .medium)
     }
     
@@ -34,17 +34,19 @@ final class DiaryTextField: UIView {
     let eventLabel = UILabel().then {
         $0.font = Font.eventFont
         $0.textAlignment = .left
+        $0.textColor = R.color.textFieldTextColor()
     }
     
     let textField = UITextField().then {
         $0.clearButtonMode = .whileEditing
         $0.autocorrectionType = .no
+        $0.font = Font.textFieldFont
         $0.autocapitalizationType = .none
         $0.theme.tintColor = themed { $0.mainColor }
     }
     
     let separatorView = UIView().then {
-        $0.backgroundColor = R.color.textFieldSeparatorColor()
+        $0.backgroundColor = R.color.diaryDisabledColor()
     }
     
     // MARK: - Initializing
@@ -64,14 +66,14 @@ final class DiaryTextField: UIView {
         self.addSubview(self.separatorView)
         
         self.eventLabel.snp.makeConstraints {
-            $0.left.equalToSuperview()
+            $0.left.equalToSuperview().offset(Metric.textFieldSide)
             $0.right.equalToSuperview()
         }
         
         self.textField.snp.makeConstraints {
             $0.top.equalTo(self.eventLabel.snp.bottom).offset(Metric.textFieldTop)
             $0.left.equalToSuperview().offset(Metric.textFieldSide)
-            $0.right.equalToSuperview().offset(-Metric.textFieldSide)
+            $0.right.equalToSuperview()
             $0.centerY.equalToSuperview()
         }
         
@@ -97,11 +99,10 @@ final class DiaryTextField: UIView {
         self.textField.rx.controlEvent([.editingDidEnd]).asObservable()
             .subscribe(onNext: {
                 UIView.animate(withDuration: 0.3) {
-                    self.separatorView.backgroundColor = R.color.textFieldSeparatorColor()
+                    self.separatorView.backgroundColor = R.color.diaryDisabledColor()
                 }
             })
             .disposed(by: disposeBag)
-            
     }
     
 }

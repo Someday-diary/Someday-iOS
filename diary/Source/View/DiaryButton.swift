@@ -12,6 +12,7 @@ final class DiaryButton: UIButton {
     // MARK: - Constants
     fileprivate struct Style {
         static let cornerRadius = 7.f
+        static let borderWidth = 1.f
     }
 
     // MARK: - UI
@@ -32,6 +33,9 @@ final class DiaryButton: UIButton {
         
         self.layer.cornerRadius = Style.cornerRadius
         self.clipsToBounds = true
+        self.layer.borderWidth = Style.borderWidth
+        self.setTitleColor(R.color.systemWhiteColor(), for: .normal)
+        self.setTitleColor(R.color.diaryDisabledColor(), for: .disabled)
     }
     
     override public var isHighlighted: Bool {
@@ -45,8 +49,13 @@ final class DiaryButton: UIButton {
     override public var isEnabled: Bool {
         didSet {
             UIView.animate(withDuration: 0.3) {
-                self.theme.backgroundColor = self.isEnabled ? themed { $0.mainColor } : themed { $0.buttonDisableColor }
-
+                if self.isEnabled {
+                    self.theme.backgroundColor = themed { $0.mainColor }
+                    self.layer.theme.borderColor = themed { $0.mainColor.cgColor }
+                } else {
+                    self.theme.backgroundColor = themed { $0.clearColor }
+                    self.layer.theme.borderColor = themed { $0.diaryDisableColor.cgColor }
+                }
             }
         }
     }

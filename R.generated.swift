@@ -105,12 +105,10 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 17 colors.
+  /// This `R.color` struct is generated, and contains static references to 15 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
-    /// Color `BackGroundColor`.
-    static let backGroundColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "BackGroundColor")
     /// Color `BlueThemeMainColor`.
     static let blueThemeMainColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "BlueThemeMainColor")
     /// Color `BlueThemeSubColor`.
@@ -123,22 +121,20 @@ struct R: Rswift.Validatable {
     static let calendarTitleDefaultColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "CalendarTitleDefaultColor")
     /// Color `CalendarTitlePlaceHolderColor`.
     static let calendarTitlePlaceHolderColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "CalendarTitlePlaceHolderColor")
-    /// Color `DiaryButtonDisabled`.
-    static let diaryButtonDisabled = Rswift.ColorResource(bundle: R.hostingBundle, name: "DiaryButtonDisabled")
+    /// Color `DiaryDisabledColor`.
+    static let diaryDisabledColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "DiaryDisabledColor")
     /// Color `GreenThemeMainColor`.
     static let greenThemeMainColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "GreenThemeMainColor")
     /// Color `GreenThemeSubColor`.
     static let greenThemeSubColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "GreenThemeSubColor")
     /// Color `GreenThemeThirdColor`.
     static let greenThemeThirdColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "GreenThemeThirdColor")
-    /// Color `MainViewSeparatorColor`.
-    static let mainViewSeparatorColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "MainViewSeparatorColor")
     /// Color `NavigationButtonColor`.
     static let navigationButtonColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "NavigationButtonColor")
     /// Color `SystemWhiteColor`.
     static let systemWhiteColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "SystemWhiteColor")
-    /// Color `TextFieldSeparatorColor`.
-    static let textFieldSeparatorColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "TextFieldSeparatorColor")
+    /// Color `TextFieldTextColor`.
+    static let textFieldTextColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "TextFieldTextColor")
     /// Color `WeekdayTextColor`.
     static let weekdayTextColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "WeekdayTextColor")
 
@@ -148,15 +144,6 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func accentColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.accentColor, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "BackGroundColor", bundle: ..., traitCollection: ...)`
-    @available(tvOS 11.0, *)
-    @available(iOS 11.0, *)
-    static func backGroundColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
-      return UIKit.UIColor(resource: R.color.backGroundColor, compatibleWith: traitCollection)
     }
     #endif
 
@@ -215,11 +202,11 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "DiaryButtonDisabled", bundle: ..., traitCollection: ...)`
+    /// `UIColor(named: "DiaryDisabledColor", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
-    static func diaryButtonDisabled(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
-      return UIKit.UIColor(resource: R.color.diaryButtonDisabled, compatibleWith: traitCollection)
+    static func diaryDisabledColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.diaryDisabledColor, compatibleWith: traitCollection)
     }
     #endif
 
@@ -251,15 +238,6 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "MainViewSeparatorColor", bundle: ..., traitCollection: ...)`
-    @available(tvOS 11.0, *)
-    @available(iOS 11.0, *)
-    static func mainViewSeparatorColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
-      return UIKit.UIColor(resource: R.color.mainViewSeparatorColor, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIColor(named: "NavigationButtonColor", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
@@ -278,11 +256,11 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "TextFieldSeparatorColor", bundle: ..., traitCollection: ...)`
+    /// `UIColor(named: "TextFieldTextColor", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
-    static func textFieldSeparatorColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
-      return UIKit.UIColor(resource: R.color.textFieldSeparatorColor, compatibleWith: traitCollection)
+    static func textFieldTextColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.textFieldTextColor, compatibleWith: traitCollection)
     }
     #endif
 
@@ -300,14 +278,6 @@ struct R: Rswift.Validatable {
     @available(watchOSApplicationExtension 4.0, *)
     static func accentColor(_: Void = ()) -> UIKit.UIColor? {
       return UIKit.UIColor(named: R.color.accentColor.name)
-    }
-    #endif
-
-    #if os(watchOS)
-    /// `UIColor(named: "BackGroundColor", bundle: ..., traitCollection: ...)`
-    @available(watchOSApplicationExtension 4.0, *)
-    static func backGroundColor(_: Void = ()) -> UIKit.UIColor? {
-      return UIKit.UIColor(named: R.color.backGroundColor.name)
     }
     #endif
 
@@ -360,10 +330,10 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(watchOS)
-    /// `UIColor(named: "DiaryButtonDisabled", bundle: ..., traitCollection: ...)`
+    /// `UIColor(named: "DiaryDisabledColor", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
-    static func diaryButtonDisabled(_: Void = ()) -> UIKit.UIColor? {
-      return UIKit.UIColor(named: R.color.diaryButtonDisabled.name)
+    static func diaryDisabledColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.diaryDisabledColor.name)
     }
     #endif
 
@@ -392,14 +362,6 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(watchOS)
-    /// `UIColor(named: "MainViewSeparatorColor", bundle: ..., traitCollection: ...)`
-    @available(watchOSApplicationExtension 4.0, *)
-    static func mainViewSeparatorColor(_: Void = ()) -> UIKit.UIColor? {
-      return UIKit.UIColor(named: R.color.mainViewSeparatorColor.name)
-    }
-    #endif
-
-    #if os(watchOS)
     /// `UIColor(named: "NavigationButtonColor", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
     static func navigationButtonColor(_: Void = ()) -> UIKit.UIColor? {
@@ -416,10 +378,10 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(watchOS)
-    /// `UIColor(named: "TextFieldSeparatorColor", bundle: ..., traitCollection: ...)`
+    /// `UIColor(named: "TextFieldTextColor", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
-    static func textFieldSeparatorColor(_: Void = ()) -> UIKit.UIColor? {
-      return UIKit.UIColor(named: R.color.textFieldSeparatorColor.name)
+    static func textFieldTextColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.textFieldTextColor.name)
     }
     #endif
 
