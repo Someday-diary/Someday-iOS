@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DiarySearchBar: UIView {
+final class DiarySearchBar: UISearchBar {
     
     // MARK: - Constants
     fileprivate struct Style {
@@ -16,11 +16,7 @@ final class DiarySearchBar: UIView {
     }
     
     fileprivate struct Metric {
-        static let imageWidth = 16.f
-        static let imageLeft = 16.f
         
-        static let textFieldRight = 5.f
-        static let textFieldLeft = 8.f
     }
     
     fileprivate struct Font {
@@ -28,23 +24,20 @@ final class DiarySearchBar: UIView {
     }
     
     // MARK: - UI
-    let leftImage = UIImageView().then {
-        $0.image = R.image.arrowIcon()
+    let leftButton = UIButton(type: .system).then {
+        $0.setImage(R.image.arrowIcon(), for: .normal)
         $0.theme.tintColor = themed { $0.mainColor }
-    }
-    
-    let textField = UITextField().then {
-        $0.theme.tintColor = themed { $0.mainColor }
-        $0.clearButtonMode = .whileEditing
     }
     
     // MARK: - Inititalizing
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        self.layer.cornerRadius = Style.cornerRadius
-        self.layer.borderWidth = Style.borderWidth
-        self.layer.theme.borderColor = themed { $0.mainColor.cgColor }
+        self.searchTextField.leftView = self.leftButton
+        self.searchTextField.backgroundColor = .clear
+        self.searchTextField.layer.cornerRadius = Style.cornerRadius
+        self.searchTextField.layer.borderWidth = Style.borderWidth
+        self.searchTextField.layer.theme.borderColor = themed { $0.mainColor.cgColor }
     }
     
     required init?(coder: NSCoder) {
@@ -55,20 +48,7 @@ final class DiarySearchBar: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.addSubview(self.leftImage)
-        self.addSubview(self.textField)
-        
-        self.leftImage.snp.makeConstraints {
-            $0.width.equalTo(Metric.imageWidth)
-            $0.left.equalToSuperview().offset(Metric.imageLeft)
-            $0.centerY.equalToSuperview()
-        }
-        
-        self.textField.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
-            $0.right.equalToSuperview().offset(-Metric.textFieldRight)
-            $0.left.equalTo(self.leftImage.snp.right).offset(Metric.textFieldLeft)
-        }
     }
     
 }
+
