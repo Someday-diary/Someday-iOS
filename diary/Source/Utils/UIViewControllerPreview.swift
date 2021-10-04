@@ -20,7 +20,7 @@ extension UIViewController {
         }
     }
 
-    func showPreview(_ deviceType: DeviceType = .iPhone12Pro) -> some View {
+    func showPreview(_ deviceType: DeviceType = .iPhone13Pro) -> some View {
         Preview(viewController: self).previewDevice(PreviewDevice(rawValue: deviceType.name()))
     }
 }
