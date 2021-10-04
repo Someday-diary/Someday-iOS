@@ -8,6 +8,7 @@
 import UIKit
 
 import ReactorKit
+import Atributika
 
 final class SearchViewController: BaseViewController, View {
     
@@ -19,12 +20,15 @@ final class SearchViewController: BaseViewController, View {
     }
     
     fileprivate struct Font {
-        
+        static let searchBarPlaceholder = Style.font(.systemFont(ofSize: 16, weight: .medium))
     }
     
     // MARK: - Properties
     
     // MARK: - UI
+    let searchBar = DiarySearchBar().then {
+        $0.searchTextField.attributedPlaceholder = "검색어를 입력하세요.".styleAll(Font.searchBarPlaceholder).attributedString
+    }
     
     // MARK: - Inintializing
     init(reactor: Reactor) {
@@ -46,6 +50,7 @@ final class SearchViewController: BaseViewController, View {
     override func setupLayout() {
         super.setupLayout()
         
+        self.navigationItem.titleView = self.searchBar
     }
     
     override func setupConstraints() {

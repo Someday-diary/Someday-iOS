@@ -129,6 +129,11 @@ final class MainViewController: BaseViewController, View {
             .map { Reactor.Action.presentSideMenu }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        self.searchButton.rx.tap.asObservable()
+            .map { Reactor.Action.presentSearch }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     
         
         Observable.combineLatest(
