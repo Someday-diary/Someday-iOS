@@ -16,7 +16,8 @@ final class DiarySearchBar: UISearchBar {
     }
     
     fileprivate struct Metric {
-        
+        static let buttonWidth = 30.f
+        static let imageWidth = 16.f
     }
     
     fileprivate struct Font {
@@ -29,15 +30,21 @@ final class DiarySearchBar: UISearchBar {
         $0.theme.tintColor = themed { $0.mainColor }
     }
     
+    let leftView = UIView().then {
+        $0.alpha = 0
+    }
+    
     // MARK: - Inititalizing
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        self.searchTextField.leftView = self.leftButton
+        self.searchTextField.leftView = self.leftView
         self.searchTextField.backgroundColor = .clear
         self.searchTextField.layer.cornerRadius = Style.cornerRadius
         self.searchTextField.layer.borderWidth = Style.borderWidth
         self.searchTextField.layer.theme.borderColor = themed { $0.mainColor.cgColor }
+        self.searchTextField.clearButtonTintColor = R.color.clearButtonColor()
+        self.theme.tintColor = themed { $0.mainColor }
     }
     
     required init?(coder: NSCoder) {
@@ -48,6 +55,17 @@ final class DiarySearchBar: UISearchBar {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        self.leftView.addSubview(self.leftButton)
+        
+        self.leftView.snp.makeConstraints {
+            $0.width.equalTo(Metric.buttonWidth)
+        }
+        
+        self.leftButton.snp.makeConstraints {
+            $0.width.equalTo(Metric.imageWidth)
+            $0.centerX.equalToSuperview()
+            $0.top.bottom.equalToSuperview()
+        }
     }
     
 }

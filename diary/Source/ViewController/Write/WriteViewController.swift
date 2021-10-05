@@ -19,7 +19,7 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
     // MARK: - Constants
     fileprivate struct Metric {
         
-        // BackButtonPadding
+        // ButtonPadding
         static let leftNavigativePadding = 18.f
         static let rightNavigativePadding = 20.f
         

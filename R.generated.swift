@@ -105,7 +105,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 15 colors.
+  /// This `R.color` struct is generated, and contains static references to 16 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
@@ -121,6 +121,8 @@ struct R: Rswift.Validatable {
     static let calendarTitleDefaultColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "CalendarTitleDefaultColor")
     /// Color `CalendarTitlePlaceHolderColor`.
     static let calendarTitlePlaceHolderColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "CalendarTitlePlaceHolderColor")
+    /// Color `ClearButtonColor`.
+    static let clearButtonColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "ClearButtonColor")
     /// Color `DiaryDisabledColor`.
     static let diaryDisabledColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "DiaryDisabledColor")
     /// Color `GreenThemeMainColor`.
@@ -198,6 +200,15 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func calendarTitlePlaceHolderColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.calendarTitlePlaceHolderColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "ClearButtonColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func clearButtonColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.clearButtonColor, compatibleWith: traitCollection)
     }
     #endif
 
@@ -326,6 +337,14 @@ struct R: Rswift.Validatable {
     @available(watchOSApplicationExtension 4.0, *)
     static func calendarTitlePlaceHolderColor(_: Void = ()) -> UIKit.UIColor? {
       return UIKit.UIColor(named: R.color.calendarTitlePlaceHolderColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "ClearButtonColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func clearButtonColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.clearButtonColor.name)
     }
     #endif
 
