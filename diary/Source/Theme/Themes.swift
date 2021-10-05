@@ -8,6 +8,7 @@
 import RxSwift
 import RxTheme
 import Rswift
+import UIKit
 
 protocol Theme {
     var mainColor: UIColor { get }
@@ -18,6 +19,7 @@ protocol Theme {
     var systemWhiteColor: UIColor { get }
     var backgroundColor: UIColor { get }
     var clearColor: UIColor { get }
+    var clearButtonColor: UIColor { get }
 }
 
 extension Theme {
@@ -25,6 +27,7 @@ extension Theme {
     var systemWhiteColor: UIColor { R.color.systemWhiteColor()! }
     var backgroundColor: UIColor { .systemBackground }
     var clearColor: UIColor { .clear }
+    var clearButtonColor: UIColor { R.color.clearButtonColor()! }
 }
 
 struct GreenTheme: Theme {
@@ -53,7 +56,7 @@ enum ThemeType: ThemeProvider {
     }
 }
 
-let themeService = ThemeType.service(initial: .blue)
+let themeService = ThemeType.service(initial: .green)
 func themed<T>(_ mapper: @escaping ((Theme) -> T)) -> Observable<T> {
   return themeService.attrStream(mapper)
 }

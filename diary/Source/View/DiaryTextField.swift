@@ -39,6 +39,7 @@ final class DiaryTextField: UIView {
     
     let textField = UITextField().then {
         $0.clearButtonMode = .whileEditing
+        $0.theme.clearButtonTintColor = themed { $0.clearButtonColor }
         $0.autocorrectionType = .no
         $0.font = Font.textFieldFont
         $0.autocapitalizationType = .none

@@ -41,11 +41,19 @@ final class MainViewController: BaseViewController, View {
     
     // MARK: - UI
     
-    let navigativePadding = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil).then {
+    let leftNavigativePadding = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil).then {
         $0.width = Metric.navigativePadding
     }
     
-    let sideMenuButton = UIBarButtonItem(image: R.image.diarySideMenuButton(), style: .done, target: nil, action: nil).then {
+    let rightNavigativePadding = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil).then {
+        $0.width = Metric.navigativePadding
+    }
+    
+    let sideMenuButton = UIBarButtonItem(image: R.image.diaryDrawerButton(), style: .done, target: nil, action: nil).then {
+        $0.tintColor = R.color.navigationButtonColor()
+    }
+    
+    let searchButton = UIBarButtonItem(image: R.image.searchButton(), style: .done, target: nil, action: nil).then {
         $0.tintColor = R.color.navigationButtonColor()
     }
     
@@ -71,7 +79,8 @@ final class MainViewController: BaseViewController, View {
     override func setupLayout() {
         super.setupLayout()
         
-        self.navigationItem.leftBarButtonItems = [navigativePadding, sideMenuButton]
+        self.navigationItem.leftBarButtonItems = [leftNavigativePadding, sideMenuButton]
+        self.navigationItem.rightBarButtonItems = [rightNavigativePadding, searchButton]
         self.view.addSubview(self.calendarView)
     }
     
@@ -118,6 +127,11 @@ final class MainViewController: BaseViewController, View {
         
         self.sideMenuButton.rx.tap.asObservable()
             .map { Reactor.Action.presentSideMenu }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        self.searchButton.rx.tap.asObservable()
+            .map { Reactor.Action.presentSearch }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     

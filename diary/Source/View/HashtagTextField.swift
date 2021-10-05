@@ -34,6 +34,8 @@ final class HashtagTextField: UIView {
         $0.placeholder = "# 태그 작성"
         $0.autocorrectionType = .default
         $0.autocapitalizationType = .none
+        $0.clearButtonMode = .whileEditing
+        $0.theme.clearButtonTintColor = themed { $0.clearButtonColor }
     }
     
     let separatorView = UIView().then {

@@ -37,7 +37,7 @@ class HomeFlow: Flow {
         case .mainIsRequired:
             return navigateToMain()
             
-        case let .floatingPanelIsRequird(date):
+        case let .floatingPanelIsRequired(date):
             return presentFloatingPanel(date: date)
             
         case let .sideMenuIsRequired(date):
@@ -45,6 +45,9 @@ class HomeFlow: Flow {
             
         case let .writeIsRequired(date, diary):
             return navigateToWrite(date, diary)
+            
+        case .searchIsRequired:
+            return navigateToSearch()
             
         case .splashIsRequired:
             return .end(forwardToParentFlowWithStep: DiaryStep.splashIsRequired)
@@ -101,6 +104,15 @@ extension HomeFlow: FloatingPanelControllerDelegate {
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
+    private func navigateToSearch() -> FlowContributors {
+        let reactor = SearchViewReactor()
+        let viewController = SearchViewController(reactor: reactor)
+        
+        self.rootViewController.dismiss(animated: true)
+        self.rootViewController.pushViewController(viewController, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
+    }
+    
     private func navigateToSideMenu(date: Date) -> FlowContributors {
         let reactor = SideMenuViewReactor(date: date)
         let viewController = SideMenuViewController(reactor: reactor)
@@ -113,7 +125,7 @@ extension HomeFlow: FloatingPanelControllerDelegate {
         }
         
         self.rootViewController.dismiss(animated: true)
-        self.rootViewController.present(sideMenuNavController, animated: true, completion: nil)
+        self.rootViewController.present(sideMenuNavController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: sideMenuNavController, withNextStepper: reactor))
     }
     

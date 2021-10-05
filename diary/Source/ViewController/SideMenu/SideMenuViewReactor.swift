@@ -69,7 +69,7 @@ final class SideMenuViewReactor: Reactor, Stepper {
             return Observable.empty()
             
         case .disappear:
-            self.steps.accept(DiaryStep.floatingPanelIsRequird(currentState.date))
+            self.steps.accept(DiaryStep.floatingPanelIsRequired(currentState.date))
             return Observable.empty()
             
         }

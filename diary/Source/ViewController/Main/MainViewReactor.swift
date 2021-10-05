@@ -20,6 +20,7 @@ final class MainViewReactor: Reactor, Stepper {
         case changeColor([UIColor])
         case changeMonth(Date)
         case presentFloatingPanel
+        case presentSearch
         case presentSideMenu
     }
     
@@ -54,7 +55,11 @@ final class MainViewReactor: Reactor, Stepper {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .presentFloatingPanel:
-            self.steps.accept(DiaryStep.floatingPanelIsRequird(currentState.currentDay))
+            self.steps.accept(DiaryStep.floatingPanelIsRequired(currentState.currentDay))
+            return Observable.empty()
+            
+        case .presentSearch:
+            self.steps.accept(DiaryStep.searchIsRequired)
             return Observable.empty()
             
         case let .changeColor(newColor):
