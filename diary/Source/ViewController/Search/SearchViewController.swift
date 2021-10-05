@@ -16,7 +16,9 @@ final class SearchViewController: BaseViewController, View {
     
     // MARK: - Constants
     fileprivate struct Metric {
-        
+        // NavigationPadding
+        static let leftNavigativePadding = 10.f
+        static let rightNavigativePadding = 10.f
     }
     
     fileprivate struct Font {
@@ -28,6 +30,14 @@ final class SearchViewController: BaseViewController, View {
     // MARK: - UI
     let searchBar = DiarySearchBar().then {
         $0.searchTextField.attributedPlaceholder = "검색어를 입력하세요.".styleAll(Font.searchBarPlaceholder).attributedString
+    }
+    
+    let leftNavigativePadding = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil).then {
+        $0.width = Metric.leftNavigativePadding
+    }
+    
+    let rightNavigativePadding = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil).then {
+        $0.width = Metric.rightNavigativePadding
     }
     
     // MARK: - Inintializing
@@ -45,6 +55,9 @@ final class SearchViewController: BaseViewController, View {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.leftBarButtonItems = [leftNavigativePadding]
+        self.navigationItem.rightBarButtonItems = [rightNavigativePadding]
     }
     
     override func setupLayout() {
@@ -60,7 +73,10 @@ final class SearchViewController: BaseViewController, View {
     
     // MARK: - Configuring
     func bind(reactor: SearchViewReactor) {
-        
+        self.searchBar.leftButton.rx.tap.asObservable()
+            .map { Reactor.Action.popViewController }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 }
 

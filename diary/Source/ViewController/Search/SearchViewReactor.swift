@@ -17,7 +17,7 @@ final class SearchViewReactor: Reactor, Stepper {
     let initialState: State
     
     enum Action {
-        
+        case popViewController
     }
     
     enum Mutation {
@@ -33,7 +33,13 @@ final class SearchViewReactor: Reactor, Stepper {
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
-        
+        switch action {
+            
+        case .popViewController:
+            self.steps.accept(DiaryStep.popViewController)
+            return Observable.empty()
+            
+        }
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
