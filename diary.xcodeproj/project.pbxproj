@@ -59,6 +59,7 @@
 		62BA402B2690B0FC009B77F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62BA402A2690B0FC009B77F3 /* Assets.xcassets */; };
 		62BA40392690B0FD009B77F3 /* diaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40382690B0FD009B77F3 /* diaryTests.swift */; };
 		62BA40442690B0FD009B77F3 /* diaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40432690B0FD009B77F3 /* diaryUITests.swift */; };
+		62C1564B270BDD0E00938DB7 /* UITextField+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C1564A270BDD0E00938DB7 /* UITextField+RxTheme.swift */; };
 		62C7D76426ED20B600C3E257 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7D76326ED20B600C3E257 /* RealmService.swift */; };
 		62C7D7A226EF4AEB00C3E257 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7D7A126EF4AEB00C3E257 /* UserService.swift */; };
 		62CB1D3526DA4CCB00B1BA32 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB1D3426DA4CCB00B1BA32 /* SideMenuViewController.swift */; };
@@ -159,6 +160,7 @@
 		62BA403F2690B0FD009B77F3 /* diaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = diaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62BA40432690B0FD009B77F3 /* diaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diaryUITests.swift; sourceTree = "<group>"; };
 		62BA40452690B0FD009B77F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62C1564A270BDD0E00938DB7 /* UITextField+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+RxTheme.swift"; sourceTree = "<group>"; };
 		62C7D76326ED20B600C3E257 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		62C7D7A126EF4AEB00C3E257 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		62CB1D3426DA4CCB00B1BA32 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 				62D758D126E474DE009AE551 /* UITextView+RxTheme.swift */,
 				628BFD9A26EB9D8B00851408 /* SurfaceAppearance+Rx.swift */,
 				62F6681B26F8DAF800110E35 /* ActiveLabel+RxTheme.swift */,
+				62C1564A270BDD0E00938DB7 /* UITextField+RxTheme.swift */,
 			);
 			path = RxTheme;
 			sourceTree = "<group>";
@@ -855,6 +858,7 @@
 				627E200F26CE93DC00550D59 /* BaseViewController.swift in Sources */,
 				6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */,
 				625F4C5926CF238600DC5978 /* UIViewPreview.swift in Sources */,
+				62C1564B270BDD0E00938DB7 /* UITextField+RxTheme.swift in Sources */,
 				621CF21427096DC500B7EB5D /* SearchViewReactor.swift in Sources */,
 				6250FE4426DCE26100A0277B /* AppServices.swift in Sources */,
 				625F4C5D26CF242600DC5978 /* MainViewController.swift in Sources */,

@@ -43,7 +43,7 @@ final class DiarySearchBar: UISearchBar {
         self.searchTextField.layer.cornerRadius = Style.cornerRadius
         self.searchTextField.layer.borderWidth = Style.borderWidth
         self.searchTextField.layer.theme.borderColor = themed { $0.mainColor.cgColor }
-        self.searchTextField.clearButtonTintColor = R.color.clearButtonColor()
+        self.searchTextField.theme.clearButtonTintColor = themed { $0.clearButtonColor }
         self.theme.tintColor = themed { $0.mainColor }
     }
     
