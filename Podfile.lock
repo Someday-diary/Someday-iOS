@@ -24,6 +24,11 @@ PODS:
   - Realm/Headers (10.13.0)
   - RealmSwift (10.13.0):
     - Realm (= 10.13.0)
+  - ReusableKit/Core (3.0.0)
+  - ReusableKit/RxSwift (3.0.0):
+    - ReusableKit/Core
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
   - RxAnimated (0.7.0):
     - RxAnimated/Core (= 0.7.0)
     - RxCocoa (~> 5.1)
@@ -78,6 +83,7 @@ DEPENDENCIES:
   - Moya/RxSwift
   - R.swift
   - ReactorKit
+  - ReusableKit/RxSwift
   - RxAnimated
   - RxCocoa
   - RxDataSources
@@ -110,6 +116,7 @@ SPEC REPOS:
     - ReactorKit
     - Realm
     - RealmSwift
+    - ReusableKit
     - RxAnimated
     - RxCocoa
     - RxDataSources
@@ -143,6 +150,7 @@ SPEC CHECKSUMS:
   ReactorKit: 6d894a20c3d508344320901cd8e386fde92df4b6
   Realm: e3a1225aafa7cec96a020dc199201b9d1f9cd59c
   RealmSwift: 62585b4a934754a9d9117331689f4e8a5b1f6113
+  ReusableKit: e5f853ad4652e411f96b6119b2488afa12929be6
   RxAnimated: 8540892468e906e7404595bc51ed4b36b3737ab5
   RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
@@ -160,6 +168,6 @@ SPEC CHECKSUMS:
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 864f99a9bc318b4551c0e8106d94be4a850e7e64
+PODFILE CHECKSUM: aacc3bd3d3f258179a9406f783cc6d28b9dbc35d
 
 COCOAPODS: 1.10.1

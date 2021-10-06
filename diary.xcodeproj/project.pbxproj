@@ -21,6 +21,7 @@
 		621CF21427096DC500B7EB5D /* SearchViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621CF21327096DC500B7EB5D /* SearchViewReactor.swift */; };
 		621CF21627096DFA00B7EB5D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621CF21527096DFA00B7EB5D /* SearchViewController.swift */; };
 		621CF21B270978B900B7EB5D /* DiarySearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621CF21A270978B900B7EB5D /* DiarySearchBar.swift */; };
+		62452451270DEE7C00DE083D /* ThemeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452450270DEE7C00DE083D /* ThemeViewReactor.swift */; };
 		624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2926D6299B004A6624 /* LoginFlow.swift */; };
 		624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2B26D6350A004A6624 /* AppStepper.swift */; };
 		624E4D3326D63685004A6624 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D3226D63685004A6624 /* SplashViewController.swift */; };
@@ -117,6 +118,7 @@
 		621CF21327096DC500B7EB5D /* SearchViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewReactor.swift; sourceTree = "<group>"; };
 		621CF21527096DFA00B7EB5D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		621CF21A270978B900B7EB5D /* DiarySearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiarySearchBar.swift; sourceTree = "<group>"; };
+		62452450270DEE7C00DE083D /* ThemeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewReactor.swift; sourceTree = "<group>"; };
 		624E4D2926D6299B004A6624 /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
 		624E4D2B26D6350A004A6624 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		624E4D3226D63685004A6624 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +229,14 @@
 				621CF21327096DC500B7EB5D /* SearchViewReactor.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		6245244F270DED6900DE083D /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				62452450270DEE7C00DE083D /* ThemeViewReactor.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		624E4D3126D63663004A6624 /* Splash */ = {
@@ -341,6 +351,7 @@
 		627E201126CE945600550D59 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6245244F270DED6900DE083D /* Theme */,
 				624E4D3126D63663004A6624 /* Splash */,
 				625F4C8826D51F2F00DC5978 /* Login */,
 				625F4C6226CF94A300DC5978 /* Main */,
@@ -827,6 +838,7 @@
 				624E4D3926D85F40004A6624 /* HomeFlow.swift in Sources */,
 				628BFD9526EB514F00851408 /* FloatingViewController.swift in Sources */,
 				620BCAC926E601930023499D /* CreateDiaryButton.swift in Sources */,
+				62452451270DEE7C00DE083D /* ThemeViewReactor.swift in Sources */,
 				624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */,
 				624E4D3726D66EF1004A6624 /* SplashViewReactor.swift in Sources */,
 				625F4C8726D4D2AB00DC5978 /* DiaryTextField.swift in Sources */,
