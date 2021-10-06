@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-struct Diary: ModelType {
+struct Diary: ModelType, Equatable {
     // 작성 날짜
     var date: String
     
@@ -19,14 +19,12 @@ struct Diary: ModelType {
     var tags: String
 }
 
-class RealmDiary: Object, ModelType {
-    @objc dynamic var date: String = String()
-    @objc dynamic var data: String = String()
-    @objc dynamic var tags: String = String()
-    
-    override class func primaryKey() -> String? {
-        return "date"
+extension Diary {
+    var toStorable: RealmDiary {
+        let realmDiary = RealmDiary()
+        realmDiary.date = self.date
+        realmDiary.data = self.data
+        realmDiary.tags = self.tags
+        return realmDiary
     }
-    
 }
-
