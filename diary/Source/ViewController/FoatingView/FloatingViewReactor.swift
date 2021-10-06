@@ -29,7 +29,7 @@ final class FloatingViewReactor: Reactor, Stepper {
     
     struct State {
         var selectedDay: Date
-        var currentDiary: RealmDiary?
+        var currentDiary: Diary?
         var diaryData: String = String()
         var diaryTags: String = String()
         var createState: Bool = true
@@ -57,7 +57,7 @@ final class FloatingViewReactor: Reactor, Stepper {
             return Observable.empty()
             
         case .edit:
-            self.steps.accept(DiaryStep.writeIsRequired(self.currentState.selectedDay, currentState.currentDiary))
+            self.steps.accept(DiaryStep.writeIsRequired(self.currentState.selectedDay, self.currentState.currentDiary))
             return Observable.empty()
         }
     }
@@ -99,7 +99,7 @@ final class FloatingViewReactor: Reactor, Stepper {
                 state.diaryData = diary[0].data
                 state.diaryTags = diary[0].tags
                 state.createState = false
-                state.currentDiary = diary[0]
+                state.currentDiary = diary[0].toModel
             }
         
         case let .updateDate(newDay):

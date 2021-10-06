@@ -35,14 +35,16 @@ final class WriteViewReactor: Reactor, Stepper {
     let initialState: State
     let realmService: RealmServiceType
     
-    init(date: Date, diary: RealmDiary?, realmService: RealmServiceType) {
-        if diary != nil {
-            self.initialState = State(date: date, data: diary!.data, tags: diary!.tags)
+    init(date: Date, diary: Diary?, realmService: RealmServiceType) {
+        self.realmService = realmService
+        
+        if let diary = diary {
+            self.initialState = State(date: date, data: diary.data, tags: diary.tags)
         } else {
             self.initialState = State(date: date, data: String(), tags: String())
         }
         
-        self.realmService = realmService
+        
     }
     
     func mutate(action: Action) -> Observable<Mutation> {

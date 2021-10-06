@@ -21,7 +21,7 @@ enum DiaryStep: Step {
     
     // MARK: - Home
     case sideMenuIsRequired(Date)
-    case writeIsRequired(Date, RealmDiary?)
+    case writeIsRequired(Date, Diary?)
     case floatingPanelIsRequired(Date)
     case searchIsRequired
 }

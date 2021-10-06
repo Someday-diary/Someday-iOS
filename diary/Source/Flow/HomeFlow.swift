@@ -95,7 +95,7 @@ extension HomeFlow: FloatingPanelControllerDelegate {
         return .one(flowContributor: .contribute(withNextPresentable: fpc, withNextStepper: reactor))
     }
     
-    private func navigateToWrite(_ date: Date, _ diary: RealmDiary?) -> FlowContributors {
+    private func navigateToWrite(_ date: Date, _ diary: Diary?) -> FlowContributors {
         let reactor = WriteViewReactor(date: date, diary: diary, realmService: services.realmService)
         let viewController = WriteViewController(reactor: reactor)
         

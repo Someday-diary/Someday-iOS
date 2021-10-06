@@ -73,6 +73,7 @@
 		62D758D026E37C2C009AE551 /* WriteViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D758CF26E37C2C009AE551 /* WriteViewReactor.swift */; };
 		62D758D226E474DE009AE551 /* UITextView+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D758D126E474DE009AE551 /* UITextView+RxTheme.swift */; };
 		62F6681C26F8DAF800110E35 /* ActiveLabel+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F6681B26F8DAF800110E35 /* ActiveLabel+RxTheme.swift */; };
+		62FC98C9270D3A2B00231BF4 /* RealmDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC98C8270D3A2B00231BF4 /* RealmDiary.swift */; };
 		9D432695EA98D656B099F4B1 /* Pods_diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B894E3AA684F49C439F7258 /* Pods_diary.framework */; };
 		F263AB4337D64113775670AC /* Pods_diary_diaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663A927CEE2B1BAC95B5F21D /* Pods_diary_diaryUITests.framework */; };
 		FF2A5C8036161455B9F2D13E /* Pods_diaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61203E3BB236EAAB98001720 /* Pods_diaryTests.framework */; };
@@ -175,6 +176,7 @@
 		62D758CF26E37C2C009AE551 /* WriteViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewReactor.swift; sourceTree = "<group>"; };
 		62D758D126E474DE009AE551 /* UITextView+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+RxTheme.swift"; sourceTree = "<group>"; };
 		62F6681B26F8DAF800110E35 /* ActiveLabel+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveLabel+RxTheme.swift"; sourceTree = "<group>"; };
+		62FC98C8270D3A2B00231BF4 /* RealmDiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDiary.swift; sourceTree = "<group>"; };
 		649B15496766866789EDBF0E /* Pods-diaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diaryTests.debug.xcconfig"; path = "Target Support Files/Pods-diaryTests/Pods-diaryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		663A927CEE2B1BAC95B5F21D /* Pods_diary_diaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_diary_diaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70775F1D6D22D28F29AC597C /* Pods-diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diary.debug.xcconfig"; path = "Target Support Files/Pods-diary/Pods-diary.debug.xcconfig"; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			children = (
 				620BCABA26E4F9F70023499D /* ModelType.swift */,
 				620BCAB826E4F9B10023499D /* Diary.swift */,
+				62FC98C8270D3A2B00231BF4 /* RealmDiary.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -811,6 +814,7 @@
 				62CB1D3726DA4D3500B1BA32 /* SideMenuViewReactor.swift in Sources */,
 				62D388A626D9E9FA00A8D185 /* CheckValidation.swift in Sources */,
 				629AE09D26DFA0DF003B8891 /* UIImageView+RxTheme.swift in Sources */,
+				62FC98C9270D3A2B00231BF4 /* RealmDiary.swift in Sources */,
 				625F4C5F26CF6DAA00DC5978 /* DiaryStep.swift in Sources */,
 				62816AF026DCD0B100365348 /* Themes.swift in Sources */,
 				62CB1D3B26DA4F4200B1BA32 /* CustomDelegateProxy.swift in Sources */,
