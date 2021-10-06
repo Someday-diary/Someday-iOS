@@ -22,6 +22,7 @@
 		621CF21627096DFA00B7EB5D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621CF21527096DFA00B7EB5D /* SearchViewController.swift */; };
 		621CF21B270978B900B7EB5D /* DiarySearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621CF21A270978B900B7EB5D /* DiarySearchBar.swift */; };
 		62452451270DEE7C00DE083D /* ThemeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452450270DEE7C00DE083D /* ThemeViewReactor.swift */; };
+		62452453270DEF0200DE083D /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452452270DEF0200DE083D /* ThemeViewController.swift */; };
 		624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2926D6299B004A6624 /* LoginFlow.swift */; };
 		624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2B26D6350A004A6624 /* AppStepper.swift */; };
 		624E4D3326D63685004A6624 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D3226D63685004A6624 /* SplashViewController.swift */; };
@@ -119,6 +120,7 @@
 		621CF21527096DFA00B7EB5D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		621CF21A270978B900B7EB5D /* DiarySearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiarySearchBar.swift; sourceTree = "<group>"; };
 		62452450270DEE7C00DE083D /* ThemeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewReactor.swift; sourceTree = "<group>"; };
+		62452452270DEF0200DE083D /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		624E4D2926D6299B004A6624 /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
 		624E4D2B26D6350A004A6624 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		624E4D3226D63685004A6624 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				62452450270DEE7C00DE083D /* ThemeViewReactor.swift */,
+				62452452270DEF0200DE083D /* ThemeViewController.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -868,6 +871,7 @@
 				625F4C6426CF94CC00DC5978 /* MainViewReactor.swift in Sources */,
 				625F4C5B26CF23AC00DC5978 /* DeviceType.swift in Sources */,
 				620BCAB926E4F9B10023499D /* Diary.swift in Sources */,
+				62452453270DEF0200DE083D /* ThemeViewController.swift in Sources */,
 				62D758D026E37C2C009AE551 /* WriteViewReactor.swift in Sources */,
 				625F4C5526CF22D300DC5978 /* Preview.swift in Sources */,
 				625F4C8A26D51F4D00DC5978 /* LoginViewController.swift in Sources */,
