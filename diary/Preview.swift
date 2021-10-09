@@ -17,7 +17,7 @@ import SwiftUI
 
 struct ViewPreview: PreviewProvider {
     static var previews: some View {
-        SideMenuScrollView().showPreview(width: 300, height: 300)
+        AppearanceSelectCell().showPreview(width: 300, height: 100)
     }
 }
 
