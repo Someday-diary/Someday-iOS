@@ -1,5 +1,5 @@
 //
-//  AppearanceSelectReactor.swift
+//  AppearanceReactor.swift
 //  diary
 //
 //  Created by 김부성 on 2021/10/07.
@@ -9,16 +9,12 @@ import Foundation
 
 import ReactorKit
 import RxRelay
-import RxFlow
 
-final class AppearanceSelectReactor: Reactor, Stepper {
-    let steps: PublishRelay<Step>
+final class AppearanceReactor: Reactor {
     
     let initialState: State
     
-    enum Action {
-        
-    }
+    typealias Action = NoAction
     
     enum Mutation {
         
@@ -27,11 +23,11 @@ final class AppearanceSelectReactor: Reactor, Stepper {
     struct State {
         var image: UIImage
         var title: String
+        var isSelected: Bool
     }
     
-    init(model: AppearnceModel, steps: PublishRelay<Step>) {
-        self.initialState = State(image: model.image, title: model.title)
-        self.steps = steps
+    init(model: AppearnceModel) {
+        self.initialState = State(image: model.image, title: model.title, isSelected: model.isSelected)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
