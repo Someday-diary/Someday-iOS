@@ -23,5 +23,6 @@ enum DiaryStep: Step {
     case sideMenuIsRequired(Date)
     case writeIsRequired(Date, Diary?)
     case floatingPanelIsRequired(Date)
+    case themeIsRequired
     case searchIsRequired
 }
