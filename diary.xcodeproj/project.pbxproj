@@ -23,8 +23,8 @@
 		621CF21B270978B900B7EB5D /* DiarySearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621CF21A270978B900B7EB5D /* DiarySearchBar.swift */; };
 		62452451270DEE7C00DE083D /* ThemeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452450270DEE7C00DE083D /* ThemeViewReactor.swift */; };
 		62452453270DEF0200DE083D /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452452270DEF0200DE083D /* ThemeViewController.swift */; };
-		62452457270DF23400DE083D /* AppearanceSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452456270DF23400DE083D /* AppearanceSelectCell.swift */; };
-		62452459270DF2CA00DE083D /* AppearanceSelectReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452458270DF2CA00DE083D /* AppearanceSelectReactor.swift */; };
+		62452457270DF23400DE083D /* AppearanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452456270DF23400DE083D /* AppearanceCell.swift */; };
+		62452459270DF2CA00DE083D /* AppearanceReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452458270DF2CA00DE083D /* AppearanceReactor.swift */; };
 		6245245B270DF3B700DE083D /* Appreance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6245245A270DF3B700DE083D /* Appreance.swift */; };
 		624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2926D6299B004A6624 /* LoginFlow.swift */; };
 		624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2B26D6350A004A6624 /* AppStepper.swift */; };
@@ -56,6 +56,7 @@
 		628BFD9926EB6A5300851408 /* CustomFloatingPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628BFD9826EB6A5300851408 /* CustomFloatingPanelLayout.swift */; };
 		628BFD9B26EB9D8B00851408 /* SurfaceAppearance+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628BFD9A26EB9D8B00851408 /* SurfaceAppearance+Rx.swift */; };
 		628BFD9E26EBA49600851408 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628BFD9D26EBA49600851408 /* BaseTableViewCell.swift */; };
+		628FD7C12712038F00B2CC11 /* ThemeViewSection.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FD7C02712038F00B2CC11 /* ThemeViewSection.swift.swift */; };
 		6291498C26DEF4FF003CDDE9 /* SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6291498B26DEF4FF003CDDE9 /* SnapKit.swift */; };
 		6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */; };
 		629AE09D26DFA0DF003B8891 /* UIImageView+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */; };
@@ -65,6 +66,7 @@
 		62BA40392690B0FD009B77F3 /* diaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40382690B0FD009B77F3 /* diaryTests.swift */; };
 		62BA40442690B0FD009B77F3 /* diaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40432690B0FD009B77F3 /* diaryUITests.swift */; };
 		62C1564B270BDD0E00938DB7 /* UITextField+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C1564A270BDD0E00938DB7 /* UITextField+RxTheme.swift */; };
+		62C7A9962715A90C00691069 /* UITableView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7A9952715A90C00691069 /* UITableView+Rx.swift */; };
 		62C7D76426ED20B600C3E257 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7D76326ED20B600C3E257 /* RealmService.swift */; };
 		62C7D7A226EF4AEB00C3E257 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7D7A126EF4AEB00C3E257 /* UserService.swift */; };
 		62CB1D3526DA4CCB00B1BA32 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB1D3426DA4CCB00B1BA32 /* SideMenuViewController.swift */; };
@@ -124,8 +126,8 @@
 		621CF21A270978B900B7EB5D /* DiarySearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiarySearchBar.swift; sourceTree = "<group>"; };
 		62452450270DEE7C00DE083D /* ThemeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewReactor.swift; sourceTree = "<group>"; };
 		62452452270DEF0200DE083D /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
-		62452456270DF23400DE083D /* AppearanceSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSelectCell.swift; sourceTree = "<group>"; };
-		62452458270DF2CA00DE083D /* AppearanceSelectReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSelectReactor.swift; sourceTree = "<group>"; };
+		62452456270DF23400DE083D /* AppearanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceCell.swift; sourceTree = "<group>"; };
+		62452458270DF2CA00DE083D /* AppearanceReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceReactor.swift; sourceTree = "<group>"; };
 		6245245A270DF3B700DE083D /* Appreance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appreance.swift; sourceTree = "<group>"; };
 		624E4D2926D6299B004A6624 /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
 		624E4D2B26D6350A004A6624 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		628BFD9826EB6A5300851408 /* CustomFloatingPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFloatingPanelLayout.swift; sourceTree = "<group>"; };
 		628BFD9A26EB9D8B00851408 /* SurfaceAppearance+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SurfaceAppearance+Rx.swift"; sourceTree = "<group>"; };
 		628BFD9D26EBA49600851408 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		628FD7C02712038F00B2CC11 /* ThemeViewSection.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewSection.swift.swift; sourceTree = "<group>"; };
 		6291498B26DEF4FF003CDDE9 /* SnapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapKit.swift; sourceTree = "<group>"; };
 		629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+RxTheme.swift"; sourceTree = "<group>"; };
 		629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FSCalendar+RxTheme.swift"; sourceTree = "<group>"; };
@@ -172,6 +175,7 @@
 		62BA40432690B0FD009B77F3 /* diaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diaryUITests.swift; sourceTree = "<group>"; };
 		62BA40452690B0FD009B77F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62C1564A270BDD0E00938DB7 /* UITextField+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+RxTheme.swift"; sourceTree = "<group>"; };
+		62C7A9952715A90C00691069 /* UITableView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Rx.swift"; sourceTree = "<group>"; };
 		62C7D76326ED20B600C3E257 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		62C7D7A126EF4AEB00C3E257 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		62CB1D3426DA4CCB00B1BA32 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -243,8 +247,8 @@
 		6245244F270DED6900DE083D /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				62452450270DEE7C00DE083D /* ThemeViewReactor.swift */,
 				62452452270DEF0200DE083D /* ThemeViewController.swift */,
+				62452450270DEE7C00DE083D /* ThemeViewReactor.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -263,8 +267,7 @@
 		62452455270DF15F00DE083D /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				62452456270DF23400DE083D /* AppearanceSelectCell.swift */,
-				62452458270DF2CA00DE083D /* AppearanceSelectReactor.swift */,
+				62C7A9942715A6E500691069 /* AppearanceCell */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 		627E200A26CE928100550D59 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				62C2EFA42711FA9E00C1CAF0 /* Section */,
 				629ED5A026DCFDF000EA7A98 /* Application */,
 				627E201026CE944D00550D59 /* Flow */,
 				627E201226CE947700550D59 /* View */,
@@ -457,6 +461,7 @@
 				625F4C7A26D39FA500DC5978 /* FSCalendar+Rx.swift */,
 				62183EEB26DB3A6600F22EC6 /* DiaryTextField+Rx.swift */,
 				629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */,
+				62C7A9952715A90C00691069 /* UITableView+Rx.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -523,6 +528,23 @@
 				62BA40452690B0FD009B77F3 /* Info.plist */,
 			);
 			path = diaryUITests;
+			sourceTree = "<group>";
+		};
+		62C2EFA42711FA9E00C1CAF0 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				628FD7C02712038F00B2CC11 /* ThemeViewSection.swift.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		62C7A9942715A6E500691069 /* AppearanceCell */ = {
+			isa = PBXGroup;
+			children = (
+				62452456270DF23400DE083D /* AppearanceCell.swift */,
+				62452458270DF2CA00DE083D /* AppearanceReactor.swift */,
+			);
+			path = AppearanceCell;
 			sourceTree = "<group>";
 		};
 		62C7D76226ED207600C3E257 /* Service */ = {
@@ -850,10 +872,11 @@
 				624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */,
 				620A106026FCABB10073D580 /* SieMenuScrollView.swift in Sources */,
 				62183EEC26DB3A6600F22EC6 /* DiaryTextField+Rx.swift in Sources */,
-				62452457270DF23400DE083D /* AppearanceSelectCell.swift in Sources */,
+				62452457270DF23400DE083D /* AppearanceCell.swift in Sources */,
 				62CB1D3726DA4D3500B1BA32 /* SideMenuViewReactor.swift in Sources */,
 				62D388A626D9E9FA00A8D185 /* CheckValidation.swift in Sources */,
 				629AE09D26DFA0DF003B8891 /* UIImageView+RxTheme.swift in Sources */,
+				628FD7C12712038F00B2CC11 /* ThemeViewSection.swift.swift in Sources */,
 				62FC98C9270D3A2B00231BF4 /* RealmDiary.swift in Sources */,
 				625F4C5F26CF6DAA00DC5978 /* DiaryStep.swift in Sources */,
 				62816AF026DCD0B100365348 /* Themes.swift in Sources */,
@@ -877,6 +900,7 @@
 				628BFD9926EB6A5300851408 /* CustomFloatingPanelLayout.swift in Sources */,
 				62D758CE26E37BAB009AE551 /* WriteViewController.swift in Sources */,
 				621CF21B270978B900B7EB5D /* DiarySearchBar.swift in Sources */,
+				62C7A9962715A90C00691069 /* UITableView+Rx.swift in Sources */,
 				621CF21627096DFA00B7EB5D /* SearchViewController.swift in Sources */,
 				62C7D76426ED20B600C3E257 /* RealmService.swift in Sources */,
 				6291498C26DEF4FF003CDDE9 /* SnapKit.swift in Sources */,
@@ -902,7 +926,7 @@
 				62D758D026E37C2C009AE551 /* WriteViewReactor.swift in Sources */,
 				625F4C5526CF22D300DC5978 /* Preview.swift in Sources */,
 				625F4C8A26D51F4D00DC5978 /* LoginViewController.swift in Sources */,
-				62452459270DF2CA00DE083D /* AppearanceSelectReactor.swift in Sources */,
+				62452459270DF2CA00DE083D /* AppearanceReactor.swift in Sources */,
 				627E200F26CE93DC00550D59 /* BaseViewController.swift in Sources */,
 				6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */,
 				625F4C5926CF238600DC5978 /* UIViewPreview.swift in Sources */,
