@@ -67,6 +67,7 @@
 		62BA40442690B0FD009B77F3 /* diaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40432690B0FD009B77F3 /* diaryUITests.swift */; };
 		62C1564B270BDD0E00938DB7 /* UITextField+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C1564A270BDD0E00938DB7 /* UITextField+RxTheme.swift */; };
 		62C7A9962715A90C00691069 /* UITableView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7A9952715A90C00691069 /* UITableView+Rx.swift */; };
+		62C7A99A2716C60400691069 /* ThemeSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7A9992716C60400691069 /* ThemeSectionHeaderView.swift */; };
 		62C7D76426ED20B600C3E257 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7D76326ED20B600C3E257 /* RealmService.swift */; };
 		62C7D7A226EF4AEB00C3E257 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7D7A126EF4AEB00C3E257 /* UserService.swift */; };
 		62CB1D3526DA4CCB00B1BA32 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB1D3426DA4CCB00B1BA32 /* SideMenuViewController.swift */; };
@@ -176,6 +177,7 @@
 		62BA40452690B0FD009B77F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62C1564A270BDD0E00938DB7 /* UITextField+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+RxTheme.swift"; sourceTree = "<group>"; };
 		62C7A9952715A90C00691069 /* UITableView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Rx.swift"; sourceTree = "<group>"; };
+		62C7A9992716C60400691069 /* ThemeSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSectionHeaderView.swift; sourceTree = "<group>"; };
 		62C7D76326ED20B600C3E257 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		62C7D7A126EF4AEB00C3E257 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		62CB1D3426DA4CCB00B1BA32 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -400,10 +402,9 @@
 		627E201226CE947700550D59 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				62C7A9972716C46200691069 /* Base */,
 				62452455270DF15F00DE083D /* TableView */,
-				62452454270DF14300DE083D /* Diary */,
-				62D758C926E367E8009AE551 /* SideMenu */,
-				62D758C826E367CC009AE551 /* Main */,
+				62C7A9982716C48100691069 /* HeaderFooter */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -545,6 +546,24 @@
 				62452458270DF2CA00DE083D /* AppearanceReactor.swift */,
 			);
 			path = AppearanceCell;
+			sourceTree = "<group>";
+		};
+		62C7A9972716C46200691069 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				62D758C826E367CC009AE551 /* Main */,
+				62D758C926E367E8009AE551 /* SideMenu */,
+				62452454270DF14300DE083D /* Diary */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		62C7A9982716C48100691069 /* HeaderFooter */ = {
+			isa = PBXGroup;
+			children = (
+				62C7A9992716C60400691069 /* ThemeSectionHeaderView.swift */,
+			);
+			path = HeaderFooter;
 			sourceTree = "<group>";
 		};
 		62C7D76226ED207600C3E257 /* Service */ = {
@@ -874,6 +893,7 @@
 				62183EEC26DB3A6600F22EC6 /* DiaryTextField+Rx.swift in Sources */,
 				62452457270DF23400DE083D /* AppearanceCell.swift in Sources */,
 				62CB1D3726DA4D3500B1BA32 /* SideMenuViewReactor.swift in Sources */,
+				62C7A99A2716C60400691069 /* ThemeSectionHeaderView.swift in Sources */,
 				62D388A626D9E9FA00A8D185 /* CheckValidation.swift in Sources */,
 				629AE09D26DFA0DF003B8891 /* UIImageView+RxTheme.swift in Sources */,
 				628FD7C12712038F00B2CC11 /* ThemeViewSection.swift.swift in Sources */,

@@ -20,6 +20,7 @@ protocol Theme {
     var backgroundColor: UIColor { get }
     var clearColor: UIColor { get }
     var clearButtonColor: UIColor { get }
+    var tableViewCellColor: UIColor { get }
 }
 
 extension Theme {
@@ -28,6 +29,7 @@ extension Theme {
     var backgroundColor: UIColor { .systemBackground }
     var clearColor: UIColor { .clear }
     var clearButtonColor: UIColor { R.color.clearButtonColor()! }
+    var tableViewCellColor: UIColor { R.color.tableViewCellColor()! }
 }
 
 struct GreenTheme: Theme {

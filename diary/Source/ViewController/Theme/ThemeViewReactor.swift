@@ -27,8 +27,11 @@ final class ThemeViewReactor: Reactor, Stepper {
     }
     
     struct State {
+        let sectionHeaderTitles: [String] = ["라이트 / 다크", "테마 색상 설정"]
         let appearanceTitles: [String] = ["시스템 설정 모드", "라이트 모드", "다크 모드"]
         let appearanceImages: [UIImage] = [R.image.systemMode()!, R.image.lightMode()!, R.image.darkMode()!]
+        
+        // State
         var appearanceSelected: Int
         
         var appearanceSectionItems: [ThemeViewSectionItem] = []

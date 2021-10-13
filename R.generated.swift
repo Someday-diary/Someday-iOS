@@ -105,7 +105,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 16 colors.
+  /// This `R.color` struct is generated, and contains static references to 17 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
@@ -135,6 +135,8 @@ struct R: Rswift.Validatable {
     static let navigationButtonColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "NavigationButtonColor")
     /// Color `SystemWhiteColor`.
     static let systemWhiteColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "SystemWhiteColor")
+    /// Color `TableViewCellColor`.
+    static let tableViewCellColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "TableViewCellColor")
     /// Color `TextFieldTextColor`.
     static let textFieldTextColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "TextFieldTextColor")
     /// Color `WeekdayTextColor`.
@@ -267,6 +269,15 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "TableViewCellColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func tableViewCellColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.tableViewCellColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIColor(named: "TextFieldTextColor", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
@@ -393,6 +404,14 @@ struct R: Rswift.Validatable {
     @available(watchOSApplicationExtension 4.0, *)
     static func systemWhiteColor(_: Void = ()) -> UIKit.UIColor? {
       return UIKit.UIColor(named: R.color.systemWhiteColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "TableViewCellColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func tableViewCellColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.tableViewCellColor.name)
     }
     #endif
 

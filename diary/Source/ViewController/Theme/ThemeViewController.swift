@@ -25,6 +25,7 @@ final class ThemeViewController: BaseViewController, View {
     }
     
     fileprivate struct Reusable {
+        static let sectionHeaderView = ReusableView<ThemeSectionHeaderView>()
         static let appearanceCell = ReusableCell<AppearanceCell>()
     }
     
@@ -34,6 +35,7 @@ final class ThemeViewController: BaseViewController, View {
     // MARK: - UI
     let tableView = UITableView(frame: .zero, style: .plain).then {
         $0.separatorStyle = .none
+        $0.register(Reusable.sectionHeaderView)
         $0.register(Reusable.appearanceCell)
     }
     
@@ -117,5 +119,15 @@ extension ThemeViewController: UITableViewDelegate {
         case .appearance:
             return 90
         }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.dequeue(Reusable.sectionHeaderView)
+        view?.title.text = self.reactor?.currentState.sectionHeaderTitles[section]
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 15
     }
 }
