@@ -107,7 +107,7 @@ final class AppearanceCell: BaseTableViewCell, View {
         reactor.state.map { $0.isSelected }.asObservable()
             .subscribe(onNext: { [weak self] selected in
                 guard let self = self else { return }
-                self.title.theme.textColor = themed { selected ? $0.thirdColor : $0.diaryDisableColor }
+                self.title.theme.textColor = themed { selected ? $0.thirdColor : $0.tableViewCellColor }
                 self.image.layer.borderWidth = selected ? Style.imageBorderWidth : 0
             })
             .disposed(by: disposeBag)

@@ -55,6 +55,8 @@ final class ThemeViewReactor: Reactor, Stepper {
         case let .selected(indexPath):
             switch indexPath.section {
             case 0:
+                self.changeAppearance(idx: indexPath.row)
+                
                 return Observable.concat([
                     Observable.just(Mutation.updateAppearance(indexPath.row)),
                     Observable.just(Mutation.refreshCells(currentState.appearanceImages, currentState.appearanceTitles))
@@ -84,5 +86,26 @@ final class ThemeViewReactor: Reactor, Stepper {
         }
         
         return state
+    }
+}
+
+extension ThemeViewReactor {
+    private func changeAppearance(idx: Int) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        switch idx {
+            
+        case 0:
+            appDelegate.changeTheme(themeVal: "system")
+            
+        case 1:
+            appDelegate.changeTheme(themeVal: "light")
+            
+        case 2:
+            appDelegate.changeTheme(themeVal: "dark")
+            
+        default:
+            break
+        }
     }
 }

@@ -54,6 +54,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         self.window?.endEditing(true)
     }
+    
+    func changeTheme(themeVal: String) {
+      if #available(iOS 13.0, *) {
+         switch themeVal {
+         case "dark":
+             window?.overrideUserInterfaceStyle = .dark
+             
+         case "light":
+             window?.overrideUserInterfaceStyle = .light
+             
+         default:
+             window?.overrideUserInterfaceStyle = .unspecified
+         }
+      }
+    }
 
 }
 
