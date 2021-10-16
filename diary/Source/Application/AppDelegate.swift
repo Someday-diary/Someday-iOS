@@ -30,6 +30,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = .systemBackground
         self.window?.makeKeyAndVisible()
         
+        switch UserDefaults.standard.integer(forKey: "Appearance") {
+            
+        case 0:
+            self.changeTheme(themeVal: "system")
+            
+        case 1:
+            self.changeTheme(themeVal: "light")
+            
+        case 2:
+            self.changeTheme(themeVal: "dark")
+            
+        default:
+            self.changeTheme(themeVal: "system")
+        }
+        
         guard let window = self.window else { return false }
         
         let appFlow = AppFlow(window: window, services: appSerivces)
