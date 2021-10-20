@@ -16,7 +16,7 @@ final class ThemeReactor: Reactor {
     
     typealias Action = NoAction
     
-    enum Mutration {
+    enum Mutation {
         
     }
     
