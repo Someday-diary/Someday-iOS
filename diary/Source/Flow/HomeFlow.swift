@@ -26,6 +26,17 @@ class HomeFlow: Flow {
         $0.navigationBar.standardAppearance = navigationAppearance
     }
     
+    private let shadow = SurfaceAppearance.Shadow().then {
+        $0.color = #colorLiteral(red: 0.2352941176, green: 0.2352941176, blue: 0.2352941176, alpha: 1)
+    }
+
+    private lazy var fpc = FloatingPanelController().then {
+        $0.layout = CustomFloatingPanelLayout()
+        $0.surfaceView.appearance.cornerRadius = 25
+        $0.surfaceView.appearance.shadows = [self.shadow]
+        $0.delegate = self
+    }
+    
     init(_ services: AppServices) {
         self.services = services
     }
@@ -48,6 +59,9 @@ class HomeFlow: Flow {
             
         case .searchIsRequired:
             return navigateToSearch()
+            
+        case .themeIsRequired:
+            return navigateToTheme()
             
         case .splashIsRequired:
             return .end(forwardToParentFlowWithStep: DiaryStep.splashIsRequired)
@@ -79,17 +93,8 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     }
     
     private func presentFloatingPanel(date: Date) -> FlowContributors {
-        let shadow = SurfaceAppearance.Shadow().then {
-            $0.color = #colorLiteral(red: 0.2352941176, green: 0.2352941176, blue: 0.2352941176, alpha: 1)
-        }
         let reactor = FloatingViewReactor(date: date, userService: services.userService, realmService: services.realmService)
-        let fpc = FloatingPanelController().then {
-            $0.set(contentViewController: FloatingViewController(reactor: reactor))
-            $0.layout = CustomFloatingPanelLayout()
-            $0.surfaceView.appearance.cornerRadius = 25
-            $0.surfaceView.appearance.shadows = [shadow]
-            $0.delegate = self
-        }
+        fpc.set(contentViewController: FloatingViewController(reactor: reactor))
         
         self.rootViewController.present(fpc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: fpc, withNextStepper: reactor))
@@ -113,6 +118,14 @@ extension HomeFlow: FloatingPanelControllerDelegate {
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
+    private func navigateToTheme() -> FlowContributors {
+        let reactor = ThemeViewReactor()
+        let viewController = ThemeViewController(reactor: reactor)
+        
+        self.rootViewController.pushViewController(viewController, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
+    }
+    
     private func navigateToSideMenu(date: Date) -> FlowContributors {
         let reactor = SideMenuViewReactor(date: date)
         let viewController = SideMenuViewController(reactor: reactor)
@@ -122,6 +135,8 @@ extension HomeFlow: FloatingPanelControllerDelegate {
             $0.presentationStyle.presentingEndAlpha = 0.6
             $0.menuWidth = 280
             $0.navigationBar.standardAppearance = navigationAppearance
+            $0.enableTapToDismissGesture = false
+            $0.enableSwipeToDismissGesture = false
         }
         
         self.rootViewController.dismiss(animated: true)

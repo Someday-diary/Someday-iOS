@@ -46,6 +46,7 @@ final class SideMenuViewReactor: Reactor, Stepper {
             
         case .dismiss:
             self.steps.accept(DiaryStep.dismiss)
+            self.steps.accept(DiaryStep.floatingPanelIsRequired(currentState.date))
             return Observable.empty()
             
         case .logout:
@@ -54,6 +55,8 @@ final class SideMenuViewReactor: Reactor, Stepper {
             return Observable.empty()
             
         case .setTheme:
+            self.steps.accept(DiaryStep.dismiss)
+            self.steps.accept(DiaryStep.themeIsRequired)
             return Observable.empty()
             
         case .setAlarm:
@@ -69,7 +72,6 @@ final class SideMenuViewReactor: Reactor, Stepper {
             return Observable.empty()
             
         case .disappear:
-            self.steps.accept(DiaryStep.floatingPanelIsRequired(currentState.date))
             return Observable.empty()
             
         }

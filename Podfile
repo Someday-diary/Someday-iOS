@@ -44,6 +44,8 @@ target 'diary' do
   pod 'Then'
   pod 'Carte'
   pod 'CGFloatLiteral'
+  pod 'ReusableKit/RxSwift'
+
   target 'diaryTests' do
     inherit! :search_paths
     # Pods for testing
