@@ -80,6 +80,8 @@
 		62D758CE26E37BAB009AE551 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D758CD26E37BAB009AE551 /* WriteViewController.swift */; };
 		62D758D026E37C2C009AE551 /* WriteViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D758CF26E37C2C009AE551 /* WriteViewReactor.swift */; };
 		62D758D226E474DE009AE551 /* UITextView+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D758D126E474DE009AE551 /* UITextView+RxTheme.swift */; };
+		62F192B1271FF21A0055C8DC /* ThemeCell in Resources */ = {isa = PBXBuildFile; fileRef = 62F192B0271FF21A0055C8DC /* ThemeCell */; };
+		62F192B3271FF23B0055C8DC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F192B2271FF23B0055C8DC /* Theme.swift */; };
 		62F6681C26F8DAF800110E35 /* ActiveLabel+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F6681B26F8DAF800110E35 /* ActiveLabel+RxTheme.swift */; };
 		62FC98C9270D3A2B00231BF4 /* RealmDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC98C8270D3A2B00231BF4 /* RealmDiary.swift */; };
 		9D432695EA98D656B099F4B1 /* Pods_diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B894E3AA684F49C439F7258 /* Pods_diary.framework */; };
@@ -191,11 +193,13 @@
 		62D758CD26E37BAB009AE551 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		62D758CF26E37C2C009AE551 /* WriteViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewReactor.swift; sourceTree = "<group>"; };
 		62D758D126E474DE009AE551 /* UITextView+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+RxTheme.swift"; sourceTree = "<group>"; };
+		62F192B0271FF21A0055C8DC /* ThemeCell */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ThemeCell; sourceTree = "<group>"; };
+		62F192B2271FF23B0055C8DC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		62F6681B26F8DAF800110E35 /* ActiveLabel+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveLabel+RxTheme.swift"; sourceTree = "<group>"; };
 		62FC98C8270D3A2B00231BF4 /* RealmDiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDiary.swift; sourceTree = "<group>"; };
 		649B15496766866789EDBF0E /* Pods-diaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diaryTests.debug.xcconfig"; path = "Target Support Files/Pods-diaryTests/Pods-diaryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		663A927CEE2B1BAC95B5F21D /* Pods_diary_diaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_diary_diaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		70775F1D6D22D28F29AC597C /* Pods-diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diary.debug.xcconfig"; path = "Target Support Files/Pods-diary/Pods-diary.debug.xcconfig"; sourceTree = "<group>"; };
+		70775F1D6D22D28F29AC597C /* Pods-diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-diary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +237,7 @@
 				620BCAB826E4F9B10023499D /* Diary.swift */,
 				62FC98C8270D3A2B00231BF4 /* RealmDiary.swift */,
 				6245245A270DF3B700DE083D /* Appreance.swift */,
+				62F192B2271FF23B0055C8DC /* Theme.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 		62452455270DF15F00DE083D /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				62F192B0271FF21A0055C8DC /* ThemeCell */,
 				62C7A9942715A6E500691069 /* AppearanceCell */,
 			);
 			path = TableView;
@@ -485,6 +491,7 @@
 			children = (
 				62BA40202690B0FA009B77F3 /* diary */,
 				62BA40372690B0FD009B77F3 /* diaryTests */,
+				70775F1D6D22D28F29AC597C /* Pods-diary.debug.xcconfig */,
 				62BA40422690B0FD009B77F3 /* diaryUITests */,
 				62BA401F2690B0FA009B77F3 /* Products */,
 				808F73691101F15575DE303E /* Pods */,
@@ -606,7 +613,6 @@
 		808F73691101F15575DE303E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				70775F1D6D22D28F29AC597C /* Pods-diary.debug.xcconfig */,
 				4C025949B9591F39EE68797C /* Pods-diary.release.xcconfig */,
 				601756147E85EE8A3E70851A /* Pods-diary-diaryUITests.debug.xcconfig */,
 				4616246C3C5A440B11BA40F0 /* Pods-diary-diaryUITests.release.xcconfig */,
@@ -737,6 +743,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				625A9EB626D9382000D65840 /* Colors.xcassets in Resources */,
+				62F192B1271FF21A0055C8DC /* ThemeCell in Resources */,
 				62D388A926DA1F7C00A8D185 /* InfoPlist.strings in Resources */,
 				62BA402B2690B0FC009B77F3 /* Assets.xcassets in Resources */,
 				627E200926CE8F4D00550D59 /* LaunchScreen.storyboard in Resources */,
@@ -913,6 +920,7 @@
 				62452451270DEE7C00DE083D /* ThemeViewReactor.swift in Sources */,
 				624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */,
 				624E4D3726D66EF1004A6624 /* SplashViewReactor.swift in Sources */,
+				62F192B3271FF23B0055C8DC /* Theme.swift in Sources */,
 				625F4C8726D4D2AB00DC5978 /* DiaryTextField.swift in Sources */,
 				620BCAC726E5F4610023499D /* Date.swift in Sources */,
 				621CF211270881A200B7EB5D /* UIDevice.swift in Sources */,
