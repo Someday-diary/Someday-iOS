@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Then
 
-struct ThemeModel: ModelType {
+struct ThemeModel: Then {
     var firstColor: UIColor
     var secondColor: UIColor
     var thirdColor: UIColor

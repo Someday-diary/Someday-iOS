@@ -15,10 +15,10 @@ import SwiftUI
 //    }
 //}
 
-struct ViewPreview: PreviewProvider {
-    static var previews: some View {
-        AppearanceSelectCell().showPreview(width: 300, height: 100)
-    }
-}
+//struct ViewPreview: PreviewProvider {
+//    static var previews: some View {
+//        AppearanceSelectCell().showPreview(width: 300, height: 100)
+//    }
+//}
 
 #endif

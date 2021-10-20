@@ -5,7 +5,7 @@
 //  Created by 김부성 on 2021/10/07.
 //
 
-import Foundation
+import UIKit
 
 import ReactorKit
 import RxRelay
@@ -16,18 +16,19 @@ final class ThemeReactor: Reactor {
     
     typealias Action = NoAction
     
-    enum Mutation {
+    enum Mutration {
         
     }
     
     struct State {
-        var image: UIImage
-        var title: String
+        var firstColor: UIColor
+        var secondColor: UIColor
+        var thridColor: UIColor
         var isSelected: Bool
     }
     
-    init(model: AppearnceModel) {
-        self.initialState = State(image: model.image, title: model.title, isSelected: model.isSelected)
+    init(model: ThemeModel) {
+        self.initialState = State(firstColor: model.firstColor, secondColor: model.secondColor, thridColor: model.thirdColor, isSelected: model.isSelected)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
