@@ -13,11 +13,13 @@ struct ThemeModel: Then {
     var secondColor: UIColor
     var thirdColor: UIColor
     var isSelected: Bool
+    var title: String
     
-    init(firstColor: UIColor, secondColor: UIColor, thirdColor: UIColor, isSelected: Bool) {
+    init(firstColor: UIColor, secondColor: UIColor, thirdColor: UIColor, title: String, isSelected: Bool) {
         self.firstColor = firstColor
         self.secondColor = secondColor
         self.thirdColor = thirdColor
         self.isSelected = isSelected
+        self.title = title
     }
 }

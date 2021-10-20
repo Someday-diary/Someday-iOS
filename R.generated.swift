@@ -105,7 +105,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 17 colors.
+  /// This `R.color` struct is generated, and contains static references to 18 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
@@ -139,6 +139,8 @@ struct R: Rswift.Validatable {
     static let tableViewCellColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "TableViewCellColor")
     /// Color `TextFieldTextColor`.
     static let textFieldTextColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "TextFieldTextColor")
+    /// Color `ThemeSelectionColor`.
+    static let themeSelectionColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "ThemeSelectionColor")
     /// Color `WeekdayTextColor`.
     static let weekdayTextColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "WeekdayTextColor")
 
@@ -287,6 +289,15 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "ThemeSelectionColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func themeSelectionColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.themeSelectionColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIColor(named: "WeekdayTextColor", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
@@ -424,6 +435,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(watchOS)
+    /// `UIColor(named: "ThemeSelectionColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func themeSelectionColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.themeSelectionColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
     /// `UIColor(named: "WeekdayTextColor", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
     static func weekdayTextColor(_: Void = ()) -> UIKit.UIColor? {
@@ -434,7 +453,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 23 images.
+  /// This `R.image` struct is generated, and contains static references to 24 images.
   struct image {
     /// Image `Add`.
     static let add = Rswift.ImageResource(bundle: R.hostingBundle, name: "Add")
@@ -480,6 +499,8 @@ struct R: Rswift.Validatable {
     static let themeIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "ThemeIcon")
     /// Image `UnSelectedButton`.
     static let unSelectedButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "UnSelectedButton")
+    /// Image `check`.
+    static let check = Rswift.ImageResource(bundle: R.hostingBundle, name: "check")
     /// Image `searchButton`.
     static let searchButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "searchButton")
 
@@ -634,6 +655,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "UnSelectedButton", bundle: ..., traitCollection: ...)`
     static func unSelectedButton(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.unSelectedButton, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "check", bundle: ..., traitCollection: ...)`
+    static func check(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.check, compatibleWith: traitCollection)
     }
     #endif
 

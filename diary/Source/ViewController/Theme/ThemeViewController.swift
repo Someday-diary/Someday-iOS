@@ -27,6 +27,7 @@ final class ThemeViewController: BaseViewController, View {
     fileprivate struct Reusable {
         static let sectionHeaderView = ReusableView<ThemeSectionHeaderView>()
         static let appearanceCell = ReusableCell<AppearanceCell>()
+        static let themeCell = ReusableCell<ThemeCell>()
     }
     
     // MARK: - Properties
@@ -37,6 +38,7 @@ final class ThemeViewController: BaseViewController, View {
         $0.separatorStyle = .none
         $0.register(Reusable.sectionHeaderView)
         $0.register(Reusable.appearanceCell)
+        $0.register(Reusable.themeCell)
     }
     
     // MARK: - Inintializing
@@ -55,6 +57,11 @@ final class ThemeViewController: BaseViewController, View {
             switch sectionItem {
             case let .appearance(reactor):
                 let cell = tableView.dequeue(Reusable.appearanceCell, for: indexPath)
+                cell.reactor = reactor
+                return cell
+                
+            case let .theme(reactor):
+                let cell = tableView.dequeue(Reusable.themeCell, for: indexPath)
                 cell.reactor = reactor
                 return cell
             }
@@ -118,6 +125,9 @@ extension ThemeViewController: UITableViewDelegate {
         switch sectionItem {
         case .appearance:
             return 90
+            
+        case .theme:
+            return 45
         }
     }
     

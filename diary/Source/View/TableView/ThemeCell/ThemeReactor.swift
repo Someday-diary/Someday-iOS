@@ -24,11 +24,12 @@ final class ThemeReactor: Reactor {
         var firstColor: UIColor
         var secondColor: UIColor
         var thridColor: UIColor
+        var title: String
         var isSelected: Bool
     }
     
     init(model: ThemeModel) {
-        self.initialState = State(firstColor: model.firstColor, secondColor: model.secondColor, thridColor: model.thirdColor, isSelected: model.isSelected)
+        self.initialState = State(firstColor: model.firstColor, secondColor: model.secondColor, thridColor: model.thirdColor, title: model.title ,isSelected: model.isSelected)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {

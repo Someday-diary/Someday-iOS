@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxFlow
+import RxTheme
 import RxViewController
 
 @main
@@ -43,6 +44,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         default:
             self.changeTheme(themeVal: "system")
+        }
+        
+        switch UserDefaults.standard.integer(forKey: "Theme") {
+            
+        case 0:
+            themeService.switch(ThemeType.green)
+            
+        case 1:
+            themeService.switch(ThemeType.blue)
+            
+        default:
+            themeService.switch(ThemeType.green)
         }
         
         guard let window = self.window else { return false }
