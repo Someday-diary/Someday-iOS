@@ -90,17 +90,17 @@ final class DiaryTextField: UIView {
     func bind() {
         
         self.textField.rx.controlEvent([.editingDidBegin]).asObservable()
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
                 UIView.animate(withDuration: 0.3) {
-                    self.separatorView.theme.backgroundColor = themed { $0.mainColor }
+                    self?.separatorView.theme.backgroundColor = themed { $0.mainColor }
                 }
             })
             .disposed(by: disposeBag)
         
         self.textField.rx.controlEvent([.editingDidEnd]).asObservable()
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
                 UIView.animate(withDuration: 0.3) {
-                    self.separatorView.backgroundColor = R.color.diaryDisabledColor()
+                    self?.separatorView.backgroundColor = R.color.diaryDisabledColor()
                 }
             })
             .disposed(by: disposeBag)
