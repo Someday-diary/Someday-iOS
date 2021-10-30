@@ -61,6 +61,8 @@
 		6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */; };
 		629AE09D26DFA0DF003B8891 /* UIImageView+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */; };
 		629ED5A626DD108600EA7A98 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */; };
+		62B2C69327296F66005A7AFF /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B2C69227296F66005A7AFF /* Response.swift */; };
+		62B3260D272CF9FE00DC3C96 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B3260C272CF9FE00DC3C96 /* Network.swift */; };
 		62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40212690B0FA009B77F3 /* AppDelegate.swift */; };
 		62BA402B2690B0FC009B77F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62BA402A2690B0FC009B77F3 /* Assets.xcassets */; };
 		62BA40392690B0FD009B77F3 /* diaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40382690B0FD009B77F3 /* diaryTests.swift */; };
@@ -168,6 +170,8 @@
 		629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+RxTheme.swift"; sourceTree = "<group>"; };
 		629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FSCalendar+RxTheme.swift"; sourceTree = "<group>"; };
 		629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		62B2C69227296F66005A7AFF /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		62B3260C272CF9FE00DC3C96 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		62BA401E2690B0FA009B77F3 /* diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62BA40212690B0FA009B77F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62BA402A2690B0FC009B77F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 			children = (
 				620BCABA26E4F9F70023499D /* ModelType.swift */,
 				620BCAB826E4F9B10023499D /* Diary.swift */,
+				62B2C69227296F66005A7AFF /* Response.swift */,
 				62FC98C8270D3A2B00231BF4 /* RealmDiary.swift */,
 				6245245A270DF3B700DE083D /* Appreance.swift */,
 				62F192B2271FF23B0055C8DC /* Theme.swift */,
@@ -343,6 +348,7 @@
 				627E201126CE945600550D59 /* ViewController */,
 				620BCAB726E4F81F0023499D /* Model */,
 				62C7D76226ED207600C3E257 /* Service */,
+				62B3260B272CF9DB00DC3C96 /* Network */,
 				627E200D26CE93A800550D59 /* Base */,
 				62816AE426DCB8DD00365348 /* Theme */,
 				625F4C6626CFCB1C00DC5978 /* Extension */,
@@ -486,6 +492,14 @@
 				62C1564A270BDD0E00938DB7 /* UITextField+RxTheme.swift */,
 			);
 			path = RxTheme;
+			sourceTree = "<group>";
+		};
+		62B3260B272CF9DB00DC3C96 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				62B3260C272CF9FE00DC3C96 /* Network.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		62BA40152690B0FA009B77F3 = {
@@ -903,6 +917,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62B3260D272CF9FE00DC3C96 /* Network.swift in Sources */,
 				62D758C326E1AE9C009AE551 /* DiarySideMenuListButton.swift in Sources */,
 				62D758C526E1DD48009AE551 /* LogoutButton.swift in Sources */,
 				624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */,
@@ -950,6 +965,7 @@
 				620BCABB26E4F9F70023499D /* ModelType.swift in Sources */,
 				620BCAC526E5EC730023499D /* UITextField.swift in Sources */,
 				62F6681C26F8DAF800110E35 /* ActiveLabel+RxTheme.swift in Sources */,
+				62B2C69327296F66005A7AFF /* Response.swift in Sources */,
 				62C7D7A226EF4AEB00C3E257 /* UserService.swift in Sources */,
 				621CF20F27083BC400B7EB5D /* CGFloat.swift in Sources */,
 				625F4C8326D4675B00DC5978 /* DiaryCalendar.swift in Sources */,
