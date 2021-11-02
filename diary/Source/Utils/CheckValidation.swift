@@ -30,6 +30,6 @@ extension String {
     
     var isValidPassword: CheckValidation {
         guard !self.isEmpty else { return .empty }
-        return self.count >= 5 ? .correct(.password) : .error("비밀번호를 4자리 이상 입력해주세요.")
+        return self.count >= 4 ? .correct(.password) : .error("비밀번호를 4자리 이상 입력해주세요.")
     }
 }

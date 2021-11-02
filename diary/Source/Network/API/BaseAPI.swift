@@ -10,7 +10,7 @@ import Moya
 protocol BaseAPI: TargetType {}
 
 extension BaseAPI {
-    var baseURL: URL { URL(string: "")! }
+    var baseURL: URL { URL(string: "http://10.80.161.192:8080")! }
     
     var headers: [String : String]? { nil }
     

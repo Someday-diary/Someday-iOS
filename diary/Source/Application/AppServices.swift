@@ -16,11 +16,14 @@ import Rswift
 struct AppServices {
     let realmService: RealmServiceType
     let userService: UserServiceType
+    let authService: AuthServiceType
     
     init() {
         let realm = try! Realm()
         
+        let authNetwork = Network<AuthAPI>()
         self.realmService = RealmService(realm: realm)
         self.userService = UserService()
+        self.authService = AuthService(network: authNetwork)
     }
 }

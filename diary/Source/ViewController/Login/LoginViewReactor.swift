@@ -23,18 +23,24 @@ final class LoginViewReactor: Reactor, Stepper {
     
     enum Mutation {
         case checkValids([String])
+        case setLoading(Bool)
     }
     
     struct State {
         var id: String = ""
         var password: String = ""
+        var isLoading: Bool = false
         
         var idValidation: CheckValidation?
         var passwordValidation: CheckValidation?
     }
     
-    init() {
+    let authService: AuthServiceType
+    
+    init(authService: AuthServiceType) {
         self.initialState = State()
+        
+        self.authService = authService
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -42,11 +48,20 @@ final class LoginViewReactor: Reactor, Stepper {
         switch action {
         case let .updateTextField(data):
             return Observable.just(Mutation.checkValids(data))
-        
+            
         case .login:
-            steps.accept(DiaryStep.mainIsRequired)
-            return Observable.empty()
-        
+            return Observable.concat([
+                Observable.just(Mutation.setLoading(true)),
+                
+                self.authService.login(self.currentState.id, self.currentState.password)
+                    .do(onSuccess: {
+                        self.steps.accept(DiaryStep.mainIsRequired)
+                    }, onError: { error in
+                        print("error")
+                    }).asObservable().flatMap { _ in Observable.empty() },
+                
+                Observable.just(Mutation.setLoading(false))
+            ])
         }
         
     }
@@ -62,6 +77,9 @@ final class LoginViewReactor: Reactor, Stepper {
             
             state.idValidation = state.id.isValidEmail
             state.passwordValidation = state.password.isValidPassword
+            
+        case let .setLoading(isLoading):
+            state.isLoading = isLoading
         }
         
         return state

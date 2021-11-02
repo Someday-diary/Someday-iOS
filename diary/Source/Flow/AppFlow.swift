@@ -55,7 +55,7 @@ extension AppFlow {
     }
     
     private func navigateToLogin() -> FlowContributors {
-        let loginFlow = LoginFlow()
+        let loginFlow = LoginFlow(services)
         
         Flows.use(loginFlow, when: .created) { [unowned self] root in
             self.window.rootViewController = root

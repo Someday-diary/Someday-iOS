@@ -6,6 +6,8 @@
 //
 
 import Foundation
+
+
 import RxSwift
 import Moya
 
@@ -23,10 +25,10 @@ final class AuthService: AuthServiceType {
     }
     
     func verifyEmail(_ email: String) -> Single<Void> {
-        return network.requestObject(.emailVerify(email), type: UserResponse.self).map { _ in }
+        return network.requestObject(.emailVerify(email), type: ServerResponse.self).map { _ in }
     }
     
     func login(_ email: String, _ password: String) -> Single<Void> {
-        return network.requestObject(.login(email, password), type: UserResponse.self).map { _ in }
+        return network.requestObject(.login(email, password), type: ServerResponse.self).map { _ in }
     }
 }

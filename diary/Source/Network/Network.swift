@@ -22,7 +22,7 @@ class Network<API: TargetType>: MoyaProvider<API> {
     
     func request(_ api: API) -> Single<Response> {
         return self.rx.request(api)
-            .filter(statusCodes: 200...500)
+            .filterSuccessfulStatusCodes()
     }
 }
 
