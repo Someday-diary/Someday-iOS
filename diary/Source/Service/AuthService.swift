@@ -29,11 +29,15 @@ final class AuthService: AuthServiceType {
     }
     
     func verifyEmail(_ email: String) -> Single<Void> {
-        return network.requestObject(.emailVerify(email), type: ServerResponse.self).map { _ in }
+        return network.requestObject(.emailVerify(email), type: ServerResponse.self).map { _ in}
     }
     
     func login(_ email: String, _ password: String) -> Single<Void> {
-        return network.requestObject(.login(email, password), type: ServerResponse.self).map { _ in }
+        return network.requestObject(.login(email, password), type: Token.self)
+            .do(onSuccess: { [weak self] response in
+                try? self?.saveToken(response)
+                self?.currentToken = response
+            }).map { _ in }
     }
     
     fileprivate func saveToken(_ token: Token) throws {
@@ -42,5 +46,19 @@ final class AuthService: AuthServiceType {
         let tokenData = try jsonEncoder.encode(token)
         let token = String(data: tokenData, encoding: .utf8)
         try self.keychain.set(token ?? "", key: "token")
+    }
+    
+    fileprivate func getToken() -> Token? {
+        let jsonDecoder: JSONDecoder = JSONDecoder()
+        
+        guard let tokenData = self.keychain["token"]?.data(using: .utf8),
+              let token = try? jsonDecoder.decode(Token.self, from: tokenData)
+        else { return nil }
+        
+        return token
+    }
+    
+    fileprivate func removeToken() {
+        try? self.keychain.remove("token")
     }
 }
