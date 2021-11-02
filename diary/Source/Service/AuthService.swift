@@ -7,11 +7,13 @@
 
 import Foundation
 
-
+import KeychainAccess
 import RxSwift
 import Moya
 
 protocol AuthServiceType: AnyObject {
+    var currentToken: Token? { get }
+    
     func verifyEmail(_ email: String) -> Single<Void>
     func login(_ email: String, _ password: String) -> Single<Void>
 }
@@ -19,6 +21,8 @@ protocol AuthServiceType: AnyObject {
 final class AuthService: AuthServiceType {
     
     fileprivate let network: Network<AuthAPI>
+    fileprivate let keychain = Keychain(service: "com.diary.someday.ios")
+    private(set) var currentToken: Token?
     
     init(network: Network<AuthAPI>) {
         self.network = network
@@ -30,5 +34,13 @@ final class AuthService: AuthServiceType {
     
     func login(_ email: String, _ password: String) -> Single<Void> {
         return network.requestObject(.login(email, password), type: ServerResponse.self).map { _ in }
+    }
+    
+    fileprivate func saveToken(_ token: Token) throws {
+        let jsonEncoder: JSONEncoder = JSONEncoder()
+        
+        let tokenData = try jsonEncoder.encode(token)
+        let token = String(data: tokenData, encoding: .utf8)
+        try self.keychain.set(token ?? "", key: "token")
     }
 }
