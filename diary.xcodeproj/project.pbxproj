@@ -61,10 +61,11 @@
 		6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */; };
 		629AE09D26DFA0DF003B8891 /* UIImageView+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */; };
 		629ED5A626DD108600EA7A98 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */; };
-		62B2C69327296F66005A7AFF /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B2C69227296F66005A7AFF /* Response.swift */; };
+		62B2C69327296F66005A7AFF /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B2C69227296F66005A7AFF /* ServerResponse.swift */; };
 		62B3260D272CF9FE00DC3C96 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B3260C272CF9FE00DC3C96 /* Network.swift */; };
 		62B32610272D1B5400DC3C96 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B3260F272D1B5400DC3C96 /* BaseAPI.swift */; };
 		62B32612272D2C8500DC3C96 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B32611272D2C8500DC3C96 /* AuthAPI.swift */; };
+		62B32614272D8AA900DC3C96 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B32613272D8AA900DC3C96 /* AuthService.swift */; };
 		62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40212690B0FA009B77F3 /* AppDelegate.swift */; };
 		62BA402B2690B0FC009B77F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62BA402A2690B0FC009B77F3 /* Assets.xcassets */; };
 		62BA40392690B0FD009B77F3 /* diaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40382690B0FD009B77F3 /* diaryTests.swift */; };
@@ -172,10 +173,11 @@
 		629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+RxTheme.swift"; sourceTree = "<group>"; };
 		629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FSCalendar+RxTheme.swift"; sourceTree = "<group>"; };
 		629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
-		62B2C69227296F66005A7AFF /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		62B2C69227296F66005A7AFF /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		62B3260C272CF9FE00DC3C96 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		62B3260F272D1B5400DC3C96 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		62B32611272D2C8500DC3C96 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		62B32613272D8AA900DC3C96 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		62BA401E2690B0FA009B77F3 /* diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62BA40212690B0FA009B77F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62BA402A2690B0FC009B77F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -245,7 +247,7 @@
 			children = (
 				620BCABA26E4F9F70023499D /* ModelType.swift */,
 				620BCAB826E4F9B10023499D /* Diary.swift */,
-				62B2C69227296F66005A7AFF /* Response.swift */,
+				62B2C69227296F66005A7AFF /* ServerResponse.swift */,
 				62FC98C8270D3A2B00231BF4 /* RealmDiary.swift */,
 				6245245A270DF3B700DE083D /* Appreance.swift */,
 				62F192B2271FF23B0055C8DC /* Theme.swift */,
@@ -607,6 +609,7 @@
 			children = (
 				62C7D76326ED20B600C3E257 /* RealmService.swift */,
 				62C7D7A126EF4AEB00C3E257 /* UserService.swift */,
+				62B32613272D8AA900DC3C96 /* AuthService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -958,6 +961,7 @@
 				628BFD9526EB514F00851408 /* FloatingViewController.swift in Sources */,
 				620BCAC926E601930023499D /* CreateDiaryButton.swift in Sources */,
 				62452451270DEE7C00DE083D /* ThemeViewReactor.swift in Sources */,
+				62B32614272D8AA900DC3C96 /* AuthService.swift in Sources */,
 				624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */,
 				624E4D3726D66EF1004A6624 /* SplashViewReactor.swift in Sources */,
 				62F192B3271FF23B0055C8DC /* Theme.swift in Sources */,
@@ -979,7 +983,7 @@
 				620BCABB26E4F9F70023499D /* ModelType.swift in Sources */,
 				620BCAC526E5EC730023499D /* UITextField.swift in Sources */,
 				62F6681C26F8DAF800110E35 /* ActiveLabel+RxTheme.swift in Sources */,
-				62B2C69327296F66005A7AFF /* Response.swift in Sources */,
+				62B2C69327296F66005A7AFF /* ServerResponse.swift in Sources */,
 				62C7D7A226EF4AEB00C3E257 /* UserService.swift in Sources */,
 				621CF20F27083BC400B7EB5D /* CGFloat.swift in Sources */,
 				625F4C8326D4675B00DC5978 /* DiaryCalendar.swift in Sources */,
