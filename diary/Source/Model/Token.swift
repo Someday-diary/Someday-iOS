@@ -8,11 +8,13 @@
 import Foundation
 
 struct Token: ModelType {
-    var accessToken: String
+    var code: Int
+    var token: String
     var secretKey: String
     
     enum CodingKeys: String, CodingKey {
-        case accessToken = "access_token"
+        case code = "code"
+        case token = "token"
         case secretKey = "secret_key"
     }
 }

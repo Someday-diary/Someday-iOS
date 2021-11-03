@@ -166,6 +166,7 @@
 		626AC5A827316BA300E907E8 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		626AC5AA2731877600E907E8 /* DiaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryService.swift; sourceTree = "<group>"; };
 		626AC5AD2731884D00E907E8 /* AuthPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPlugin.swift; sourceTree = "<group>"; };
+		626AC5AF27318AFB00E907E8 /* DiaryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryAPI.swift; sourceTree = "<group>"; };
 		627E200826CE8F4D00550D59 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		627E200E26CE93DC00550D59 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		62816AEF26DCD0B100365348 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
@@ -530,6 +531,7 @@
 			children = (
 				62B3260F272D1B5400DC3C96 /* BaseAPI.swift */,
 				62B32611272D2C8500DC3C96 /* AuthAPI.swift */,
+				626AC5AF27318AFB00E907E8 /* DiaryAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
