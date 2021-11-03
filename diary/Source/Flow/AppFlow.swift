@@ -45,7 +45,7 @@ class AppFlow: Flow {
 extension AppFlow {
     
     private func navigateToSplash() -> FlowContributors {
-        let reactor = SplashViewReactor()
+        let reactor = SplashViewReactor(authService: services.authService)
         let viewController = SplashViewController(reactor: reactor)
         
         self.window.rootViewController = viewController

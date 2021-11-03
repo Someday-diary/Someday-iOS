@@ -26,6 +26,7 @@ final class AuthService: AuthServiceType {
     
     init(network: Network<AuthAPI>) {
         self.network = network
+        self.currentToken = self.getToken()
     }
     
     func verifyEmail(_ email: String) -> Single<Void> {
