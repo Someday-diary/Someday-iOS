@@ -11,10 +11,11 @@ import Moya
 
 enum DiaryAPI {
     case writeDiary(Diary)
-    case getDiaryTag([String])
+    case getDiaryTag(String)
     case getDiaryPostID(String)
     case updateDiary(Diary)
     case deleteDiary(String)
+    case getDiaryDate(String, String)
     // auth plugin need
     case logout
 }
@@ -23,12 +24,12 @@ extension DiaryAPI: BaseAPI {
     
     var path: String {
         switch self {
-        case .writeDiary, .getDiaryTag, .updateDiary:
-            return "/diary/"
-        case let .getDiaryPostID(postID):
-            return "/diary/" + postID
+        case .writeDiary, .getDiaryTag, .updateDiary, .getDiaryDate:
+            return "/diary"
         case let .deleteDiary(postID):
-            return "/diary/" + postID
+            return "/diary/\(postID)"
+        case let .getDiaryPostID(postID):
+            return "/diary/\(postID)"
         case .logout:
             return "/user/logout"
         }
@@ -38,7 +39,7 @@ extension DiaryAPI: BaseAPI {
         switch self {
         case .writeDiary:
             return .post
-        case .getDiaryTag, .getDiaryPostID:
+        case .getDiaryTag, .getDiaryPostID, .getDiaryDate:
             return .get
         case .updateDiary:
             return .patch
@@ -60,6 +61,18 @@ extension DiaryAPI: BaseAPI {
                 "date" : diary.date,
                 "id" : UUID().uuidString
             ]
+            
+        case let .getDiaryTag(item):
+            return [
+                "tag" : item
+            ]
+            
+        case let .getDiaryDate(year, month):
+            return [
+                "year" : year,
+                "month" : month
+            ]
+            
         default:
             return nil
         }

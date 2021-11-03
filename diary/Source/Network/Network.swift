@@ -12,12 +12,12 @@ import Moya
 
 class Network<API: TargetType>: MoyaProvider<API> {
     
-    init() {
+    init(plugins: [PluginType] = []) {
         let session = MoyaProvider<API>.defaultAlamofireSession()
         // set Timeout
         session.sessionConfiguration.timeoutIntervalForRequest = 10
         
-        super.init(session: session)
+        super.init(session: session, plugins: plugins)
     }
     
     func request(_ api: API) -> Single<Response> {

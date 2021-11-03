@@ -17,13 +17,22 @@ struct AppServices {
     let realmService: RealmServiceType
     let userService: UserServiceType
     let authService: AuthServiceType
+    let diaryService: DiaryServiceType
     
     init() {
-        let realm = try! Realm()
+        self.userService = UserService()
         
         let authNetwork = Network<AuthAPI>()
-        self.realmService = RealmService(realm: realm)
-        self.userService = UserService()
         self.authService = AuthService(network: authNetwork)
+        
+        let diaryNetwork = Network<DiaryAPI>(
+            plugins: [
+                AuthPlugin(authService: authService)
+            ]
+        )
+        self.diaryService = DiaryService(network: diaryNetwork)
+        
+        let realm = try! Realm()
+        self.realmService = RealmService(realm: realm)
     }
 }

@@ -42,13 +42,13 @@ final class MainViewReactor: Reactor, Stepper {
     
     let initialState: State
     let userService: UserServiceType
-    let realmService: RealmServiceType
+    let diaryService: DiaryServiceType
     
-    init(userService: UserServiceType, realmService: RealmServiceType) {
+    init(userService: UserServiceType, diaryService: DiaryServiceType) {
         self.initialState = State()
         
         self.userService = userService
-        self.realmService = realmService
+        self.diaryService = diaryService
     }
     
     
@@ -75,9 +75,9 @@ final class MainViewReactor: Reactor, Stepper {
                 
                 Observable.just(Mutation.setMonth(newMonth)),
                 
-                realmService.read(query: NSPredicate(format: "date CONTAINS %@", newMonth.toMonthString))
-                    .asObservable()
-                    .flatMap { result in Observable.just(Mutation.changeWritedDays(result)).catchErrorJustReturn(Mutation.changeWritedDays([])) },
+//                realmService.read(query: NSPredicate(format: "date CONTAINS %@", newMonth.toMonthString))
+//                    .asObservable()
+//                    .flatMap { result in Observable.just(Mutation.changeWritedDays(result)).catchErrorJustReturn(Mutation.changeWritedDays([])) },
                 
                 Observable.just(Mutation.setLoading(false))
             ])

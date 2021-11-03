@@ -85,7 +85,7 @@ class HomeFlow: Flow {
 extension HomeFlow: FloatingPanelControllerDelegate {
     
     private func navigateToMain() -> FlowContributors {
-        let reactor = MainViewReactor(userService: services.userService, realmService: services.realmService)
+        let reactor = MainViewReactor(userService: services.userService, diaryService: services.diaryService)
         let viewController = MainViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: false)
