@@ -35,9 +35,11 @@ final class SideMenuViewReactor: Reactor, Stepper {
     }
     
     let initialState: State
+    fileprivate let authService: AuthServiceType
     
-    init(date: Date) {
+    init(date: Date, authService: AuthServiceType) {
         self.initialState = State(date: date)
+        self.authService = authService
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -50,6 +52,7 @@ final class SideMenuViewReactor: Reactor, Stepper {
             return Observable.empty()
             
         case .logout:
+            self.authService.logout()
             self.steps.accept(DiaryStep.dismiss)
             self.steps.accept(DiaryStep.splashIsRequired)
             return Observable.empty()
