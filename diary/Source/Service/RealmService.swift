@@ -29,7 +29,7 @@ final class RealmService: RealmServiceType {
         return Single<Void>.create { [weak self] (single) -> Disposable in
             
             let diary = RealmDiary().then {
-                $0.date = date.realmString
+                $0.date = date.dataString
                 $0.data = data
                 $0.tags = tags
             }

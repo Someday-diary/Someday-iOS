@@ -113,6 +113,6 @@ final class FloatingViewReactor: Reactor, Stepper {
 
 extension FloatingViewReactor {
     func readDiary(date: Date) -> Observable<[RealmDiary]> {
-        self.realmService.read(query: NSPredicate(format: "date CONTAINS %@", date.realmString)).asObservable()
+        self.realmService.read(query: NSPredicate(format: "date CONTAINS %@", date.dataString)).asObservable()
     }
 }

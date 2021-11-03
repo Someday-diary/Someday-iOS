@@ -23,7 +23,7 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
-    var realmString: String {
+    var dataString: String {
         let dateFormatter = DateFormatter().then {
             $0.dateFormat = "yyyy-MM-dd"
         }
