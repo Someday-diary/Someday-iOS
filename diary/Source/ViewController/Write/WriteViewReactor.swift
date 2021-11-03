@@ -57,8 +57,6 @@ final class WriteViewReactor: Reactor, Stepper {
             
         case let .saveDidary(data, tags):
             
-            
-            
             return Observable.concat([
                 Observable.just(Mutation.setLoading(true)),
                 

@@ -65,4 +65,19 @@ extension DiaryAPI: BaseAPI {
         }
     }
     
+    var parameterEncoding: ParameterEncoding {
+        return JSONEncoding.default
+    }
+    
+    var task: Task {
+        if let parameters = parameters {
+            return .requestParameters(parameters: parameters, encoding: parameterEncoding)
+        }
+        return .requestPlain
+    }
+    
+    var validationType: ValidationType {
+        return .successCodes
+    }
+    
 }
