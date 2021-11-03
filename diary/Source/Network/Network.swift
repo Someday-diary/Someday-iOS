@@ -33,7 +33,7 @@ extension Network {
             .map(T.self, using: decoder)
     }
     
-    func requestArray<T: Codable>(_ target: API, tpye: T.Type) -> Single<[T]> {
+    func requestArray<T: Codable>(_ target: API, type: T.Type) -> Single<[T]> {
         let decoder = JSONDecoder()
         return request(target)
             .map([T].self, using: decoder)

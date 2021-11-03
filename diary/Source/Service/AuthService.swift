@@ -31,7 +31,7 @@ final class AuthService: AuthServiceType {
     }
     
     func verifyEmail(_ email: String) -> Single<Void> {
-        return network.requestObject(.emailVerify(email), type: ServerResponse.self).map { _ in}
+        return network.requestObject(.emailVerify(email), type: ServerResponse.self).map { _ in }
     }
     
     func login(_ email: String, _ password: String) -> Single<Void> {

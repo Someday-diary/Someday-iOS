@@ -11,7 +11,7 @@ import RxSwift
 
 protocol DiaryServiceType: AnyObject {
     func createDiary(_ diary: Diary) -> Single<Void>
-//    func getMonthDiary(_ year: String, _ month: String) -> Single<
+    func getMonthDiary(_ year: String, _ month: String) -> Single<[DiaryList]>
 }
           
 class DiaryService: DiaryServiceType {
@@ -24,6 +24,10 @@ class DiaryService: DiaryServiceType {
     
     func createDiary(_ diary: Diary) -> Single<Void> {
         return network.requestObject(.writeDiary(diary), type: CreateResponse.self).map { _ in }
+    }
+    
+    func getMonthDiary(_ year: String, _ month: String) -> Single<[DiaryList]> {
+        return network.requestArray(.getDiaryDate(year, month), type: DiaryList.self)
     }
     
     
