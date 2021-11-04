@@ -29,7 +29,7 @@ final class MainViewReactor: Reactor, Stepper {
         case setLoading(Bool)
         case setMonth(Date)
         case setCurrentDay(Date)
-        case changeWritedDays([RealmDiary])
+        case changeWritedDays([Post])
     }
     
     struct State {
@@ -67,7 +67,9 @@ final class MainViewReactor: Reactor, Stepper {
             
         case let .changeDay(newDay):
             return Observable.just(userService.updateDate(to: newDay))
-                .flatMap { _ in Observable.just(Mutation.setCurrentDay(newDay)) }
+                .flatMap { _ in
+                    Observable.just(Mutation.setCurrentDay(newDay))
+                }
             
         case let .changeMonth(newMonth):
             return Observable.concat([
@@ -75,9 +77,10 @@ final class MainViewReactor: Reactor, Stepper {
                 
                 Observable.just(Mutation.setMonth(newMonth)),
                 
-//                realmService.read(query: NSPredicate(format: "date CONTAINS %@", newMonth.toMonthString))
-//                    .asObservable()
-//                    .flatMap { result in Observable.just(Mutation.changeWritedDays(result)).catchErrorJustReturn(Mutation.changeWritedDays([])) },
+                diaryService.getMonthDiary(newMonth.year, newMonth.month).asObservable()
+                    .flatMap { result in
+                        Observable.just(Mutation.changeWritedDays(result.posts ?? [])).catchErrorJustReturn(Mutation.changeWritedDays([]))
+                    },
                 
                 Observable.just(Mutation.setLoading(false))
             ])
@@ -98,8 +101,8 @@ final class MainViewReactor: Reactor, Stepper {
         case let .setColor(newColor):
             state.themeColor = newColor
             
-        case let .changeWritedDays(month):
-            state.writedDays = month.map { $0.date.realmDate }
+        case let .changeWritedDays(posts):
+            state.writedDays = posts.map { $0.date }
             
         case let .setMonth(month):
             state.month = month
