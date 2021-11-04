@@ -36,10 +36,12 @@ final class SideMenuViewReactor: Reactor, Stepper {
     
     let initialState: State
     fileprivate let authService: AuthServiceType
+    fileprivate let diaryService: DiaryServiceType
     
-    init(date: Date, authService: AuthServiceType) {
+    init(date: Date, authService: AuthServiceType, diaryService: DiaryServiceType) {
         self.initialState = State(date: date)
         self.authService = authService
+        self.diaryService = diaryService
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -55,7 +57,8 @@ final class SideMenuViewReactor: Reactor, Stepper {
             self.authService.logout()
             self.steps.accept(DiaryStep.dismiss)
             self.steps.accept(DiaryStep.splashIsRequired)
-            return Observable.empty()
+            return self.diaryService.logout().asObservable()
+                    .flatMap { _ in Observable.empty() }
             
         case .setTheme:
             self.steps.accept(DiaryStep.dismiss)

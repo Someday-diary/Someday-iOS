@@ -106,7 +106,7 @@ final class FloatingViewReactor: Reactor, Stepper {
         
         case let .updateDiary(diary):
             if diary == nil {
-                state.diaryData = "일기가 존재하지 않습니다! 일기를 채워보시는건 어떨까요"
+                state.diaryData = "일기가 존재하지 않습니다!\n일기를 채워보시는건 어떨까요?"
                 state.diaryTags = "태그 추가"
                 state.createState = true
                 state.currentDiary = nil

@@ -127,7 +127,7 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     }
     
     private func navigateToSideMenu(date: Date) -> FlowContributors {
-        let reactor = SideMenuViewReactor(date: date, authService: services.authService)
+        let reactor = SideMenuViewReactor(date: date, authService: services.authService, diaryService: services.diaryService)
         let viewController = SideMenuViewController(reactor: reactor)
         let sideMenuNavController = SideMenuNavigationController(rootViewController: viewController).then {
             $0.leftSide = true
