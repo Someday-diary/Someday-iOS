@@ -27,7 +27,8 @@ struct AppServices {
         
         let diaryNetwork = Network<DiaryAPI>(
             plugins: [
-                AuthPlugin(authService: authService)
+                AuthPlugin(authService: authService),
+                RequestLoggingPlugin()
             ]
         )
         self.diaryService = DiaryService(network: diaryNetwork)

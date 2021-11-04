@@ -9,8 +9,7 @@ import Foundation
 
 struct Token: ModelType {
     var code: Int
-    var token: String
-    var secretKey: String
+    var token, secretKey: String?
     
     enum CodingKeys: String, CodingKey {
         case code = "code"

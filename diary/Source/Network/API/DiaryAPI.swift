@@ -24,8 +24,10 @@ extension DiaryAPI: BaseAPI {
     
     var path: String {
         switch self {
-        case .writeDiary, .getDiaryTag, .updateDiary, .getDiaryDate:
+        case .writeDiary, .getDiaryTag, .updateDiary:
             return "/diary"
+        case .getDiaryDate:
+            return "/diary/date"
         case let .deleteDiary(postID):
             return "/diary/\(postID)"
         case let .getDiaryPostID(postID):
@@ -73,6 +75,18 @@ extension DiaryAPI: BaseAPI {
                 "month" : month
             ]
             
+        case let .updateDiary(diary):
+            var tags: [[String : String]] = []
+            diary.tags.components(separatedBy: " ").forEach {
+                tags.append(["tag" : $0])
+            }
+            return [
+                "tag" : tags,
+                "contents" : diary.data,
+                "date" : diary.date,
+                "id" : UUID().uuidString
+            ]
+            
         default:
             return nil
         }
@@ -83,8 +97,15 @@ extension DiaryAPI: BaseAPI {
     }
     
     var task: Task {
-        if let parameters = parameters {
-            return .requestParameters(parameters: parameters, encoding: parameterEncoding)
+        switch self {
+        case .getDiaryTag, .getDiaryPostID, .getDiaryDate:
+            if let parameters = parameters {
+                return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
+            }
+        default:
+            if let parameters = parameters {
+                return .requestParameters(parameters: parameters, encoding: parameterEncoding)
+            }
         }
         return .requestPlain
     }

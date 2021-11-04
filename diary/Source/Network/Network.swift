@@ -27,14 +27,14 @@ class Network<API: TargetType>: MoyaProvider<API> {
 }
 
 extension Network {
-    func requestObject<T: Codable>(_ target: API, type: T.Type) -> Single<T> {
-        let decoder = JSONDecoder()
+    func requestObject<T: ModelType>(_ target: API, type: T.Type) -> Single<T> {
+        let decoder = type.decoder
         return request(target)
             .map(T.self, using: decoder)
     }
     
-    func requestArray<T: Codable>(_ target: API, type: T.Type) -> Single<[T]> {
-        let decoder = JSONDecoder()
+    func requestArray<T: ModelType>(_ target: API, type: T.Type) -> Single<[T]> {
+        let decoder = type.decoder
         return request(target)
             .map([T].self, using: decoder)
     }
