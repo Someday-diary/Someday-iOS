@@ -105,7 +105,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 18 colors.
+  /// This `R.color` struct is generated, and contains static references to 20 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
@@ -123,6 +123,8 @@ struct R: Rswift.Validatable {
     static let calendarTitlePlaceHolderColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "CalendarTitlePlaceHolderColor")
     /// Color `ClearButtonColor`.
     static let clearButtonColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "ClearButtonColor")
+    /// Color `DiaryBackgroundColor`.
+    static let diaryBackgroundColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "DiaryBackgroundColor")
     /// Color `DiaryDisabledColor`.
     static let diaryDisabledColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "DiaryDisabledColor")
     /// Color `GreenThemeMainColor`.
@@ -133,6 +135,8 @@ struct R: Rswift.Validatable {
     static let greenThemeThirdColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "GreenThemeThirdColor")
     /// Color `NavigationButtonColor`.
     static let navigationButtonColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "NavigationButtonColor")
+    /// Color `SystemBlackColor`.
+    static let systemBlackColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "SystemBlackColor")
     /// Color `SystemWhiteColor`.
     static let systemWhiteColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "SystemWhiteColor")
     /// Color `TableViewCellColor`.
@@ -217,6 +221,15 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "DiaryBackgroundColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func diaryBackgroundColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.diaryBackgroundColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIColor(named: "DiaryDisabledColor", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
@@ -258,6 +271,15 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func navigationButtonColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.navigationButtonColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "SystemBlackColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func systemBlackColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.systemBlackColor, compatibleWith: traitCollection)
     }
     #endif
 
@@ -371,6 +393,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(watchOS)
+    /// `UIColor(named: "DiaryBackgroundColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func diaryBackgroundColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.diaryBackgroundColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
     /// `UIColor(named: "DiaryDisabledColor", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
     static func diaryDisabledColor(_: Void = ()) -> UIKit.UIColor? {
@@ -407,6 +437,14 @@ struct R: Rswift.Validatable {
     @available(watchOSApplicationExtension 4.0, *)
     static func navigationButtonColor(_: Void = ()) -> UIKit.UIColor? {
       return UIKit.UIColor(named: R.color.navigationButtonColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "SystemBlackColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func systemBlackColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.systemBlackColor.name)
     }
     #endif
 

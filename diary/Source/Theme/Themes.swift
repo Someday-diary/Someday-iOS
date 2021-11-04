@@ -26,7 +26,7 @@ protocol Theme {
 extension Theme {
     var diaryDisableColor: UIColor { R.color.diaryDisabledColor()! }
     var systemWhiteColor: UIColor { R.color.systemWhiteColor()! }
-    var backgroundColor: UIColor { .systemBackground }
+    var backgroundColor: UIColor { R.color.diaryBackgroundColor()! }
     var clearColor: UIColor { .clear }
     var clearButtonColor: UIColor { R.color.clearButtonColor()! }
     var tableViewCellColor: UIColor { R.color.tableViewCellColor()! }

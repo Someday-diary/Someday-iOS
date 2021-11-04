@@ -37,7 +37,7 @@ final class DiaryCalendar: UIView {
         $0.select(Date())
         $0.appearance.headerMinimumDissolvedAlpha = 0
         $0.appearance.theme.selectionColor = themed { $0.mainColor }
-        $0.appearance.titleSelectionColor = .systemBackground
+        $0.appearance.titleSelectionColor = .white
         $0.appearance.headerTitleColor = R.color.calendarHeaderColor()
         $0.appearance.headerTitleFont = Font.calendarTitle
         $0.appearance.headerDateFormat = "MMM"
@@ -51,9 +51,11 @@ final class DiaryCalendar: UIView {
     }
     let prevButton = UIButton().then {
         $0.setImage(R.image.calendarBackButton(), for: .normal)
+        $0.tintColor = R.color.systemBlackColor()
     }
     let nextButton = UIButton().then {
         $0.setImage(R.image.calendarFrontButton(), for: .normal)
+        $0.tintColor = R.color.systemBlackColor()
     }
     let calendarAsset = UIImageView().then {
         $0.image = R.image.calendarAsset()

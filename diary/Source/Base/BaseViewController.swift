@@ -73,7 +73,7 @@ class BaseViewController: UIViewController {
     
     // MARK: - Setup
     func setupStyle() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = R.color.diaryBackgroundColor()
     }
     
 

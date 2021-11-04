@@ -22,5 +22,10 @@ class BaseTableViewCell: UITableViewCell {
     required convenience init?(coder: NSCoder) {
         self.init(style: .default, reuseIdentifier: nil)
     }
-
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.backgroundColor = .clear
+    }
 }

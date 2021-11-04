@@ -47,7 +47,7 @@ class LoginViewController: BaseViewController, View {
         static let registerHighlight = Style("h")
             .font(.systemFont(ofSize: 14, weight: .bold))
             .underlineStyle(.single)
-        static let registerAll = Style.font(.systemFont(ofSize: 14)).foregroundColor(.black)
+        static let registerAll = Style.font(.systemFont(ofSize: 14)).foregroundColor(R.color.systemBlackColor()!)
         
         // TextField
         static let textFieldAll = Style.font(.systemFont(ofSize: 14)).foregroundColor(R.color.textFieldTextColor()!)

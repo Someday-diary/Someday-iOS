@@ -34,7 +34,7 @@ final class DiaryButton: UIButton {
         self.layer.cornerRadius = Style.cornerRadius
         self.clipsToBounds = true
         self.layer.borderWidth = Style.borderWidth
-        self.setTitleColor(R.color.systemWhiteColor(), for: .normal)
+        self.setTitleColor(.white, for: .normal)
         self.setTitleColor(R.color.diaryDisabledColor(), for: .disabled)
     }
     
