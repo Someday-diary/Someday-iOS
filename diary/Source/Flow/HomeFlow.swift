@@ -93,7 +93,7 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     }
     
     private func presentFloatingPanel(date: Date) -> FlowContributors {
-        let reactor = FloatingViewReactor(date: date, userService: services.userService, realmService: services.realmService)
+        let reactor = FloatingViewReactor(date: date, userService: services.userService, diaryService: services.diaryService)
         fpc.set(contentViewController: FloatingViewController(reactor: reactor))
         
         self.rootViewController.present(fpc, animated: true)
@@ -101,7 +101,7 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     }
     
     private func navigateToWrite(_ date: Date, _ diary: Diary?) -> FlowContributors {
-        let reactor = WriteViewReactor(date: date, diary: diary, realmService: services.realmService)
+        let reactor = WriteViewReactor(date: date, diary: diary, diaryService: services.diaryService)
         let viewController = WriteViewController(reactor: reactor)
         
         self.rootViewController.dismiss(animated: true)

@@ -24,5 +24,3 @@ extension RealmDiary {
         return Diary(date: self.date, data: self.data, tags: self.tags)
     }
 }
-
-

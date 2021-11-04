@@ -21,7 +21,7 @@ class Network<API: TargetType>: MoyaProvider<API> {
     }
     
     func request(_ api: API) -> Single<Response> {
-        return self.rx.request(api)
+        return self.rx.request(api).observeOn(ConcurrentMainScheduler.instance)
             .filterSuccessfulStatusCodes()
     }
 }

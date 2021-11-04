@@ -24,12 +24,12 @@ struct CreateResponse: ModelType {
 // MARK: - ListResponse
 struct ListResponse: ModelType {
     var code: Int
-    var posts: [Post]?
+    var posts: [Posts]?
 }
 
-struct Post: ModelType {
-    var date: Date
-    var postID: String
+struct Posts: ModelType {
+    let postID: String
+    let date: Date
     
     enum CodingKeys: String, CodingKey {
         case postID = "post_id"
@@ -38,19 +38,23 @@ struct Post: ModelType {
 }
 
 // MARK: - DiaryResponse
-struct DiaryResponse: ModelType {
-    let postID, contents, email, date: String?
-    let tag: [Tag]?
+struct DiaryResponse: ModelType, Equatable {
+    let post: Post?
     let code: Int
+}
 
+struct Post: ModelType, Equatable {
+    let postID, contents, date: String
+    let tags: [Tag]
+    
     enum CodingKeys: String, CodingKey {
         case postID = "post_id"
-        case contents, email, date, tag, code
+        case contents, date, tags
     }
 }
 
 // MARK: - Tag
-struct Tag: Codable {
+struct Tag: ModelType, Equatable {
     let tagName: String
 
     enum CodingKeys: String, CodingKey {

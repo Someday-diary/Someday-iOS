@@ -22,6 +22,7 @@
 		621CF21627096DFA00B7EB5D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621CF21527096DFA00B7EB5D /* SearchViewController.swift */; };
 		621CF21B270978B900B7EB5D /* DiarySearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621CF21A270978B900B7EB5D /* DiarySearchBar.swift */; };
 		6221F28A2733AB7A009A9164 /* RequestLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221F2892733AB7A009A9164 /* RequestLoggingPlugin.swift */; };
+		6221F28C2733D7FB009A9164 /* DiaryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221F28B2733D7FB009A9164 /* DiaryResponse.swift */; };
 		62452451270DEE7C00DE083D /* ThemeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452450270DEE7C00DE083D /* ThemeViewReactor.swift */; };
 		62452453270DEF0200DE083D /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452452270DEF0200DE083D /* ThemeViewController.swift */; };
 		62452457270DF23400DE083D /* AppearanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452456270DF23400DE083D /* AppearanceCell.swift */; };
@@ -139,6 +140,7 @@
 		621CF21527096DFA00B7EB5D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		621CF21A270978B900B7EB5D /* DiarySearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiarySearchBar.swift; sourceTree = "<group>"; };
 		6221F2892733AB7A009A9164 /* RequestLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLoggingPlugin.swift; sourceTree = "<group>"; };
+		6221F28B2733D7FB009A9164 /* DiaryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryResponse.swift; sourceTree = "<group>"; };
 		62452450270DEE7C00DE083D /* ThemeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewReactor.swift; sourceTree = "<group>"; };
 		62452452270DEF0200DE083D /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		62452456270DF23400DE083D /* AppearanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceCell.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				620BCACA26E8819C0023499D /* String.swift */,
 				621CF210270881A200B7EB5D /* UIDevice.swift */,
 				621CF20E27083BC400B7EB5D /* CGFloat.swift */,
+				6221F28B2733D7FB009A9164 /* DiaryResponse.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1035,6 +1038,7 @@
 				62B32610272D1B5400DC3C96 /* BaseAPI.swift in Sources */,
 				62C1564B270BDD0E00938DB7 /* UITextField+RxTheme.swift in Sources */,
 				621CF21427096DC500B7EB5D /* SearchViewReactor.swift in Sources */,
+				6221F28C2733D7FB009A9164 /* DiaryResponse.swift in Sources */,
 				6250FE4426DCE26100A0277B /* AppServices.swift in Sources */,
 				625F4C5D26CF242600DC5978 /* MainViewController.swift in Sources */,
 				6221F28A2733AB7A009A9164 /* RequestLoggingPlugin.swift in Sources */,

@@ -15,7 +15,8 @@ enum DiaryAPI {
     case getDiaryPostID(String)
     case updateDiary(Diary)
     case deleteDiary(String)
-    case getDiaryDate(String, String)
+    case getDiaryMonth(String, String)
+    case getDiaryDate(String, String, String)
     // auth plugin need
     case logout
 }
@@ -26,6 +27,8 @@ extension DiaryAPI: BaseAPI {
         switch self {
         case .writeDiary, .getDiaryTag, .updateDiary:
             return "/diary"
+        case .getDiaryMonth:
+            return "/diary/month"
         case .getDiaryDate:
             return "/diary/date"
         case let .deleteDiary(postID):
@@ -41,7 +44,7 @@ extension DiaryAPI: BaseAPI {
         switch self {
         case .writeDiary:
             return .post
-        case .getDiaryTag, .getDiaryPostID, .getDiaryDate:
+        case .getDiaryTag, .getDiaryPostID, .getDiaryMonth, .getDiaryDate:
             return .get
         case .updateDiary:
             return .patch
@@ -69,10 +72,17 @@ extension DiaryAPI: BaseAPI {
                 "tag" : item
             ]
             
-        case let .getDiaryDate(year, month):
+        case let .getDiaryMonth(year, month):
             return [
                 "year" : year,
                 "month" : month
+            ]
+            
+        case let .getDiaryDate(year, month, day):
+            return [
+                "year" : year,
+                "month" : month,
+                "day" : day
             ]
             
         case let .updateDiary(diary):
@@ -98,7 +108,7 @@ extension DiaryAPI: BaseAPI {
     
     var task: Task {
         switch self {
-        case .getDiaryTag, .getDiaryPostID, .getDiaryDate:
+        case .getDiaryTag, .getDiaryPostID, .getDiaryMonth, .getDiaryDate:
             if let parameters = parameters {
                 return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
             }

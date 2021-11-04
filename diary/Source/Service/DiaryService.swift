@@ -14,6 +14,7 @@ protocol DiaryServiceType: AnyObject {
     func updateDiary(_ diary: Diary) -> Single<Void>
     func deleteDiary(_ postID: String) -> Single<Void>
     func getMonthDiary(_ year: String, _ month: String) -> Single<ListResponse>
+    func getDayDiary(_ year: String, _ month: String, _ day: String) -> Single<DiaryResponse>
     func getDiaryPostID(_ postID: String) -> Single<DiaryResponse>
 }
           
@@ -38,7 +39,11 @@ class DiaryService: DiaryServiceType {
     }
     
     func getMonthDiary(_ year: String, _ month: String) -> Single<ListResponse> {
-        return network.requestObject(.getDiaryDate(year, month), type: ListResponse.self)
+        return network.requestObject(.getDiaryMonth(year, month), type: ListResponse.self)
+    }
+    
+    func getDayDiary(_ year: String, _ month: String, _ day: String) -> Single<DiaryResponse> {
+        return network.requestObject(.getDiaryDate(year, month, day), type: DiaryResponse.self)
     }
     
     func getDiaryPostID(_ postID: String) -> Single<DiaryResponse> {

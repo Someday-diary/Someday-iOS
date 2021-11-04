@@ -33,10 +33,10 @@ final class WriteViewReactor: Reactor, Stepper {
     }
     
     let initialState: State
-    let realmService: RealmServiceType
+    let diaryService: DiaryServiceType
     
-    init(date: Date, diary: Diary?, realmService: RealmServiceType) {
-        self.realmService = realmService
+    init(date: Date, diary: Diary?, diaryService: DiaryServiceType) {
+        self.diaryService = diaryService
         
         if let diary = diary {
             self.initialState = State(date: date, data: diary.data, tags: diary.tags)
@@ -60,13 +60,13 @@ final class WriteViewReactor: Reactor, Stepper {
             return Observable.concat([
                 Observable.just(Mutation.setLoading(true)),
                 
-                self.realmService.write(self.currentState.date, data, tags)
-                    .do(onSuccess: {
-                        print("일기 저장 성공")
-                        self.steps.accept(DiaryStep.popViewController)
-                    },onError: { error in
-                        print("error")
-                    }).asObservable().flatMap { _ in Observable.empty() },
+//                self.realmService.write(self.currentState.date, data, tags)
+//                    .do(onSuccess: {
+//                        print("일기 저장 성공")
+//                        self.steps.accept(DiaryStep.popViewController)
+//                    },onError: { error in
+//                        print("error")
+//                    }).asObservable().flatMap { _ in Observable.empty() },
                 
                 Observable.just(Mutation.setLoading(false))
             ])

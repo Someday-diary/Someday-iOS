@@ -24,7 +24,8 @@ final class FloatingViewReactor: Reactor, Stepper {
     
     enum Mutation {
         case updateDate(Date)
-        case updateDiary([RealmDiary])
+        case updateDiary(Diary?)
+        case setLoading(Bool)
     }
     
     struct State {
@@ -33,24 +34,33 @@ final class FloatingViewReactor: Reactor, Stepper {
         var diaryData: String = String()
         var diaryTags: String = String()
         var createState: Bool = true
+        var isLoading: Bool = false
     }
     
     let userService: UserServiceType
-    let realmService: RealmServiceType
+    let diaryService: DiaryServiceType
     
-    init(date: Date, userService: UserServiceType, realmService: RealmServiceType) {
+    init(date: Date, userService: UserServiceType, diaryService: DiaryServiceType) {
         self.initialState = State(selectedDay: date)
         
         self.userService = userService
-        self.realmService = realmService
+        self.diaryService = diaryService
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .updateDiary:
-            return self.readDiary(date: self.currentState.selectedDay).flatMap { result in
-                Observable.just(Mutation.updateDiary(result)).catchErrorJustReturn(Mutation.updateDiary([]))
-            }
+            let currentDay = currentState.selectedDay
+            return Observable.concat([
+                Observable.just(Mutation.setLoading(true)),
+                
+                diaryService.getDayDiary(currentDay.year, currentDay.month, currentDay.date).asObservable()
+                    .flatMap { result in
+                        Observable.just(Mutation.updateDiary(result.post?.toDiary))
+                    }.catchErrorJustReturn(Mutation.updateDiary(nil)),
+                
+                Observable.just(Mutation.setLoading(false))
+            ])
             
         case .write:
             self.steps.accept(DiaryStep.writeIsRequired(self.currentState.selectedDay, nil))
@@ -65,17 +75,22 @@ final class FloatingViewReactor: Reactor, Stepper {
     // Global State
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
         let eventMutation = userService.event.flatMap { [weak self] event -> Observable<Mutation> in
-            guard let `self` = self else { return Observable.empty() }
+            guard let self = self else { return Observable.empty() }
             
             switch event {
             
             case let .updateDate(newDay):
                 return Observable.concat([
                     Observable.just(Mutation.updateDate(newDay)),
+                                        
+                    Observable.just(Mutation.setLoading(true)),
                     
-                    self.readDiary(date: newDay).flatMap { result in
-                        Observable.just(Mutation.updateDiary(result)).catchErrorJustReturn(Mutation.updateDiary([]))
-                    }
+                    self.diaryService.getDayDiary(newDay.year, newDay.month, newDay.date).asObservable()
+                        .flatMap { result in
+                            return Observable.just(Mutation.updateDiary(result.post!.toDiary))
+                        }.catchErrorJustReturn(Mutation.updateDiary(nil)),
+                    
+                    Observable.just(Mutation.setLoading(false))
                 ])
                 
             }
@@ -90,29 +105,26 @@ final class FloatingViewReactor: Reactor, Stepper {
         switch mutation {
         
         case let .updateDiary(diary):
-            if diary.isEmpty {
+            if diary == nil {
                 state.diaryData = "일기가 존재하지 않습니다! 일기를 채워보시는건 어떨까요"
                 state.diaryTags = "태그 추가"
                 state.createState = true
                 state.currentDiary = nil
             } else {
-                state.diaryData = diary[0].data
-                state.diaryTags = diary[0].tags
+                state.diaryData = diary!.data
+                state.diaryTags = diary!.tags
                 state.createState = false
-                state.currentDiary = diary[0].toModel
+                state.currentDiary = diary
             }
         
         case let .updateDate(newDay):
             state.selectedDay = newDay
             
+        case let .setLoading(isLoading):
+            state.isLoading = isLoading
+            
         }
         
         return state
-    }
-}
-
-extension FloatingViewReactor {
-    func readDiary(date: Date) -> Observable<[RealmDiary]> {
-        self.realmService.read(query: NSPredicate(format: "date CONTAINS %@", date.dataString)).asObservable()
     }
 }
