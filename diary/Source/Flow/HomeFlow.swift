@@ -110,7 +110,7 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     }
     
     private func navigateToSearch() -> FlowContributors {
-        let reactor = SearchViewReactor()
+        let reactor = SearchViewReactor(diaryService: services.diaryService)
         let viewController = SearchViewController(reactor: reactor)
         
         self.rootViewController.dismiss(animated: true)
@@ -127,7 +127,7 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     }
     
     private func navigateToSideMenu(date: Date) -> FlowContributors {
-        let reactor = SideMenuViewReactor(date: date, authService: services.authService, diaryService: services.diaryService)
+        let reactor = SideMenuViewReactor(date: date, authService: services.authService)
         let viewController = SideMenuViewController(reactor: reactor)
         let sideMenuNavController = SideMenuNavigationController(rootViewController: viewController).then {
             $0.leftSide = true

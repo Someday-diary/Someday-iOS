@@ -29,6 +29,8 @@ final class WriteViewReactor: Reactor, Stepper {
         var date: Date
         var data: String
         var tags: String
+        var id: String
+        var isEdit: Bool = false
         var isLoading: Bool = false
     }
     
@@ -39,9 +41,9 @@ final class WriteViewReactor: Reactor, Stepper {
         self.diaryService = diaryService
         
         if let diary = diary {
-            self.initialState = State(date: date, data: diary.data, tags: diary.tags)
+            self.initialState = State(date: date, data: diary.data, tags: diary.tags, id: diary.id, isEdit: true)
         } else {
-            self.initialState = State(date: date, data: String(), tags: String())
+            self.initialState = State(date: date, data: String(), tags: String(), id: UUID().uuidString, isEdit: false)
         }
         
         
@@ -57,19 +59,36 @@ final class WriteViewReactor: Reactor, Stepper {
             
         case let .saveDidary(data, tags):
             
-            return Observable.concat([
-                Observable.just(Mutation.setLoading(true)),
+            if self.currentState.isEdit {
+                return Observable.concat([
+                    Observable.just(Mutation.setLoading(true)),
+                    
+                    self.diaryService.updateDiary(Diary(date: self.currentState.date.dataString, data: data, tags: tags, id: self.currentState.id))
+                        .do(onSuccess: {
+                            print("일기 저장 성공")
+                            self.steps.accept(DiaryStep.popViewController)
+                        },onError: { error in
+                            print("error")
+                        }).asObservable().flatMap { _ in Observable.empty() },
+                    
+                    Observable.just(Mutation.setLoading(false))
+                ])
                 
-//                self.realmService.write(self.currentState.date, data, tags)
-//                    .do(onSuccess: {
-//                        print("일기 저장 성공")
-//                        self.steps.accept(DiaryStep.popViewController)
-//                    },onError: { error in
-//                        print("error")
-//                    }).asObservable().flatMap { _ in Observable.empty() },
-                
-                Observable.just(Mutation.setLoading(false))
-            ])
+            } else {
+                return Observable.concat([
+                    Observable.just(Mutation.setLoading(true)),
+                    
+                    self.diaryService.createDiary(Diary(date: self.currentState.date.dataString, data: data, tags: tags, id: self.currentState.id))
+                        .do(onSuccess: {
+                            print("일기 저장 성공")
+                            self.steps.accept(DiaryStep.popViewController)
+                        },onError: { error in
+                            print("error")
+                        }).asObservable().flatMap { _ in Observable.empty() },
+                    
+                    Observable.just(Mutation.setLoading(false))
+                ])
+            }
             
         }
         

@@ -12,9 +12,9 @@ protocol BaseAPI: TargetType {}
 
 extension BaseAPI {
     // aws
-    var baseURL: URL { URL(string: "http://15.165.88.215:8080")! }
+//    var baseURL: URL { URL(string: "http://15.165.88.215:8080")! }
     // local
-//    var baseURL: URL { URL(string: "http://10.80.161.192:8080")! }
+    var baseURL: URL { URL(string: "http://10.80.161.192:8080")! }
     
     var headers: [String : String]? { nil }
     

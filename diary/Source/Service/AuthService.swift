@@ -16,6 +16,7 @@ protocol AuthServiceType: AnyObject {
     
     func verifyEmail(_ email: String) -> Single<Void>
     func login(_ email: String, _ password: String) -> Single<Void>
+    func logoutRequest() -> Single<Void>
     func logout()
 }
 
@@ -40,6 +41,10 @@ final class AuthService: AuthServiceType {
                 try? self?.saveToken(response)
                 self?.currentToken = response
             }).map { _ in }
+    }
+    
+    func logoutRequest() -> Single<Void> {
+        return network.requestObject(.logOut(currentToken?.token ?? ""), type: ServerResponse.self).map { _ in }
     }
     
     func logout() {

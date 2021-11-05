@@ -16,6 +16,7 @@ enum AuthAPI {
     // user
     case signUp(String, String, String)
     case login(String, String)
+    case logOut(String)
 }
 
 extension AuthAPI: BaseAPI {
@@ -30,17 +31,28 @@ extension AuthAPI: BaseAPI {
             return "/user/sign_up/"
         case .login:
             return "/user/login/"
+        case .logOut:
+            return "/user/logout/"
         }
     }
     
     var headers: [String : String]? {
-        return [
-            "Content-Type" : "application/json"
-        ]
+        switch self {
+        case let .logOut(token):
+            return [
+                "access_token" : token
+            ]
+        default :
+            return [
+                "Content-Type" : "application/json"
+            ]
+        }
     }
     
     var method: Moya.Method {
         switch self {
+        case .logOut:
+            return .delete
         default:
             return .post
         }
@@ -68,6 +80,8 @@ extension AuthAPI: BaseAPI {
                 "email" : email,
                 "pwd" : pwd
             ]
+        default:
+            return nil
         }
     }
     

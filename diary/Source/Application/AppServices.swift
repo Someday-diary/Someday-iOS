@@ -14,15 +14,21 @@ import RealmSwift
 import Rswift
 
 struct AppServices {
-    let realmService: RealmServiceType
+    // not use
+//    let realmService: RealmServiceType
     let userService: UserServiceType
     let authService: AuthServiceType
     let diaryService: DiaryServiceType
     
     init() {
+//        print(Realm.Configuration.defaultConfiguration.fileURL!)
+//        let realm = try! Realm()
+//        self.realmService = RealmService(realm: realm)
         self.userService = UserService()
         
-        let authNetwork = Network<AuthAPI>()
+        let authNetwork = Network<AuthAPI>(plugins: [
+            RequestLoggingPlugin()
+        ])
         self.authService = AuthService(network: authNetwork)
         
         let diaryNetwork = Network<DiaryAPI>(
@@ -32,8 +38,5 @@ struct AppServices {
             ]
         )
         self.diaryService = DiaryService(network: diaryNetwork)
-        
-        let realm = try! Realm()
-        self.realmService = RealmService(realm: realm)
     }
 }

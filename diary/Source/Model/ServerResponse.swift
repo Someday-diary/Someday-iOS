@@ -43,6 +43,11 @@ struct DiaryResponse: ModelType, Equatable {
     let code: Int
 }
 
+struct DiaryListResponse: ModelType, Equatable {
+    let posts: [Post]?
+    let code: Int
+}
+
 struct Post: ModelType, Equatable {
     let postID, contents, date: String
     let tags: [Tag]

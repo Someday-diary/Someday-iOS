@@ -25,8 +25,10 @@ extension DiaryAPI: BaseAPI {
     
     var path: String {
         switch self {
-        case .writeDiary, .getDiaryTag, .updateDiary:
-            return "/diary"
+        case .writeDiary, .getDiaryTag:
+            return "/diary/"
+        case let .updateDiary(diary):
+            return "/diary/\(diary.id)"
         case .getDiaryMonth:
             return "/diary/month"
         case .getDiaryDate:
@@ -58,18 +60,28 @@ extension DiaryAPI: BaseAPI {
         case let .writeDiary(diary):
             var tags: [[String : String]] = []
             diary.tags.components(separatedBy: " ").forEach {
-                tags.append(["tag" : $0])
+                tags.append(["tag" : $0.trimmingCharacters(in: ["#"])])
             }
             return [
-                "tag" : tags,
+                "tags" : tags,
                 "contents" : diary.data,
                 "date" : diary.date,
-                "id" : UUID().uuidString
+                "id" : diary.id
+            ]
+            
+        case let .updateDiary(diary):
+            var tags: [[String : String]] = []
+            diary.tags.components(separatedBy: " ").forEach {
+                tags.append(["tag" : $0.trimmingCharacters(in: ["#"])])
+            }
+            return [
+                "tags" : tags,
+                "contents" : diary.data,
             ]
             
         case let .getDiaryTag(item):
             return [
-                "tag" : item
+                "tags" : item
             ]
             
         case let .getDiaryMonth(year, month):
@@ -83,18 +95,6 @@ extension DiaryAPI: BaseAPI {
                 "year" : year,
                 "month" : month,
                 "day" : day
-            ]
-            
-        case let .updateDiary(diary):
-            var tags: [[String : String]] = []
-            diary.tags.components(separatedBy: " ").forEach {
-                tags.append(["tag" : $0])
-            }
-            return [
-                "tag" : tags,
-                "contents" : diary.data,
-                "date" : diary.date,
-                "id" : UUID().uuidString
             ]
             
         default:

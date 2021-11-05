@@ -8,6 +8,8 @@
 import UIKit
 
 import ReactorKit
+import ReusableKit
+import RxDataSources
 import Atributika
 
 final class SearchViewController: BaseViewController, View {
@@ -19,6 +21,8 @@ final class SearchViewController: BaseViewController, View {
         // NavigationPadding
         static let leftNavigativePadding = 10.f
         static let rightNavigativePadding = 10.f
+        
+        static let headerHeight = 110.f
     }
     
     fileprivate struct Font {
@@ -31,6 +35,13 @@ final class SearchViewController: BaseViewController, View {
     let searchBar = DiarySearchBar().then {
         $0.searchTextField.attributedPlaceholder = "검색어를 입력하세요.".styleAll(Font.searchBarPlaceholder).attributedString
     }
+    
+    let tableView = UITableView().then {
+        $0.backgroundColor = .clear
+        $0.separatorStyle = .singleLine
+    }
+    
+    let headerView = SearchHeaderView()
     
     let leftNavigativePadding = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil).then {
         $0.width = Metric.leftNavigativePadding
@@ -63,12 +74,23 @@ final class SearchViewController: BaseViewController, View {
     override func setupLayout() {
         super.setupLayout()
         
+        self.tableView.tableHeaderView = self.headerView
         self.navigationItem.titleView = self.searchBar
+        
+        self.view.addSubview(self.tableView)
     }
     
     override func setupConstraints() {
         super.setupConstraints()
         
+        self.tableView.snp.makeConstraints {
+            $0.top.left.right.bottom.equalToSafeArea(self.view)
+        }
+        
+        self.headerView.snp.makeConstraints {
+            $0.height.equalTo(Metric.headerHeight)
+            $0.width.equalToSafeArea(self.view)
+        }
     }
     
     // MARK: - Configuring
@@ -76,6 +98,20 @@ final class SearchViewController: BaseViewController, View {
         self.searchBar.leftButton.rx.tap.asObservable()
             .map { Reactor.Action.popViewController }
             .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        self.searchBar.rx.searchButtonClicked.asObservable()
+            .map { [weak self] in
+                Reactor.Action.search((self?.searchBar.text)!)
+            }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        self.searchBar.rx.searchButtonClicked.asObservable()
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.headerView.title.text = "#" + self.searchBar.text!
+            })
             .disposed(by: disposeBag)
     }
 }

@@ -76,11 +76,6 @@ final class MainViewReactor: Reactor, Stepper {
                 Observable.just(Mutation.setLoading(true)),
                 
                 Observable.just(Mutation.setMonth(newMonth)),
-
-//                diaryService.getMonthDiary(newMonth.year, newMonth.month).asObservable()
-//                    .map { Mutation.changeWritedDays($0.posts!) }
-//                    .catchError { _ in Observable.just(Mutation.changeWritedDays([])) }
-//                    .flatMap { Observable.just($0) },
                 
                 diaryService.getMonthDiary(newMonth.year, newMonth.month).asObservable()
                     .flatMap { result in

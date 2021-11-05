@@ -22,7 +22,7 @@
 		621CF21627096DFA00B7EB5D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621CF21527096DFA00B7EB5D /* SearchViewController.swift */; };
 		621CF21B270978B900B7EB5D /* DiarySearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621CF21A270978B900B7EB5D /* DiarySearchBar.swift */; };
 		6221F28A2733AB7A009A9164 /* RequestLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221F2892733AB7A009A9164 /* RequestLoggingPlugin.swift */; };
-		6221F28C2733D7FB009A9164 /* DiaryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221F28B2733D7FB009A9164 /* DiaryResponse.swift */; };
+		6221F28C2733D7FB009A9164 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221F28B2733D7FB009A9164 /* Post.swift */; };
 		62452451270DEE7C00DE083D /* ThemeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452450270DEE7C00DE083D /* ThemeViewReactor.swift */; };
 		62452453270DEF0200DE083D /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452452270DEF0200DE083D /* ThemeViewController.swift */; };
 		62452457270DF23400DE083D /* AppearanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452456270DF23400DE083D /* AppearanceCell.swift */; };
@@ -35,6 +35,8 @@
 		624E4D3726D66EF1004A6624 /* SplashViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D3626D66EF1004A6624 /* SplashViewReactor.swift */; };
 		624E4D3926D85F40004A6624 /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D3826D85F40004A6624 /* HomeFlow.swift */; };
 		6250FE4426DCE26100A0277B /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6250FE4326DCE26100A0277B /* AppServices.swift */; };
+		6259504627342E31002F1C1B /* RealmDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC98C8270D3A2B00231BF4 /* RealmDiary.swift */; };
+		625950482734B317002F1C1B /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625950472734B317002F1C1B /* SearchHeaderView.swift */; };
 		625A9EB226D9213800D65840 /* DiaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625A9EB126D9213800D65840 /* DiaryButton.swift */; };
 		625A9EB626D9382000D65840 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 625A9EB526D9382000D65840 /* Colors.xcassets */; };
 		625F4C5526CF22D300DC5978 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5426CF22D300DC5978 /* Preview.swift */; };
@@ -95,7 +97,6 @@
 		62F192B8272005C80055C8DC /* ThemeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F192B7272005C80055C8DC /* ThemeReactor.swift */; };
 		62F192BA272005E70055C8DC /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F192B9272005E70055C8DC /* ThemeCell.swift */; };
 		62F6681C26F8DAF800110E35 /* ActiveLabel+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F6681B26F8DAF800110E35 /* ActiveLabel+RxTheme.swift */; };
-		62FC98C9270D3A2B00231BF4 /* RealmDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FC98C8270D3A2B00231BF4 /* RealmDiary.swift */; };
 		9D432695EA98D656B099F4B1 /* Pods_diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B894E3AA684F49C439F7258 /* Pods_diary.framework */; };
 		F263AB4337D64113775670AC /* Pods_diary_diaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663A927CEE2B1BAC95B5F21D /* Pods_diary_diaryUITests.framework */; };
 		FF2A5C8036161455B9F2D13E /* Pods_diaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61203E3BB236EAAB98001720 /* Pods_diaryTests.framework */; };
@@ -140,7 +141,7 @@
 		621CF21527096DFA00B7EB5D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		621CF21A270978B900B7EB5D /* DiarySearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiarySearchBar.swift; sourceTree = "<group>"; };
 		6221F2892733AB7A009A9164 /* RequestLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLoggingPlugin.swift; sourceTree = "<group>"; };
-		6221F28B2733D7FB009A9164 /* DiaryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryResponse.swift; sourceTree = "<group>"; };
+		6221F28B2733D7FB009A9164 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		62452450270DEE7C00DE083D /* ThemeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewReactor.swift; sourceTree = "<group>"; };
 		62452452270DEF0200DE083D /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		62452456270DF23400DE083D /* AppearanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceCell.swift; sourceTree = "<group>"; };
@@ -153,6 +154,7 @@
 		624E4D3626D66EF1004A6624 /* SplashViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewReactor.swift; sourceTree = "<group>"; };
 		624E4D3826D85F40004A6624 /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
 		6250FE4326DCE26100A0277B /* AppServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServices.swift; sourceTree = "<group>"; };
+		625950472734B317002F1C1B /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 		625A9EB126D9213800D65840 /* DiaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryButton.swift; sourceTree = "<group>"; };
 		625A9EB526D9382000D65840 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		625F4C5426CF22D300DC5978 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
@@ -344,7 +346,7 @@
 				620BCACA26E8819C0023499D /* String.swift */,
 				621CF210270881A200B7EB5D /* UIDevice.swift */,
 				621CF20E27083BC400B7EB5D /* CGFloat.swift */,
-				6221F28B2733D7FB009A9164 /* DiaryResponse.swift */,
+				6221F28B2733D7FB009A9164 /* Post.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -625,6 +627,7 @@
 			isa = PBXGroup;
 			children = (
 				62C7A9992716C60400691069 /* ThemeSectionHeaderView.swift */,
+				625950472734B317002F1C1B /* SearchHeaderView.swift */,
 			);
 			path = HeaderFooter;
 			sourceTree = "<group>";
@@ -965,6 +968,7 @@
 				62D758C526E1DD48009AE551 /* LogoutButton.swift in Sources */,
 				624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */,
 				620A106026FCABB10073D580 /* SieMenuScrollView.swift in Sources */,
+				6259504627342E31002F1C1B /* RealmDiary.swift in Sources */,
 				62183EEC26DB3A6600F22EC6 /* DiaryTextField+Rx.swift in Sources */,
 				62F192BA272005E70055C8DC /* ThemeCell.swift in Sources */,
 				62452457270DF23400DE083D /* AppearanceCell.swift in Sources */,
@@ -973,7 +977,6 @@
 				62D388A626D9E9FA00A8D185 /* CheckValidation.swift in Sources */,
 				629AE09D26DFA0DF003B8891 /* UIImageView+RxTheme.swift in Sources */,
 				628FD7C12712038F00B2CC11 /* ThemeViewSection.swift.swift in Sources */,
-				62FC98C9270D3A2B00231BF4 /* RealmDiary.swift in Sources */,
 				625F4C5F26CF6DAA00DC5978 /* DiaryStep.swift in Sources */,
 				62816AF026DCD0B100365348 /* Themes.swift in Sources */,
 				62CB1D3B26DA4F4200B1BA32 /* CustomDelegateProxy.swift in Sources */,
@@ -1031,6 +1034,7 @@
 				625F4C5526CF22D300DC5978 /* Preview.swift in Sources */,
 				625F4C8A26D51F4D00DC5978 /* LoginViewController.swift in Sources */,
 				62452459270DF2CA00DE083D /* AppearanceReactor.swift in Sources */,
+				625950482734B317002F1C1B /* SearchHeaderView.swift in Sources */,
 				627E200F26CE93DC00550D59 /* BaseViewController.swift in Sources */,
 				6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */,
 				625F4C5926CF238600DC5978 /* UIViewPreview.swift in Sources */,
@@ -1038,7 +1042,7 @@
 				62B32610272D1B5400DC3C96 /* BaseAPI.swift in Sources */,
 				62C1564B270BDD0E00938DB7 /* UITextField+RxTheme.swift in Sources */,
 				621CF21427096DC500B7EB5D /* SearchViewReactor.swift in Sources */,
-				6221F28C2733D7FB009A9164 /* DiaryResponse.swift in Sources */,
+				6221F28C2733D7FB009A9164 /* Post.swift in Sources */,
 				6250FE4426DCE26100A0277B /* AppServices.swift in Sources */,
 				625F4C5D26CF242600DC5978 /* MainViewController.swift in Sources */,
 				6221F28A2733AB7A009A9164 /* RequestLoggingPlugin.swift in Sources */,

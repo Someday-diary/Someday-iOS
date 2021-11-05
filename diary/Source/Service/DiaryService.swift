@@ -16,7 +16,7 @@ protocol DiaryServiceType: AnyObject {
     func getMonthDiary(_ year: String, _ month: String) -> Single<ListResponse>
     func getDayDiary(_ year: String, _ month: String, _ day: String) -> Single<DiaryResponse>
     func getDiaryPostID(_ postID: String) -> Single<DiaryResponse>
-    func logout() -> Single<Void>
+    func getDiaryTag(_ tag: String) -> Single<DiaryListResponse>
 }
           
 class DiaryService: DiaryServiceType {
@@ -51,8 +51,8 @@ class DiaryService: DiaryServiceType {
         return network.requestObject(.getDiaryPostID(postID), type: DiaryResponse.self)
     }
     
-    func logout() -> Single<Void> {
-        return network.requestObject(.logout, type: ServerResponse.self).map { _ in }
+    func getDiaryTag(_ tag: String) -> Single<DiaryListResponse> {
+        return network.requestObject(.getDiaryTag(tag), type: DiaryListResponse.self)
     }
     
 }
