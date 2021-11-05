@@ -10,6 +10,7 @@ import UIKit
 
 import ActiveLabel
 import RxAnimated
+import RxUIAlert
 import ReactorKit
 
 final class FloatingViewController: BaseViewController, View {
@@ -33,7 +34,7 @@ final class FloatingViewController: BaseViewController, View {
         static let createButtonWidth = 70.f
         
         // Edit Button
-        static let editButtonWidth = 50.f
+        static let editButtonWidth = 30.f
         
         // DateView
         static let dateViewTop = 35.f
@@ -79,10 +80,8 @@ final class FloatingViewController: BaseViewController, View {
         $0.titleLabel?.font = Font.buttonFont
     }
     
-    let editButton = UIButton().then {
-        $0.setTitle("수정", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
-        $0.titleLabel?.font = Font.buttonFont
+    let editButton = UIButton(type: .system).then {
+        $0.setImage(R.image.editButton(), for: .normal)
     }
     
     let hashtagLabel = ActiveLabel().then {
@@ -176,6 +175,7 @@ final class FloatingViewController: BaseViewController, View {
 
         self.editButton.snp.makeConstraints {
             $0.right.centerY.equalToSuperview()
+            $0.height.equalTo(self.createButton)
             $0.width.equalTo(Metric.editButtonWidth)
         }
         
@@ -189,15 +189,26 @@ final class FloatingViewController: BaseViewController, View {
     // MARK: - Configuring
     func bind(reactor: FloatingViewReactor) {
         // Input
-        Observable.merge(
-            self.createButton.rx.tap.map { Reactor.Action.write },
-            self.editButton.rx.tap.map { Reactor.Action.edit }
-        ).asObservable()
-        .bind(to: reactor.action)
-        .disposed(by: disposeBag)
+        self.createButton.rx.tap.asObservable()
+            .map { Reactor.Action.write }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        self.editButton.rx.tap.asObservable()
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.editAlert().asObservable()
+                    .subscribe(onNext: { index in
+                        Observable<Int>.just(index.index).asObservable()
+                            .map { $0.switchAction }
+                            .bind(to: reactor.action)
+                            .disposed(by: self.disposeBag)
+                    }).disposed(by: self.disposeBag)
+            })
+            .disposed(by: disposeBag)
         
         self.rx.viewDidLoad.asObservable()
-            .map { _ in Reactor.Action.updateDiary }
+            .map { _ in Reactor.Action.update }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -228,4 +239,13 @@ final class FloatingViewController: BaseViewController, View {
             .bind(to: self.editButton.rx.animated.flip(.top, duration: 0.3).isHidden)
             .disposed(by: disposeBag)
     }
+    
+    fileprivate func editAlert() -> Observable<OutputAction> {
+        return rx.alert(title: "일기 관리",
+                      actions: [AlertAction(title: "일기 수정", type: 0, style: .default),
+                                AlertAction(title: "일기 삭제", type: 1, style: .destructive),
+                                AlertAction(title: "취소", type: 2, style: .cancel)]
+                        , preferredStyle: .actionSheet, tintColor: R.color.navigationButtonColor())
+    }
+    
 }

@@ -10,11 +10,13 @@ import RxSwift
 
 enum UserEvent {
     case updateDate(Date)
+    case deleteDiary
 }
 
 protocol UserServiceType {
     var event: PublishSubject<UserEvent> { get }
     func updateDate(to date: Date) -> Observable<Date>
+    func deleteDiary() -> Observable<Void>
 }
 
 class UserService: UserServiceType {
@@ -23,5 +25,10 @@ class UserService: UserServiceType {
     func updateDate(to date: Date) -> Observable<Date> {
         event.onNext(.updateDate(date))
         return Observable.just(date)
+    }
+    
+    func deleteDiary() -> Observable<Void> {
+        event.onNext(.deleteDiary)
+        return Observable.just(Void())
     }
 }

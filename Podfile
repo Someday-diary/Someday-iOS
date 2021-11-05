@@ -16,7 +16,8 @@ target 'diary' do
   pod 'FloatingPanel'
   pod 'ActiveLabel'
   pod 'Atributika'
- 
+  pod 'RxUIAlert'
+  
   # Architecture
   pod 'ReactorKit'
 
