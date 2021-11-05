@@ -45,7 +45,7 @@ class AppFlow: Flow {
 extension AppFlow {
     
     private func navigateToSplash() -> FlowContributors {
-        let reactor = SplashViewReactor()
+        let reactor = SplashViewReactor(authService: services.authService)
         let viewController = SplashViewController(reactor: reactor)
         
         self.window.rootViewController = viewController
@@ -55,7 +55,7 @@ extension AppFlow {
     }
     
     private func navigateToLogin() -> FlowContributors {
-        let loginFlow = LoginFlow()
+        let loginFlow = LoginFlow(services)
         
         Flows.use(loginFlow, when: .created) { [unowned self] root in
             self.window.rootViewController = root

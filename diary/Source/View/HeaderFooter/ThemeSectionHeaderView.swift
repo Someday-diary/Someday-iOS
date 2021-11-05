@@ -24,7 +24,7 @@ class ThemeSectionHeaderView: UITableViewHeaderFooterView {
     }
     
     var background = UIView().then {
-        $0.backgroundColor = .systemBackground
+        $0.backgroundColor = R.color.diaryBackgroundColor()
     }
     
     override init(reuseIdentifier: String?) {

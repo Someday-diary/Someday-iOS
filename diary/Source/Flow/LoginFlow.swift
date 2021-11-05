@@ -9,6 +9,8 @@ import RxFlow
 
 class LoginFlow: Flow {
     
+    private let services: AppServices
+    
     // MARK: - Properties
     var root: Presentable {
         return self.rootViewController
@@ -21,8 +23,8 @@ class LoginFlow: Flow {
     }
     
     // MARK: - Init
-    init() {
-        
+    init(_ services: AppServices) {
+        self.services = services
     }
     
     deinit {
@@ -35,7 +37,7 @@ class LoginFlow: Flow {
         
         switch step {
         case .loginIsRequired:
-            return self.navigateToLogin()
+            return self.navigateToLogin(authService: services.authService)
             
         case .registerIsRequired:
             return .none
@@ -56,8 +58,8 @@ class LoginFlow: Flow {
 
 extension LoginFlow {
     
-    private func navigateToLogin() -> FlowContributors {
-        let reactor = LoginViewReactor()
+    private func navigateToLogin(authService: AuthServiceType) -> FlowContributors {
+        let reactor = LoginViewReactor(authService: authService)
         let viewController = LoginViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: false)

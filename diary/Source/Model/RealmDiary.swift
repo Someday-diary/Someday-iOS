@@ -12,17 +12,16 @@ class RealmDiary: Object, ModelType {
     @objc dynamic var date: String = String()
     @objc dynamic var data: String = String()
     @objc dynamic var tags: String = String()
+    @objc dynamic var id: String = String()
     
     override class func primaryKey() -> String? {
-        return "date"
+        return "id"
     }
     
 }
 
 extension RealmDiary {
     var toModel: Diary {
-        return Diary(date: self.date, data: self.data, tags: self.tags)
+        return Diary(date: self.date, data: self.data, tags: self.tags, id: self.id)
     }
 }
-
-

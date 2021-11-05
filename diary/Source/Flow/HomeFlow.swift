@@ -85,7 +85,7 @@ class HomeFlow: Flow {
 extension HomeFlow: FloatingPanelControllerDelegate {
     
     private func navigateToMain() -> FlowContributors {
-        let reactor = MainViewReactor(userService: services.userService, realmService: services.realmService)
+        let reactor = MainViewReactor(userService: services.userService, diaryService: services.diaryService)
         let viewController = MainViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: false)
@@ -93,7 +93,7 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     }
     
     private func presentFloatingPanel(date: Date) -> FlowContributors {
-        let reactor = FloatingViewReactor(date: date, userService: services.userService, realmService: services.realmService)
+        let reactor = FloatingViewReactor(date: date, userService: services.userService, diaryService: services.diaryService)
         fpc.set(contentViewController: FloatingViewController(reactor: reactor))
         
         self.rootViewController.present(fpc, animated: true)
@@ -101,7 +101,7 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     }
     
     private func navigateToWrite(_ date: Date, _ diary: Diary?) -> FlowContributors {
-        let reactor = WriteViewReactor(date: date, diary: diary, realmService: services.realmService)
+        let reactor = WriteViewReactor(date: date, diary: diary, diaryService: services.diaryService)
         let viewController = WriteViewController(reactor: reactor)
         
         self.rootViewController.dismiss(animated: true)
@@ -110,7 +110,7 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     }
     
     private func navigateToSearch() -> FlowContributors {
-        let reactor = SearchViewReactor()
+        let reactor = SearchViewReactor(diaryService: services.diaryService)
         let viewController = SearchViewController(reactor: reactor)
         
         self.rootViewController.dismiss(animated: true)
@@ -127,7 +127,7 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     }
     
     private func navigateToSideMenu(date: Date) -> FlowContributors {
-        let reactor = SideMenuViewReactor(date: date)
+        let reactor = SideMenuViewReactor(date: date, authService: services.authService)
         let viewController = SideMenuViewController(reactor: reactor)
         let sideMenuNavController = SideMenuNavigationController(rootViewController: viewController).then {
             $0.leftSide = true

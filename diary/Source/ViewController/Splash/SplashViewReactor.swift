@@ -27,16 +27,23 @@ class SplashViewReactor: Reactor, Stepper {
         
     }
     
-    init() {
+    fileprivate let authService: AuthServiceType
+    
+    init(authService: AuthServiceType) {
         self.initialState = State()
+        self.authService = authService
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .setNextView:
-            self.steps.accept(DiaryStep.loginIsRequired)
-//            self.steps.accept(DiaryStep.mainIsRequired)
-            return Observable.empty()
+            if self.authService.currentToken == nil {
+                self.steps.accept(DiaryStep.loginIsRequired)
+                return Observable.empty()
+            } else {
+                self.steps.accept(DiaryStep.mainIsRequired)
+                return Observable.empty()
+            }
         }
     }
     

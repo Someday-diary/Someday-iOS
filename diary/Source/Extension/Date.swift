@@ -23,7 +23,7 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
-    var realmString: String {
+    var dataString: String {
         let dateFormatter = DateFormatter().then {
             $0.dateFormat = "yyyy-MM-dd"
         }
@@ -52,6 +52,20 @@ extension Date {
     var toMonthString: String {
         let dateFormatter = DateFormatter().then {
             $0.dateFormat = "yyyy-MM"
+        }
+        return dateFormatter.string(from: self)
+    }
+    
+    var year: String {
+        let dateFormatter = DateFormatter().then {
+            $0.dateFormat = "yyyy"
+        }
+        return dateFormatter.string(from: self)
+    }
+    
+    var month: String {
+        let dateFormatter = DateFormatter().then {
+            $0.dateFormat = "MM"
         }
         return dateFormatter.string(from: self)
     }

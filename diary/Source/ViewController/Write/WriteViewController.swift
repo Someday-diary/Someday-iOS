@@ -42,6 +42,7 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
     // MARK: - UI
     let textView = UITextView().then {
         $0.theme.placeholderColor = themed { $0.mainColor }
+        $0.backgroundColor = R.color.diaryBackgroundColor()
         $0.placeholder = "오늘 하루를 기록하세요."
         $0.theme.tintColor = themed { $0.mainColor }
         $0.font = Font.textViewFont

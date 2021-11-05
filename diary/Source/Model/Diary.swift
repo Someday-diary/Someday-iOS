@@ -17,6 +17,9 @@ struct Diary: ModelType, Equatable {
     
     // 태그들
     var tags: String
+    
+    // ID
+    var id: String
 }
 
 extension Diary {

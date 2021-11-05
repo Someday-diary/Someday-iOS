@@ -35,6 +35,7 @@ final class ThemeViewController: BaseViewController, View {
     
     // MARK: - UI
     let tableView = UITableView(frame: .zero, style: .plain).then {
+        $0.backgroundColor = .clear
         $0.separatorStyle = .none
         $0.register(Reusable.sectionHeaderView)
         $0.register(Reusable.appearanceCell)
