@@ -19,7 +19,9 @@ final class FloatingViewReactor: Reactor, Stepper {
     enum Action {
         case write
         case edit
-        case updateDiary
+        case update
+        case delete
+        case cancel
     }
     
     enum Mutation {
@@ -49,7 +51,7 @@ final class FloatingViewReactor: Reactor, Stepper {
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .updateDiary:
+        case .update:
             let currentDay = currentState.selectedDay
             return Observable.concat([
                 Observable.just(Mutation.setLoading(true)),
@@ -68,6 +70,18 @@ final class FloatingViewReactor: Reactor, Stepper {
             
         case .edit:
             self.steps.accept(DiaryStep.writeIsRequired(self.currentState.selectedDay, self.currentState.currentDiary))
+            return Observable.empty()
+            
+        case .delete:
+            return diaryService.deleteDiary(self.currentState.currentDiary?.id ?? "").asObservable()
+                .flatMap { _ in Observable.just(Mutation.updateDiary(nil)) }
+                .catchErrorJustReturn(Mutation.updateDiary(self.currentState.currentDiary))
+                .do(onNext: { [weak self] _ in
+                    guard let self = self else { return }
+                    _ = Observable.just(self.userService.deleteDiary())
+                })
+            
+        case .cancel:
             return Observable.empty()
         }
     }
@@ -93,6 +107,8 @@ final class FloatingViewReactor: Reactor, Stepper {
                     Observable.just(Mutation.setLoading(false))
                 ])
                 
+            default:
+                return Observable<Mutation>.empty()
             }
         }
         

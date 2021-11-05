@@ -92,6 +92,32 @@ final class MainViewReactor: Reactor, Stepper {
         }
     }
     
+    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+        let eventMutation = userService.event.flatMap { [weak self] event -> Observable<Mutation> in
+            guard let self = self else { return Observable.empty() }
+            
+            switch event {
+            
+            case .deleteDiary:
+                return Observable.concat([
+                    Observable.just(Mutation.setLoading(true)),
+                    
+                    self.diaryService.getMonthDiary(self.currentState.month.year, self.currentState.month.month).asObservable()
+                        .flatMap { result in
+                            return Observable.just(Mutation.changeWritedDays(result.posts!))
+                        }.catchErrorJustReturn(Mutation.changeWritedDays([])),
+                    
+                    Observable.just(Mutation.setLoading(false))
+                ])
+                
+            default:
+                return Observable<Mutation>.empty()
+            }
+        }
+        
+        return Observable.merge(mutation, eventMutation)
+    }
+    
     // update state
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
