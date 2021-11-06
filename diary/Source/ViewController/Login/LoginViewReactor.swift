@@ -6,9 +6,11 @@
 //
 
 import Foundation
+
 import RxFlow
 import RxRelay
 import ReactorKit
+import SwiftMessages
 
 final class LoginViewReactor: Reactor, Stepper {
     
@@ -54,11 +56,15 @@ final class LoginViewReactor: Reactor, Stepper {
                 Observable.just(Mutation.setLoading(true)),
                 
                 self.authService.login(self.currentState.id, self.currentState.password)
-                    .do(onSuccess: {
-                        self.steps.accept(DiaryStep.mainIsRequired)
-                    }, onError: { error in
-                        print("error")
-                    }).asObservable().flatMap { _ in Observable.empty() },
+                    .map { result in
+                        switch result {
+                        case .success:
+                            self.steps.accept(DiaryStep.mainIsRequired)
+                        case let .error(error):
+                            print(error)
+                            SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
+                        }
+                    }.asObservable().flatMap { _ in Observable.empty() },
                 
                 Observable.just(Mutation.setLoading(false))
             ])

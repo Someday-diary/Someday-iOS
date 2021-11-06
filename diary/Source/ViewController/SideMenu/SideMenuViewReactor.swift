@@ -10,6 +10,7 @@ import Foundation
 import ReactorKit
 import RxCocoa
 import RxFlow
+import SwiftMessages
 
 final class SideMenuViewReactor: Reactor, Stepper {
 
@@ -53,11 +54,22 @@ final class SideMenuViewReactor: Reactor, Stepper {
             
         case .logout:
             return self.authService.logoutRequest()
-                .do(onSuccess: {
-                    self.authService.logout()
-                    self.steps.accept(DiaryStep.dismiss)
-                    self.steps.accept(DiaryStep.splashIsRequired)
-                }).asObservable().flatMap { _ in Observable.empty() }
+                .map { result in
+                    switch result {
+                    case .success:
+                        self.authService.logout()
+                        self.steps.accept(DiaryStep.dismiss)
+                        self.steps.accept(DiaryStep.splashIsRequired)
+                    case let .error(error):
+                        if error == NetworkError.alreadyLogout || error == NetworkError.unauthorized {
+                            self.authService.logout()
+                            self.steps.accept(DiaryStep.dismiss)
+                            self.steps.accept(DiaryStep.splashIsRequired)
+                        } else {
+                            SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
+                        }
+                    }
+                }.asObservable().flatMap { _ in Observable.empty() }
             
         case .setTheme:
             self.steps.accept(DiaryStep.dismiss)

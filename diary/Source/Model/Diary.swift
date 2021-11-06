@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import RealmSwift
 
-struct Diary: ModelType, Equatable {
+struct Diary: Equatable {
     // 작성 날짜
     var date: String
     
@@ -20,14 +19,4 @@ struct Diary: ModelType, Equatable {
     
     // ID
     var id: String
-}
-
-extension Diary {
-    var toStorable: RealmDiary {
-        let realmDiary = RealmDiary()
-        realmDiary.date = self.date
-        realmDiary.data = self.data
-        realmDiary.tags = self.tags
-        return realmDiary
-    }
 }

@@ -37,7 +37,7 @@ final class ThemeViewReactor: Reactor, Stepper {
         
         // Theme
         let themeTitles: [String] = ["민트초코", "블루레몬에이드"]
-        let themeColorList: [[UIColor]] = [[R.color.greenThemeMainColor()!, R.color.greenThemeSubColor()!, R.color.greenThemeThirdColor()!], [R.color.blueThemeMainColor()!, R.color.blueThemeSubColor()!, R.color.blueThemeThirdColor()!]]
+        let themeColorList: [[UIColor]] = [[R.color.greenThemeMainColor()!, R.color.greenThemeSubColor()!,R.color.greenThemeThirdColor()!], [R.color.blueThemeMainColor()!, R.color.blueThemeSubColor()!, R.color.blueThemeThirdColor()!]]
         
         // State
         var appearanceSelected: Int

@@ -97,6 +97,6 @@ extension AuthAPI: BaseAPI {
     }
     
     var validationType: ValidationType {
-        return .successCodes
+        return .none
     }
 }
