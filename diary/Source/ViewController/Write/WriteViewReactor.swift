@@ -8,6 +8,7 @@
 import Foundation
 
 import ReactorKit
+import SwiftMessages
 import RxRelay
 import RxFlow
 
@@ -71,7 +72,7 @@ final class WriteViewReactor: Reactor, Stepper {
                                 self.steps.accept(DiaryStep.popViewController)
                                 
                             case let .error(error):
-                                print(error)
+                                SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
                             }
                         }.flatMap { _ in Observable.empty() },
                     
@@ -90,7 +91,7 @@ final class WriteViewReactor: Reactor, Stepper {
                                 self.steps.accept(DiaryStep.popViewController)
                                 
                             case let .error(error):
-                                print(error)
+                                SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
                             }
                         }.flatMap { _ in Observable.empty() },
                     
