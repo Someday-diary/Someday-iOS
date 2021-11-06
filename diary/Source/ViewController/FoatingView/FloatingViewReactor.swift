@@ -10,6 +10,7 @@ import Foundation
 import ReactorKit
 import RxRelay
 import RxFlow
+import SwiftMessages
 
 final class FloatingViewReactor: Reactor, Stepper {
     var steps = PublishRelay<Step>()
@@ -79,13 +80,6 @@ final class FloatingViewReactor: Reactor, Stepper {
             return Observable.empty()
             
         case .delete:
-//            return diaryService.deleteDiary(self.currentState.currentDiary?.id ?? "").asObservable()
-//                .flatMap { _ in Observable.just(Mutation.updateDiary(nil)) }
-//                .catchErrorJustReturn(Mutation.updateDiary(self.currentState.currentDiary))
-//                .do(onNext: { [weak self] _ in
-//                    guard let self = self else { return }
-//                    _ = Observable.just(self.userService.deleteDiary())
-//                })
             return Observable.concat([
                 Observable.just(Mutation.setLoading(true)),
                 
@@ -96,7 +90,7 @@ final class FloatingViewReactor: Reactor, Stepper {
                             _ = Observable.just(self.userService.deleteDiary())
                             return Mutation.updateDiary(nil)
                         case let .error(error):
-                            print(error)
+                            SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
                             return Mutation.updateDiary(self.currentState.currentDiary)
                         }
                     },

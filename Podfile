@@ -17,6 +17,7 @@ target 'diary' do
   pod 'ActiveLabel'
   pod 'Atributika'
   pod 'RxUIAlert'
+  pod 'SwiftMessages'
   
   # Architecture
   pod 'ReactorKit'
@@ -38,7 +39,7 @@ target 'diary' do
   pod 'KeychainAccess'
 
   # DB
-  pod 'RxRealm'
+  #pod 'RxRealm'
 
   # ETC
   pod 'R.swift'

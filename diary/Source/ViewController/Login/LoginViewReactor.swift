@@ -6,9 +6,11 @@
 //
 
 import Foundation
+
 import RxFlow
 import RxRelay
 import ReactorKit
+import SwiftMessages
 
 final class LoginViewReactor: Reactor, Stepper {
     
@@ -60,6 +62,7 @@ final class LoginViewReactor: Reactor, Stepper {
                             self.steps.accept(DiaryStep.mainIsRequired)
                         case let .error(error):
                             print(error)
+                            SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
                         }
                     }.asObservable().flatMap { _ in Observable.empty() },
                 

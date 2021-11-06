@@ -10,7 +10,6 @@ import SnapKit
 import Then
 import RxTheme
 import CGFloatLiteral
-import RealmSwift
 import Rswift
 
 struct AppServices {

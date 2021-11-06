@@ -7,8 +7,8 @@
 import UIKit
 
 import ReactorKit
+import SwiftMessages
 import RxRelay
-import RealmSwift
 import RxFlow
 
 final class MainViewReactor: Reactor, Stepper {
@@ -83,7 +83,7 @@ final class MainViewReactor: Reactor, Stepper {
                         case let .success(result):
                             return Mutation.changeWritedDays(result.posts!)
                         case let .error(error):
-                            print(error)
+                            SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
                             return Mutation.changeWritedDays([])
                         }
                     },
@@ -114,7 +114,7 @@ final class MainViewReactor: Reactor, Stepper {
                             case let .success(result):
                                 return Mutation.changeWritedDays(result.posts!)
                             case let .error(error):
-                                print(error)
+                                SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
                                 return Mutation.changeWritedDays([])
                             }
                         },
