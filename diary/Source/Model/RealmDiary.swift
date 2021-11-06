@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class RealmDiary: Object, ModelType {
+class RealmDiary: Object {
     @objc dynamic var date: String = String()
     @objc dynamic var data: String = String()
     @objc dynamic var tags: String = String()

@@ -63,13 +63,17 @@ final class WriteViewReactor: Reactor, Stepper {
                 return Observable.concat([
                     Observable.just(Mutation.setLoading(true)),
                     
-                    self.diaryService.updateDiary(Diary(date: self.currentState.date.dataString, data: data, tags: tags, id: self.currentState.id))
-                        .do(onSuccess: {
-                            print("일기 저장 성공")
-                            self.steps.accept(DiaryStep.popViewController)
-                        },onError: { error in
-                            print("error")
-                        }).asObservable().flatMap { _ in Observable.empty() },
+                    self.diaryService.updateDiary(Diary(date: self.currentState.date.dataString, data: data, tags: tags, id: self.currentState.id)).asObservable()
+                        .map { result in
+                            switch result {
+                            case .success:
+                                print("일기 저장 성공")
+                                self.steps.accept(DiaryStep.popViewController)
+                                
+                            case let .error(error):
+                                print(error)
+                            }
+                        }.flatMap { _ in Observable.empty() },
                     
                     Observable.just(Mutation.setLoading(false))
                 ])
@@ -78,13 +82,17 @@ final class WriteViewReactor: Reactor, Stepper {
                 return Observable.concat([
                     Observable.just(Mutation.setLoading(true)),
                     
-                    self.diaryService.createDiary(Diary(date: self.currentState.date.dataString, data: data, tags: tags, id: self.currentState.id))
-                        .do(onSuccess: {
-                            print("일기 저장 성공")
-                            self.steps.accept(DiaryStep.popViewController)
-                        },onError: { error in
-                            print("error")
-                        }).asObservable().flatMap { _ in Observable.empty() },
+                    self.diaryService.createDiary(Diary(date: self.currentState.date.dataString, data: data, tags: tags, id: self.currentState.id)).asObservable()
+                        .map { result in
+                            switch result {
+                            case .success:
+                                print("일기 저장 성공")
+                                self.steps.accept(DiaryStep.popViewController)
+                                
+                            case let .error(error):
+                                print(error)
+                            }
+                        }.flatMap { _ in Observable.empty() },
                     
                     Observable.just(Mutation.setLoading(false))
                 ])

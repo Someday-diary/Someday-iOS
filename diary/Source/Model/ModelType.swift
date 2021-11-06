@@ -9,6 +9,7 @@ import Then
 
 protocol ModelType: Codable ,Then {
     static var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy { get }
+    var code: Int { get }
 }
 
 extension ModelType {
@@ -23,4 +24,5 @@ extension ModelType {
         decoder.dateDecodingStrategy = self.dateDecodingStrategy
         return decoder
     }
+    
 }

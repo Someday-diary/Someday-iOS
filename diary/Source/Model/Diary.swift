@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-struct Diary: ModelType, Equatable {
+struct Diary: Equatable {
     // 작성 날짜
     var date: String
     

@@ -53,7 +53,7 @@ final class SideMenuViewReactor: Reactor, Stepper {
             
         case .logout:
             return self.authService.logoutRequest()
-                .do(onSuccess: {
+                .do(onSuccess: {_ in
                     self.authService.logout()
                     self.steps.accept(DiaryStep.dismiss)
                     self.steps.accept(DiaryStep.splashIsRequired)

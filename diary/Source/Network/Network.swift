@@ -21,21 +21,20 @@ class Network<API: TargetType>: MoyaProvider<API> {
     }
     
     func request(_ api: API) -> Single<Response> {
-        return self.rx.request(api).observeOn(ConcurrentMainScheduler.instance)
-            .filterSuccessfulStatusCodes()
+        return self.rx.request(api)
+            .filter(statusCodes: 200...400)
     }
 }
 
 extension Network {
-    func requestObject<T: ModelType>(_ target: API, type: T.Type) -> Single<T> {
+    func requestObject<T: ModelType>(_ target: API, type: T.Type) -> Single<NetworkResultWithValue<T>> {
         let decoder = type.decoder
         return request(target)
             .map(T.self, using: decoder)
+            .map { result in
+                guard let error = NetworkError(rawValue: result.code) else { return .success(result) }
+                return .error(error)
+            }.catchErrorJustReturn(.error(.unknown))
     }
-    
-    func requestArray<T: ModelType>(_ target: API, type: T.Type) -> Single<[T]> {
-        let decoder = type.decoder
-        return request(target)
-            .map([T].self, using: decoder)
-    }
+
 }

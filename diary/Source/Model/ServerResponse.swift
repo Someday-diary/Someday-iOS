@@ -27,7 +27,7 @@ struct ListResponse: ModelType {
     var posts: [Posts]?
 }
 
-struct Posts: ModelType {
+struct Posts: Codable {
     let postID: String
     let date: Date
     
@@ -48,7 +48,7 @@ struct DiaryListResponse: ModelType, Equatable {
     let code: Int
 }
 
-struct Post: ModelType, Equatable {
+struct Post: Codable, Equatable {
     let postID, contents, date: String
     let tags: [Tag]
     
@@ -59,7 +59,7 @@ struct Post: ModelType, Equatable {
 }
 
 // MARK: - Tag
-struct Tag: ModelType, Equatable {
+struct Tag: Codable, Equatable {
     let tagName: String
 
     enum CodingKeys: String, CodingKey {

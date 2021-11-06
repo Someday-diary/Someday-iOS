@@ -94,6 +94,8 @@
 		62D758D026E37C2C009AE551 /* WriteViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D758CF26E37C2C009AE551 /* WriteViewReactor.swift */; };
 		62D758D226E474DE009AE551 /* UITextView+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D758D126E474DE009AE551 /* UITextView+RxTheme.swift */; };
 		62E7B29A273505D700CD7E5A /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E7B299273505D700CD7E5A /* Int.swift */; };
+		62E7B29C273530BA00CD7E5A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E7B29B273530BA00CD7E5A /* NetworkError.swift */; };
+		62E7B2A02736130900CD7E5A /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E7B29F2736130900CD7E5A /* NetworkResult.swift */; };
 		62F192B3271FF23B0055C8DC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F192B2271FF23B0055C8DC /* Theme.swift */; };
 		62F192B8272005C80055C8DC /* ThemeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F192B7272005C80055C8DC /* ThemeReactor.swift */; };
 		62F192BA272005E70055C8DC /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F192B9272005E70055C8DC /* ThemeCell.swift */; };
@@ -220,6 +222,8 @@
 		62D758CF26E37C2C009AE551 /* WriteViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewReactor.swift; sourceTree = "<group>"; };
 		62D758D126E474DE009AE551 /* UITextView+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+RxTheme.swift"; sourceTree = "<group>"; };
 		62E7B299273505D700CD7E5A /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		62E7B29B273530BA00CD7E5A /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		62E7B29F2736130900CD7E5A /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		62F192B2271FF23B0055C8DC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		62F192B7272005C80055C8DC /* ThemeReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeReactor.swift; sourceTree = "<group>"; };
 		62F192B9272005E70055C8DC /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
@@ -532,6 +536,8 @@
 			isa = PBXGroup;
 			children = (
 				62B3260C272CF9FE00DC3C96 /* Network.swift */,
+				62E7B29F2736130900CD7E5A /* NetworkResult.swift */,
+				62E7B29B273530BA00CD7E5A /* NetworkError.swift */,
 				62B3260E272D1B3300DC3C96 /* API */,
 				626AC5AC2731880C00E907E8 /* Plugin */,
 			);
@@ -967,6 +973,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62B3260D272CF9FE00DC3C96 /* Network.swift in Sources */,
+				62E7B29C273530BA00CD7E5A /* NetworkError.swift in Sources */,
 				62D758C326E1AE9C009AE551 /* DiarySideMenuListButton.swift in Sources */,
 				62D758C526E1DD48009AE551 /* LogoutButton.swift in Sources */,
 				624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */,
@@ -986,6 +993,7 @@
 				62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */,
 				625F4C6126CF8CEC00DC5978 /* AppFlow.swift in Sources */,
 				628BFD9B26EB9D8B00851408 /* SurfaceAppearance+Rx.swift in Sources */,
+				62E7B2A02736130900CD7E5A /* NetworkResult.swift in Sources */,
 				620BCACB26E8819C0023499D /* String.swift in Sources */,
 				624E4D3526D66EB5004A6624 /* LoginViewReactor.swift in Sources */,
 				62D758D226E474DE009AE551 /* UITextView+RxTheme.swift in Sources */,

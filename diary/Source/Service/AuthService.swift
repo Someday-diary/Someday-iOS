@@ -14,9 +14,9 @@ import Moya
 protocol AuthServiceType: AnyObject {
     var currentToken: Token? { get }
     
-    func verifyEmail(_ email: String) -> Single<Void>
-    func login(_ email: String, _ password: String) -> Single<Void>
-    func logoutRequest() -> Single<Void>
+    func verifyEmail(_ email: String) -> Single<NetworkResult>
+    func login(_ email: String, _ password: String) -> Single<NetworkResult>
+    func logoutRequest() -> Single<NetworkResult>
     func logout()
 }
 
@@ -31,20 +31,43 @@ final class AuthService: AuthServiceType {
         self.currentToken = self.getToken()
     }
     
-    func verifyEmail(_ email: String) -> Single<Void> {
-        return network.requestObject(.emailVerify(email), type: ServerResponse.self).map { _ in }
+    func verifyEmail(_ email: String) -> Single<NetworkResult> {
+        return network.requestObject(.emailVerify(email), type: ServerResponse.self)
+            .map { result in
+                switch result{
+                case .success(_):
+                    return .success
+                case let .error(error):
+                    return .error(error)
+                }
+            }
+            
     }
     
-    func login(_ email: String, _ password: String) -> Single<Void> {
+    func login(_ email: String, _ password: String) -> Single<NetworkResult> {
         return network.requestObject(.login(email, password), type: Token.self)
-            .do(onSuccess: { [weak self] response in
-                try? self?.saveToken(response)
-                self?.currentToken = response
-            }).map { _ in }
+            .map { [weak self] result in
+                switch result{
+                case let .success(token):
+                    try? self?.saveToken(token)
+                    self?.currentToken = token
+                    return .success
+                case let .error(error):
+                    return .error(error)
+                }
+            }
     }
     
-    func logoutRequest() -> Single<Void> {
-        return network.requestObject(.logOut(currentToken?.token ?? ""), type: ServerResponse.self).map { _ in }
+    func logoutRequest() -> Single<NetworkResult> {
+        return network.requestObject(.logOut(currentToken?.token ?? ""), type: ServerResponse.self)
+            .map { result in
+                switch result{
+                case .success(_):
+                    return .success
+                case let .error(error):
+                    return .error(error)
+                }
+            }
     }
     
     func logout() {

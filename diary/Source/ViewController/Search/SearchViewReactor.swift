@@ -47,10 +47,16 @@ final class SearchViewReactor: Reactor, Stepper {
             return Observable.empty()
             
         case let .search(string):
-            return  diaryService.getDiaryTag(string).asObservable()
-                .flatMap {
-                    return Observable.just(Mutation.updateResponse($0.posts!.map { $0.toDiary }) )
-                }.catchErrorJustReturn(Mutation.updateResponse([]))
+            return self.diaryService.getDiaryTag(string).asObservable()
+                .map { result in
+                    switch result {
+                    case let .success(result):
+                        return Mutation.updateResponse(result.posts!.map { $0.toDiary} )
+                    case let .error(error):
+                        print(error)
+                        return Mutation.updateResponse([])
+                    }
+                }
         }
     }
     

@@ -78,9 +78,15 @@ final class MainViewReactor: Reactor, Stepper {
                 Observable.just(Mutation.setMonth(newMonth)),
                 
                 diaryService.getMonthDiary(newMonth.year, newMonth.month).asObservable()
-                    .flatMap { result in
-                        return Observable.just(Mutation.changeWritedDays(result.posts!))
-                    }.catchErrorJustReturn(Mutation.changeWritedDays([])),
+                    .map { result in
+                        switch result {
+                        case let .success(result):
+                            return Mutation.changeWritedDays(result.posts!)
+                        case let .error(error):
+                            print(error)
+                            return Mutation.changeWritedDays([])
+                        }
+                    },
                 
                 Observable.just(Mutation.setLoading(false))
             ])
@@ -103,9 +109,15 @@ final class MainViewReactor: Reactor, Stepper {
                     Observable.just(Mutation.setLoading(true)),
                     
                     self.diaryService.getMonthDiary(self.currentState.month.year, self.currentState.month.month).asObservable()
-                        .flatMap { result in
-                            return Observable.just(Mutation.changeWritedDays(result.posts!))
-                        }.catchErrorJustReturn(Mutation.changeWritedDays([])),
+                        .map { result in
+                            switch result {
+                            case let .success(result):
+                                return Mutation.changeWritedDays(result.posts!)
+                            case let .error(error):
+                                print(error)
+                                return Mutation.changeWritedDays([])
+                            }
+                        },
                     
                     Observable.just(Mutation.setLoading(false))
                 ])

@@ -57,9 +57,15 @@ final class FloatingViewReactor: Reactor, Stepper {
                 Observable.just(Mutation.setLoading(true)),
                 
                 diaryService.getDayDiary(currentDay.year, currentDay.month, currentDay.date).asObservable()
-                    .flatMap { result in
-                        Observable.just(Mutation.updateDiary(result.post?.toDiary))
-                    }.catchErrorJustReturn(Mutation.updateDiary(nil)),
+                    .map { result in
+                        switch result {
+                        case let .success(result):
+                            return Mutation.updateDiary(result.post?.toDiary)
+                        case let .error(error):
+                            print(error)
+                            return Mutation.updateDiary(nil)
+                        }
+                    },
                 
                 Observable.just(Mutation.setLoading(false))
             ])
@@ -73,13 +79,30 @@ final class FloatingViewReactor: Reactor, Stepper {
             return Observable.empty()
             
         case .delete:
-            return diaryService.deleteDiary(self.currentState.currentDiary?.id ?? "").asObservable()
-                .flatMap { _ in Observable.just(Mutation.updateDiary(nil)) }
-                .catchErrorJustReturn(Mutation.updateDiary(self.currentState.currentDiary))
-                .do(onNext: { [weak self] _ in
-                    guard let self = self else { return }
-                    _ = Observable.just(self.userService.deleteDiary())
-                })
+//            return diaryService.deleteDiary(self.currentState.currentDiary?.id ?? "").asObservable()
+//                .flatMap { _ in Observable.just(Mutation.updateDiary(nil)) }
+//                .catchErrorJustReturn(Mutation.updateDiary(self.currentState.currentDiary))
+//                .do(onNext: { [weak self] _ in
+//                    guard let self = self else { return }
+//                    _ = Observable.just(self.userService.deleteDiary())
+//                })
+            return Observable.concat([
+                Observable.just(Mutation.setLoading(true)),
+                
+                diaryService.deleteDiary(self.currentState.currentDiary?.id ?? "").asObservable()
+                    .map { result in
+                        switch result {
+                        case .success:
+                            _ = Observable.just(self.userService.deleteDiary())
+                            return Mutation.updateDiary(nil)
+                        case let .error(error):
+                            print(error)
+                            return Mutation.updateDiary(self.currentState.currentDiary)
+                        }
+                    },
+                
+                Observable.just(Mutation.setLoading(false))
+            ])
             
         case .cancel:
             return Observable.empty()
@@ -100,9 +123,15 @@ final class FloatingViewReactor: Reactor, Stepper {
                     Observable.just(Mutation.setLoading(true)),
                     
                     self.diaryService.getDayDiary(newDay.year, newDay.month, newDay.date).asObservable()
-                        .flatMap { result in
-                            return Observable.just(Mutation.updateDiary(result.post!.toDiary))
-                        }.catchErrorJustReturn(Mutation.updateDiary(nil)),
+                        .map { result in
+                            switch result {
+                            case let .success(result):
+                                return Mutation.updateDiary(result.post?.toDiary)
+                            case let .error(error):
+                                print(error)
+                                return Mutation.updateDiary(nil)
+                            }
+                        },
                     
                     Observable.just(Mutation.setLoading(false))
                 ])
