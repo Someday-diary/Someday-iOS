@@ -83,7 +83,9 @@ final class MainViewReactor: Reactor, Stepper {
                         case let .success(result):
                             return Mutation.changeWritedDays(result.posts!)
                         case let .error(error):
-                            SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
+                            if error != .noDiary {
+                                SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
+                            }
                             return Mutation.changeWritedDays([])
                         }
                     },
@@ -114,7 +116,9 @@ final class MainViewReactor: Reactor, Stepper {
                             case let .success(result):
                                 return Mutation.changeWritedDays(result.posts!)
                             case let .error(error):
-                                SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
+                                if error != .noDiary {
+                                    SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
+                                }
                                 return Mutation.changeWritedDays([])
                             }
                         },

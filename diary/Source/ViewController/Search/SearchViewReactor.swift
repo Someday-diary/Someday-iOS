@@ -24,13 +24,17 @@ final class SearchViewReactor: Reactor, Stepper {
     
     enum Mutation {
         case setLoading(Bool)
-        case updateResponse([Diary])
+        case updateResponse([Post])
     }
     
     struct State {
         var searchString: String
-        var response: [Diary] = []
         var isLoading: Bool = false
+        var isEmpty: Bool = true
+        
+        var searchSectionItmes: [SearchViewSectionItem] = []
+        var sections: [SearchViewSection] = []
+        var sectionDates: [Date] = []
     }
     
     fileprivate let diaryService: DiaryServiceType
@@ -39,6 +43,7 @@ final class SearchViewReactor: Reactor, Stepper {
         
         self.diaryService = diaryService
     }
+    
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
@@ -52,7 +57,7 @@ final class SearchViewReactor: Reactor, Stepper {
                 .map { result in
                     switch result {
                     case let .success(result):
-                        return Mutation.updateResponse(result.posts!.map { $0.toDiary} )
+                        return Mutation.updateResponse(result.posts! )
                     case let .error(error):
                         print(error)
                         SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
@@ -67,7 +72,27 @@ final class SearchViewReactor: Reactor, Stepper {
         
         switch mutation {
         case let .updateResponse(response):
-            state.response = response
+            var month: [Date : [Diary]] = [:]
+            response.forEach {
+                let date = String($0.date.dropLast(3)).monthToDate
+                if var diarys = month[date] {
+                    diarys.append($0.toDiary)
+                    month[date] = diarys
+                } else {
+                    month[date] = [$0.toDiary]
+                }
+            }
+            state.sections.removeAll()
+            state.sectionDates.removeAll()
+            
+            month.sorted { $0.key > $1.key }.forEach {
+                let items: [SearchViewSectionItem] = $0.value.map { .diary(SearchReactor(diary: $0)) }
+                state.sections.append(.diary(items))
+                state.sectionDates.append($0.key)
+            }
+            
+            state.isEmpty = state.sections.isEmpty
+            
         case let .setLoading(isLoading):
             state.isLoading = isLoading
         }
