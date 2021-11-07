@@ -57,8 +57,8 @@ class HomeFlow: Flow {
         case let .writeIsRequired(date, diary):
             return navigateToWrite(date, diary)
             
-        case .searchIsRequired:
-            return navigateToSearch()
+        case let .searchIsRequired(string):
+            return navigateToSearch(string)
             
         case .themeIsRequired:
             return navigateToTheme()
@@ -109,8 +109,8 @@ extension HomeFlow: FloatingPanelControllerDelegate {
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
-    private func navigateToSearch() -> FlowContributors {
-        let reactor = SearchViewReactor(diaryService: services.diaryService)
+    private func navigateToSearch(_ string: String?) -> FlowContributors {
+        let reactor = SearchViewReactor(tag: string, diaryService: services.diaryService)
         let viewController = SearchViewController(reactor: reactor)
         
         self.rootViewController.dismiss(animated: true)

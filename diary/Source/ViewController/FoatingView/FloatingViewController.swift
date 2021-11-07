@@ -55,6 +55,10 @@ final class FloatingViewController: BaseViewController, View {
         static let tagLabelFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
     }
     
+    fileprivate struct LabelActive {
+        static let customType = ActiveType.custom(pattern: "#[\\p{L}0-9_-]*")
+    }
+    
     
     // MARK: - Properties
     
@@ -85,23 +89,11 @@ final class FloatingViewController: BaseViewController, View {
     }
     
     let hashtagLabel = ActiveLabel().then {
-        $0.enabledTypes = [.hashtag]
-        $0.theme.textColor = themed { $0.thirdColor }
-        $0.theme.hashtagColor = themed { $0.thirdColor }
+        $0.enabledTypes = [LabelActive.customType]
+        $0.customColor[LabelActive.customType] = .red
+        $0.theme.customColor = themed { $0.thirdColor }
         $0.font = Font.tagLabelFont
         $0.adjustsFontForContentSizeCategory = true
-        $0.handleHashtagTap {
-            print("\($0) tapped")
-        }
-        $0.configureLinkAttribute = { type, attributes, isSelected in
-            var atts = attributes
-            switch type {
-            case .hashtag:
-                atts[NSAttributedString.Key.font] = Font.tagLabelFont
-            default: ()
-            }
-            return atts
-        }
     }
     
     let textView = UITextView().then {
@@ -126,6 +118,9 @@ final class FloatingViewController: BaseViewController, View {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hashtagLabel.handleCustomTap(for: LabelActive.customType) { [weak self] element in
+            self?.reactor?.steps.accept(DiaryStep.searchIsRequired(String(element.dropFirst())))
+        }
     }
     
     override func setupLayout() {

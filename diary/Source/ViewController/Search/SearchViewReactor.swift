@@ -38,8 +38,12 @@ final class SearchViewReactor: Reactor, Stepper {
     }
     
     fileprivate let diaryService: DiaryServiceType
-    init(diaryService: DiaryServiceType) {
-        self.initialState = State(searchString: "")
+    init(tag: String?, diaryService: DiaryServiceType) {
+        if let tag = tag {
+            self.initialState = State(searchString: tag)
+        } else {
+            self.initialState = State(searchString: "")
+        }
         
         self.diaryService = diaryService
     }

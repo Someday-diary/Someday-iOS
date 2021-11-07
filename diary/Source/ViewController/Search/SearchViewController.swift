@@ -129,6 +129,13 @@ final class SearchViewController: BaseViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        self.rx.viewDidAppear.asObservable()
+            .map { [weak self] _ in
+                Reactor.Action.search(self?.reactor?.currentState.searchString ?? "")
+            }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         // Output
         reactor.state.map { $0.sections }
             .bind(to: self.tableView.rx.items(dataSource: self.dataSource))
@@ -137,6 +144,8 @@ final class SearchViewController: BaseViewController, View {
         reactor.state.map { $0.isEmpty }.asObservable()
             .bind(to: self.headerView.rx.isHidden)
             .disposed(by: disposeBag)
+        
+        self.searchBar.text = reactor.initialState.searchString
         
         // View
         self.tableView.rx.setDelegate(self)
@@ -168,4 +177,3 @@ extension SearchViewController: UITableViewDelegate {
         return 20
     }
 }
-

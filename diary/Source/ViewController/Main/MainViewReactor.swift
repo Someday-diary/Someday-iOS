@@ -59,7 +59,7 @@ final class MainViewReactor: Reactor, Stepper {
             return Observable.empty()
             
         case .presentSearch:
-            self.steps.accept(DiaryStep.searchIsRequired)
+            self.steps.accept(DiaryStep.searchIsRequired(nil))
             return Observable.empty()
             
         case let .changeColor(newColor):
