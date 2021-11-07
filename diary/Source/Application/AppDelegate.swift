@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
-            print ("did navigate to flow=\(flow) and step=\(step)")
+            print ("will navigate to flow=\(flow) and step=\(step)")
         }).disposed(by: self.disposeBag)
         
         coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in

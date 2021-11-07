@@ -23,11 +23,13 @@ final class SearchReactor: Reactor {
     }
     
     struct State {
-        var diary: Diary
+        var date: String
+        var content: String
+        var tags: String
     }
     
     init(diary: Diary) {
-        self.initialState = State(diary: diary)
+        self.initialState = State(date: diary.date, content: diary.data, tags: diary.tags)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {

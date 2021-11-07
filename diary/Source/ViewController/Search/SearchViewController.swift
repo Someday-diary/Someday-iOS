@@ -27,6 +27,7 @@ final class SearchViewController: BaseViewController, View {
     
     fileprivate struct Font {
         static let searchBarPlaceholder = Style.font(.systemFont(ofSize: 16, weight: .medium))
+        static let noDiaryFont = UIFont.systemFont(ofSize: 16, weight: .medium)
     }
     
     fileprivate struct Reusable {
@@ -44,10 +45,15 @@ final class SearchViewController: BaseViewController, View {
     
     let tableView = UITableView().then {
         $0.backgroundColor = .clear
-        $0.separatorStyle = .singleLine
+        $0.separatorStyle = .none
         
         $0.register(Reusable.searchCell)
         $0.register(Reusable.searchHeaderView)
+    }
+    
+    let noDiaryLabel = UILabel().then {
+        $0.text = "# 검색 결과가 업습니다."
+        $0.font = Font.noDiaryFont
     }
     
     let headerView = SearchHeaderView()
@@ -92,6 +98,12 @@ final class SearchViewController: BaseViewController, View {
         self.navigationItem.rightBarButtonItems = [rightNavigativePadding]
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        self.view.endEditing(true)
+    }
+    
     override func setupLayout() {
         super.setupLayout()
         
@@ -99,6 +111,7 @@ final class SearchViewController: BaseViewController, View {
         self.navigationItem.titleView = self.searchBar
         
         self.view.addSubview(self.tableView)
+        self.view.addSubview(self.noDiaryLabel)
     }
     
     override func setupConstraints() {
@@ -112,6 +125,10 @@ final class SearchViewController: BaseViewController, View {
             $0.height.equalTo(Metric.headerHeight)
             $0.width.equalToSafeArea(self.view)
         }
+        
+        self.noDiaryLabel.snp.makeConstraints {
+            $0.center.equalToSafeArea(self.view)
+        }
     }
     
     // MARK: - Configuring
@@ -124,7 +141,8 @@ final class SearchViewController: BaseViewController, View {
         
         self.searchBar.rx.searchButtonClicked.asObservable()
             .map { [weak self] in
-                Reactor.Action.search((self?.searchBar.text)!)
+                self?.view.endEditing(true)
+                return Reactor.Action.search((self?.searchBar.text)!)
             }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -141,8 +159,16 @@ final class SearchViewController: BaseViewController, View {
             .bind(to: self.tableView.rx.items(dataSource: self.dataSource))
             .disposed(by: disposeBag)
         
+        reactor.state.map { "#" + $0.searchString }.asObservable()
+            .bind(to: self.headerView.title.rx.text)
+            .disposed(by: disposeBag)
+        
         reactor.state.map { $0.isEmpty }.asObservable()
             .bind(to: self.headerView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { !$0.isEmpty }.asObservable()
+            .bind(to: self.noDiaryLabel.rx.animated.fade(duration: 0.2).isHidden)
             .disposed(by: disposeBag)
         
         self.searchBar.text = reactor.initialState.searchString
@@ -154,13 +180,6 @@ final class SearchViewController: BaseViewController, View {
         self.tableView.rx.itemSelected
             .subscribe(onNext: { [weak tableView] indexPath in
                 tableView?.deselectRow(at: indexPath, animated: true)
-            })
-            .disposed(by: disposeBag)
-        
-        self.searchBar.rx.searchButtonClicked.asObservable()
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                self.headerView.title.text = "#" + self.searchBar.text!
             })
             .disposed(by: disposeBag)
     }
@@ -175,5 +194,9 @@ extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 170
     }
 }

@@ -24,7 +24,7 @@ final class SearchViewReactor: Reactor, Stepper {
     
     enum Mutation {
         case setLoading(Bool)
-        case updateResponse([Post])
+        case updateResponse([Post], String)
     }
     
     struct State {
@@ -61,11 +61,12 @@ final class SearchViewReactor: Reactor, Stepper {
                 .map { result in
                     switch result {
                     case let .success(result):
-                        return Mutation.updateResponse(result.posts! )
+                        return Mutation.updateResponse(result.posts!, string)
                     case let .error(error):
-                        print(error)
-                        SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
-                        return Mutation.updateResponse([])
+                        if error != .noDiary {
+                            SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
+                        }
+                        return Mutation.updateResponse([], string)
                     }
                 }
         }
@@ -75,7 +76,8 @@ final class SearchViewReactor: Reactor, Stepper {
         var state = state
         
         switch mutation {
-        case let .updateResponse(response):
+        case let .updateResponse(response, string):
+            state.searchString = string
             var month: [Date : [Diary]] = [:]
             response.forEach {
                 let date = String($0.date.dropLast(3)).monthToDate

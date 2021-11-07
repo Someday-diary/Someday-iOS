@@ -15,4 +15,8 @@ extension String {
         }
         return dateFormatter.date(from: self)!
     }
+    
+    var days: String {
+        return String(self.dropFirst(8))
+    }
 }

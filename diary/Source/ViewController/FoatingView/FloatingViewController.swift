@@ -75,7 +75,6 @@ final class FloatingViewController: BaseViewController, View {
         $0.textColor = .white
         $0.textAlignment = .center
         $0.font = Font.dateFont
-        $0.text = "24"
     }
     
     let createButton = UIButton().then {
@@ -90,7 +89,7 @@ final class FloatingViewController: BaseViewController, View {
     
     let hashtagLabel = ActiveLabel().then {
         $0.enabledTypes = [LabelActive.customType]
-        $0.customColor[LabelActive.customType] = .red
+        $0.theme.textColor = themed { $0.thirdColor }
         $0.theme.customColor = themed { $0.thirdColor }
         $0.font = Font.tagLabelFont
         $0.adjustsFontForContentSizeCategory = true
