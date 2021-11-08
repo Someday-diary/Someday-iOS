@@ -16,10 +16,12 @@ class LoginFlow: Flow {
         return self.rootViewController
     }
     
+    let navigationAppearance = UINavigationBarAppearance().then {
+        $0.configureWithTransparentBackground()
+    }
+    
     private lazy var rootViewController = UINavigationController().then {
-        $0.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        $0.navigationBar.shadowImage = UIImage()
-        $0.navigationBar.isTranslucent = true
+        $0.navigationBar.standardAppearance = navigationAppearance
     }
     
     // MARK: - Init
@@ -42,8 +44,8 @@ class LoginFlow: Flow {
         case .registerIsRequired:
             return self.navigateToRegister(authService: services.authService)
             
-        case .passwordIsRequired:
-            return .none
+        case let .passwordIsRequired(email):
+            return self.navigateToPassword(email: email, authService: services.authService)
             
         case .mainIsRequired:
             return .end(forwardToParentFlowWithStep: DiaryStep.mainIsRequired)
@@ -87,4 +89,12 @@ extension LoginFlow {
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
+    private func navigateToPassword(email: String, authService: AuthServiceType) -> FlowContributors {
+        let reactor = PasswordViewReactor(email: email, authService: authService)
+        let viewController = PasswordViewController(reactor: reactor)
+        
+        self.rootViewController.pushViewController(viewController, animated: true)
+        
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
+    }
 }

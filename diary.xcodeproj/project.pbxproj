@@ -84,6 +84,8 @@
 		62C2E44E2736DC6300F037B9 /* SearchSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E44D2736DC6300F037B9 /* SearchSectionHeaderView.swift */; };
 		62C2E464273877D200F037B9 /* RegisterViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E463273877D200F037B9 /* RegisterViewReactor.swift */; };
 		62C2E4662738794200F037B9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4652738794200F037B9 /* RegisterViewController.swift */; };
+		62C2E4692738B08700F037B9 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4682738B08700F037B9 /* PasswordViewController.swift */; };
+		62C2E46B2738B0AE00F037B9 /* PasswordViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E46A2738B0AE00F037B9 /* PasswordViewReactor.swift */; };
 		62C7A9962715A90C00691069 /* UITableView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7A9952715A90C00691069 /* UITableView+Rx.swift */; };
 		62C7A99A2716C60400691069 /* ThemeSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7A9992716C60400691069 /* ThemeSectionHeaderView.swift */; };
 		62C7D7A226EF4AEB00C3E257 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7D7A126EF4AEB00C3E257 /* UserService.swift */; };
@@ -217,6 +219,8 @@
 		62C2E44D2736DC6300F037B9 /* SearchSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSectionHeaderView.swift; sourceTree = "<group>"; };
 		62C2E463273877D200F037B9 /* RegisterViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewReactor.swift; sourceTree = "<group>"; };
 		62C2E4652738794200F037B9 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		62C2E4682738B08700F037B9 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		62C2E46A2738B0AE00F037B9 /* PasswordViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewReactor.swift; sourceTree = "<group>"; };
 		62C7A9952715A90C00691069 /* UITableView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Rx.swift"; sourceTree = "<group>"; };
 		62C7A9992716C60400691069 /* ThemeSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSectionHeaderView.swift; sourceTree = "<group>"; };
 		62C7D76326ED20B600C3E257 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
@@ -452,15 +456,16 @@
 		627E201126CE945600550D59 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6245244F270DED6900DE083D /* Theme */,
 				624E4D3126D63663004A6624 /* Splash */,
 				625F4C8826D51F2F00DC5978 /* Login */,
 				62C2E4622738779200F037B9 /* Register */,
+				62C2E4672738B04400F037B9 /* Password */,
 				625F4C6226CF94A300DC5978 /* Main */,
 				628BFD9326EB4F3A00851408 /* FoatingView */,
 				62D758CC26E37B7D009AE551 /* Write */,
 				621CF21227096DAE00B7EB5D /* Search */,
 				625A9EB026D8B77A00D65840 /* SideMenu */,
+				6245244F270DED6900DE083D /* Theme */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -636,6 +641,15 @@
 				62C2E463273877D200F037B9 /* RegisterViewReactor.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		62C2E4672738B04400F037B9 /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				62C2E4682738B08700F037B9 /* PasswordViewController.swift */,
+				62C2E46A2738B0AE00F037B9 /* PasswordViewReactor.swift */,
+			);
+			path = Password;
 			sourceTree = "<group>";
 		};
 		62C2EFA42711FA9E00C1CAF0 /* Section */ = {
@@ -1069,6 +1083,7 @@
 				625F4C6126CF8CEC00DC5978 /* AppFlow.swift in Sources */,
 				628BFD9B26EB9D8B00851408 /* SurfaceAppearance+Rx.swift in Sources */,
 				62E7B2A02736130900CD7E5A /* NetworkResult.swift in Sources */,
+				62C2E46B2738B0AE00F037B9 /* PasswordViewReactor.swift in Sources */,
 				620BCACB26E8819C0023499D /* String.swift in Sources */,
 				624E4D3526D66EB5004A6624 /* LoginViewReactor.swift in Sources */,
 				62D758D226E474DE009AE551 /* UITextView+RxTheme.swift in Sources */,
@@ -1127,6 +1142,7 @@
 				625950482734B317002F1C1B /* SearchHeaderView.swift in Sources */,
 				627E200F26CE93DC00550D59 /* BaseViewController.swift in Sources */,
 				62C2E464273877D200F037B9 /* RegisterViewReactor.swift in Sources */,
+				62C2E4692738B08700F037B9 /* PasswordViewController.swift in Sources */,
 				6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */,
 				625F4C5926CF238600DC5978 /* UIViewPreview.swift in Sources */,
 				626AC5AB2731877600E907E8 /* DiaryService.swift in Sources */,

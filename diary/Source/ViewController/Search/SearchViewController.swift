@@ -10,9 +10,10 @@ import UIKit
 import ReactorKit
 import ReusableKit
 import RxDataSources
+import RxGesture
 import Atributika
 
-final class SearchViewController: BaseViewController, View {
+final class SearchViewController: BaseViewController, ReactorKit.View {
     
     typealias Reactor = SearchViewReactor
     
@@ -52,7 +53,7 @@ final class SearchViewController: BaseViewController, View {
     }
     
     let noDiaryLabel = UILabel().then {
-        $0.text = "# 검색 결과가 업습니다."
+        $0.text = "# 검색 결과가 없습니다."
         $0.font = Font.noDiaryFont
     }
     
@@ -98,11 +99,6 @@ final class SearchViewController: BaseViewController, View {
         self.navigationItem.rightBarButtonItems = [rightNavigativePadding]
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        
-        self.view.endEditing(true)
-    }
     
     override func setupLayout() {
         super.setupLayout()
@@ -141,7 +137,7 @@ final class SearchViewController: BaseViewController, View {
         
         self.searchBar.rx.searchButtonClicked.asObservable()
             .map { [weak self] in
-                self?.view.endEditing(true)
+                self?.searchBar.endEditing(true)
                 return Reactor.Action.search((self?.searchBar.text)!)
             }
             .bind(to: reactor.action)
@@ -181,6 +177,12 @@ final class SearchViewController: BaseViewController, View {
         // View
         self.tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
+        
+        self.tableView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                self?.searchBar.endEditing(true)
+            }).disposed(by: disposeBag)
         
         self.tableView.rx.itemSelected
             .subscribe(onNext: { [weak tableView] indexPath in

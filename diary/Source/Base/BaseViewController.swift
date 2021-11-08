@@ -72,10 +72,9 @@ class BaseViewController: UIViewController {
     }
     
     // MARK: - Setup
-    func setupStyle() {
+    fileprivate func setupStyle() {
         view.backgroundColor = R.color.diaryBackgroundColor()
     }
     
-
 }
 

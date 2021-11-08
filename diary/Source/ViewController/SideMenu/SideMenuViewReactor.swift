@@ -89,7 +89,7 @@ final class SideMenuViewReactor: Reactor, Stepper {
         case .userFeedBack:
             let email = "somedayteam2021@gmail.com".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             let title = "오늘하루 유저 피드백".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-            let mailUrl = URL(string: "mailto:\(email)")!
+            let mailUrl = URL(string: "mailto:\(email)?subject=\(title)")!
             
             if UIApplication.shared.canOpenURL(mailUrl) {
                 UIApplication.shared.open(mailUrl, options: [:])

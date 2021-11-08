@@ -110,6 +110,7 @@ final class RegisterViewController: BaseViewController, View {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.backButtonDisplayMode = .minimal
     }
     
     override func setupLayout() {
@@ -152,7 +153,7 @@ final class RegisterViewController: BaseViewController, View {
         self.codeTextField.snp.makeConstraints {
             $0.left.equalToSafeArea(self.view).offset(Metric.textFieldSide)
             $0.right.equalToSafeArea(self.view).offset(-Metric.textFieldSide)
-            $0.top.equalTo(self.emailTextField.snp.bottom).offset(Metric.textFieldBetween.loginTextFieldBetween)
+            $0.top.equalTo(self.emailTextField.snp.bottom).offset(Metric.textFieldBetween.authTextFieldBetween)
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
@@ -188,12 +189,18 @@ final class RegisterViewController: BaseViewController, View {
         .disposed(by: disposeBag)
         
         self.codeButton.rx.tap.asObservable()
-            .map { Reactor.Action.sendCode }
+            .map { [weak self] in
+                self?.view.endEditing(true)
+                return Reactor.Action.sendCode
+            }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
         self.nextButton.rx.tap.asObservable()
-            .map { Reactor.Action.next }
+            .map { [weak self] in
+                self?.view.endEditing(true)
+                return Reactor.Action.next
+            }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -243,7 +250,7 @@ extension RegisterViewController {
                 }
                 
                 self.emailTextField.snp.updateConstraints {
-                    $0.top.equalTo(self.signUpImageView.snp.bottom).offset(height == 0 ? self.view.frame.height / 10 : ((self.view.frame.height - height) / 12).loginTextFieldTop )
+                    $0.top.equalTo(self.signUpImageView.snp.bottom).offset(height == 0 ? self.view.frame.height / 10 : ((self.view.frame.height - height) / 12).authTextFieldTop )
                 }
                 
                 self.loginButton.snp.updateConstraints {
@@ -268,5 +275,3 @@ extension RegisterViewController {
             .disposed(by: disposeBag)
     }
 }
-
-

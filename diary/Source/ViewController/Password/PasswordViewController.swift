@@ -1,18 +1,19 @@
 //
-//  LoginViewController.swift
+//  PasswordViewController.swift
 //  diary
 //
-//  Created by 김부성 on 2021/08/24.
+//  Created by 김부성 on 2021/11/08.
 //
 
 import UIKit
 
 import Atributika
-import ReactorKit
 import RxKeyboard
+import ReactorKit
 
-class LoginViewController: BaseViewController, View {
-    typealias Reactor = LoginViewReactor
+final class PasswordViewController: BaseViewController, View {
+    
+    typealias Reactor = PasswordViewReactor
     
     // MARK: - Constants
     fileprivate struct Metric {
@@ -28,39 +29,34 @@ class LoginViewController: BaseViewController, View {
         static let textFieldHeight = 50.f
         static let textFieldBetween = 15.f
         
-        // Login
-        static let loginHeight = 40.f
-        static let loginSide = 30.f
-        static let loginBottom = 10.f
-        
         // Register
-        static let registerBottom = 70.f
-        static let registerHeight = 20.f
-        static let registerKeyboard = 10.f
+        static let registerHeight = 40.f
+        static let registerSide = 30.f
+        static let registerBottom = 10.f
+        
+        // Login
+        static let loginBottom = 70.f
+        static let loginHeight = 20.f
+        static let loginKeyboard = 10.f
     }
     
     fileprivate struct Font {
-        // Login Button
-        static let loginFont = UIFont.systemFont(ofSize: 18, weight: .bold)
-        
         // Register Button
-        static let registerHighlight = Style("h")
+        static let registerFont = UIFont.systemFont(ofSize: 18, weight: .bold)
+        
+        // Login Button
+        static let loginHighlight = Style("h")
             .font(.systemFont(ofSize: 14, weight: .bold))
             .underlineStyle(.single)
-        static let registerAll = Style.font(.systemFont(ofSize: 14)).foregroundColor(R.color.systemBlackColor()!)
+        static let loginAll = Style.font(.systemFont(ofSize: 14)).foregroundColor(R.color.systemBlackColor()!)
         
         // TextField
         static let textFieldAll = Style.font(.systemFont(ofSize: 14)).foregroundColor(R.color.textFieldTextColor()!)
     }
     
     // MARK: - UI
-    let loginImageView = UIImageView().then {
+    let passwordImageView = UIImageView().then {
         $0.theme.image = themed { $0.mainIllustration }
-    }
-    
-    let idTextField = DiaryTextField().then {
-        $0.textField.attributedPlaceholder = "이메일".styleAll(Font.textFieldAll).attributedString
-        $0.textField.keyboardType = .emailAddress
     }
     
     let passwordTextField = DiaryTextField().then {
@@ -69,13 +65,19 @@ class LoginViewController: BaseViewController, View {
         $0.textField.isSecureTextEntry = true
     }
     
-    let loginButton = DiaryButton(type: .system).then {
-        $0.setTitle("로그인", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = Font.loginFont
+    let reEnterTextField = DiaryTextField().then {
+        $0.textField.attributedPlaceholder = "비밀번호 확인".styleAll(Font.textFieldAll).attributedString
+        $0.textField.keyboardType = .default
+        $0.textField.isSecureTextEntry = true
     }
     
-    let registerButton = UIButton(type: .system).then {
+    let registerButton = DiaryButton(type: .system).then {
+        $0.setTitle("회원가입 하기", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = Font.registerFont
+    }
+    
+    let loginButton = UIButton(type: .system).then {
         $0.backgroundColor = .clear
     }
     
@@ -84,7 +86,6 @@ class LoginViewController: BaseViewController, View {
         super.init()
         
         defer { self.reactor = reactor }
-        self.navigationItem.backButtonDisplayMode = .minimal
     }
     
     required init?(coder: NSCoder) {
@@ -101,11 +102,11 @@ class LoginViewController: BaseViewController, View {
     override func setupLayout() {
         super.setupLayout()
         
-        self.view.addSubview(self.idTextField)
+        self.view.addSubview(self.passwordImageView)
         self.view.addSubview(self.passwordTextField)
-        self.view.addSubview(self.loginButton)
-        self.view.addSubview(self.loginImageView)
+        self.view.addSubview(self.reEnterTextField)
         self.view.addSubview(self.registerButton)
+        self.view.addSubview(self.loginButton)
         
         // Bind
         self.UIBind()
@@ -114,35 +115,35 @@ class LoginViewController: BaseViewController, View {
     override func setupConstraints() {
         super.setupConstraints()
         
-        self.loginImageView.snp.makeConstraints {
+        self.passwordImageView.snp.makeConstraints {
             $0.height.equalTo(Metric.imageHeight)
             $0.width.equalTo(Metric.imageWidth)
             $0.centerX.equalToSafeArea(self.view)
         }
         
-        self.idTextField.snp.makeConstraints {
-            $0.left.equalToSafeArea(self.view).offset(Metric.textFieldSide)
-            $0.right.equalToSafeArea(self.view).offset(-Metric.textFieldSide)
-            $0.height.equalTo(Metric.textFieldHeight)
-        }
-        
         self.passwordTextField.snp.makeConstraints {
             $0.left.equalToSafeArea(self.view).offset(Metric.textFieldSide)
             $0.right.equalToSafeArea(self.view).offset(-Metric.textFieldSide)
-            $0.top.equalTo(self.idTextField.snp.bottom).offset(Metric.textFieldBetween.authTextFieldBetween)
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
-        self.loginButton.snp.makeConstraints {
-            $0.left.equalToSafeArea(self.view).offset(Metric.loginSide)
-            $0.right.equalToSafeArea(self.view).offset(-Metric.loginSide)
-            $0.height.equalTo(Metric.loginHeight)
-            $0.bottom.equalTo(self.registerButton.snp.top).offset(-Metric.loginBottom)
+        self.reEnterTextField.snp.makeConstraints {
+            $0.left.equalToSafeArea(self.view).offset(Metric.textFieldSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.textFieldSide)
+            $0.top.equalTo(self.passwordTextField.snp.bottom).offset(Metric.textFieldBetween.authTextFieldBetween)
+            $0.height.equalTo(Metric.textFieldHeight)
         }
         
         self.registerButton.snp.makeConstraints {
-            $0.centerX.equalToSafeArea(self.view)
+            $0.left.equalToSafeArea(self.view).offset(Metric.registerSide)
+            $0.right.equalToSafeArea(self.view).offset(-Metric.registerSide)
             $0.height.equalTo(Metric.registerHeight)
+            $0.bottom.equalTo(self.loginButton.snp.top).offset(-Metric.registerBottom)
+        }
+        
+        self.loginButton.snp.makeConstraints {
+            $0.centerX.equalToSafeArea(self.view)
+            $0.height.equalTo(Metric.loginHeight)
         }
         
     }
@@ -153,51 +154,49 @@ class LoginViewController: BaseViewController, View {
     }
     
     // MARK: - Configuring
-    
-    func bind(reactor: LoginViewReactor) {
-        
+    func bind(reactor: PasswordViewReactor) {
         // Input
         Observable.combineLatest(
-            idTextField.textField.rx.text.orEmpty,
-            passwordTextField.textField.rx.text.orEmpty
+            passwordTextField.textField.rx.text.orEmpty,
+            reEnterTextField.textField.rx.text.orEmpty
         )
         .observeOn(MainScheduler.asyncInstance)
         .map { Reactor.Action.updateTextField([$0, $1]) }
         .bind(to: reactor.action)
         .disposed(by: disposeBag)
         
-        loginButton.rx.tap.asObservable()
+        self.registerButton.rx.tap.asObservable()
             .map { [weak self] in
                 self?.view.endEditing(true)
-                return Reactor.Action.login
+                return Reactor.Action.next
             }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
-        registerButton.rx.tap.asObservable()
-            .map { Reactor.Action.register }
+        self.loginButton.rx.tap.asObservable()
+            .map { Reactor.Action.login }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
         // Output
-        let idValidation = reactor.state.map { $0.idValidation }.distinctUntilChanged()
         let passwordValidation = reactor.state.map { $0.passwordValidation }.distinctUntilChanged()
+        let reEnterValidation = reactor.state.map { $0.reEnterValidation }.distinctUntilChanged()
         
         Observable.combineLatest(
-            idValidation.map { $0 == .correct(.email) },
-            passwordValidation.map { $0 == .correct(.password) }
+            passwordValidation.map { $0 == .correct(.password) },
+            reEnterValidation.map { $0 == .correct(.reEnter) }
         ) { $0 && $1 }
-        .bind(to: loginButton.rx.isEnabled)
+        .bind(to: registerButton.rx.isEnabled)
         .disposed(by: disposeBag)
-        
-        reactor.state.map { $0.idValidation }
-            .distinctUntilChanged()
-            .bind(to: self.idTextField.rx.animated.fade(duration: 0.3).error)
-            .disposed(by: disposeBag)
         
         reactor.state.map { $0.passwordValidation }
             .distinctUntilChanged()
             .bind(to: self.passwordTextField.rx.animated.fade(duration: 0.3).error)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.reEnterValidation }
+            .distinctUntilChanged()
+            .bind(to: self.reEnterTextField.rx.animated.fade(duration: 0.3).error)
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.isLoading }.asObservable()
@@ -205,10 +204,9 @@ class LoginViewController: BaseViewController, View {
             .bind(to: self.activityIndicatorView.rx.isAnimating)
             .disposed(by: disposeBag)
     }
-    
 }
 
-extension LoginViewController {
+extension PasswordViewController {
     fileprivate func UIBind() {
         RxKeyboard.instance.visibleHeight
             .distinctUntilChanged()
@@ -216,16 +214,16 @@ extension LoginViewController {
                 guard let `self` = self else { return }
                 
                 // update
-                self.loginImageView.snp.updateConstraints {
+                self.passwordImageView.snp.updateConstraints {
                     $0.top.equalToSafeArea(self.view).offset(height == 0 ? self.view.frame.height/20 : -25)
                 }
                 
-                self.idTextField.snp.updateConstraints {
-                    $0.top.equalTo(self.loginImageView.snp.bottom).offset(height == 0 ? self.view.frame.height / 10 : ((self.view.frame.height - height) / 12).authTextFieldTop )
+                self.passwordTextField.snp.updateConstraints {
+                    $0.top.equalTo(self.passwordImageView.snp.bottom).offset(height == 0 ? self.view.frame.height / 10 : ((self.view.frame.height - height) / 12).authTextFieldTop )
                 }
                 
-                self.registerButton.snp.updateConstraints {
-                    $0.bottom.equalToSafeArea(self.view).offset(height == 0 ? -self.view.frame.height / 20 : -height-Metric.registerKeyboard)
+                self.loginButton.snp.updateConstraints {
+                    $0.bottom.equalToSafeArea(self.view).offset(height == 0 ? -self.view.frame.height / 20 : -height-Metric.loginKeyboard)
                 }
                 
                 // animation
@@ -240,8 +238,8 @@ extension LoginViewController {
             .distinctUntilChanged()
             .subscribe (onNext: { [weak self] color in
                 guard let `self` = self else { return }
-                let text = "아직 회원이 아니신가요? <h>회원가입하기</h>".style(tags: Font.registerHighlight.foregroundColor(color)).styleAll(Font.registerAll).attributedString
-                self.registerButton.setAttributedTitle(text, for: .normal)
+                let text = "오늘 하루 회원이신가요? <h>로그인하기</h>".style(tags: Font.loginHighlight.foregroundColor(color)).styleAll(Font.loginAll).attributedString
+                self.loginButton.setAttributedTitle(text, for: .normal)
             })
             .disposed(by: disposeBag)
     }
