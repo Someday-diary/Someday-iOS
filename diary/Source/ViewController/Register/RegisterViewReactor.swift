@@ -1,8 +1,8 @@
 //
-//  LoginViewReactor.swift
+//  SignUpReactor.swift
 //  diary
 //
-//  Created by 김부성 on 2021/08/25.
+//  Created by 김부성 on 2021/11/08.
 //
 
 import Foundation
@@ -12,7 +12,7 @@ import RxRelay
 import ReactorKit
 import SwiftMessages
 
-final class LoginViewReactor: Reactor, Stepper {
+final class RegisterViewReactor: Reactor, Stepper {
     
     var steps = PublishRelay<Step>()
     
@@ -20,8 +20,9 @@ final class LoginViewReactor: Reactor, Stepper {
     
     enum Action {
         case updateTextField([String])
+        case next
+        case sendCode
         case login
-        case register
     }
     
     enum Mutation {
@@ -30,12 +31,12 @@ final class LoginViewReactor: Reactor, Stepper {
     }
     
     struct State {
-        var id: String = ""
-        var password: String = ""
+        var email: String = ""
+        var code: String = ""
         var isLoading: Bool = false
         
-        var idValidation: CheckValidation?
-        var passwordValidation: CheckValidation?
+        var emailValidation: CheckValidation?
+        var codeValidation: CheckValidation?
     }
     
     let authService: AuthServiceType
@@ -52,15 +53,15 @@ final class LoginViewReactor: Reactor, Stepper {
         case let .updateTextField(data):
             return Observable.just(Mutation.checkValids(data))
             
-        case .login:
+        case .next:
             return Observable.concat([
                 Observable.just(Mutation.setLoading(true)),
                 
-                self.authService.login(self.currentState.id, self.currentState.password)
+                self.authService.login(self.currentState.email, self.currentState.code)
                     .map { result in
                         switch result {
                         case .success:
-                            self.steps.accept(DiaryStep.mainIsRequired)
+                            self.steps.accept(DiaryStep.passwordIsRequired)
                         case let .error(error):
                             print(error)
                             SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
@@ -70,8 +71,11 @@ final class LoginViewReactor: Reactor, Stepper {
                 Observable.just(Mutation.setLoading(false))
             ])
             
-        case .register:
-            self.steps.accept(DiaryStep.registerIsRequired)
+        case .sendCode:
+            return Observable.empty()
+            
+        case .login:
+            self.steps.accept(DiaryStep.popToRootViewController)
             return Observable.empty()
         }
     }
@@ -82,11 +86,11 @@ final class LoginViewReactor: Reactor, Stepper {
         
         switch mutation {
         case let .checkValids(data):
-            state.id = data[0]
-            state.password = data[1]
+            state.email = data[0]
+            state.code = data[1]
             
-            state.idValidation = state.id.isValidEmail
-            state.passwordValidation = state.password.isValidPassword
+            state.emailValidation = state.email.isValidEmail
+            state.codeValidation = state.code.isValidCode
             
         case let .setLoading(isLoading):
             state.isLoading = isLoading
@@ -95,3 +99,5 @@ final class LoginViewReactor: Reactor, Stepper {
         return state
     }
 }
+
+

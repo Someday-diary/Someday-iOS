@@ -8,6 +8,7 @@
 import UIKit
 import ReactorKit
 import RxViewController
+import Carte
 
 final class SideMenuViewController: BaseViewController, View {
     
@@ -110,13 +111,19 @@ final class SideMenuViewController: BaseViewController, View {
         
         Observable.merge(
             scrollView.themeButton.rx.tap.map { Reactor.Action.setTheme },
-            scrollView.alarmButton.rx.tap.map { Reactor.Action.setAlarm },
+//            scrollView.alarmButton.rx.tap.map { Reactor.Action.setAlarm },
             scrollView.lockButton.rx.tap.map { Reactor.Action.setLock },
-            scrollView.infoButton.rx.tap.map { Reactor.Action.showInfo },
             scrollView.feedbackButton.rx.tap.map { Reactor.Action.userFeedBack }
         ).asObservable()
         .bind(to: reactor.action)
         .disposed(by: disposeBag)
+        
+        self.scrollView.infoButton.rx.tap.asObservable()
+            .subscribe(onNext: { [weak self] in
+                let viewController = UINavigationController(rootViewController: CarteViewController())
+                self?.present(viewController, animated: true)
+            })
+            .disposed(by: disposeBag)
         
         self.rx.viewWillDisappear.asObservable()
             .map { _ in Reactor.Action.disappear }

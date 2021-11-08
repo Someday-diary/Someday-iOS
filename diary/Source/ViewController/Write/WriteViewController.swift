@@ -146,6 +146,11 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
             .bind(to: self.hashtagTextField.textField.rx.text)
             .disposed(by: disposeBag)
         
+        reactor.state.map { $0.isLoading }.asObservable()
+            .distinctUntilChanged()
+            .bind(to: self.activityIndicatorView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
         themed { $0.thirdColor }.asObservable()
             .subscribe(onNext: { [weak self] in
                 guard let `self` = self else { return }

@@ -36,10 +36,10 @@ final class SideMenuScrollView: UIView {
         $0.label.text = "테마 설정"
     }
     
-    let alarmButton = DiarySideMenuListButton().then {
-        $0.icon.image = R.image.alarmIcon()
-        $0.label.text = "일기 알람 설정"
-    }
+//    let alarmButton = DiarySideMenuListButton().then {
+//        $0.icon.image = R.image.alarmIcon()
+//        $0.label.text = "일기 알람 설정"
+//    }
     
     let lockButton = DiarySideMenuListButton().then {
         $0.icon.image = R.image.lockIcon()
@@ -48,7 +48,7 @@ final class SideMenuScrollView: UIView {
     
     let infoButton = DiarySideMenuListButton().then {
         $0.icon.image = R.image.openSourceIcon()
-        $0.label.text = "앱 정보"
+        $0.label.text = "오픈소스 라이선스"
     }
     
     let feedbackButton = DiarySideMenuListButton().then {
@@ -81,7 +81,7 @@ final class SideMenuScrollView: UIView {
         
         // Buttons
         self.contentView.addSubview(self.themeButton)
-        self.contentView.addSubview(self.alarmButton)
+//        self.contentView.addSubview(self.alarmButton)
         self.contentView.addSubview(self.lockButton)
         self.contentView.addSubview(self.infoButton)
         self.contentView.addSubview(self.feedbackButton)
@@ -101,14 +101,14 @@ final class SideMenuScrollView: UIView {
             $0.top.equalToSuperview().offset(Metric.contentArea)
         }
         
-        self.alarmButton.snp.makeConstraints {
-            $0.left.right.equalToSuperview()
-            $0.top.equalTo(self.themeButton.snp.bottom).offset(Metric.buttonTop)
-        }
+//        self.alarmButton.snp.makeConstraints {
+//            $0.left.right.equalToSuperview()
+//            $0.top.equalTo(self.themeButton.snp.bottom).offset(Metric.buttonTop)
+//        }
         
         self.lockButton.snp.makeConstraints {
             $0.left.right.equalToSuperview()
-            $0.top.equalTo(self.alarmButton.snp.bottom).offset(Metric.buttonTop)
+            $0.top.equalTo(self.themeButton.snp.bottom).offset(Metric.buttonTop)
         }
         
         self.infoButton.snp.makeConstraints {

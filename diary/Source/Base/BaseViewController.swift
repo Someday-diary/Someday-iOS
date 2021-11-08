@@ -15,7 +15,7 @@ class BaseViewController: UIViewController {
     
     // MARK: - UI
     let activityIndicatorView = UIActivityIndicatorView(style: .large).then {
-        $0.color = .secondarySystemBackground
+        $0.color = .gray
     }
     
     // MARK: - Initializing

@@ -16,7 +16,7 @@ enum CheckValidation: Equatable {
 enum validationType: String, Equatable {
     case email = "이메일"
     case password = "비밀번호"
-    
+    case code = "인증번호"
     
 }
 
@@ -31,5 +31,10 @@ extension String {
     var isValidPassword: CheckValidation {
         guard !self.isEmpty else { return .empty }
         return self.count >= 4 ? .correct(.password) : .error("비밀번호를 4자리 이상 입력해주세요.")
+    }
+    
+    var isValidCode: CheckValidation {
+        guard !self.isEmpty else { return .empty }
+        return self.count == 6 ? .correct(.code) : .error("인증번호는 6자리입니다.")
     }
 }

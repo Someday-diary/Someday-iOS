@@ -84,6 +84,7 @@ class LoginViewController: BaseViewController, View {
         super.init()
         
         defer { self.reactor = reactor }
+        self.navigationItem.backButtonDisplayMode = .minimal
     }
     
     required init?(coder: NSCoder) {
@@ -166,7 +167,15 @@ class LoginViewController: BaseViewController, View {
         .disposed(by: disposeBag)
         
         loginButton.rx.tap.asObservable()
-            .map { Reactor.Action.login }
+            .map { [weak self] in
+                self?.view.endEditing(true)
+                return Reactor.Action.login
+            }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        registerButton.rx.tap.asObservable()
+            .map { Reactor.Action.register }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -189,6 +198,11 @@ class LoginViewController: BaseViewController, View {
         reactor.state.map { $0.passwordValidation }
             .distinctUntilChanged()
             .bind(to: self.passwordTextField.rx.animated.fade(duration: 0.3).error)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isLoading }.asObservable()
+            .distinctUntilChanged()
+            .bind(to: self.activityIndicatorView.rx.isAnimating)
             .disposed(by: disposeBag)
     }
     

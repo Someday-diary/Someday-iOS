@@ -82,6 +82,8 @@
 		62C2E4492736CDD500F037B9 /* SearchReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4482736CDD500F037B9 /* SearchReactor.swift */; };
 		62C2E44C2736D03000F037B9 /* SearchViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E44B2736D03000F037B9 /* SearchViewSection.swift */; };
 		62C2E44E2736DC6300F037B9 /* SearchSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E44D2736DC6300F037B9 /* SearchSectionHeaderView.swift */; };
+		62C2E464273877D200F037B9 /* RegisterViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E463273877D200F037B9 /* RegisterViewReactor.swift */; };
+		62C2E4662738794200F037B9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4652738794200F037B9 /* RegisterViewController.swift */; };
 		62C7A9962715A90C00691069 /* UITableView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7A9952715A90C00691069 /* UITableView+Rx.swift */; };
 		62C7A99A2716C60400691069 /* ThemeSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7A9992716C60400691069 /* ThemeSectionHeaderView.swift */; };
 		62C7D7A226EF4AEB00C3E257 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7D7A126EF4AEB00C3E257 /* UserService.swift */; };
@@ -213,6 +215,8 @@
 		62C2E4482736CDD500F037B9 /* SearchReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReactor.swift; sourceTree = "<group>"; };
 		62C2E44B2736D03000F037B9 /* SearchViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewSection.swift; sourceTree = "<group>"; };
 		62C2E44D2736DC6300F037B9 /* SearchSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSectionHeaderView.swift; sourceTree = "<group>"; };
+		62C2E463273877D200F037B9 /* RegisterViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewReactor.swift; sourceTree = "<group>"; };
+		62C2E4652738794200F037B9 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		62C7A9952715A90C00691069 /* UITableView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Rx.swift"; sourceTree = "<group>"; };
 		62C7A9992716C60400691069 /* ThemeSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSectionHeaderView.swift; sourceTree = "<group>"; };
 		62C7D76326ED20B600C3E257 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
@@ -451,6 +455,7 @@
 				6245244F270DED6900DE083D /* Theme */,
 				624E4D3126D63663004A6624 /* Splash */,
 				625F4C8826D51F2F00DC5978 /* Login */,
+				62C2E4622738779200F037B9 /* Register */,
 				625F4C6226CF94A300DC5978 /* Main */,
 				628BFD9326EB4F3A00851408 /* FoatingView */,
 				62D758CC26E37B7D009AE551 /* Write */,
@@ -624,6 +629,15 @@
 			path = SearchCell;
 			sourceTree = "<group>";
 		};
+		62C2E4622738779200F037B9 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				62C2E4652738794200F037B9 /* RegisterViewController.swift */,
+				62C2E463273877D200F037B9 /* RegisterViewReactor.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		62C2EFA42711FA9E00C1CAF0 /* Section */ = {
 			isa = PBXGroup;
 			children = (
@@ -744,7 +758,9 @@
 				625F4C7526D232E500DC5978 /* ShellScript */,
 				62BA401A2690B0FA009B77F3 /* Sources */,
 				62BA401B2690B0FA009B77F3 /* Frameworks */,
+				E62EED9B3D667B480F11A2F0 /* [Carte] Pre Script */,
 				62BA401C2690B0FA009B77F3 /* Resources */,
+				6F09AC68488332B30709BADD /* [Carte] Post Script */,
 				476D9614BD9493CCE3A01806 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -925,6 +941,25 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n\n";
 		};
+		6F09AC68488332B30709BADD /* [Carte] Post Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Carte] Post Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ruby ${PODS_ROOT}/Carte/Sources/Carte/carte.rb post";
+			showEnvVarsInLog = 0;
+		};
 		DBB4301821AA10341830D9B3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -945,6 +980,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E62EED9B3D667B480F11A2F0 /* [Carte] Pre Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Carte] Pre Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ruby ${PODS_ROOT}/Carte/Sources/Carte/carte.rb pre";
 			showEnvVarsInLog = 0;
 		};
 		ED33CB2F35730FEC60CE84A4 /* [CP] Embed Pods Frameworks */ = {
@@ -999,6 +1053,7 @@
 				62D758C526E1DD48009AE551 /* LogoutButton.swift in Sources */,
 				624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */,
 				620A106026FCABB10073D580 /* SieMenuScrollView.swift in Sources */,
+				62C2E4662738794200F037B9 /* RegisterViewController.swift in Sources */,
 				62183EEC26DB3A6600F22EC6 /* DiaryTextField+Rx.swift in Sources */,
 				62F192BA272005E70055C8DC /* ThemeCell.swift in Sources */,
 				62452457270DF23400DE083D /* AppearanceCell.swift in Sources */,
@@ -1071,6 +1126,7 @@
 				62452459270DF2CA00DE083D /* AppearanceReactor.swift in Sources */,
 				625950482734B317002F1C1B /* SearchHeaderView.swift in Sources */,
 				627E200F26CE93DC00550D59 /* BaseViewController.swift in Sources */,
+				62C2E464273877D200F037B9 /* RegisterViewReactor.swift in Sources */,
 				6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */,
 				625F4C5926CF238600DC5978 /* UIViewPreview.swift in Sources */,
 				626AC5AB2731877600E907E8 /* DiaryService.swift in Sources */,

@@ -63,6 +63,8 @@ final class MainViewController: BaseViewController, View {
     init(reactor: Reactor) {
         super.init()
         defer { self.reactor = reactor }
+        
+        self.navigationItem.backButtonDisplayMode = .minimal
     }
     
     required init?(coder: NSCoder) {

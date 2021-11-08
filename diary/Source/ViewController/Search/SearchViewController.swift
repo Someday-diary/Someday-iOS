@@ -171,6 +171,11 @@ final class SearchViewController: BaseViewController, View {
             .bind(to: self.noDiaryLabel.rx.animated.fade(duration: 0.2).isHidden)
             .disposed(by: disposeBag)
         
+        reactor.state.map { $0.isLoading }.asObservable()
+            .distinctUntilChanged()
+            .bind(to: self.activityIndicatorView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
         self.searchBar.text = reactor.initialState.searchString
         
         // View
