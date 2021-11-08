@@ -15,7 +15,9 @@ protocol AuthServiceType: AnyObject {
     var currentToken: Token? { get }
     
     func verifyEmail(_ email: String) -> Single<NetworkResult>
+    func confirmEmail(_ email: String, _ code: String) -> Single<NetworkResult>
     func login(_ email: String, _ password: String) -> Single<NetworkResult>
+    func register(_ email: String, _ password: String, _ agree: String) -> Single<NetworkResult>
     func logoutRequest() -> Single<NetworkResult>
     func logout()
 }
@@ -41,9 +43,20 @@ final class AuthService: AuthServiceType {
                     return .error(error)
                 }
             }
-            
     }
     
+    func confirmEmail(_ email: String, _ code: String) -> Single<NetworkResult> {
+        return network.requestObject(.emailConfirm(email, code), type: ServerResponse.self)
+            .map { result in
+                switch result {
+                case .success(_):
+                    return .success
+                case let .error(error):
+                    return .error(error)
+                }
+            }
+    }
+
     func login(_ email: String, _ password: String) -> Single<NetworkResult> {
         return network.requestObject(.login(email, password), type: Token.self)
             .map { [weak self] result in
@@ -51,6 +64,18 @@ final class AuthService: AuthServiceType {
                 case let .success(token):
                     try? self?.saveToken(token)
                     self?.currentToken = token
+                    return .success
+                case let .error(error):
+                    return .error(error)
+                }
+            }
+    }
+    
+    func register(_ email: String, _ password: String, _ agree: String) -> Single<NetworkResult> {
+        return network.requestObject(.signUp(email, password, agree), type: ServerResponse.self)
+            .map { result in
+                switch result {
+                case .success(_):
                     return .success
                 case let .error(error):
                     return .error(error)

@@ -19,7 +19,7 @@ enum DiaryStep: Step {
     
     // MARK: - Login
     case registerIsRequired
-    case passwordIsRequired
+    case passwordIsRequired(String)
     
     // MARK: - Home
     case sideMenuIsRequired(Date)

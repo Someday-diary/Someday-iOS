@@ -187,7 +187,12 @@ final class RegisterViewController: BaseViewController, View {
         .bind(to: reactor.action)
         .disposed(by: disposeBag)
         
-        nextButton.rx.tap.asObservable()
+        self.codeButton.rx.tap.asObservable()
+            .map { Reactor.Action.sendCode }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        self.nextButton.rx.tap.asObservable()
             .map { Reactor.Action.next }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -216,6 +221,11 @@ final class RegisterViewController: BaseViewController, View {
         reactor.state.map { $0.codeValidation }
             .distinctUntilChanged()
             .bind(to: self.codeTextField.rx.animated.fade(duration: 0.3).error)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isLoading }.asObservable()
+            .distinctUntilChanged()
+            .bind(to: self.activityIndicatorView.rx.isAnimating)
             .disposed(by: disposeBag)
     }
 }
