@@ -13,6 +13,7 @@ import Moya
 
 protocol AuthServiceType: AnyObject {
     var currentToken: Token? { get }
+    var currentPasscode: String? { get }
     
     func verifyEmail(_ email: String) -> Single<NetworkResult>
     func confirmEmail(_ email: String, _ code: String) -> Single<NetworkResult>
@@ -20,6 +21,8 @@ protocol AuthServiceType: AnyObject {
     func register(_ email: String, _ password: String, _ agree: String) -> Single<NetworkResult>
     func logoutRequest() -> Single<NetworkResult>
     func logout()
+    func setPasscode(passcode: String) throws
+    func removePasscode()
 }
 
 final class AuthService: AuthServiceType {
@@ -27,10 +30,12 @@ final class AuthService: AuthServiceType {
     fileprivate let network: Network<AuthAPI>
     fileprivate let keychain = Keychain(service: "com.diary.someday.ios")
     private(set) var currentToken: Token?
+    private(set) var currentPasscode: String?
     
     init(network: Network<AuthAPI>) {
         self.network = network
         self.currentToken = self.getToken()
+        self.currentPasscode = self.getPasscode()
     }
     
     func verifyEmail(_ email: String) -> Single<NetworkResult> {
@@ -95,8 +100,18 @@ final class AuthService: AuthServiceType {
             }
     }
     
+    func setPasscode(passcode: String) throws {
+        try self.keychain.set(passcode, key: "passcode")
+        self.currentPasscode = passcode
+    }
+    
+    func removePasscode() {
+        try? self.keychain.remove("passcode")
+    }
+    
     func logout() {
         self.removeToken()
+        self.removePasscode()
         self.currentToken = nil
     }
     
@@ -116,6 +131,10 @@ final class AuthService: AuthServiceType {
         else { return nil }
         
         return token
+    }
+    
+    fileprivate func getPasscode() -> String? {
+        return try? keychain.getString("passcode")
     }
     
     fileprivate func removeToken() {

@@ -27,4 +27,5 @@ enum DiaryStep: Step {
     case floatingPanelIsRequired(Date)
     case themeIsRequired
     case searchIsRequired(String?)
+    case passcodeIsRequired(PasscodeType)
 }

@@ -40,6 +40,9 @@ class SplashViewReactor: Reactor, Stepper {
             if self.authService.currentToken == nil {
                 self.steps.accept(DiaryStep.loginIsRequired)
                 return Observable.empty()
+            } else if self.authService.currentPasscode != nil {
+                self.steps.accept(DiaryStep.passcodeIsRequired(.use))
+                return Observable.empty()
             } else {
                 self.steps.accept(DiaryStep.mainIsRequired)
                 return Observable.empty()

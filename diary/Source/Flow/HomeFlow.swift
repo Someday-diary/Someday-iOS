@@ -74,6 +74,9 @@ class HomeFlow: Flow {
             self.rootViewController.popViewController(animated: true)
             return .none
             
+        case let .passcodeIsRequired(type):
+            return navigateToPasscode(type: type)
+            
         default:
             return .none
         }
@@ -87,6 +90,14 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     private func navigateToMain() -> FlowContributors {
         let reactor = MainViewReactor(userService: services.userService, diaryService: services.diaryService)
         let viewController = MainViewController(reactor: reactor)
+        
+        self.rootViewController.pushViewController(viewController, animated: false)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
+    }
+    
+    private func navigateToPasscode(type: PasscodeType) -> FlowContributors {
+        let reactor = PasscodeViewReactor(type: type, authService: services.authService)
+        let viewController = PasscodeViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: false)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))

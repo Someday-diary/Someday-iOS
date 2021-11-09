@@ -105,7 +105,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 20 colors.
+  /// This `R.color` struct is generated, and contains static references to 24 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
@@ -135,6 +135,14 @@ struct R: Rswift.Validatable {
     static let greenThemeThirdColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "GreenThemeThirdColor")
     /// Color `NavigationButtonColor`.
     static let navigationButtonColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "NavigationButtonColor")
+    /// Color `PasscodeBackground`.
+    static let passcodeBackground = Rswift.ColorResource(bundle: R.hostingBundle, name: "PasscodeBackground")
+    /// Color `PasscodeDotDark`.
+    static let passcodeDotDark = Rswift.ColorResource(bundle: R.hostingBundle, name: "PasscodeDotDark")
+    /// Color `PasscodeDotLight`.
+    static let passcodeDotLight = Rswift.ColorResource(bundle: R.hostingBundle, name: "PasscodeDotLight")
+    /// Color `PasscodeTextColor`.
+    static let passcodeTextColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "PasscodeTextColor")
     /// Color `SystemBlackColor`.
     static let systemBlackColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "SystemBlackColor")
     /// Color `SystemWhiteColor`.
@@ -271,6 +279,42 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func navigationButtonColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.navigationButtonColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "PasscodeBackground", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func passcodeBackground(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.passcodeBackground, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "PasscodeDotDark", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func passcodeDotDark(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.passcodeDotDark, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "PasscodeDotLight", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func passcodeDotLight(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.passcodeDotLight, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "PasscodeTextColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func passcodeTextColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.passcodeTextColor, compatibleWith: traitCollection)
     }
     #endif
 
@@ -441,6 +485,38 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(watchOS)
+    /// `UIColor(named: "PasscodeBackground", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func passcodeBackground(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.passcodeBackground.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "PasscodeDotDark", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func passcodeDotDark(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.passcodeDotDark.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "PasscodeDotLight", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func passcodeDotLight(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.passcodeDotLight.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "PasscodeTextColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func passcodeTextColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.passcodeTextColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
     /// `UIColor(named: "SystemBlackColor", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
     static func systemBlackColor(_: Void = ()) -> UIKit.UIColor? {
@@ -531,8 +607,6 @@ struct R: Rswift.Validatable {
     static let openSourceIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "OpenSourceIcon")
     /// Image `SelectedButton`.
     static let selectedButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "SelectedButton")
-    /// Image `SocialLoginHolderImage`.
-    static let socialLoginHolderImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "SocialLoginHolderImage")
     /// Image `SystemMode`.
     static let systemMode = Rswift.ImageResource(bundle: R.hostingBundle, name: "SystemMode")
     /// Image `ThemeIcon`.
@@ -541,6 +615,8 @@ struct R: Rswift.Validatable {
     static let unSelectedButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "UnSelectedButton")
     /// Image `check`.
     static let check = Rswift.ImageResource(bundle: R.hostingBundle, name: "check")
+    /// Image `leftArrow`.
+    static let leftArrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "leftArrow")
     /// Image `searchButton`.
     static let searchButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "searchButton")
 
@@ -678,13 +754,6 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "SocialLoginHolderImage", bundle: ..., traitCollection: ...)`
-    static func socialLoginHolderImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.socialLoginHolderImage, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "SystemMode", bundle: ..., traitCollection: ...)`
     static func systemMode(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.systemMode, compatibleWith: traitCollection)
@@ -709,6 +778,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "check", bundle: ..., traitCollection: ...)`
     static func check(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.check, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "leftArrow", bundle: ..., traitCollection: ...)`
+    static func leftArrow(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.leftArrow, compatibleWith: traitCollection)
     }
     #endif
 

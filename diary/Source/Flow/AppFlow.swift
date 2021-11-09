@@ -34,6 +34,8 @@ class AppFlow: Flow {
         case .mainIsRequired:
             return navigateToMain()
             
+        case let .passcodeIsRequired(type):
+            return navigateToPasscode(type: type)
         default:
             return .none
             
@@ -64,6 +66,18 @@ extension AppFlow {
         }
         
         return .one(flowContributor: .contribute(withNextPresentable: loginFlow, withNextStepper: OneStepper(withSingleStep: DiaryStep.loginIsRequired)))
+    }
+    
+    private func navigateToPasscode(type: PasscodeType) -> FlowContributors {
+        let homeFlow = HomeFlow(services)
+        
+        Flows.use(homeFlow, when: .created) { [unowned self] root in
+            self.window.rootViewController = root
+            
+            UIView.transition(with: self.window, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
+        }
+        
+        return .one(flowContributor: .contribute(withNextPresentable: homeFlow, withNextStepper: OneStepper(withSingleStep: DiaryStep.passcodeIsRequired(type))))
     }
     
     private func navigateToMain() -> FlowContributors {

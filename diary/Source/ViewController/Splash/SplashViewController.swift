@@ -16,8 +16,8 @@ class SplashViewController: BaseViewController, View {
     // MARK: - Constants
     fileprivate struct Metric {
         // Image
-        static let imageHeight = 130.f
-        static let imageWidth = 94.f
+        static let imageHeight = 70.f
+        static let imageWidth = 50.f
         static let imageY = 50.f
         
         // Title Label
@@ -26,7 +26,7 @@ class SplashViewController: BaseViewController, View {
     }
     
     fileprivate struct Font {
-        static let titleFont = UIFont.systemFont(ofSize: 28, weight: .light)
+        static let titleFont = UIFont.systemFont(ofSize: 16, weight: .light)
     }
     
     // MARK: - Properties

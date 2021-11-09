@@ -38,7 +38,6 @@
 		625950482734B317002F1C1B /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625950472734B317002F1C1B /* SearchHeaderView.swift */; };
 		625A9EB226D9213800D65840 /* DiaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625A9EB126D9213800D65840 /* DiaryButton.swift */; };
 		625A9EB626D9382000D65840 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 625A9EB526D9382000D65840 /* Colors.xcassets */; };
-		625F4C5526CF22D300DC5978 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5426CF22D300DC5978 /* Preview.swift */; };
 		625F4C5726CF235F00DC5978 /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5626CF235F00DC5978 /* UIViewControllerPreview.swift */; };
 		625F4C5926CF238600DC5978 /* UIViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5826CF238600DC5978 /* UIViewPreview.swift */; };
 		625F4C5B26CF23AC00DC5978 /* DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5A26CF23AC00DC5978 /* DeviceType.swift */; };
@@ -86,6 +85,13 @@
 		62C2E4662738794200F037B9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4652738794200F037B9 /* RegisterViewController.swift */; };
 		62C2E4692738B08700F037B9 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4682738B08700F037B9 /* PasswordViewController.swift */; };
 		62C2E46B2738B0AE00F037B9 /* PasswordViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E46A2738B0AE00F037B9 /* PasswordViewReactor.swift */; };
+		62C2E4852739E7BB00F037B9 /* DiaryNumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4842739E7BA00F037B9 /* DiaryNumberPad.swift */; };
+		62C2E4872739E81E00F037B9 /* DiaryNumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4862739E81E00F037B9 /* DiaryNumberButton.swift */; };
+		62C2E4892739E88100F037B9 /* HapticFeedBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4882739E88100F037B9 /* HapticFeedBack.swift */; };
+		62C2E48B2739EEE000F037B9 /* SecureTextEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E48A2739EEE000F037B9 /* SecureTextEntry.swift */; };
+		62C2E48D2739F07700F037B9 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E48C2739F07700F037B9 /* PasscodeViewController.swift */; };
+		62C2E4902739F32500F037B9 /* PasscodeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E48F2739F32500F037B9 /* PasscodeViewReactor.swift */; };
+		62C2E4912739F41600F037B9 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5426CF22D300DC5978 /* Preview.swift */; };
 		62C7A9962715A90C00691069 /* UITableView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7A9952715A90C00691069 /* UITableView+Rx.swift */; };
 		62C7A99A2716C60400691069 /* ThemeSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7A9992716C60400691069 /* ThemeSectionHeaderView.swift */; };
 		62C7D7A226EF4AEB00C3E257 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7D7A126EF4AEB00C3E257 /* UserService.swift */; };
@@ -221,6 +227,12 @@
 		62C2E4652738794200F037B9 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		62C2E4682738B08700F037B9 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		62C2E46A2738B0AE00F037B9 /* PasswordViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewReactor.swift; sourceTree = "<group>"; };
+		62C2E4842739E7BA00F037B9 /* DiaryNumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryNumberPad.swift; sourceTree = "<group>"; };
+		62C2E4862739E81E00F037B9 /* DiaryNumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryNumberButton.swift; sourceTree = "<group>"; };
+		62C2E4882739E88100F037B9 /* HapticFeedBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedBack.swift; sourceTree = "<group>"; };
+		62C2E48A2739EEE000F037B9 /* SecureTextEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextEntry.swift; sourceTree = "<group>"; };
+		62C2E48C2739F07700F037B9 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
+		62C2E48F2739F32500F037B9 /* PasscodeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewReactor.swift; sourceTree = "<group>"; };
 		62C7A9952715A90C00691069 /* UITableView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Rx.swift"; sourceTree = "<group>"; };
 		62C7A9992716C60400691069 /* ThemeSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSectionHeaderView.swift; sourceTree = "<group>"; };
 		62C7D76326ED20B600C3E257 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
@@ -314,9 +326,12 @@
 			isa = PBXGroup;
 			children = (
 				620BCABE26E5D58C0023499D /* HashtagTextField.swift */,
+				62C2E48A2739EEE000F037B9 /* SecureTextEntry.swift */,
 				621CF21A270978B900B7EB5D /* DiarySearchBar.swift */,
 				625F4C8626D4D2AB00DC5978 /* DiaryTextField.swift */,
 				625A9EB126D9213800D65840 /* DiaryButton.swift */,
+				62C2E4842739E7BA00F037B9 /* DiaryNumberPad.swift */,
+				62C2E4862739E81E00F037B9 /* DiaryNumberButton.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -456,6 +471,7 @@
 		627E201126CE945600550D59 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				62C2E48E2739F0BA00F037B9 /* Passcode */,
 				624E4D3126D63663004A6624 /* Splash */,
 				625F4C8826D51F2F00DC5978 /* Login */,
 				62C2E4622738779200F037B9 /* Register */,
@@ -488,6 +504,7 @@
 				625F4C5A26CF23AC00DC5978 /* DeviceType.swift */,
 				62D388A526D9E9FA00A8D185 /* CheckValidation.swift */,
 				62E7B2A12736152000CD7E5A /* Message.swift */,
+				62C2E4882739E88100F037B9 /* HapticFeedBack.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -650,6 +667,15 @@
 				62C2E46A2738B0AE00F037B9 /* PasswordViewReactor.swift */,
 			);
 			path = Password;
+			sourceTree = "<group>";
+		};
+		62C2E48E2739F0BA00F037B9 /* Passcode */ = {
+			isa = PBXGroup;
+			children = (
+				62C2E48C2739F07700F037B9 /* PasscodeViewController.swift */,
+				62C2E48F2739F32500F037B9 /* PasscodeViewReactor.swift */,
+			);
+			path = Passcode;
 			sourceTree = "<group>";
 		};
 		62C2EFA42711FA9E00C1CAF0 /* Section */ = {
@@ -1070,13 +1096,16 @@
 				62C2E4662738794200F037B9 /* RegisterViewController.swift in Sources */,
 				62183EEC26DB3A6600F22EC6 /* DiaryTextField+Rx.swift in Sources */,
 				62F192BA272005E70055C8DC /* ThemeCell.swift in Sources */,
+				62C2E4902739F32500F037B9 /* PasscodeViewReactor.swift in Sources */,
 				62452457270DF23400DE083D /* AppearanceCell.swift in Sources */,
 				62CB1D3726DA4D3500B1BA32 /* SideMenuViewReactor.swift in Sources */,
 				62C7A99A2716C60400691069 /* ThemeSectionHeaderView.swift in Sources */,
 				62D388A626D9E9FA00A8D185 /* CheckValidation.swift in Sources */,
 				629AE09D26DFA0DF003B8891 /* UIImageView+RxTheme.swift in Sources */,
+				62C2E48B2739EEE000F037B9 /* SecureTextEntry.swift in Sources */,
 				628FD7C12712038F00B2CC11 /* ThemeViewSection.swift.swift in Sources */,
 				625F4C5F26CF6DAA00DC5978 /* DiaryStep.swift in Sources */,
+				62C2E4872739E81E00F037B9 /* DiaryNumberButton.swift in Sources */,
 				62816AF026DCD0B100365348 /* Themes.swift in Sources */,
 				62CB1D3B26DA4F4200B1BA32 /* CustomDelegateProxy.swift in Sources */,
 				62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */,
@@ -1110,6 +1139,7 @@
 				6245245B270DF3B700DE083D /* Appreance.swift in Sources */,
 				62F192B8272005C80055C8DC /* ThemeReactor.swift in Sources */,
 				626AC5AE2731884D00E907E8 /* AuthPlugin.swift in Sources */,
+				62C2E4892739E88100F037B9 /* HapticFeedBack.swift in Sources */,
 				620BCABF26E5D58C0023499D /* HashtagTextField.swift in Sources */,
 				628BFD9E26EBA49600851408 /* BaseTableViewCell.swift in Sources */,
 				620BCABB26E4F9F70023499D /* ModelType.swift in Sources */,
@@ -1117,7 +1147,10 @@
 				62F6681C26F8DAF800110E35 /* ActiveLabel+RxTheme.swift in Sources */,
 				62B2C69327296F66005A7AFF /* ServerResponse.swift in Sources */,
 				62C2E44E2736DC6300F037B9 /* SearchSectionHeaderView.swift in Sources */,
+				62C2E4852739E7BB00F037B9 /* DiaryNumberPad.swift in Sources */,
 				62C7D7A226EF4AEB00C3E257 /* UserService.swift in Sources */,
+				62C2E4912739F41600F037B9 /* Preview.swift in Sources */,
+				62C2E48D2739F07700F037B9 /* PasscodeViewController.swift in Sources */,
 				621CF20F27083BC400B7EB5D /* CGFloat.swift in Sources */,
 				625F4C8326D4675B00DC5978 /* DiaryCalendar.swift in Sources */,
 				62B32612272D2C8500DC3C96 /* AuthAPI.swift in Sources */,
@@ -1136,7 +1169,6 @@
 				626AC5A927316BA300E907E8 /* Token.swift in Sources */,
 				62452453270DEF0200DE083D /* ThemeViewController.swift in Sources */,
 				62D758D026E37C2C009AE551 /* WriteViewReactor.swift in Sources */,
-				625F4C5526CF22D300DC5978 /* Preview.swift in Sources */,
 				625F4C8A26D51F4D00DC5978 /* LoginViewController.swift in Sources */,
 				62452459270DF2CA00DE083D /* AppearanceReactor.swift in Sources */,
 				625950482734B317002F1C1B /* SearchHeaderView.swift in Sources */,
