@@ -131,7 +131,10 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
             .disposed(by: disposeBag)
         
         self.submitButton.rx.tap.asObservable()
-            .map { Reactor.Action.saveDidary(self.textView.text ?? "", self.hashtagTextField.textField.text ?? "") }
+            .map { [weak self] in
+                self?.view.endEditing(true)
+                return Reactor.Action.saveDidary(self?.textView.text ?? "", self?.hashtagTextField.textField.text ?? "")
+            }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         

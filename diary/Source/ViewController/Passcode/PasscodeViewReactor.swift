@@ -9,6 +9,7 @@ import ReactorKit
 import RxCocoa
 import RxSwift
 import RxFlow
+import SwiftMessages
 
 enum PasscodeType {
     case create
@@ -23,6 +24,7 @@ final class PasscodeViewReactor: Reactor, Stepper {
     
     enum Action {
         case callBack(String)
+        case getBioCode
     }
     
     enum Mutation {
@@ -53,8 +55,8 @@ final class PasscodeViewReactor: Reactor, Stepper {
                 if self.currentState.passcode.isEmpty {
                     return .just(Mutation.reEnterPasscode("비밀번호를 재입력하세요.", passcode))
                 } else if self.currentState.passcode == passcode {
-                    try? authService.setPasscode(passcode: passcode)
-                    HapticFeedback.notificationFeedback(type: .error)
+                    authService.setPasscode(passcode: passcode)
+                    HapticFeedback.notificationFeedback(type: .success)
                     self.steps.accept(DiaryStep.popViewController)
                 } else {
                     return .just(Mutation.removePasscode)
@@ -62,6 +64,7 @@ final class PasscodeViewReactor: Reactor, Stepper {
                 
             case .update:
                 if self.currentState.passcode.isEmpty && self.authService.currentPasscode == passcode {
+                    HapticFeedback.notificationFeedback(type: .success)
                     self.authService.removePasscode()
                     return .just(Mutation.reEnterPasscode("새로운 비밀번호를 입력해주세요.", ""))
                 } else {
@@ -71,13 +74,22 @@ final class PasscodeViewReactor: Reactor, Stepper {
                 
             case .use:
                 if self.authService.currentPasscode == passcode {
-                    HapticFeedback.notificationFeedback(type: .error)
+                    HapticFeedback.notificationFeedback(type: .success)
                     self.steps.accept(DiaryStep.mainIsRequired)
                 } else {
                     HapticFeedback.notificationFeedback(type: .error)
                     return .just(Mutation.reEnterPasscode("다시 입력해주세요.", ""))
                 }
                 
+            }
+            return .empty()
+            
+        case .getBioCode:
+            if UserDefaults.standard.bool(forKey: "bioPasscode") && currentState.type == .use {
+                if authService.getBioPasscode() == authService.currentPasscode {
+                    HapticFeedback.notificationFeedback(type: .success)
+                    self.steps.accept(DiaryStep.mainIsRequired)
+                }
             }
             return .empty()
         }
@@ -96,7 +108,7 @@ final class PasscodeViewReactor: Reactor, Stepper {
             
         case .removePasscode:
             HapticFeedback.impactFeedback()
-            state.message = "비밀번호를 입력하세요."
+            state.message = "비밀번호를 다시 입력해주세요."
             state.passcode = ""
         }
         

@@ -36,8 +36,14 @@ final class ThemeViewReactor: Reactor, Stepper {
         let appearanceImages: [UIImage] = [R.image.systemMode()!, R.image.lightMode()!, R.image.darkMode()!]
         
         // Theme
-        let themeTitles: [String] = ["민트초코", "블루레몬에이드"]
-        let themeColorList: [[UIColor]] = [[R.color.greenThemeMainColor()!, R.color.greenThemeSubColor()!,R.color.greenThemeThirdColor()!], [R.color.blueThemeMainColor()!, R.color.blueThemeSubColor()!, R.color.blueThemeThirdColor()!]]
+        let themeTitles: [String] = ["민트초코", "블루레몬에이드", "블루베리에이드", "레몬에이드", "자몽에이드"]
+        let themeColorList: [[UIColor]] = [
+            [R.color.greenThemeMainColor()!, R.color.greenThemeSubColor()!,R.color.greenThemeThirdColor()!],
+            [R.color.blueThemeMainColor()!, R.color.blueThemeSubColor()!, R.color.blueThemeThirdColor()!],
+            [R.color.purpleThemeMainColor()!, R.color.purpleThemeSubColor()!, R.color.purpleThemeThirdColor()!],
+            [R.color.yellowThemeMainColor()!, R.color.yellowThemeSubColor()!, R.color.yellowThemeThirdColor()!],
+            [R.color.redThemeMainColor()!, R.color.redThemeSubColor()!, R.color.redThemeThirdColor()!]
+        ]
         
         // State
         var appearanceSelected: Int
@@ -151,6 +157,15 @@ extension ThemeViewReactor {
             
         case 1:
             themeService.switch(ThemeType.blue)
+            
+        case 2:
+            themeService.switch(ThemeType.purple)
+            
+        case 3:
+            themeService.switch(ThemeType.yellow)
+            
+        case 4:
+            themeService.switch(ThemeType.red)
             
         default:
             break

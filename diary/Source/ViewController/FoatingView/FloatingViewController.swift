@@ -79,12 +79,13 @@ final class FloatingViewController: BaseViewController, View {
     
     let createButton = UIButton().then {
         $0.setTitle("일기 작성", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
+        $0.setTitleColor(R.color.floatingViewAsset(), for: .normal)
         $0.titleLabel?.font = Font.buttonFont
     }
     
     let editButton = UIButton(type: .system).then {
         $0.setImage(R.image.editButton(), for: .normal)
+        $0.tintColor = R.color.floatingViewAsset()
     }
     
     let hashtagLabel = ActiveLabel().then {

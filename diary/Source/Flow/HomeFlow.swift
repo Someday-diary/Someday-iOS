@@ -63,6 +63,9 @@ class HomeFlow: Flow {
         case .themeIsRequired:
             return navigateToTheme()
             
+        case .lockIsRequired:
+            return navigateToLock()
+            
         case .splashIsRequired:
             return .end(forwardToParentFlowWithStep: DiaryStep.splashIsRequired)
             
@@ -100,6 +103,7 @@ extension HomeFlow: FloatingPanelControllerDelegate {
         let viewController = PasscodeViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: false)
+        
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
@@ -132,6 +136,14 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     private func navigateToTheme() -> FlowContributors {
         let reactor = ThemeViewReactor()
         let viewController = ThemeViewController(reactor: reactor)
+        
+        self.rootViewController.pushViewController(viewController, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
+    }
+    
+    private func navigateToLock() -> FlowContributors {
+        let reactor = LockViewReactor(authService: services.authService)
+        let viewController = LockViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))

@@ -57,6 +57,8 @@ class SplashViewController: BaseViewController, View {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     override func setupLayout() {

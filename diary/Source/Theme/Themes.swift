@@ -46,14 +46,42 @@ struct BlueTheme: Theme {
     let mainIllustration: UIImage = R.image.mainIconBlueTheme()!
 }
 
+struct PurpleTheme: Theme {
+    let mainColor: UIColor = R.color.purpleThemeMainColor()!
+    let subColor: UIColor = R.color.purpleThemeSubColor()!
+    let thirdColor: UIColor = R.color.purpleThemeThirdColor()!
+    let mainIllustration: UIImage = R.image.mainIconPurpleTheme()!
+}
+
+struct YellowTheme: Theme {
+    let mainColor: UIColor = R.color.yellowThemeMainColor()!
+    let subColor: UIColor = R.color.yellowThemeSubColor()!
+    let thirdColor: UIColor = R.color.yellowThemeThirdColor()!
+    let mainIllustration: UIImage = R.image.mainIconYellowTheme()!
+}
+
+struct RedTheme: Theme {
+    let mainColor: UIColor = R.color.redThemeMainColor()!
+    let subColor: UIColor = R.color.redThemeSubColor()!
+    let thirdColor: UIColor = R.color.redThemeThirdColor()!
+    let mainIllustration: UIImage = R.image.mainIconRedTheme()!
+}
+
+
 enum ThemeType: ThemeProvider {
-    case green, blue
+    case green, blue, purple, yellow, red
     var associatedObject: Theme {
         switch self {
         case .green:
             return GreenTheme()
         case .blue:
             return BlueTheme()
+        case .purple:
+            return PurpleTheme()
+        case .yellow:
+            return YellowTheme()
+        case .red:
+            return RedTheme()
         }
     }
 }

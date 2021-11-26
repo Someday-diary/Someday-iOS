@@ -81,6 +81,8 @@ final class SideMenuViewReactor: Reactor, Stepper {
             return Observable.empty()
             
         case .setLock:
+            self.steps.accept(DiaryStep.dismiss)
+            self.steps.accept(DiaryStep.lockIsRequired)
             return Observable.empty()
             
         case .showInfo:

@@ -55,6 +55,11 @@ final class PasscodeViewController: BaseViewController, View {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func setupLayout() {
+        super.setupLayout()
+        
         self.view.backgroundColor = R.color.passcodeBackground()
         self.view.addSubview(self.descriptionLabel)
         self.view.addSubview(self.passwordField)
@@ -88,6 +93,11 @@ final class PasscodeViewController: BaseViewController, View {
     // MARK: - Configuring
     func bind(reactor: Reactor) {
         // MARK: - input
+        self.rx.viewDidLoad.asObservable()
+            .map { Reactor.Action.getBioCode }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         self.passwordPad.currentState
             .bind(to: self.passwordField.subject)
             .disposed(by: disposeBag)
@@ -102,4 +112,5 @@ final class PasscodeViewController: BaseViewController, View {
             .bind(to: descriptionLabel.rx.text)
             .disposed(by: disposeBag)
     }
+    
 }
