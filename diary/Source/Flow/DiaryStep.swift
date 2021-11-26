@@ -10,6 +10,7 @@ import RxFlow
 enum DiaryStep: Step {
     case dismiss
     case popViewController
+    case popToRootViewController
     
     // MARK: - Splash
     case splashIsRequired
@@ -18,11 +19,14 @@ enum DiaryStep: Step {
     
     // MARK: - Login
     case registerIsRequired
+    case passwordIsRequired(String)
     
     // MARK: - Home
     case sideMenuIsRequired(Date)
     case writeIsRequired(Date, Diary?)
     case floatingPanelIsRequired(Date)
     case themeIsRequired
-    case searchIsRequired
+    case lockIsRequired
+    case searchIsRequired(String?)
+    case passcodeIsRequired(PasscodeType)
 }

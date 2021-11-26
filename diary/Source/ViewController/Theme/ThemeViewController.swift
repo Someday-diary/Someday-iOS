@@ -46,7 +46,9 @@ final class ThemeViewController: BaseViewController, View {
     init(reactor: Reactor) {
         self.dataSource = Self.dataSourceFactory()
         super.init()
+        
         defer { self.reactor = reactor }
+        self.title = "테마 설정"
     }
     
     required init?(coder: NSCoder) {

@@ -57,11 +57,14 @@ class HomeFlow: Flow {
         case let .writeIsRequired(date, diary):
             return navigateToWrite(date, diary)
             
-        case .searchIsRequired:
-            return navigateToSearch()
+        case let .searchIsRequired(string):
+            return navigateToSearch(string)
             
         case .themeIsRequired:
             return navigateToTheme()
+            
+        case .lockIsRequired:
+            return navigateToLock()
             
         case .splashIsRequired:
             return .end(forwardToParentFlowWithStep: DiaryStep.splashIsRequired)
@@ -73,6 +76,9 @@ class HomeFlow: Flow {
         case .popViewController:
             self.rootViewController.popViewController(animated: true)
             return .none
+            
+        case let .passcodeIsRequired(type):
+            return navigateToPasscode(type: type)
             
         default:
             return .none
@@ -89,6 +95,15 @@ extension HomeFlow: FloatingPanelControllerDelegate {
         let viewController = MainViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: false)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
+    }
+    
+    private func navigateToPasscode(type: PasscodeType) -> FlowContributors {
+        let reactor = PasscodeViewReactor(type: type, authService: services.authService)
+        let viewController = PasscodeViewController(reactor: reactor)
+        
+        self.rootViewController.pushViewController(viewController, animated: false)
+        
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
@@ -109,8 +124,8 @@ extension HomeFlow: FloatingPanelControllerDelegate {
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
     }
     
-    private func navigateToSearch() -> FlowContributors {
-        let reactor = SearchViewReactor(diaryService: services.diaryService)
+    private func navigateToSearch(_ string: String?) -> FlowContributors {
+        let reactor = SearchViewReactor(tag: string, diaryService: services.diaryService)
         let viewController = SearchViewController(reactor: reactor)
         
         self.rootViewController.dismiss(animated: true)
@@ -121,6 +136,14 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     private func navigateToTheme() -> FlowContributors {
         let reactor = ThemeViewReactor()
         let viewController = ThemeViewController(reactor: reactor)
+        
+        self.rootViewController.pushViewController(viewController, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
+    }
+    
+    private func navigateToLock() -> FlowContributors {
+        let reactor = LockViewReactor(authService: services.authService)
+        let viewController = LockViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))

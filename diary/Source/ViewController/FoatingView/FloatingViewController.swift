@@ -55,6 +55,10 @@ final class FloatingViewController: BaseViewController, View {
         static let tagLabelFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
     }
     
+    fileprivate struct LabelActive {
+        static let customType = ActiveType.custom(pattern: "#[\\p{L}0-9_-]*")
+    }
+    
     
     // MARK: - Properties
     
@@ -71,37 +75,25 @@ final class FloatingViewController: BaseViewController, View {
         $0.textColor = .white
         $0.textAlignment = .center
         $0.font = Font.dateFont
-        $0.text = "24"
     }
     
     let createButton = UIButton().then {
         $0.setTitle("일기 작성", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
+        $0.setTitleColor(R.color.floatingViewAsset(), for: .normal)
         $0.titleLabel?.font = Font.buttonFont
     }
     
     let editButton = UIButton(type: .system).then {
         $0.setImage(R.image.editButton(), for: .normal)
+        $0.tintColor = R.color.floatingViewAsset()
     }
     
     let hashtagLabel = ActiveLabel().then {
-        $0.enabledTypes = [.hashtag]
+        $0.enabledTypes = [LabelActive.customType]
         $0.theme.textColor = themed { $0.thirdColor }
-        $0.theme.hashtagColor = themed { $0.thirdColor }
+        $0.theme.customColor = themed { $0.thirdColor }
         $0.font = Font.tagLabelFont
         $0.adjustsFontForContentSizeCategory = true
-        $0.handleHashtagTap {
-            print("\($0) tapped")
-        }
-        $0.configureLinkAttribute = { type, attributes, isSelected in
-            var atts = attributes
-            switch type {
-            case .hashtag:
-                atts[NSAttributedString.Key.font] = Font.tagLabelFont
-            default: ()
-            }
-            return atts
-        }
     }
     
     let textView = UITextView().then {
@@ -126,6 +118,9 @@ final class FloatingViewController: BaseViewController, View {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hashtagLabel.handleCustomTap(for: LabelActive.customType) { [weak self] element in
+            self?.reactor?.steps.accept(DiaryStep.searchIsRequired(String(element.dropFirst())))
+        }
     }
     
     override func setupLayout() {

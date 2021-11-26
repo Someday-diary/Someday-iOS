@@ -69,4 +69,11 @@ extension Date {
         }
         return dateFormatter.string(from: self)
     }
+    
+    var searchString: String {
+        let dateFormatter = DateFormatter().then {
+            $0.dateFormat = "yyyy년 MM월"
+        }
+        return dateFormatter.string(from: self)
+    }
 }

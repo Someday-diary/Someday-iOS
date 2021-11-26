@@ -8,7 +8,7 @@
 import UIKit
 
 extension CGFloat {
-    var loginTextFieldTop: Int {
+    var authTextFieldTop: Int {
         switch UIDevice().type {
         case .iPod7, .iPhoneSE2:
             return 15
@@ -17,7 +17,7 @@ extension CGFloat {
         }
     }
     
-    var loginTextFieldBetween: Int {
+    var authTextFieldBetween: Int {
         switch UIDevice().type {
         case .iPod7, .iPhoneSE2:
             return 0

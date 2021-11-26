@@ -131,7 +131,10 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
             .disposed(by: disposeBag)
         
         self.submitButton.rx.tap.asObservable()
-            .map { Reactor.Action.saveDidary(self.textView.text ?? "", self.hashtagTextField.textField.text ?? "") }
+            .map { [weak self] in
+                self?.view.endEditing(true)
+                return Reactor.Action.saveDidary(self?.textView.text ?? "", self?.hashtagTextField.textField.text ?? "")
+            }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -144,6 +147,11 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
         reactor.state.map { $0.tags }.asObservable()
             .distinctUntilChanged()
             .bind(to: self.hashtagTextField.textField.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isLoading }.asObservable()
+            .distinctUntilChanged()
+            .bind(to: self.activityIndicatorView.rx.isAnimating)
             .disposed(by: disposeBag)
         
         themed { $0.thirdColor }.asObservable()

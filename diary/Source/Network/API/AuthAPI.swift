@@ -26,7 +26,7 @@ extension AuthAPI: BaseAPI {
         case .emailVerify:
             return "/user/verify/"
         case .emailConfirm:
-            return "/user/confirm/"
+            return "/user/verify/confirm/"
         case .signUp:
             return "/user/sign_up/"
         case .login:

@@ -1,5 +1,5 @@
 //
-//  App.swift
+//  AppFkow.swift
 //  diary
 //
 //  Created by 김부성 on 2021/08/20.
@@ -34,6 +34,8 @@ class AppFlow: Flow {
         case .mainIsRequired:
             return navigateToMain()
             
+        case let .passcodeIsRequired(type):
+            return navigateToPasscode(type: type)
         default:
             return .none
             
@@ -45,13 +47,16 @@ class AppFlow: Flow {
 extension AppFlow {
     
     private func navigateToSplash() -> FlowContributors {
-        let reactor = SplashViewReactor(authService: services.authService)
-        let viewController = SplashViewController(reactor: reactor)
+        let splashFlow = SplashFlow(services)
         
-        self.window.rootViewController = viewController
-        UIView.transition(with: self.window, duration: 0.3, options: .transitionCrossDissolve, animations: nil ,completion: nil)
+        Flows.use(splashFlow, when: .created) { [unowned self] root in
+            self.window.rootViewController = root
+            
+            UIView.transition(with: self.window, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
+            
+        }
         
-        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
+        return .one(flowContributor: .contribute(withNextPresentable: splashFlow, withNextStepper: OneStepper(withSingleStep: DiaryStep.splashIsRequired)));
     }
     
     private func navigateToLogin() -> FlowContributors {
@@ -64,6 +69,18 @@ extension AppFlow {
         }
         
         return .one(flowContributor: .contribute(withNextPresentable: loginFlow, withNextStepper: OneStepper(withSingleStep: DiaryStep.loginIsRequired)))
+    }
+    
+    private func navigateToPasscode(type: PasscodeType) -> FlowContributors {
+        let homeFlow = HomeFlow(services)
+        
+        Flows.use(homeFlow, when: .created) { [unowned self] root in
+            self.window.rootViewController = root
+            
+            UIView.transition(with: self.window, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
+        }
+        
+        return .one(flowContributor: .contribute(withNextPresentable: homeFlow, withNextStepper: OneStepper(withSingleStep: DiaryStep.passcodeIsRequired(type))))
     }
     
     private func navigateToMain() -> FlowContributors {

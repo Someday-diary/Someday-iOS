@@ -38,7 +38,6 @@
 		625950482734B317002F1C1B /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625950472734B317002F1C1B /* SearchHeaderView.swift */; };
 		625A9EB226D9213800D65840 /* DiaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625A9EB126D9213800D65840 /* DiaryButton.swift */; };
 		625A9EB626D9382000D65840 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 625A9EB526D9382000D65840 /* Colors.xcassets */; };
-		625F4C5526CF22D300DC5978 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5426CF22D300DC5978 /* Preview.swift */; };
 		625F4C5726CF235F00DC5978 /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5626CF235F00DC5978 /* UIViewControllerPreview.swift */; };
 		625F4C5926CF238600DC5978 /* UIViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5826CF238600DC5978 /* UIViewPreview.swift */; };
 		625F4C5B26CF23AC00DC5978 /* DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5A26CF23AC00DC5978 /* DeviceType.swift */; };
@@ -67,6 +66,8 @@
 		6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */; };
 		6299DD1D273288FB004D976D /* DiaryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626AC5AF27318AFB00E907E8 /* DiaryAPI.swift */; };
 		629AE09D26DFA0DF003B8891 /* UIImageView+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */; };
+		629B0585273A1F2B00127870 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629B0584273A1F2B00127870 /* LockViewController.swift */; };
+		629B0588273A20CE00127870 /* LockViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629B0587273A20CE00127870 /* LockViewReactor.swift */; };
 		629ED5A626DD108600EA7A98 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */; };
 		62B2C69327296F66005A7AFF /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B2C69227296F66005A7AFF /* ServerResponse.swift */; };
 		62B3260D272CF9FE00DC3C96 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B3260C272CF9FE00DC3C96 /* Network.swift */; };
@@ -78,12 +79,28 @@
 		62BA40392690B0FD009B77F3 /* diaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40382690B0FD009B77F3 /* diaryTests.swift */; };
 		62BA40442690B0FD009B77F3 /* diaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40432690B0FD009B77F3 /* diaryUITests.swift */; };
 		62C1564B270BDD0E00938DB7 /* UITextField+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C1564A270BDD0E00938DB7 /* UITextField+RxTheme.swift */; };
+		62C2E4472736CD8E00F037B9 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4462736CD8E00F037B9 /* SearchCell.swift */; };
+		62C2E4492736CDD500F037B9 /* SearchReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4482736CDD500F037B9 /* SearchReactor.swift */; };
+		62C2E44C2736D03000F037B9 /* SearchViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E44B2736D03000F037B9 /* SearchViewSection.swift */; };
+		62C2E44E2736DC6300F037B9 /* SearchSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E44D2736DC6300F037B9 /* SearchSectionHeaderView.swift */; };
+		62C2E464273877D200F037B9 /* RegisterViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E463273877D200F037B9 /* RegisterViewReactor.swift */; };
+		62C2E4662738794200F037B9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4652738794200F037B9 /* RegisterViewController.swift */; };
+		62C2E4692738B08700F037B9 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4682738B08700F037B9 /* PasswordViewController.swift */; };
+		62C2E46B2738B0AE00F037B9 /* PasswordViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E46A2738B0AE00F037B9 /* PasswordViewReactor.swift */; };
+		62C2E4852739E7BB00F037B9 /* DiaryNumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4842739E7BA00F037B9 /* DiaryNumberPad.swift */; };
+		62C2E4872739E81E00F037B9 /* DiaryNumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4862739E81E00F037B9 /* DiaryNumberButton.swift */; };
+		62C2E4892739E88100F037B9 /* HapticFeedBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4882739E88100F037B9 /* HapticFeedBack.swift */; };
+		62C2E48B2739EEE000F037B9 /* SecureTextEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E48A2739EEE000F037B9 /* SecureTextEntry.swift */; };
+		62C2E48D2739F07700F037B9 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E48C2739F07700F037B9 /* PasscodeViewController.swift */; };
+		62C2E4902739F32500F037B9 /* PasscodeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E48F2739F32500F037B9 /* PasscodeViewReactor.swift */; };
+		62C2E4912739F41600F037B9 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5426CF22D300DC5978 /* Preview.swift */; };
 		62C7A9962715A90C00691069 /* UITableView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7A9952715A90C00691069 /* UITableView+Rx.swift */; };
 		62C7A99A2716C60400691069 /* ThemeSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7A9992716C60400691069 /* ThemeSectionHeaderView.swift */; };
 		62C7D7A226EF4AEB00C3E257 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7D7A126EF4AEB00C3E257 /* UserService.swift */; };
 		62CB1D3526DA4CCB00B1BA32 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB1D3426DA4CCB00B1BA32 /* SideMenuViewController.swift */; };
 		62CB1D3726DA4D3500B1BA32 /* SideMenuViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB1D3626DA4D3500B1BA32 /* SideMenuViewReactor.swift */; };
 		62CB1D3B26DA4F4200B1BA32 /* CustomDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB1D3A26DA4F4200B1BA32 /* CustomDelegateProxy.swift */; };
+		62D01266273CB722009D050B /* SplashFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D01265273CB722009D050B /* SplashFlow.swift */; };
 		62D388A626D9E9FA00A8D185 /* CheckValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D388A526D9E9FA00A8D185 /* CheckValidation.swift */; };
 		62D388A926DA1F7C00A8D185 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 62D388AB26DA1F7C00A8D185 /* InfoPlist.strings */; };
 		62D758C326E1AE9C009AE551 /* DiarySideMenuListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D758C226E1AE9C009AE551 /* DiarySideMenuListButton.swift */; };
@@ -187,6 +204,8 @@
 		628FD7C02712038F00B2CC11 /* ThemeViewSection.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewSection.swift.swift; sourceTree = "<group>"; };
 		6291498B26DEF4FF003CDDE9 /* SnapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapKit.swift; sourceTree = "<group>"; };
 		629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+RxTheme.swift"; sourceTree = "<group>"; };
+		629B0584273A1F2B00127870 /* LockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewController.swift; sourceTree = "<group>"; };
+		629B0587273A20CE00127870 /* LockViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewReactor.swift; sourceTree = "<group>"; };
 		629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FSCalendar+RxTheme.swift"; sourceTree = "<group>"; };
 		629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		62B2C69227296F66005A7AFF /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
@@ -205,6 +224,20 @@
 		62BA40432690B0FD009B77F3 /* diaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diaryUITests.swift; sourceTree = "<group>"; };
 		62BA40452690B0FD009B77F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62C1564A270BDD0E00938DB7 /* UITextField+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+RxTheme.swift"; sourceTree = "<group>"; };
+		62C2E4462736CD8E00F037B9 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		62C2E4482736CDD500F037B9 /* SearchReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReactor.swift; sourceTree = "<group>"; };
+		62C2E44B2736D03000F037B9 /* SearchViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewSection.swift; sourceTree = "<group>"; };
+		62C2E44D2736DC6300F037B9 /* SearchSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSectionHeaderView.swift; sourceTree = "<group>"; };
+		62C2E463273877D200F037B9 /* RegisterViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewReactor.swift; sourceTree = "<group>"; };
+		62C2E4652738794200F037B9 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		62C2E4682738B08700F037B9 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		62C2E46A2738B0AE00F037B9 /* PasswordViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewReactor.swift; sourceTree = "<group>"; };
+		62C2E4842739E7BA00F037B9 /* DiaryNumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryNumberPad.swift; sourceTree = "<group>"; };
+		62C2E4862739E81E00F037B9 /* DiaryNumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryNumberButton.swift; sourceTree = "<group>"; };
+		62C2E4882739E88100F037B9 /* HapticFeedBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedBack.swift; sourceTree = "<group>"; };
+		62C2E48A2739EEE000F037B9 /* SecureTextEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextEntry.swift; sourceTree = "<group>"; };
+		62C2E48C2739F07700F037B9 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
+		62C2E48F2739F32500F037B9 /* PasscodeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewReactor.swift; sourceTree = "<group>"; };
 		62C7A9952715A90C00691069 /* UITableView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Rx.swift"; sourceTree = "<group>"; };
 		62C7A9992716C60400691069 /* ThemeSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSectionHeaderView.swift; sourceTree = "<group>"; };
 		62C7D76326ED20B600C3E257 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
@@ -212,6 +245,7 @@
 		62CB1D3426DA4CCB00B1BA32 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		62CB1D3626DA4D3500B1BA32 /* SideMenuViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewReactor.swift; sourceTree = "<group>"; };
 		62CB1D3A26DA4F4200B1BA32 /* CustomDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDelegateProxy.swift; sourceTree = "<group>"; };
+		62D01265273CB722009D050B /* SplashFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashFlow.swift; sourceTree = "<group>"; };
 		62D388A526D9E9FA00A8D185 /* CheckValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckValidation.swift; sourceTree = "<group>"; };
 		62D388AA26DA1F7C00A8D185 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		62D388AC26DA1FAD00A8D185 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -298,9 +332,12 @@
 			isa = PBXGroup;
 			children = (
 				620BCABE26E5D58C0023499D /* HashtagTextField.swift */,
+				62C2E48A2739EEE000F037B9 /* SecureTextEntry.swift */,
 				621CF21A270978B900B7EB5D /* DiarySearchBar.swift */,
 				625F4C8626D4D2AB00DC5978 /* DiaryTextField.swift */,
 				625A9EB126D9213800D65840 /* DiaryButton.swift */,
+				62C2E4842739E7BA00F037B9 /* DiaryNumberPad.swift */,
+				62C2E4862739E81E00F037B9 /* DiaryNumberButton.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -310,6 +347,7 @@
 			children = (
 				62F192B4272005740055C8DC /* ThemeCell */,
 				62C7A9942715A6E500691069 /* AppearanceCell */,
+				62C2E44A2736CFC300F037B9 /* SearchCell */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -432,6 +470,7 @@
 				625F4C6026CF8CEC00DC5978 /* AppFlow.swift */,
 				624E4D2926D6299B004A6624 /* LoginFlow.swift */,
 				624E4D3826D85F40004A6624 /* HomeFlow.swift */,
+				62D01265273CB722009D050B /* SplashFlow.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -439,14 +478,18 @@
 		627E201126CE945600550D59 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6245244F270DED6900DE083D /* Theme */,
+				629B0586273A1F3900127870 /* Lock */,
+				62C2E48E2739F0BA00F037B9 /* Passcode */,
 				624E4D3126D63663004A6624 /* Splash */,
 				625F4C8826D51F2F00DC5978 /* Login */,
+				62C2E4622738779200F037B9 /* Register */,
+				62C2E4672738B04400F037B9 /* Password */,
 				625F4C6226CF94A300DC5978 /* Main */,
 				628BFD9326EB4F3A00851408 /* FoatingView */,
 				62D758CC26E37B7D009AE551 /* Write */,
 				621CF21227096DAE00B7EB5D /* Search */,
 				625A9EB026D8B77A00D65840 /* SideMenu */,
+				6245244F270DED6900DE083D /* Theme */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -469,6 +512,7 @@
 				625F4C5A26CF23AC00DC5978 /* DeviceType.swift */,
 				62D388A526D9E9FA00A8D185 /* CheckValidation.swift */,
 				62E7B2A12736152000CD7E5A /* Message.swift */,
+				62C2E4882739E88100F037B9 /* HapticFeedBack.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -497,6 +541,15 @@
 				6291498B26DEF4FF003CDDE9 /* SnapKit.swift */,
 			);
 			path = SnapKit;
+			sourceTree = "<group>";
+		};
+		629B0586273A1F3900127870 /* Lock */ = {
+			isa = PBXGroup;
+			children = (
+				629B0584273A1F2B00127870 /* LockViewController.swift */,
+				629B0587273A20CE00127870 /* LockViewReactor.swift */,
+			);
+			path = Lock;
 			sourceTree = "<group>";
 		};
 		629ED5A026DCFDF000EA7A98 /* Application */ = {
@@ -606,10 +659,47 @@
 			path = diaryUITests;
 			sourceTree = "<group>";
 		};
+		62C2E44A2736CFC300F037B9 /* SearchCell */ = {
+			isa = PBXGroup;
+			children = (
+				62C2E4462736CD8E00F037B9 /* SearchCell.swift */,
+				62C2E4482736CDD500F037B9 /* SearchReactor.swift */,
+			);
+			path = SearchCell;
+			sourceTree = "<group>";
+		};
+		62C2E4622738779200F037B9 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				62C2E4652738794200F037B9 /* RegisterViewController.swift */,
+				62C2E463273877D200F037B9 /* RegisterViewReactor.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		62C2E4672738B04400F037B9 /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				62C2E4682738B08700F037B9 /* PasswordViewController.swift */,
+				62C2E46A2738B0AE00F037B9 /* PasswordViewReactor.swift */,
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
+		62C2E48E2739F0BA00F037B9 /* Passcode */ = {
+			isa = PBXGroup;
+			children = (
+				62C2E48C2739F07700F037B9 /* PasscodeViewController.swift */,
+				62C2E48F2739F32500F037B9 /* PasscodeViewReactor.swift */,
+			);
+			path = Passcode;
+			sourceTree = "<group>";
+		};
 		62C2EFA42711FA9E00C1CAF0 /* Section */ = {
 			isa = PBXGroup;
 			children = (
 				628FD7C02712038F00B2CC11 /* ThemeViewSection.swift.swift */,
+				62C2E44B2736D03000F037B9 /* SearchViewSection.swift */,
 			);
 			path = Section;
 			sourceTree = "<group>";
@@ -637,6 +727,7 @@
 			isa = PBXGroup;
 			children = (
 				62C7A9992716C60400691069 /* ThemeSectionHeaderView.swift */,
+				62C2E44D2736DC6300F037B9 /* SearchSectionHeaderView.swift */,
 				625950472734B317002F1C1B /* SearchHeaderView.swift */,
 			);
 			path = HeaderFooter;
@@ -724,7 +815,9 @@
 				625F4C7526D232E500DC5978 /* ShellScript */,
 				62BA401A2690B0FA009B77F3 /* Sources */,
 				62BA401B2690B0FA009B77F3 /* Frameworks */,
+				E62EED9B3D667B480F11A2F0 /* [Carte] Pre Script */,
 				62BA401C2690B0FA009B77F3 /* Resources */,
+				6F09AC68488332B30709BADD /* [Carte] Post Script */,
 				476D9614BD9493CCE3A01806 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -899,11 +992,30 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n\n";
+		};
+		6F09AC68488332B30709BADD /* [Carte] Post Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Carte] Post Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ruby ${PODS_ROOT}/Carte/Sources/Carte/carte.rb post";
+			showEnvVarsInLog = 0;
 		};
 		DBB4301821AA10341830D9B3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -925,6 +1037,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E62EED9B3D667B480F11A2F0 /* [Carte] Pre Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Carte] Pre Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ruby ${PODS_ROOT}/Carte/Sources/Carte/carte.rb pre";
 			showEnvVarsInLog = 0;
 		};
 		ED33CB2F35730FEC60CE84A4 /* [CP] Embed Pods Frameworks */ = {
@@ -979,21 +1110,27 @@
 				62D758C526E1DD48009AE551 /* LogoutButton.swift in Sources */,
 				624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */,
 				620A106026FCABB10073D580 /* SieMenuScrollView.swift in Sources */,
+				62C2E4662738794200F037B9 /* RegisterViewController.swift in Sources */,
 				62183EEC26DB3A6600F22EC6 /* DiaryTextField+Rx.swift in Sources */,
 				62F192BA272005E70055C8DC /* ThemeCell.swift in Sources */,
+				62C2E4902739F32500F037B9 /* PasscodeViewReactor.swift in Sources */,
 				62452457270DF23400DE083D /* AppearanceCell.swift in Sources */,
 				62CB1D3726DA4D3500B1BA32 /* SideMenuViewReactor.swift in Sources */,
 				62C7A99A2716C60400691069 /* ThemeSectionHeaderView.swift in Sources */,
+				629B0585273A1F2B00127870 /* LockViewController.swift in Sources */,
 				62D388A626D9E9FA00A8D185 /* CheckValidation.swift in Sources */,
 				629AE09D26DFA0DF003B8891 /* UIImageView+RxTheme.swift in Sources */,
+				62C2E48B2739EEE000F037B9 /* SecureTextEntry.swift in Sources */,
 				628FD7C12712038F00B2CC11 /* ThemeViewSection.swift.swift in Sources */,
 				625F4C5F26CF6DAA00DC5978 /* DiaryStep.swift in Sources */,
+				62C2E4872739E81E00F037B9 /* DiaryNumberButton.swift in Sources */,
 				62816AF026DCD0B100365348 /* Themes.swift in Sources */,
 				62CB1D3B26DA4F4200B1BA32 /* CustomDelegateProxy.swift in Sources */,
 				62BA40222690B0FA009B77F3 /* AppDelegate.swift in Sources */,
 				625F4C6126CF8CEC00DC5978 /* AppFlow.swift in Sources */,
 				628BFD9B26EB9D8B00851408 /* SurfaceAppearance+Rx.swift in Sources */,
 				62E7B2A02736130900CD7E5A /* NetworkResult.swift in Sources */,
+				62C2E46B2738B0AE00F037B9 /* PasswordViewReactor.swift in Sources */,
 				620BCACB26E8819C0023499D /* String.swift in Sources */,
 				624E4D3526D66EB5004A6624 /* LoginViewReactor.swift in Sources */,
 				62D758D226E474DE009AE551 /* UITextView+RxTheme.swift in Sources */,
@@ -1005,11 +1142,13 @@
 				62B32614272D8AA900DC3C96 /* AuthService.swift in Sources */,
 				624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */,
 				624E4D3726D66EF1004A6624 /* SplashViewReactor.swift in Sources */,
+				629B0588273A20CE00127870 /* LockViewReactor.swift in Sources */,
 				62F192B3271FF23B0055C8DC /* Theme.swift in Sources */,
 				625F4C8726D4D2AB00DC5978 /* DiaryTextField.swift in Sources */,
 				620BCAC726E5F4610023499D /* Date.swift in Sources */,
 				621CF211270881A200B7EB5D /* UIDevice.swift in Sources */,
 				625A9EB226D9213800D65840 /* DiaryButton.swift in Sources */,
+				62C2E44C2736D03000F037B9 /* SearchViewSection.swift in Sources */,
 				628BFD9926EB6A5300851408 /* CustomFloatingPanelLayout.swift in Sources */,
 				62D758CE26E37BAB009AE551 /* WriteViewController.swift in Sources */,
 				621CF21B270978B900B7EB5D /* DiarySearchBar.swift in Sources */,
@@ -1019,13 +1158,19 @@
 				6245245B270DF3B700DE083D /* Appreance.swift in Sources */,
 				62F192B8272005C80055C8DC /* ThemeReactor.swift in Sources */,
 				626AC5AE2731884D00E907E8 /* AuthPlugin.swift in Sources */,
+				62C2E4892739E88100F037B9 /* HapticFeedBack.swift in Sources */,
 				620BCABF26E5D58C0023499D /* HashtagTextField.swift in Sources */,
 				628BFD9E26EBA49600851408 /* BaseTableViewCell.swift in Sources */,
 				620BCABB26E4F9F70023499D /* ModelType.swift in Sources */,
+				62D01266273CB722009D050B /* SplashFlow.swift in Sources */,
 				620BCAC526E5EC730023499D /* UITextField.swift in Sources */,
 				62F6681C26F8DAF800110E35 /* ActiveLabel+RxTheme.swift in Sources */,
 				62B2C69327296F66005A7AFF /* ServerResponse.swift in Sources */,
+				62C2E44E2736DC6300F037B9 /* SearchSectionHeaderView.swift in Sources */,
+				62C2E4852739E7BB00F037B9 /* DiaryNumberPad.swift in Sources */,
 				62C7D7A226EF4AEB00C3E257 /* UserService.swift in Sources */,
+				62C2E4912739F41600F037B9 /* Preview.swift in Sources */,
+				62C2E48D2739F07700F037B9 /* PasscodeViewController.swift in Sources */,
 				621CF20F27083BC400B7EB5D /* CGFloat.swift in Sources */,
 				625F4C8326D4675B00DC5978 /* DiaryCalendar.swift in Sources */,
 				62B32612272D2C8500DC3C96 /* AuthAPI.swift in Sources */,
@@ -1040,14 +1185,16 @@
 				625F4C6426CF94CC00DC5978 /* MainViewReactor.swift in Sources */,
 				625F4C5B26CF23AC00DC5978 /* DeviceType.swift in Sources */,
 				620BCAB926E4F9B10023499D /* Diary.swift in Sources */,
+				62C2E4472736CD8E00F037B9 /* SearchCell.swift in Sources */,
 				626AC5A927316BA300E907E8 /* Token.swift in Sources */,
 				62452453270DEF0200DE083D /* ThemeViewController.swift in Sources */,
 				62D758D026E37C2C009AE551 /* WriteViewReactor.swift in Sources */,
-				625F4C5526CF22D300DC5978 /* Preview.swift in Sources */,
 				625F4C8A26D51F4D00DC5978 /* LoginViewController.swift in Sources */,
 				62452459270DF2CA00DE083D /* AppearanceReactor.swift in Sources */,
 				625950482734B317002F1C1B /* SearchHeaderView.swift in Sources */,
 				627E200F26CE93DC00550D59 /* BaseViewController.swift in Sources */,
+				62C2E464273877D200F037B9 /* RegisterViewReactor.swift in Sources */,
+				62C2E4692738B08700F037B9 /* PasswordViewController.swift in Sources */,
 				6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */,
 				625F4C5926CF238600DC5978 /* UIViewPreview.swift in Sources */,
 				626AC5AB2731877600E907E8 /* DiaryService.swift in Sources */,
@@ -1056,6 +1203,7 @@
 				621CF21427096DC500B7EB5D /* SearchViewReactor.swift in Sources */,
 				6221F28C2733D7FB009A9164 /* Post.swift in Sources */,
 				6250FE4426DCE26100A0277B /* AppServices.swift in Sources */,
+				62C2E4492736CDD500F037B9 /* SearchReactor.swift in Sources */,
 				625F4C5D26CF242600DC5978 /* MainViewController.swift in Sources */,
 				6221F28A2733AB7A009A9164 /* RequestLoggingPlugin.swift in Sources */,
 				624E4D3326D63685004A6624 /* SplashViewController.swift in Sources */,
@@ -1158,7 +1306,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1214,7 +1362,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1231,14 +1379,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q23JLSJCCV;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = CFS8WAKW2R;
 				INFOPLIST_FILE = diary/SupportingFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.diary.someday.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.diary.someday.hashtag.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1252,14 +1401,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q23JLSJCCV;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = CFS8WAKW2R;
 				INFOPLIST_FILE = diary/SupportingFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.diary.someday.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.diary.someday.hashtag.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -14,23 +14,23 @@ import ActiveLabel
 
 extension ThemeProxy where Base: ActiveLabel {
     
-    var hashtagColor: Observable<UIColor?> {
+    var customColor: Observable<UIColor?> {
         get { return .empty() }
         set {
             let disposable = newValue
                 .takeUntil(base.rx.deallocating)
                 .observeOn(MainScheduler.instance)
-                .bind(to: base.rx.hashtagColor)
-            hold(disposable, for: "hashtagColor")
+                .bind(to: base.rx.customColor)
+            hold(disposable, for: "customColor")
         }
     }
 }
 
 extension Reactive where Base: ActiveLabel {
     
-    var hashtagColor: Binder<UIColor?> {
+    var customColor: Binder<UIColor?> {
         return Binder(self.base) { view, attr in
-            view.hashtagColor = attr ?? .black
+            view.customColor[.custom(pattern: "#[\\p{L}0-9_-]*")] = attr ?? .black
         }
     }
 }

@@ -17,14 +17,14 @@ class ThemeSectionHeaderView: UITableViewHeaderFooterView {
     }
     
     // MARK: - UI
+    var background = UIView().then {
+        $0.backgroundColor = R.color.diaryBackgroundColor()
+    }
+    
     var title = UILabel().then {
         $0.font = Font.titleFont
         $0.theme.textColor = themed { $0.tableViewCellColor }
         $0.text = "section"
-    }
-    
-    var background = UIView().then {
-        $0.backgroundColor = R.color.diaryBackgroundColor()
     }
     
     override init(reuseIdentifier: String?) {
@@ -46,8 +46,8 @@ class ThemeSectionHeaderView: UITableViewHeaderFooterView {
         }
         
         self.title.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
             $0.left.equalToSuperview().offset(Metric.cellSide)
+            $0.centerY.equalToSuperview()
         }
         
     }

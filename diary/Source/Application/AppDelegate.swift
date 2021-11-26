@@ -54,6 +54,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case 1:
             themeService.switch(ThemeType.blue)
             
+        case 2:
+            themeService.switch(ThemeType.purple)
+            
+        case 3:
+            themeService.switch(ThemeType.yellow)
+            
+        case 4:
+            themeService.switch(ThemeType.red)
+            
         default:
             themeService.switch(ThemeType.green)
         }
@@ -69,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
-            print ("did navigate to flow=\(flow) and step=\(step)")
+            print ("will navigate to flow=\(flow) and step=\(step)")
         }).disposed(by: self.disposeBag)
         
         coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in

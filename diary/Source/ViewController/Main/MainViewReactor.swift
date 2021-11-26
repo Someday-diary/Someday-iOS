@@ -59,7 +59,7 @@ final class MainViewReactor: Reactor, Stepper {
             return Observable.empty()
             
         case .presentSearch:
-            self.steps.accept(DiaryStep.searchIsRequired)
+            self.steps.accept(DiaryStep.searchIsRequired(nil))
             return Observable.empty()
             
         case let .changeColor(newColor):
@@ -83,7 +83,9 @@ final class MainViewReactor: Reactor, Stepper {
                         case let .success(result):
                             return Mutation.changeWritedDays(result.posts!)
                         case let .error(error):
-                            SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
+                            if error != .noDiary {
+                                SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
+                            }
                             return Mutation.changeWritedDays([])
                         }
                     },
@@ -114,7 +116,9 @@ final class MainViewReactor: Reactor, Stepper {
                             case let .success(result):
                                 return Mutation.changeWritedDays(result.posts!)
                             case let .error(error):
-                                SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
+                                if error != .noDiary {
+                                    SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
+                                }
                                 return Mutation.changeWritedDays([])
                             }
                         },

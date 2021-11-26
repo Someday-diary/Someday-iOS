@@ -84,6 +84,7 @@ class LoginViewController: BaseViewController, View {
         super.init()
         
         defer { self.reactor = reactor }
+        self.navigationItem.backButtonDisplayMode = .minimal
     }
     
     required init?(coder: NSCoder) {
@@ -128,7 +129,7 @@ class LoginViewController: BaseViewController, View {
         self.passwordTextField.snp.makeConstraints {
             $0.left.equalToSafeArea(self.view).offset(Metric.textFieldSide)
             $0.right.equalToSafeArea(self.view).offset(-Metric.textFieldSide)
-            $0.top.equalTo(self.idTextField.snp.bottom).offset(Metric.textFieldBetween.loginTextFieldBetween)
+            $0.top.equalTo(self.idTextField.snp.bottom).offset(Metric.textFieldBetween.authTextFieldBetween)
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
@@ -166,7 +167,15 @@ class LoginViewController: BaseViewController, View {
         .disposed(by: disposeBag)
         
         loginButton.rx.tap.asObservable()
-            .map { Reactor.Action.login }
+            .map { [weak self] in
+                self?.view.endEditing(true)
+                return Reactor.Action.login
+            }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        registerButton.rx.tap.asObservable()
+            .map { Reactor.Action.register }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -190,6 +199,11 @@ class LoginViewController: BaseViewController, View {
             .distinctUntilChanged()
             .bind(to: self.passwordTextField.rx.animated.fade(duration: 0.3).error)
             .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isLoading }.asObservable()
+            .distinctUntilChanged()
+            .bind(to: self.activityIndicatorView.rx.isAnimating)
+            .disposed(by: disposeBag)
     }
     
 }
@@ -207,7 +221,7 @@ extension LoginViewController {
                 }
                 
                 self.idTextField.snp.updateConstraints {
-                    $0.top.equalTo(self.loginImageView.snp.bottom).offset(height == 0 ? self.view.frame.height / 10 : ((self.view.frame.height - height) / 12).loginTextFieldTop )
+                    $0.top.equalTo(self.loginImageView.snp.bottom).offset(height == 0 ? self.view.frame.height / 10 : ((self.view.frame.height - height) / 12).authTextFieldTop )
                 }
                 
                 self.registerButton.snp.updateConstraints {

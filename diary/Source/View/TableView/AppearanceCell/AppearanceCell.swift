@@ -42,7 +42,7 @@ final class AppearanceCell: BaseTableViewCell, View {
     // MARK: - UI
     let image = UIImageView().then {
         $0.layer.cornerRadius = Style.imageCornerRadius
-        $0.layer.theme.borderColor = themed { $0.thirdColor.cgColor }
+        $0.layer.borderColor = R.color.themeSelectionColor()?.cgColor
     }
     
     let title = UILabel().then {
@@ -53,7 +53,7 @@ final class AppearanceCell: BaseTableViewCell, View {
     let button = UIButton().then {
         $0.setImage(R.image.selectedButton(), for: .selected)
         $0.setImage(R.image.unSelectedButton(), for: .normal)
-        $0.theme.tintColor = themed { $0.thirdColor }
+        $0.tintColor = R.color.themeSelectionColor()
     }
     
     // MARK: - Initializing
@@ -107,7 +107,7 @@ final class AppearanceCell: BaseTableViewCell, View {
         reactor.state.map { $0.isSelected }.asObservable()
             .subscribe(onNext: { [weak self] selected in
                 guard let self = self else { return }
-                self.title.theme.textColor = themed { selected ? $0.thirdColor : $0.tableViewCellColor }
+                self.title.textColor = selected ? R.color.themeSelectionColor() : R.color.tableViewCellColor()
                 self.image.layer.borderWidth = selected ? Style.imageBorderWidth : 0
             })
             .disposed(by: disposeBag)

@@ -11,6 +11,7 @@ import ReactorKit
 import RxCocoa
 import RxFlow
 import SwiftMessages
+import Carte
 
 final class SideMenuViewReactor: Reactor, Stepper {
 
@@ -80,12 +81,22 @@ final class SideMenuViewReactor: Reactor, Stepper {
             return Observable.empty()
             
         case .setLock:
+            self.steps.accept(DiaryStep.dismiss)
+            self.steps.accept(DiaryStep.lockIsRequired)
             return Observable.empty()
             
         case .showInfo:
             return Observable.empty()
         
         case .userFeedBack:
+            let email = "somedayteam2021@gmail.com".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let title = "오늘하루 유저 피드백".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let mailUrl = URL(string: "mailto:\(email)?subject=\(title)")!
+            
+            if UIApplication.shared.canOpenURL(mailUrl) {
+                UIApplication.shared.open(mailUrl, options: [:])
+            }
+            
             return Observable.empty()
             
         case .disappear:

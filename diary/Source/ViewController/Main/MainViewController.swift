@@ -63,6 +63,8 @@ final class MainViewController: BaseViewController, View {
     init(reactor: Reactor) {
         super.init()
         defer { self.reactor = reactor }
+        
+        self.navigationItem.backButtonDisplayMode = .minimal
     }
     
     required init?(coder: NSCoder) {
@@ -134,7 +136,6 @@ final class MainViewController: BaseViewController, View {
             .map { Reactor.Action.presentSearch }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-    
         
         Observable.combineLatest(
             themed { $0.mainColor },

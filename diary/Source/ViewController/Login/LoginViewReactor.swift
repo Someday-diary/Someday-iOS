@@ -21,6 +21,7 @@ final class LoginViewReactor: Reactor, Stepper {
     enum Action {
         case updateTextField([String])
         case login
+        case register
     }
     
     enum Mutation {
@@ -68,8 +69,11 @@ final class LoginViewReactor: Reactor, Stepper {
                 
                 Observable.just(Mutation.setLoading(false))
             ])
+            
+        case .register:
+            self.steps.accept(DiaryStep.registerIsRequired)
+            return Observable.empty()
         }
-        
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
