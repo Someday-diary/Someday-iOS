@@ -86,9 +86,12 @@ final class PasscodeViewReactor: Reactor, Stepper {
             
         case .getBioCode:
             if UserDefaults.standard.bool(forKey: "bioPasscode") && currentState.type == .use {
-                if authService.getBioPasscode() == authService.currentPasscode {
-                    HapticFeedback.notificationFeedback(type: .success)
-                    self.steps.accept(DiaryStep.mainIsRequired)
+                
+                self.authService.getBioPasscode {
+                    if $0 == self.authService.currentPasscode {
+                        HapticFeedback.notificationFeedback(type: .success)
+                        self.steps.accept(DiaryStep.mainIsRequired)
+                    }
                 }
             }
             return .empty()
