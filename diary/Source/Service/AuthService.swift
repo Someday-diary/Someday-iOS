@@ -7,6 +7,7 @@
 
 import Foundation
 
+import LocalAuthentication
 import KeychainAccess
 import RxSwift
 import Moya
@@ -23,15 +24,17 @@ protocol AuthServiceType: AnyObject {
     func logout()
     func setPasscode(passcode: String)
     func setBioPasscode()
-    func getBioPasscode(handler: @escaping(String?) -> Void)
+    func getBioPasscode(completion: @escaping(Bool) -> Void)
     func removePasscode()
     func removeBioPasscode()
+    func canEvaluatePolicy() -> Bool
 }
 
-final class AuthService: AuthServiceType {
+class AuthService: AuthServiceType {
     
     fileprivate let network: Network<AuthAPI>
     fileprivate let keychain = Keychain(service: "com.diary.someday.ios")
+    fileprivate let authContext = LAContext()
     private(set) var currentToken: Token?
     private(set) var currentPasscode: String?
     
@@ -114,27 +117,16 @@ final class AuthService: AuthServiceType {
     }
     
     func setBioPasscode() {
-        DispatchQueue.global().async {
-            do {
-                try self.keychain.accessibility(.whenUnlockedThisDeviceOnly, authenticationPolicy: .biometryAny)
-                    .authenticationPrompt("set Secure Item")
-                    .set(self.currentPasscode ?? "", key: "bioPasscode")
-                UserDefaults.standard.set(true, forKey: "bioPasscode")
-            } catch {
-                UserDefaults.standard.set(false, forKey: "bioPasscode")
-            }
-        }
+        UserDefaults.standard.set(true, forKey: "bioPasscode")
     }
     
     func removePasscode() {
         try? self.keychain.remove("passcode")
-        try? self.keychain.remove("bioPasscode")
         UserDefaults.standard.set(false, forKey: "passcode")
         UserDefaults.standard.set(false, forKey: "bioPasscode")
     }
     
     func removeBioPasscode() {
-        try? self.keychain.remove("bioPasscode")
         UserDefaults.standard.set(false, forKey: "bioPasscode")
     }
     
@@ -166,16 +158,21 @@ final class AuthService: AuthServiceType {
         return try? keychain.getString("passcode")
     }
     
-    func getBioPasscode(handler: @escaping(String?) -> Void) {
-        var passcode: String?
-        
-        DispatchQueue.global().async {
-            let value = try? self.keychain.authenticationPrompt("Authenticate to login to server").get("bioPasscode")
-            DispatchQueue.main.async {
-                passcode = value
-                handler(passcode)
+    func getBioPasscode(completion: @escaping(Bool) -> Void) {
+        self.authContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "로그인을 위한 인증") { success, error in
+            if error == nil {
+                print(success)
+                completion(true)
+            } else {
+                completion(false)
             }
         }
+    }
+    
+    func canEvaluatePolicy() -> Bool {
+        let policy = self.authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
+        if !policy { UserDefaults.standard.set(false, forKey: "bioPasscode") }
+        return policy
     }
     
     fileprivate func removeToken() {

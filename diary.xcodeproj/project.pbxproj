@@ -31,6 +31,7 @@
 		624D11C0275706E400E818A4 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D11BE275706E400E818A4 /* LockViewController.swift */; };
 		624D11C1275706E400E818A4 /* LockViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D11BF275706E400E818A4 /* LockViewReactor.swift */; };
 		624D11C327570C4C00E818A4 /* SendCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D11C227570C4C00E818A4 /* SendCodeButton.swift */; };
+		624D11C5275745F000E818A4 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 624D11C4275745F000E818A4 /* LocalAuthentication.framework */; };
 		624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2926D6299B004A6624 /* LoginFlow.swift */; };
 		624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2B26D6350A004A6624 /* AppStepper.swift */; };
 		624E4D3326D63685004A6624 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D3226D63685004A6624 /* SplashViewController.swift */; };
@@ -170,6 +171,7 @@
 		624D11BE275706E400E818A4 /* LockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockViewController.swift; sourceTree = "<group>"; };
 		624D11BF275706E400E818A4 /* LockViewReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockViewReactor.swift; sourceTree = "<group>"; };
 		624D11C227570C4C00E818A4 /* SendCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCodeButton.swift; sourceTree = "<group>"; };
+		624D11C4275745F000E818A4 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		624E4D2926D6299B004A6624 /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
 		624E4D2B26D6350A004A6624 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		624E4D3226D63685004A6624 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				624D11C5275745F000E818A4 /* LocalAuthentication.framework in Frameworks */,
 				9D432695EA98D656B099F4B1 /* Pods_diary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -800,6 +803,7 @@
 		BE8602B67B663CB61054BBE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				624D11C4275745F000E818A4 /* LocalAuthentication.framework */,
 				3B894E3AA684F49C439F7258 /* Pods_diary.framework */,
 				663A927CEE2B1BAC95B5F21D /* Pods_diary_diaryUITests.framework */,
 				61203E3BB236EAAB98001720 /* Pods_diaryTests.framework */,
@@ -1310,7 +1314,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1366,7 +1370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

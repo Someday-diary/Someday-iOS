@@ -182,7 +182,6 @@ class LockViewController: BaseViewController, View {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.lockSwitch.isOn = $0
-                self.lockWithBioSwitch.isEnabled = $0
                 self.changePasscodeButton.isEnabled = $0
                 
                 if $0 {
@@ -195,6 +194,10 @@ class LockViewController: BaseViewController, View {
                 
             }).disposed(by: disposeBag)
         
+        reactor.state.map { $0.lockIsOn && $0.bioIsEnabled }.asObservable()
+            .bind(to: self.lockWithBioSwitch.rx.isEnabled)
+            .disposed(by: disposeBag)
+            
         reactor.state.map { $0.bioIsOn }.asObservable()
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }

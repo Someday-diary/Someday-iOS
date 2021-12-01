@@ -25,16 +25,16 @@ final class LockViewReactor: Reactor, Stepper {
     }
     
     enum Mutation {
-        case changeStates
+        case changeStates(Bool)
     }
     
     struct State {
         var lockIsOn: Bool = UserDefaults.standard.bool(forKey: "passcode")
         var bioIsOn: Bool = UserDefaults.standard.bool(forKey: "bioPasscode")
+        var bioIsEnabled: Bool = false
     }
     
     fileprivate let authService: AuthServiceType
-    
     init(authService: AuthServiceType) {
         self.authService = authService
         
@@ -49,23 +49,23 @@ final class LockViewReactor: Reactor, Stepper {
             } else {
                 self.authService.removePasscode()
             }
-            return Observable.just(Mutation.changeStates)
-        
+            return Observable.just(Mutation.changeStates(self.authService.canEvaluatePolicy()))
+            
         case let .changeBio(isOn):
+            
             if isOn {
                 self.authService.setBioPasscode()
             } else {
                 self.authService.removeBioPasscode()
             }
-        
-            return Observable.just(Mutation.changeStates)
+            return Observable.just(Mutation.changeStates(self.authService.canEvaluatePolicy()))
             
         case .changePasscode:
             self.steps.accept(DiaryStep.passcodeIsRequired(.update))
             return Observable.empty()
             
         case .refresh:
-            return Observable.just(Mutation.changeStates)
+            return Observable.just(Mutation.changeStates(self.authService.canEvaluatePolicy()))
         }
     }
     
@@ -73,12 +73,12 @@ final class LockViewReactor: Reactor, Stepper {
         var state = state
         
         switch mutation {
-        case .changeStates:
+        case let .changeStates(policy):
             state.lockIsOn = UserDefaults.standard.bool(forKey: "passcode")
             state.bioIsOn = UserDefaults.standard.bool(forKey: "bioPasscode")
+            state.bioIsEnabled = policy
         }
         
         return state
     }
 }
-
