@@ -32,7 +32,6 @@ final class RegisterViewController: BaseViewController, View {
         // Code
         static let codeHeight = 35.f
         static let codeWidth = 60.f
-        static let codeRadius = 8.f
         
         // next
         static let nextHeight = 40.f
@@ -76,12 +75,8 @@ final class RegisterViewController: BaseViewController, View {
         $0.textField.keyboardType = .numberPad
     }
     
-    let codeButton = UIButton(type: .system).then {
+    let codeButton = SendCodeButton().then {
         $0.setTitle("인증하기", for: .normal)
-        $0.theme.titleColor(from: themed { $0.thirdColor }, for: .normal)
-        $0.theme.backgroundColor = themed { $0.subColor }
-        $0.layer.cornerRadius = Metric.codeRadius
-        $0.titleLabel?.font = Font.codeFont
     }
     
     let nextButton = DiaryButton(type: .system).then {
@@ -138,7 +133,6 @@ final class RegisterViewController: BaseViewController, View {
         
         self.emailTextField.snp.makeConstraints {
             $0.left.equalToSafeArea(self.view).offset(Metric.textFieldSide)
-//            $0.right.equalToSafeArea(self.view).offset(-Metric.textFieldSide)
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
@@ -220,8 +214,12 @@ final class RegisterViewController: BaseViewController, View {
         .bind(to: nextButton.rx.isEnabled)
         .disposed(by: disposeBag)
         
-        reactor.state.map { $0.emailValidation }
+        emailValidation.map { $0 == .correct(.email) }
             .distinctUntilChanged()
+            .bind(to: self.codeButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        emailValidation
             .bind(to: self.emailTextField.rx.animated.fade(duration: 0.3).error)
             .disposed(by: disposeBag)
         
