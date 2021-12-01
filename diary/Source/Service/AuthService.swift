@@ -23,7 +23,7 @@ protocol AuthServiceType: AnyObject {
     func logout()
     func setPasscode(passcode: String)
     func setBioPasscode()
-    func getBioPasscode() -> String?
+    func getBioPasscode(handler: @escaping(String?) -> Void)
     func removePasscode()
     func removeBioPasscode()
 }
@@ -116,7 +116,9 @@ final class AuthService: AuthServiceType {
     func setBioPasscode() {
         DispatchQueue.global().async {
             do {
-                try self.keychain.accessibility(.whenUnlockedThisDeviceOnly, authenticationPolicy: [.biometryAny]).set(self.currentPasscode ?? "", key: "bioPasscode")
+                try self.keychain.accessibility(.whenUnlockedThisDeviceOnly, authenticationPolicy: .biometryAny)
+                    .authenticationPrompt("set Secure Item")
+                    .set(self.currentPasscode ?? "", key: "bioPasscode")
                 UserDefaults.standard.set(true, forKey: "bioPasscode")
             } catch {
                 UserDefaults.standard.set(false, forKey: "bioPasscode")
@@ -164,14 +166,16 @@ final class AuthService: AuthServiceType {
         return try? keychain.getString("passcode")
     }
     
-    func getBioPasscode() -> String? {
+    func getBioPasscode(handler: @escaping(String?) -> Void) {
         var passcode: String?
         
         DispatchQueue.global().async {
-            passcode = try? self.keychain.authenticationPrompt("Authenticate to login to server").get("bioPasscode")
+            let value = try? self.keychain.authenticationPrompt("Authenticate to login to server").get("bioPasscode")
+            DispatchQueue.main.async {
+                passcode = value
+                handler(passcode)
+            }
         }
-        
-        return passcode
     }
     
     fileprivate func removeToken() {
