@@ -28,6 +28,8 @@
 		62452457270DF23400DE083D /* AppearanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452456270DF23400DE083D /* AppearanceCell.swift */; };
 		62452459270DF2CA00DE083D /* AppearanceReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62452458270DF2CA00DE083D /* AppearanceReactor.swift */; };
 		6245245B270DF3B700DE083D /* Appreance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6245245A270DF3B700DE083D /* Appreance.swift */; };
+		624D11C0275706E400E818A4 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D11BE275706E400E818A4 /* LockViewController.swift */; };
+		624D11C1275706E400E818A4 /* LockViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D11BF275706E400E818A4 /* LockViewReactor.swift */; };
 		624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2926D6299B004A6624 /* LoginFlow.swift */; };
 		624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2B26D6350A004A6624 /* AppStepper.swift */; };
 		624E4D3326D63685004A6624 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D3226D63685004A6624 /* SplashViewController.swift */; };
@@ -66,8 +68,6 @@
 		6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */; };
 		6299DD1D273288FB004D976D /* DiaryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626AC5AF27318AFB00E907E8 /* DiaryAPI.swift */; };
 		629AE09D26DFA0DF003B8891 /* UIImageView+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */; };
-		629B0585273A1F2B00127870 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629B0584273A1F2B00127870 /* LockViewController.swift */; };
-		629B0588273A20CE00127870 /* LockViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629B0587273A20CE00127870 /* LockViewReactor.swift */; };
 		629ED5A626DD108600EA7A98 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */; };
 		62B2C69327296F66005A7AFF /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B2C69227296F66005A7AFF /* ServerResponse.swift */; };
 		62B3260D272CF9FE00DC3C96 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B3260C272CF9FE00DC3C96 /* Network.swift */; };
@@ -166,6 +166,8 @@
 		62452456270DF23400DE083D /* AppearanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceCell.swift; sourceTree = "<group>"; };
 		62452458270DF2CA00DE083D /* AppearanceReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceReactor.swift; sourceTree = "<group>"; };
 		6245245A270DF3B700DE083D /* Appreance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appreance.swift; sourceTree = "<group>"; };
+		624D11BE275706E400E818A4 /* LockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockViewController.swift; sourceTree = "<group>"; };
+		624D11BF275706E400E818A4 /* LockViewReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockViewReactor.swift; sourceTree = "<group>"; };
 		624E4D2926D6299B004A6624 /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
 		624E4D2B26D6350A004A6624 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		624E4D3226D63685004A6624 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -204,8 +206,6 @@
 		628FD7C02712038F00B2CC11 /* ThemeViewSection.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewSection.swift.swift; sourceTree = "<group>"; };
 		6291498B26DEF4FF003CDDE9 /* SnapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapKit.swift; sourceTree = "<group>"; };
 		629AE09C26DFA0DF003B8891 /* UIImageView+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+RxTheme.swift"; sourceTree = "<group>"; };
-		629B0584273A1F2B00127870 /* LockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewController.swift; sourceTree = "<group>"; };
-		629B0587273A20CE00127870 /* LockViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewReactor.swift; sourceTree = "<group>"; };
 		629ED5A326DCFF1700EA7A98 /* FSCalendar+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FSCalendar+RxTheme.swift"; sourceTree = "<group>"; };
 		629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		62B2C69227296F66005A7AFF /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
@@ -546,8 +546,8 @@
 		629B0586273A1F3900127870 /* Lock */ = {
 			isa = PBXGroup;
 			children = (
-				629B0584273A1F2B00127870 /* LockViewController.swift */,
-				629B0587273A20CE00127870 /* LockViewReactor.swift */,
+				624D11BE275706E400E818A4 /* LockViewController.swift */,
+				624D11BF275706E400E818A4 /* LockViewReactor.swift */,
 			);
 			path = Lock;
 			sourceTree = "<group>";
@@ -1117,7 +1117,6 @@
 				62452457270DF23400DE083D /* AppearanceCell.swift in Sources */,
 				62CB1D3726DA4D3500B1BA32 /* SideMenuViewReactor.swift in Sources */,
 				62C7A99A2716C60400691069 /* ThemeSectionHeaderView.swift in Sources */,
-				629B0585273A1F2B00127870 /* LockViewController.swift in Sources */,
 				62D388A626D9E9FA00A8D185 /* CheckValidation.swift in Sources */,
 				629AE09D26DFA0DF003B8891 /* UIImageView+RxTheme.swift in Sources */,
 				62C2E48B2739EEE000F037B9 /* SecureTextEntry.swift in Sources */,
@@ -1131,6 +1130,7 @@
 				628BFD9B26EB9D8B00851408 /* SurfaceAppearance+Rx.swift in Sources */,
 				62E7B2A02736130900CD7E5A /* NetworkResult.swift in Sources */,
 				62C2E46B2738B0AE00F037B9 /* PasswordViewReactor.swift in Sources */,
+				624D11C0275706E400E818A4 /* LockViewController.swift in Sources */,
 				620BCACB26E8819C0023499D /* String.swift in Sources */,
 				624E4D3526D66EB5004A6624 /* LoginViewReactor.swift in Sources */,
 				62D758D226E474DE009AE551 /* UITextView+RxTheme.swift in Sources */,
@@ -1142,7 +1142,6 @@
 				62B32614272D8AA900DC3C96 /* AuthService.swift in Sources */,
 				624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */,
 				624E4D3726D66EF1004A6624 /* SplashViewReactor.swift in Sources */,
-				629B0588273A20CE00127870 /* LockViewReactor.swift in Sources */,
 				62F192B3271FF23B0055C8DC /* Theme.swift in Sources */,
 				625F4C8726D4D2AB00DC5978 /* DiaryTextField.swift in Sources */,
 				620BCAC726E5F4610023499D /* Date.swift in Sources */,
@@ -1156,6 +1155,7 @@
 				621CF21627096DFA00B7EB5D /* SearchViewController.swift in Sources */,
 				6291498C26DEF4FF003CDDE9 /* SnapKit.swift in Sources */,
 				6245245B270DF3B700DE083D /* Appreance.swift in Sources */,
+				624D11C1275706E400E818A4 /* LockViewReactor.swift in Sources */,
 				62F192B8272005C80055C8DC /* ThemeReactor.swift in Sources */,
 				626AC5AE2731884D00E907E8 /* AuthPlugin.swift in Sources */,
 				62C2E4892739E88100F037B9 /* HapticFeedBack.swift in Sources */,
