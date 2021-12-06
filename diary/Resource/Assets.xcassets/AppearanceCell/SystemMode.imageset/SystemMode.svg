@@ -1,0 +1,16 @@
+<svg width="44" height="70" viewBox="0 0 44 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="44" height="70" rx="5" fill="#161D29"/>
+<path d="M0 5C0 2.23858 2.23858 0 5 0H39C41.7614 0 44 2.23858 44 5V35H0V5Z" fill="#F4F4F4"/>
+<circle cx="10" cy="57" r="4" fill="#DEE4EA"/>
+<rect x="17" y="55" width="11.4286" height="1.42857" rx="0.3" fill="#DEE4EA"/>
+<rect x="17" y="57.8572" width="20" height="2.38095" rx="0.5" fill="#DEE4EA"/>
+<circle cx="10" cy="45" r="4" fill="#DEE4EA"/>
+<rect x="17" y="43" width="11.4286" height="1.42857" rx="0.3" fill="#DEE4EA"/>
+<rect x="17" y="45.8572" width="20" height="2.38095" rx="0.5" fill="#DEE4EA"/>
+<circle cx="10" cy="25" r="4" fill="#DEE4EA"/>
+<rect x="17" y="23" width="11.4286" height="1.42857" rx="0.3" fill="#DEE4EA"/>
+<rect x="17" y="25.8572" width="20" height="2.38095" rx="0.5" fill="#DEE4EA"/>
+<circle cx="10" cy="13" r="4" fill="#DEE4EA"/>
+<rect x="17" y="11" width="11.4286" height="1.42857" rx="0.3" fill="#DEE4EA"/>
+<rect x="17" y="13.8572" width="20" height="2.38095" rx="0.5" fill="#DEE4EA"/>
+</svg>
