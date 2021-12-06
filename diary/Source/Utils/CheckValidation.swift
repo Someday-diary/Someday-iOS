@@ -37,6 +37,11 @@ extension String {
         guard !self.isEmpty else { return .empty }
         return self.count == 6 ? .correct(.code) : .error("인증번호는 6자리입니다.")
     }
+    
+    var validationTagString: String {
+        return self.components(separatedBy: ["#", " "]).joined()
+    }
+    
 }
 
 extension Array where Element == String {

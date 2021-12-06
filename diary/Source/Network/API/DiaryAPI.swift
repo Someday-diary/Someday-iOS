@@ -72,8 +72,12 @@ extension DiaryAPI: BaseAPI {
         case let .updateDiary(diary):
             var tags: [[String : String]] = []
             diary.tags.components(separatedBy: " ").forEach {
-                tags.append(["tag" : $0.trimmingCharacters(in: ["#"])])
+                let tag: String = $0.trimmingCharacters(in: ["#"])
+                if !tag.isEmpty {
+                    tags.append(["tag" : tag])
+                }
             }
+            
             return [
                 "tags" : tags,
                 "contents" : diary.data,
