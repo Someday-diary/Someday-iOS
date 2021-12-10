@@ -90,3 +90,20 @@
 "Incorrect Passcord, Enter new passcode" = "비밀번호가 맞지 않습니다. 새로운 비밀번호를 입력해주세요";
 
 // Network Error
+"Unkwon Error. Please Contect Us" = "알 수 없는 오류. 개발자에게 문의해주세요";
+"No Internet Connection" = "인터넷 연결 없음";
+"Type Casting Error. Please Contect Us" = "타입 변환 오류. 개발자에게 문의해주세요";
+"Request Error. Please Contect Us" = "요청 에러. 개발자에게 문의해주세요";
+"Token error. Please sign in again" = "토큰 에러. 다시 로그인해주세요";
+"Server Error. Please Contect Us" = "서버 에러. 개발자에게 문의해주세요";
+"Already Exist Account" = "이미 존재하는 계정입니다";
+"Please resend email verify code" = "다시 이메일 인증요청을 보내주세요";
+"Verify code is not match" = "인증코드가 맞지 않습니다";
+"Email verification not confirmed yet" = "이메일 인증이 완료되지 않았습니다";
+"This email is already in use" = "이미 사용중인 이메일입니다";
+"Matched user not exist" = "일치하는 유저가 없습니다";
+"Wrong password. Try again" = "비밀번호가 틀렸습니다. 다시 시도하세요";
+"Already signed out" = "이미 로그아웃되었습니다";
+"Time format Error. Please Contect Us" = "시간 형식 오류. 개발자에게 문의해주세요";
+"There is not matched diary" = "일치하는 일기가 없습니다";
+"This is not your diary" = "사용자의 일기가 아닙니다";

@@ -1042,7 +1042,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 55 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 72 localization keys.
     struct localizable {
       /// ko translation: # 검색 결과가 없습니다
       ///
@@ -1068,6 +1068,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ko
       static let enterSearchTag = Rswift.StringResource(key: "Enter Search Tag", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 다시 이메일 인증요청을 보내주세요
+      ///
+      /// Locales: ko
+      static let pleaseResendEmailVerifyCode = Rswift.StringResource(key: "Please resend email verify code", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
       /// ko translation: 다음
       ///
       /// Locales: ko
@@ -1124,6 +1128,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ko
       static let incorrectPasscordEnterNewPasscode = Rswift.StringResource(key: "Incorrect Passcord, Enter new passcode", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 비밀번호가 틀렸습니다. 다시 시도하세요
+      ///
+      /// Locales: ko
+      static let wrongPasswordTryAgain = Rswift.StringResource(key: "Wrong password. Try again", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
       /// ko translation: 비밀번호를 4자리 이상 입력해주세요
       ///
       /// Locales: ko
@@ -1140,6 +1148,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ko
       static let contectUs = Rswift.StringResource(key: "Contect Us", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 사용자의 일기가 아닙니다
+      ///
+      /// Locales: ko
+      static let thisIsNotYourDiary = Rswift.StringResource(key: "This is not your diary", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
       /// ko translation: 새로운 비밀번호를 입력해주세요
       ///
       /// Locales: ko
@@ -1148,6 +1160,14 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ko
       static let biometricIDTouchIDFaceID = Rswift.StringResource(key: "Biometric ID (Touch ID, Face ID)", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 서버 에러. 개발자에게 문의해주세요
+      ///
+      /// Locales: ko
+      static let serverErrorPleaseContectUs = Rswift.StringResource(key: "Server Error. Please Contect Us", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 시간 형식 오류. 개발자에게 문의해주세요
+      ///
+      /// Locales: ko
+      static let timeFormatErrorPleaseContectUs = Rswift.StringResource(key: "Time format Error. Please Contect Us", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
       /// ko translation: 시스템 설정 모드
       ///
       /// Locales: ko
@@ -1156,6 +1176,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ko
       static let donTHaveAnAccountHSignUpH = Rswift.StringResource(key: "Don't have an account? <h>Sign up</h>", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 알 수 없는 오류. 개발자에게 문의해주세요
+      ///
+      /// Locales: ko
+      static let unkwonErrorPleaseContectUs = Rswift.StringResource(key: "Unkwon Error. Please Contect Us", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
       /// ko translation: 오늘 하루를 기록하세요
       ///
       /// Locales: ko
@@ -1168,10 +1192,18 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ko
       static let openSourceLicense = Rswift.StringResource(key: "Open-source license", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 요청 에러. 개발자에게 문의해주세요
+      ///
+      /// Locales: ko
+      static let requestErrorPleaseContectUs = Rswift.StringResource(key: "Request Error. Please Contect Us", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
       /// ko translation: 이메일
       ///
       /// Locales: ko
       static let email = Rswift.StringResource(key: "Email", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 이메일 인증이 완료되지 않았습니다
+      ///
+      /// Locales: ko
+      static let emailVerificationNotConfirmedYet = Rswift.StringResource(key: "Email verification not confirmed yet", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
       /// ko translation: 이메일 형식에 맞지 않습니다
       ///
       /// Locales: ko
@@ -1180,6 +1212,18 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ko
       static let alreadyHaveAccountHSignInH = Rswift.StringResource(key: "Already have account? <h>Sign in</h>", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 이미 로그아웃되었습니다
+      ///
+      /// Locales: ko
+      static let alreadySignedOut = Rswift.StringResource(key: "Already signed out", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 이미 사용중인 이메일입니다
+      ///
+      /// Locales: ko
+      static let thisEmailIsAlreadyInUse = Rswift.StringResource(key: "This email is already in use", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 이미 존재하는 계정입니다
+      ///
+      /// Locales: ko
+      static let alreadyExistAccount = Rswift.StringResource(key: "Already Exist Account", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
       /// ko translation: 인증번호
       ///
       /// Locales: ko
@@ -1188,10 +1232,18 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ko
       static let validationCodeIs6Digits = Rswift.StringResource(key: "Validation code is 6 digits", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 인증코드가 맞지 않습니다
+      ///
+      /// Locales: ko
+      static let verifyCodeIsNotMatch = Rswift.StringResource(key: "Verify code is not match", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
       /// ko translation: 인증하기
       ///
       /// Locales: ko
       static let verify = Rswift.StringResource(key: "Verify", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 인터넷 연결 없음
+      ///
+      /// Locales: ko
+      static let noInternetConnection = Rswift.StringResource(key: "No Internet Connection", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
       /// ko translation: 일기 관리
       ///
       /// Locales: ko
@@ -1216,6 +1268,14 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ko
       static let themeIsMissingPartOfDiary = Rswift.StringResource(key: "Theme is missing part of Diary!", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 일치하는 유저가 없습니다
+      ///
+      /// Locales: ko
+      static let matchedUserNotExist = Rswift.StringResource(key: "Matched user not exist", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 일치하는 일기가 없습니다
+      ///
+      /// Locales: ko
+      static let thereIsNotMatchedDiary = Rswift.StringResource(key: "There is not matched diary", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
       /// ko translation: 입력한 비밀번호가 다릅니다.
       ///
       /// Locales: ko
@@ -1240,6 +1300,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ko
       static let verificationCodeSentSuccessfully = Rswift.StringResource(key: "Verification Code sent Successfully", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 타입 변환 오류. 개발자에게 문의해주세요
+      ///
+      /// Locales: ko
+      static let typeCastingErrorPleaseContectUs = Rswift.StringResource(key: "Type Casting Error. Please Contect Us", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
       /// ko translation: 태그 추가
       ///
       /// Locales: ko
@@ -1252,6 +1316,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ko
       static let themeSetting = Rswift.StringResource(key: "Theme Setting", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 토큰 에러. 다시 로그인해주세요
+      ///
+      /// Locales: ko
+      static let tokenErrorPleaseSignInAgain = Rswift.StringResource(key: "Token error. Please sign in again", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
       /// ko translation: 패스워드 확인
       ///
       /// Locales: ko
@@ -1353,6 +1421,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Enter Search Tag", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 다시 이메일 인증요청을 보내주세요
+      ///
+      /// Locales: ko
+      static func pleaseResendEmailVerifyCode(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Please resend email verify code", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Please resend email verify code"
+        }
+
+        return NSLocalizedString("Please resend email verify code", bundle: bundle, comment: "")
       }
 
       /// ko translation: 다음
@@ -1565,6 +1648,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Incorrect Passcord, Enter new passcode", bundle: bundle, comment: "")
       }
 
+      /// ko translation: 비밀번호가 틀렸습니다. 다시 시도하세요
+      ///
+      /// Locales: ko
+      static func wrongPasswordTryAgain(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Wrong password. Try again", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Wrong password. Try again"
+        }
+
+        return NSLocalizedString("Wrong password. Try again", bundle: bundle, comment: "")
+      }
+
       /// ko translation: 비밀번호를 4자리 이상 입력해주세요
       ///
       /// Locales: ko
@@ -1625,6 +1723,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Contect Us", bundle: bundle, comment: "")
       }
 
+      /// ko translation: 사용자의 일기가 아닙니다
+      ///
+      /// Locales: ko
+      static func thisIsNotYourDiary(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("This is not your diary", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "This is not your diary"
+        }
+
+        return NSLocalizedString("This is not your diary", bundle: bundle, comment: "")
+      }
+
       /// ko translation: 새로운 비밀번호를 입력해주세요
       ///
       /// Locales: ko
@@ -1655,6 +1768,36 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Biometric ID (Touch ID, Face ID)", bundle: bundle, comment: "")
       }
 
+      /// ko translation: 서버 에러. 개발자에게 문의해주세요
+      ///
+      /// Locales: ko
+      static func serverErrorPleaseContectUs(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Server Error. Please Contect Us", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Server Error. Please Contect Us"
+        }
+
+        return NSLocalizedString("Server Error. Please Contect Us", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 시간 형식 오류. 개발자에게 문의해주세요
+      ///
+      /// Locales: ko
+      static func timeFormatErrorPleaseContectUs(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Time format Error. Please Contect Us", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Time format Error. Please Contect Us"
+        }
+
+        return NSLocalizedString("Time format Error. Please Contect Us", bundle: bundle, comment: "")
+      }
+
       /// ko translation: 시스템 설정 모드
       ///
       /// Locales: ko
@@ -1683,6 +1826,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Don't have an account? <h>Sign up</h>", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 알 수 없는 오류. 개발자에게 문의해주세요
+      ///
+      /// Locales: ko
+      static func unkwonErrorPleaseContectUs(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Unkwon Error. Please Contect Us", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Unkwon Error. Please Contect Us"
+        }
+
+        return NSLocalizedString("Unkwon Error. Please Contect Us", bundle: bundle, comment: "")
       }
 
       /// ko translation: 오늘 하루를 기록하세요
@@ -1730,6 +1888,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Open-source license", bundle: bundle, comment: "")
       }
 
+      /// ko translation: 요청 에러. 개발자에게 문의해주세요
+      ///
+      /// Locales: ko
+      static func requestErrorPleaseContectUs(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Request Error. Please Contect Us", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Request Error. Please Contect Us"
+        }
+
+        return NSLocalizedString("Request Error. Please Contect Us", bundle: bundle, comment: "")
+      }
+
       /// ko translation: 이메일
       ///
       /// Locales: ko
@@ -1743,6 +1916,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Email", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 이메일 인증이 완료되지 않았습니다
+      ///
+      /// Locales: ko
+      static func emailVerificationNotConfirmedYet(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Email verification not confirmed yet", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Email verification not confirmed yet"
+        }
+
+        return NSLocalizedString("Email verification not confirmed yet", bundle: bundle, comment: "")
       }
 
       /// ko translation: 이메일 형식에 맞지 않습니다
@@ -1775,6 +1963,51 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Already have account? <h>Sign in</h>", bundle: bundle, comment: "")
       }
 
+      /// ko translation: 이미 로그아웃되었습니다
+      ///
+      /// Locales: ko
+      static func alreadySignedOut(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Already signed out", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Already signed out"
+        }
+
+        return NSLocalizedString("Already signed out", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 이미 사용중인 이메일입니다
+      ///
+      /// Locales: ko
+      static func thisEmailIsAlreadyInUse(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("This email is already in use", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "This email is already in use"
+        }
+
+        return NSLocalizedString("This email is already in use", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 이미 존재하는 계정입니다
+      ///
+      /// Locales: ko
+      static func alreadyExistAccount(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Already Exist Account", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Already Exist Account"
+        }
+
+        return NSLocalizedString("Already Exist Account", bundle: bundle, comment: "")
+      }
+
       /// ko translation: 인증번호
       ///
       /// Locales: ko
@@ -1805,6 +2038,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Validation code is 6 digits", bundle: bundle, comment: "")
       }
 
+      /// ko translation: 인증코드가 맞지 않습니다
+      ///
+      /// Locales: ko
+      static func verifyCodeIsNotMatch(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Verify code is not match", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Verify code is not match"
+        }
+
+        return NSLocalizedString("Verify code is not match", bundle: bundle, comment: "")
+      }
+
       /// ko translation: 인증하기
       ///
       /// Locales: ko
@@ -1818,6 +2066,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Verify", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 인터넷 연결 없음
+      ///
+      /// Locales: ko
+      static func noInternetConnection(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("No Internet Connection", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "No Internet Connection"
+        }
+
+        return NSLocalizedString("No Internet Connection", bundle: bundle, comment: "")
       }
 
       /// ko translation: 일기 관리
@@ -1910,6 +2173,36 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Theme is missing part of Diary!", bundle: bundle, comment: "")
       }
 
+      /// ko translation: 일치하는 유저가 없습니다
+      ///
+      /// Locales: ko
+      static func matchedUserNotExist(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Matched user not exist", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Matched user not exist"
+        }
+
+        return NSLocalizedString("Matched user not exist", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 일치하는 일기가 없습니다
+      ///
+      /// Locales: ko
+      static func thereIsNotMatchedDiary(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("There is not matched diary", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "There is not matched diary"
+        }
+
+        return NSLocalizedString("There is not matched diary", bundle: bundle, comment: "")
+      }
+
       /// ko translation: 입력한 비밀번호가 다릅니다.
       ///
       /// Locales: ko
@@ -2000,6 +2293,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Verification Code sent Successfully", bundle: bundle, comment: "")
       }
 
+      /// ko translation: 타입 변환 오류. 개발자에게 문의해주세요
+      ///
+      /// Locales: ko
+      static func typeCastingErrorPleaseContectUs(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Type Casting Error. Please Contect Us", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Type Casting Error. Please Contect Us"
+        }
+
+        return NSLocalizedString("Type Casting Error. Please Contect Us", bundle: bundle, comment: "")
+      }
+
       /// ko translation: 태그 추가
       ///
       /// Locales: ko
@@ -2043,6 +2351,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Theme Setting", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 토큰 에러. 다시 로그인해주세요
+      ///
+      /// Locales: ko
+      static func tokenErrorPleaseSignInAgain(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Token error. Please sign in again", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Token error. Please sign in again"
+        }
+
+        return NSLocalizedString("Token error. Please sign in again", bundle: bundle, comment: "")
       }
 
       /// ko translation: 패스워드 확인

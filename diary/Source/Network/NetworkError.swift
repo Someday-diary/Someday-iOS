@@ -48,67 +48,71 @@ enum NetworkError: Int, Error {
         case .unknown:
             return NetworkErrorMsg.unknownMsg.rawValue
         case .noConnection:
-            return NetworkErrorMsg.noConnectionMsg.rawValue
+            return NetworkErrorMsg.noConnectionMsg.localizedMsg
         case .typeError:
-            return NetworkErrorMsg.typeErrorMsg.rawValue
+            return NetworkErrorMsg.typeErrorMsg.localizedMsg
         case .requestError:
-            return NetworkErrorMsg.requestErrorMsg.rawValue
+            return NetworkErrorMsg.requestErrorMsg.localizedMsg
         case .unauthorized:
-            return NetworkErrorMsg.unauthorizedMsg.rawValue
+            return NetworkErrorMsg.unauthorizedMsg.localizedMsg
         case .serverError:
-            return NetworkErrorMsg.serverErrorMsg.rawValue
+            return NetworkErrorMsg.serverErrorMsg.localizedMsg
         case .signInExist:
-            return NetworkErrorMsg.SignInExistMsg.rawValue
+            return NetworkErrorMsg.SignInExistMsg.localizedMsg
         case .noEmailCode:
-            return NetworkErrorMsg.noEmailCodeMsg.rawValue
+            return NetworkErrorMsg.noEmailCodeMsg.localizedMsg
         case .canNotVerify:
-            return NetworkErrorMsg.canNotVerifyMsg.rawValue
+            return NetworkErrorMsg.canNotVerifyMsg.localizedMsg
         case .noRegisterEmail:
-            return NetworkErrorMsg.noRegisterEmailMsg.rawValue
+            return NetworkErrorMsg.noRegisterEmailMsg.localizedMsg
         case .accountExist:
-            return NetworkErrorMsg.accountExistMsg.rawValue
+            return NetworkErrorMsg.accountExistMsg.localizedMsg
         case .noUesr:
-            return NetworkErrorMsg.noUserMsg.rawValue
+            return NetworkErrorMsg.noUserMsg.localizedMsg
         case .noLoginEmail:
-            return NetworkErrorMsg.noLoginEmailMsg.rawValue
+            return NetworkErrorMsg.noLoginEmailMsg.localizedMsg
         case .passwordNotCorrect:
-            return NetworkErrorMsg.passwordNotCorrectMsg.rawValue
+            return NetworkErrorMsg.passwordNotCorrectMsg.localizedMsg
         case .alreadyLogout:
-            return NetworkErrorMsg.alreadyLogoutMsg.rawValue
+            return NetworkErrorMsg.alreadyLogoutMsg.localizedMsg
         case .timeNotCorrect:
-            return NetworkErrorMsg.timeNotCorrectMsg.rawValue
+            return NetworkErrorMsg.timeNotCorrectMsg.localizedMsg
         case .noDiary:
-            return NetworkErrorMsg.noDiaryMsg.rawValue
+            return NetworkErrorMsg.noDiaryMsg.localizedMsg
         case .notMyDiary:
-            return NetworkErrorMsg.notMyDiaryMsg.rawValue
+            return NetworkErrorMsg.notMyDiaryMsg.localizedMsg
         }
     }
+    
 }
 
 enum NetworkErrorMsg: String {
-    case unknownMsg = "서버와의 통신중 에러가 발생했습니다."
-    case noConnectionMsg = "인터넷 연결 실패"
-    case typeErrorMsg = "값 변환 오류. 개발자에게 문의해주세요"
-    case requestErrorMsg = "리퀘스트 형식이 맞지 않습니다"
-    case unauthorizedMsg = "토큰 에러, 다시 로그인 해주세요."
-    case serverErrorMsg = "서버 에러"
+    case unknownMsg = "Unkwon Error. Please Contect Us"
+    case noConnectionMsg = "No Internet Connection"
+    case typeErrorMsg = "Type Casting Error. Please Contect Us"
+    case requestErrorMsg = "Request Error. Please Contect Us"
+    case unauthorizedMsg = "Token Error. Please sign in again"
+    case serverErrorMsg = "Server Error. Please Contect Us"
     
-    case SignInExistMsg = "이미 가입되어있는 유저입니다."
+    case SignInExistMsg = "Already Exist Account"
     
-    case noEmailCodeMsg = "다시 이메일 인증요청을 보내주세요"
-    case canNotVerifyMsg = "코드가 맞지 않습니다."
+    case noEmailCodeMsg = "Please resend email verify code"
+    case canNotVerifyMsg = "Verify code is not match"
     
-    case noRegisterEmailMsg = "이메일 인증이 완료되지 않았습니다."
-    case accountExistMsg = "사용중인 이메일입니다."
+    case noRegisterEmailMsg, noLoginEmailMsg = "Email verification not confirmed yet"
+    case accountExistMsg = "This email is already in use"
     
-    case noUserMsg = "일치하는 유저가 없습니다."
-    case noLoginEmailMsg = "로그인 이메일 인증이 완료되지 않았습니다."
-    case passwordNotCorrectMsg = "비밀번호를 다시 확인해주세요."
+    case noUserMsg = "Matched user not exist"
+    case passwordNotCorrectMsg = "Wrong password. Try again"
     
-    case alreadyLogoutMsg = "이미 로그아웃 상태입니다."
+    case alreadyLogoutMsg = "Already signed out"
     
-    case timeNotCorrectMsg = "시간형식이 맞지 않습니다."
+    case timeNotCorrectMsg = "Time format Error. Please Contect Us"
     
-    case noDiaryMsg = "일치하는 일기가 없습니다."
-    case notMyDiaryMsg = "본인의 일기가 아닙니다."
+    case noDiaryMsg = "There is not matched Diary"
+    case notMyDiaryMsg = "This is not your diary"
+    
+    var localizedMsg: String {
+        return self.rawValue.localized
+    }
 }
