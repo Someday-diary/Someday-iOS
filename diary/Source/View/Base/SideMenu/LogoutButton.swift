@@ -35,7 +35,7 @@ class LogoutButton: UIButton {
     }
     
     let label = UILabel().then {
-        $0.text = "로그아웃"
+        $0.text = "Sign out".localized
         $0.textAlignment = .center
         $0.font = Font.labelFont
         $0.adjustsFontSizeToFitWidth = true

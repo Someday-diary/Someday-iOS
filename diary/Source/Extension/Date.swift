@@ -11,14 +11,14 @@ extension Date {
     
     var titleString: String {
         let dateFormatter = DateFormatter().then {
-            $0.dateFormat = "yyyy년"
+            $0.dateFormat = "yyyy".localized
         }
         return dateFormatter.string(from: self)
     }
     
     var toString: String {
         let dateFormatter = DateFormatter().then {
-            $0.dateFormat = "yyyy년 MM월 dd일"
+            $0.dateFormat = "MMM dd yyyy".localized
         }
         return dateFormatter.string(from: self)
     }
@@ -72,7 +72,7 @@ extension Date {
     
     var searchString: String {
         let dateFormatter = DateFormatter().then {
-            $0.dateFormat = "yyyy년 MM월"
+            $0.dateFormat = "MMM yyyy".localized
         }
         return dateFormatter.string(from: self)
     }

@@ -48,7 +48,7 @@ final class ThemeViewController: BaseViewController, View {
         super.init()
         
         defer { self.reactor = reactor }
-        self.title = "테마 설정"
+        self.title = "Theme Setting".localized
     }
     
     required init?(coder: NSCoder) {

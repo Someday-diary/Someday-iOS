@@ -32,7 +32,7 @@ class LockViewController: BaseViewController, View {
     }
     
     let lockLabel = UILabel().then {
-        $0.text = "잠금 설정"
+        $0.text = "Lock Setting".localized
         $0.font = Font.cellFont
     }
     
@@ -41,7 +41,7 @@ class LockViewController: BaseViewController, View {
     }
     
     let lockWithBioLabel = UILabel().then {
-        $0.text = "생체 인증 사용"
+        $0.text = "Biometric ID (Touch ID, Face ID)".localized
         $0.font = Font.cellFont
     }
     
@@ -59,7 +59,7 @@ class LockViewController: BaseViewController, View {
     }
     
     let changePasscodeLabel = UILabel().then {
-        $0.text = "비밀번호 변경"
+        $0.text = "Change Passcode".localized
         $0.font = Font.cellFont
     }
     
@@ -74,7 +74,7 @@ class LockViewController: BaseViewController, View {
             self.reactor = reactor
         }
         
-        self.title = "잠금 설정"
+        self.title = "Lock Setting".localized
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     

@@ -34,7 +34,7 @@ final class PasscodeViewReactor: Reactor, Stepper {
     
     struct State {
         var type: PasscodeType
-        var message: String = "비밀번호를 입력하세요."
+        var message: String = "Enter passcode".localized
         var passcode: String = ""
         var newPasscode: String = ""
     }
@@ -53,7 +53,7 @@ final class PasscodeViewReactor: Reactor, Stepper {
             switch self.currentState.type {
             case .create:
                 if self.currentState.passcode.isEmpty {
-                    return .just(Mutation.reEnterPasscode("비밀번호를 재입력하세요.", passcode))
+                    return .just(Mutation.reEnterPasscode("Re-enter passcode".localized, passcode))
                 } else if self.currentState.passcode == passcode {
                     authService.setPasscode(passcode: passcode)
                     HapticFeedback.notificationFeedback(type: .success)
@@ -66,10 +66,10 @@ final class PasscodeViewReactor: Reactor, Stepper {
                 if self.currentState.passcode.isEmpty && self.authService.currentPasscode == passcode {
                     HapticFeedback.notificationFeedback(type: .success)
                     self.authService.removePasscode()
-                    return .just(Mutation.reEnterPasscode("새로운 비밀번호를 입력해주세요.", ""))
+                    return .just(Mutation.reEnterPasscode("Enter new passcode".localized, ""))
                 } else {
                     HapticFeedback.notificationFeedback(type: .error)
-                    return .just(Mutation.reEnterPasscode("다시 입력해주세요.", ""))
+                    return .just(Mutation.reEnterPasscode("Incorrect passcord, Re-enter passcode".localized, ""))
                 }
                 
             case .use:
@@ -78,7 +78,7 @@ final class PasscodeViewReactor: Reactor, Stepper {
                     self.steps.accept(DiaryStep.mainIsRequired)
                 } else {
                     HapticFeedback.notificationFeedback(type: .error)
-                    return .just(Mutation.reEnterPasscode("다시 입력해주세요.", ""))
+                    return .just(Mutation.reEnterPasscode("Incorrect passcord, Re-enter passcode".localized, ""))
                 }
                 
             }
@@ -105,7 +105,7 @@ final class PasscodeViewReactor: Reactor, Stepper {
         
         switch mutation {
         case let .reEnterPasscode(message, passcode):
-            if message == "새로운 비밀번호를 입력해주세요." {
+            if message == "Enter new passcode".localized {
                 state.type = .create
             }
             state.message = message
@@ -113,7 +113,7 @@ final class PasscodeViewReactor: Reactor, Stepper {
             
         case .removePasscode:
             HapticFeedback.impactFeedback()
-            state.message = "비밀번호를 다시 입력해주세요."
+            state.message = "Incorrect Passcord, Enter new passcode".localized
             state.passcode = ""
         }
         

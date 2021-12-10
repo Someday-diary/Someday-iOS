@@ -41,7 +41,7 @@ final class SearchViewController: BaseViewController, ReactorKit.View {
     
     // MARK: - UI
     let searchBar = DiarySearchBar().then {
-        $0.searchTextField.attributedPlaceholder = "검색어를 입력하세요.".styleAll(Font.searchBarPlaceholder).attributedString
+        $0.searchTextField.attributedPlaceholder = "Enter Search Tag".localized.styleAll(Font.searchBarPlaceholder).attributedString
     }
     
     let tableView = UITableView().then {
@@ -53,7 +53,7 @@ final class SearchViewController: BaseViewController, ReactorKit.View {
     }
     
     let noDiaryLabel = UILabel().then {
-        $0.text = "# 검색 결과가 없습니다."
+        $0.text = "# There's no search result.".localized
         $0.font = Font.noDiaryFont
     }
     
