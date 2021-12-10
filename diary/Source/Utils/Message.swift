@@ -23,6 +23,7 @@ class Message {
     static func successView(_ title: String) -> MessageView {
         let view = MessageView.viewFromNib(layout: .cardView)
         view.configureTheme(.success)
+        view.titleLabel?.adjustsFontSizeToFitWidth = true
         view.configureContent(title: title, body: "")
         view.button?.isHidden = true
         
@@ -32,6 +33,7 @@ class Message {
     static func faildView(_ title: String) -> MessageView {
         let view = MessageView.viewFromNib(layout: .cardView)
         view.configureTheme(.error)
+        view.titleLabel?.adjustsFontSizeToFitWidth = true
         view.configureContent(title: title, body: "")
         view.button?.isHidden = true
         
