@@ -1,0 +1,92 @@
+/* 
+  Localizable.strings
+  diary
+
+  Created by 김부성 on 2021/12/09.
+  
+*/
+
+// APP Name
+"Someday" = "오늘하루";
+
+// General
+"Cancel" = "취소";
+"Save" = "확인";
+"Email" = "이메일";
+"Sign in" = "로그인";
+"Sign up" = "회원가입";
+"Password" = "비밀번호";
+"Next" = "다음";
+"Save" = "저장";
+
+// Date
+"yyyy" = "yyyy년";
+"MMM dd yyyy" = "yyyy년 MM월 dd일";
+"MMM yyyy" = "yyyy년 MM월";
+
+// Login View
+"Password" = "비밀번호";
+"Don't have an account? <h>Sign up</h>" = "아직 회원이 아니신가요? <h>회원가입하기</h>";
+
+// Register View, Password View
+"Verification Code" = "인증번호";
+"Verify" = "인증하기";
+"Verification Code sent Successfully" = "코드가 성공적으로 전송됨";
+"Already have account? <h>Sign in</h>" = "이미 계정이 있으신가요? <h>로그인하기</h>";
+"Confirm password" = "패스워드 확인";
+"Sign up Success!" = "회원가입 성공!";
+
+// Floating View
+"Add Tags" = "태그 추가";
+"Diary dosen't exist!\nHow about write diary?" = "일기가 존재하지 않습니다!\n일기를 채워보시는건 어떨까요?";
+"Write Diary" = "일기 작성";
+"Manage Diary" = "일기 관리";
+"Edit Diary" = "일기 수정";
+"Delete Diary" = "일기 삭제";
+
+// Search View
+"Enter Search Tag" = "검색어를 입력하세요";
+"# There's no search result." = "# 검색 결과가 없습니다";
+
+// Write View
+"Write down your today" = "오늘 하루를 기록하세요";
+"Theme is missing part of Diary!" = "일기에 빈칸이 존재하는 것 같아요!";
+"# Write Tags" = "# 태그 작성";
+
+// SideMenu
+"Theme Setting" = "테마 설정";
+"Lock Setting" = "잠금 설정";
+"Open-source license" = "오픈소스 라이선스";
+"Contect Us" = "사용자 피드백";
+"Sign out" = "로그아웃";
+
+// Theme Setting
+"Light / Dark" = "라이트 / 다크";
+"Set Theme Color" = "테마 색상 설정";
+"System Setting" = "시스템 설정 모드";
+"Light Mode" = "라이트 모드";
+"Dark Mode" = "다크 모드";
+"Mint chocolate" = "민트초코";
+"Blue Lemonade" = "블루레몬에이드";
+"Blueberry Ade" = "블루베리에이드";
+"Lemonade" = "레몬에이드";
+"Grapefruit Ade" = "자몽에이드";
+
+// Lock Setting
+"Biometric ID (Touch ID, Face ID)" = "생체인증 (Touch ID, Face ID)";
+"Change Passcode" = "비밀번호 변경";
+
+// Validation
+"It is not email format" = "이메일 형식에 맞지 않습니다";
+"Enter password at least 4" = "비밀번호를 4자리 이상 입력해주세요";
+"Validation code is 6 digits" = "인증번호는 6자리입니다.";
+"Incorrect Password" = "입력한 비밀번호가 다릅니다.";
+
+// Passcode
+"Enter passcode" = "비밀번호를 입력하세요";
+"Re-enter passcode" = "비밀번호를 재입력하세요";
+"Enter new passcode" = "새로운 비밀번호를 입력해주세요";
+"Incorrect passcord, Re-enter passcode" = "비밀번호가 맞지 않습니다. 다시 입력해주세요";
+"Incorrect Passcord, Enter new passcode" = "비밀번호가 맞지 않습니다. 새로운 비밀번호를 입력해주세요";
+
+// Network Error
