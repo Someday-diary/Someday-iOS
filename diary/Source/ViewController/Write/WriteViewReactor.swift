@@ -24,6 +24,7 @@ final class WriteViewReactor: Reactor, Stepper {
     
     enum Mutation {
         case setLoading(Bool)
+        case removeTags
     }
     
     struct State {
@@ -63,7 +64,14 @@ final class WriteViewReactor: Reactor, Stepper {
             if data.isEmpty || tags.isEmpty {
                 SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView("일기에 빈칸이 존재하는 것 같아요!"))
                 return Observable.empty()
-            } else {
+            }
+            
+            else if tags.validationTagString.isEmpty {
+                SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView("일기에 빈칸이 존재하는 것 같아요!"))
+                return Observable.just(Mutation.removeTags)
+            }
+            
+            else {
                 if self.currentState.isEdit {
                     return Observable.concat([
                         Observable.just(Mutation.setLoading(true)),
@@ -72,7 +80,6 @@ final class WriteViewReactor: Reactor, Stepper {
                             .map { result in
                                 switch result {
                                 case .success:
-                                    print("일기 저장 성공")
                                     self.steps.accept(DiaryStep.popViewController)
                                     
                                 case let .error(error):
@@ -114,6 +121,9 @@ final class WriteViewReactor: Reactor, Stepper {
         switch mutation {
         case let .setLoading(isLoading):
             state.isLoading = isLoading
+            
+        case .removeTags:
+            state.tags = ""
         }
         
         return state

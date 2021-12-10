@@ -37,6 +37,11 @@ class SplashViewReactor: Reactor, Stepper {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .setNextView:
+            
+            if UserDefaults.isFirstLaunch() {
+                self.authService.logout()
+            }
+            
             if self.authService.currentToken == nil {
                 self.steps.accept(DiaryStep.loginIsRequired)
                 return Observable.empty()

@@ -84,7 +84,6 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
         super.viewDidLoad()
         
         self.view.layoutIfNeeded()
-        print(self.getDocumentsDirectory())
     }
     
     override func setupLayout() {
@@ -173,9 +172,4 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
             .disposed(by: disposeBag)
     }
     
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let documentsDirectory = paths[0]
-        return documentsDirectory
-    }
 }

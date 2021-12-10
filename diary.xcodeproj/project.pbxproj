@@ -80,6 +80,7 @@
 		62BA402B2690B0FC009B77F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62BA402A2690B0FC009B77F3 /* Assets.xcassets */; };
 		62BA40392690B0FD009B77F3 /* diaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40382690B0FD009B77F3 /* diaryTests.swift */; };
 		62BA40442690B0FD009B77F3 /* diaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA40432690B0FD009B77F3 /* diaryUITests.swift */; };
+		62BE22A0275EE80300045461 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BE229F275EE80300045461 /* UserDefaults.swift */; };
 		62C1564B270BDD0E00938DB7 /* UITextField+RxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C1564A270BDD0E00938DB7 /* UITextField+RxTheme.swift */; };
 		62C2E4472736CD8E00F037B9 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4462736CD8E00F037B9 /* SearchCell.swift */; };
 		62C2E4492736CDD500F037B9 /* SearchReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E4482736CDD500F037B9 /* SearchReactor.swift */; };
@@ -227,6 +228,7 @@
 		62BA403F2690B0FD009B77F3 /* diaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = diaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62BA40432690B0FD009B77F3 /* diaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diaryUITests.swift; sourceTree = "<group>"; };
 		62BA40452690B0FD009B77F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62BE229F275EE80300045461 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		62C1564A270BDD0E00938DB7 /* UITextField+RxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+RxTheme.swift"; sourceTree = "<group>"; };
 		62C2E4462736CD8E00F037B9 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		62C2E4482736CDD500F037B9 /* SearchReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReactor.swift; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				621CF20E27083BC400B7EB5D /* CGFloat.swift */,
 				6221F28B2733D7FB009A9164 /* Post.swift */,
 				62E7B299273505D700CD7E5A /* Int.swift */,
+				62BE229F275EE80300045461 /* UserDefaults.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1137,6 +1140,7 @@
 				628BFD9B26EB9D8B00851408 /* SurfaceAppearance+Rx.swift in Sources */,
 				62E7B2A02736130900CD7E5A /* NetworkResult.swift in Sources */,
 				62C2E46B2738B0AE00F037B9 /* PasswordViewReactor.swift in Sources */,
+				62BE22A0275EE80300045461 /* UserDefaults.swift in Sources */,
 				624D11C0275706E400E818A4 /* LockViewController.swift in Sources */,
 				620BCACB26E8819C0023499D /* String.swift in Sources */,
 				624E4D3526D66EB5004A6624 /* LoginViewReactor.swift in Sources */,
@@ -1395,6 +1399,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.diary.someday.hashtag.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1417,6 +1422,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.diary.someday.hashtag.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
