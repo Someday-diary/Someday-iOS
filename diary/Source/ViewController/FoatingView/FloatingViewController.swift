@@ -78,7 +78,8 @@ final class FloatingViewController: BaseViewController, View {
     }
     
     let createButton = UIButton().then {
-        $0.setTitle("일기 작성", for: .normal)
+        $0.setTitle("Write Diary".localized, for: .normal)
+        $0.titleLabel?.adjustsFontSizeToFitWidth = true
         $0.setTitleColor(R.color.floatingViewAsset(), for: .normal)
         $0.titleLabel?.font = Font.buttonFont
     }
@@ -236,11 +237,13 @@ final class FloatingViewController: BaseViewController, View {
     }
     
     fileprivate func editAlert() -> Observable<OutputAction> {
-        return rx.alert(title: "일기 관리",
-                      actions: [AlertAction(title: "일기 수정", type: 0, style: .default),
-                                AlertAction(title: "일기 삭제", type: 1, style: .destructive),
-                                AlertAction(title: "취소", type: 2, style: .cancel)]
-                        , preferredStyle: .actionSheet, tintColor: R.color.navigationButtonColor())
+        return rx.alert(title: "Manage Diary".localized,
+                        actions: [AlertAction(title: "Edit Diary".localized, type: 0, style: .default),
+                                  AlertAction(title: "Delete Diary".localized, type: 1, style: .destructive),
+                                  AlertAction(title: "Cancel".localized, type: 2, style: .cancel)],
+                        preferredStyle: .actionSheet,
+                        tintColor: R.color.navigationButtonColor()
+        )
     }
     
 }

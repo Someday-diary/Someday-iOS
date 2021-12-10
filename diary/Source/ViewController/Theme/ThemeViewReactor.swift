@@ -29,14 +29,31 @@ final class ThemeViewReactor: Reactor, Stepper {
     
     struct State {
         // Header
-        let sectionHeaderTitles: [String] = ["라이트 / 다크", "테마 색상 설정"]
+        let sectionHeaderTitles: [String] = [
+            "Light / Dark".localized,
+            "Set Theme Color".localized
+        ]
         
         // Appearance
-        let appearanceTitles: [String] = ["시스템 설정 모드", "라이트 모드", "다크 모드"]
-        let appearanceImages: [UIImage] = [R.image.systemMode()!, R.image.lightMode()!, R.image.darkMode()!]
+        let appearanceTitles: [String] = [
+            "System Setting".localized,
+            "Light Mode".localized,
+            "Dark Mode".localized
+        ]
+        let appearanceImages: [UIImage] = [
+            R.image.systemMode()!,
+            R.image.lightMode()!,
+            R.image.darkMode()!
+        ]
         
         // Theme
-        let themeTitles: [String] = ["민트초코", "블루레몬에이드", "블루베리에이드", "레몬에이드", "자몽에이드"]
+        let themeTitles: [String] = [
+            "Mint chocolate".localized,
+            "Blue Lemonade".localized,
+            "Blueberry Ade".localized,
+            "Lemonade".localized,
+            "Grapefruit Ade".localized
+        ]
         let themeColorList: [[UIColor]] = [
             [R.color.greenThemeMainColor()!, R.color.greenThemeSubColor()!,R.color.greenThemeThirdColor()!],
             [R.color.blueThemeMainColor()!, R.color.blueThemeSubColor()!, R.color.blueThemeThirdColor()!],

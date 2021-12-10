@@ -33,7 +33,7 @@ final class SideMenuViewController: BaseViewController, View {
     
     // MARK: - UI
     let titleLabel = UILabel().then {
-        $0.text = "오늘 하루"
+        $0.text = "Someday".localized
         $0.font = Font.titleFont
     }
     

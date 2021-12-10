@@ -59,18 +59,18 @@ class LoginViewController: BaseViewController, View {
     }
     
     let idTextField = DiaryTextField().then {
-        $0.textField.attributedPlaceholder = "이메일".styleAll(Font.textFieldAll).attributedString
+        $0.textField.attributedPlaceholder = "Email".localized.styleAll(Font.textFieldAll).attributedString
         $0.textField.keyboardType = .emailAddress
     }
     
     let passwordTextField = DiaryTextField().then {
-        $0.textField.attributedPlaceholder = "비밀번호".styleAll(Font.textFieldAll).attributedString
+        $0.textField.attributedPlaceholder = "Password".localized.styleAll(Font.textFieldAll).attributedString
         $0.textField.keyboardType = .default
         $0.textField.isSecureTextEntry = true
     }
     
     let loginButton = DiaryButton(type: .system).then {
-        $0.setTitle("로그인", for: .normal)
+        $0.setTitle("Sign in".localized, for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = Font.loginFont
     }
@@ -240,7 +240,7 @@ extension LoginViewController {
             .distinctUntilChanged()
             .subscribe (onNext: { [weak self] color in
                 guard let `self` = self else { return }
-                let text = "아직 회원이 아니신가요? <h>회원가입하기</h>".style(tags: Font.registerHighlight.foregroundColor(color)).styleAll(Font.registerAll).attributedString
+                let text = "Don't have an account? <h>Sign up</h>".localized.style(tags: Font.registerHighlight.foregroundColor(color)).styleAll(Font.registerAll).attributedString
                 self.registerButton.setAttributedTitle(text, for: .normal)
             })
             .disposed(by: disposeBag)

@@ -11,6 +11,8 @@ import RxSwift
 enum NetworkError: Int, Error {
     // ALL
     case unknown = 0
+    case noConnection = 1
+    case typeError = 2
     case requestError = 400
     case unauthorized = 401
     case serverError = 500
@@ -45,6 +47,10 @@ enum NetworkError: Int, Error {
         switch self {
         case .unknown:
             return NetworkErrorMsg.unknownMsg.rawValue
+        case .noConnection:
+            return NetworkErrorMsg.noConnectionMsg.rawValue
+        case .typeError:
+            return NetworkErrorMsg.typeErrorMsg.rawValue
         case .requestError:
             return NetworkErrorMsg.requestErrorMsg.rawValue
         case .unauthorized:
@@ -81,6 +87,8 @@ enum NetworkError: Int, Error {
 
 enum NetworkErrorMsg: String {
     case unknownMsg = "서버와의 통신중 에러가 발생했습니다."
+    case noConnectionMsg = "인터넷 연결 실패"
+    case typeErrorMsg = "값 변환 오류. 개발자에게 문의해주세요"
     case requestErrorMsg = "리퀘스트 형식이 맞지 않습니다"
     case unauthorizedMsg = "토큰 에러, 다시 로그인 해주세요."
     case serverErrorMsg = "서버 에러"
@@ -103,5 +111,4 @@ enum NetworkErrorMsg: String {
     
     case noDiaryMsg = "일치하는 일기가 없습니다."
     case notMyDiaryMsg = "본인의 일기가 아닙니다."
-    
 }

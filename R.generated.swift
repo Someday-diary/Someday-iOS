@@ -1015,7 +1015,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.string` struct is generated, and contains static references to 1 localization tables.
+  /// This `R.string` struct is generated, and contains static references to 2 localization tables.
   struct string {
     /// This `R.string.infoPlist` struct is generated, and contains static references to 1 localization keys.
     struct infoPlist {
@@ -1037,6 +1037,1057 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("CFBundleDisplayName", tableName: "InfoPlist", bundle: bundle, comment: "")
+      }
+
+      fileprivate init() {}
+    }
+
+    /// This `R.string.localizable` struct is generated, and contains static references to 55 localization keys.
+    struct localizable {
+      /// ko translation: # 검색 결과가 없습니다
+      ///
+      /// Locales: ko
+      static let thereSNoSearchResult = Rswift.StringResource(key: "# There's no search result.", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: # 태그 작성
+      ///
+      /// Locales: ko
+      static let writeTags = Rswift.StringResource(key: "# Write Tags", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: yyyy년
+      ///
+      /// Locales: ko
+      static let yyyy = Rswift.StringResource(key: "yyyy", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: yyyy년 MM월
+      ///
+      /// Locales: ko
+      static let mmmYyyy = Rswift.StringResource(key: "MMM yyyy", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: yyyy년 MM월 dd일
+      ///
+      /// Locales: ko
+      static let mmmDdYyyy = Rswift.StringResource(key: "MMM dd yyyy", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 검색어를 입력하세요
+      ///
+      /// Locales: ko
+      static let enterSearchTag = Rswift.StringResource(key: "Enter Search Tag", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 다음
+      ///
+      /// Locales: ko
+      static let next = Rswift.StringResource(key: "Next", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 다크 모드
+      ///
+      /// Locales: ko
+      static let darkMode = Rswift.StringResource(key: "Dark Mode", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 라이트 / 다크
+      ///
+      /// Locales: ko
+      static let lightDark = Rswift.StringResource(key: "Light / Dark", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 라이트 모드
+      ///
+      /// Locales: ko
+      static let lightMode = Rswift.StringResource(key: "Light Mode", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 레몬에이드
+      ///
+      /// Locales: ko
+      static let lemonade = Rswift.StringResource(key: "Lemonade", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 로그아웃
+      ///
+      /// Locales: ko
+      static let signOut = Rswift.StringResource(key: "Sign out", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 로그인
+      ///
+      /// Locales: ko
+      static let signIn = Rswift.StringResource(key: "Sign in", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 민트초코
+      ///
+      /// Locales: ko
+      static let mintChocolate = Rswift.StringResource(key: "Mint chocolate", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 블루레몬에이드
+      ///
+      /// Locales: ko
+      static let blueLemonade = Rswift.StringResource(key: "Blue Lemonade", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 블루베리에이드
+      ///
+      /// Locales: ko
+      static let blueberryAde = Rswift.StringResource(key: "Blueberry Ade", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 비밀번호
+      ///
+      /// Locales: ko
+      static let password = Rswift.StringResource(key: "Password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 비밀번호 변경
+      ///
+      /// Locales: ko
+      static let changePasscode = Rswift.StringResource(key: "Change Passcode", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 비밀번호가 맞지 않습니다. 다시 입력해주세요
+      ///
+      /// Locales: ko
+      static let incorrectPasscordReEnterPasscode = Rswift.StringResource(key: "Incorrect passcord, Re-enter passcode", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 비밀번호가 맞지 않습니다. 새로운 비밀번호를 입력해주세요
+      ///
+      /// Locales: ko
+      static let incorrectPasscordEnterNewPasscode = Rswift.StringResource(key: "Incorrect Passcord, Enter new passcode", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 비밀번호를 4자리 이상 입력해주세요
+      ///
+      /// Locales: ko
+      static let enterPasswordAtLeast4 = Rswift.StringResource(key: "Enter password at least 4", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 비밀번호를 입력하세요
+      ///
+      /// Locales: ko
+      static let enterPasscode = Rswift.StringResource(key: "Enter passcode", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 비밀번호를 재입력하세요
+      ///
+      /// Locales: ko
+      static let reEnterPasscode = Rswift.StringResource(key: "Re-enter passcode", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 사용자 피드백
+      ///
+      /// Locales: ko
+      static let contectUs = Rswift.StringResource(key: "Contect Us", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 새로운 비밀번호를 입력해주세요
+      ///
+      /// Locales: ko
+      static let enterNewPasscode = Rswift.StringResource(key: "Enter new passcode", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 생체인증 (Touch ID, Face ID)
+      ///
+      /// Locales: ko
+      static let biometricIDTouchIDFaceID = Rswift.StringResource(key: "Biometric ID (Touch ID, Face ID)", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 시스템 설정 모드
+      ///
+      /// Locales: ko
+      static let systemSetting = Rswift.StringResource(key: "System Setting", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 아직 회원이 아니신가요? <h>회원가입하기</h>
+      ///
+      /// Locales: ko
+      static let donTHaveAnAccountHSignUpH = Rswift.StringResource(key: "Don't have an account? <h>Sign up</h>", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 오늘 하루를 기록하세요
+      ///
+      /// Locales: ko
+      static let writeDownYourToday = Rswift.StringResource(key: "Write down your today", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 오늘하루
+      ///
+      /// Locales: ko
+      static let someday = Rswift.StringResource(key: "Someday", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 오픈소스 라이선스
+      ///
+      /// Locales: ko
+      static let openSourceLicense = Rswift.StringResource(key: "Open-source license", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 이메일
+      ///
+      /// Locales: ko
+      static let email = Rswift.StringResource(key: "Email", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 이메일 형식에 맞지 않습니다
+      ///
+      /// Locales: ko
+      static let itIsNotEmailFormat = Rswift.StringResource(key: "It is not email format", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 이미 계정이 있으신가요? <h>로그인하기</h>
+      ///
+      /// Locales: ko
+      static let alreadyHaveAccountHSignInH = Rswift.StringResource(key: "Already have account? <h>Sign in</h>", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 인증번호
+      ///
+      /// Locales: ko
+      static let verificationCode = Rswift.StringResource(key: "Verification Code", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 인증번호는 6자리입니다.
+      ///
+      /// Locales: ko
+      static let validationCodeIs6Digits = Rswift.StringResource(key: "Validation code is 6 digits", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 인증하기
+      ///
+      /// Locales: ko
+      static let verify = Rswift.StringResource(key: "Verify", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 일기 관리
+      ///
+      /// Locales: ko
+      static let manageDiary = Rswift.StringResource(key: "Manage Diary", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 일기 삭제
+      ///
+      /// Locales: ko
+      static let deleteDiary = Rswift.StringResource(key: "Delete Diary", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 일기 수정
+      ///
+      /// Locales: ko
+      static let editDiary = Rswift.StringResource(key: "Edit Diary", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 일기 작성
+      ///
+      /// Locales: ko
+      static let writeDiary = Rswift.StringResource(key: "Write Diary", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 일기가 존재하지 않습니다! 일기를 채워보시는건 어떨까요?
+      ///
+      /// Locales: ko
+      static let diaryDosenTExistHowAboutWriteDiary = Rswift.StringResource(key: "Diary dosen't exist!\nHow about write diary?", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 일기에 빈칸이 존재하는 것 같아요!
+      ///
+      /// Locales: ko
+      static let themeIsMissingPartOfDiary = Rswift.StringResource(key: "Theme is missing part of Diary!", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 입력한 비밀번호가 다릅니다.
+      ///
+      /// Locales: ko
+      static let incorrectPassword = Rswift.StringResource(key: "Incorrect Password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 자몽에이드
+      ///
+      /// Locales: ko
+      static let grapefruitAde = Rswift.StringResource(key: "Grapefruit Ade", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 잠금 설정
+      ///
+      /// Locales: ko
+      static let lockSetting = Rswift.StringResource(key: "Lock Setting", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 저장
+      ///
+      /// Locales: ko
+      static let save = Rswift.StringResource(key: "Save", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 취소
+      ///
+      /// Locales: ko
+      static let cancel = Rswift.StringResource(key: "Cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 코드가 성공적으로 전송됨
+      ///
+      /// Locales: ko
+      static let verificationCodeSentSuccessfully = Rswift.StringResource(key: "Verification Code sent Successfully", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 태그 추가
+      ///
+      /// Locales: ko
+      static let addTags = Rswift.StringResource(key: "Add Tags", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 테마 색상 설정
+      ///
+      /// Locales: ko
+      static let setThemeColor = Rswift.StringResource(key: "Set Theme Color", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 테마 설정
+      ///
+      /// Locales: ko
+      static let themeSetting = Rswift.StringResource(key: "Theme Setting", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 패스워드 확인
+      ///
+      /// Locales: ko
+      static let confirmPassword = Rswift.StringResource(key: "Confirm password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 회원가입
+      ///
+      /// Locales: ko
+      static let signUp = Rswift.StringResource(key: "Sign up", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+      /// ko translation: 회원가입 성공!
+      ///
+      /// Locales: ko
+      static let signUpSuccess = Rswift.StringResource(key: "Sign up Success!", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ko"], comment: nil)
+
+      /// ko translation: # 검색 결과가 없습니다
+      ///
+      /// Locales: ko
+      static func thereSNoSearchResult(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("# There's no search result.", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "# There's no search result."
+        }
+
+        return NSLocalizedString("# There's no search result.", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: # 태그 작성
+      ///
+      /// Locales: ko
+      static func writeTags(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("# Write Tags", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "# Write Tags"
+        }
+
+        return NSLocalizedString("# Write Tags", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: yyyy년
+      ///
+      /// Locales: ko
+      static func yyyy(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("yyyy", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "yyyy"
+        }
+
+        return NSLocalizedString("yyyy", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: yyyy년 MM월
+      ///
+      /// Locales: ko
+      static func mmmYyyy(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("MMM yyyy", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "MMM yyyy"
+        }
+
+        return NSLocalizedString("MMM yyyy", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: yyyy년 MM월 dd일
+      ///
+      /// Locales: ko
+      static func mmmDdYyyy(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("MMM dd yyyy", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "MMM dd yyyy"
+        }
+
+        return NSLocalizedString("MMM dd yyyy", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 검색어를 입력하세요
+      ///
+      /// Locales: ko
+      static func enterSearchTag(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Enter Search Tag", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Enter Search Tag"
+        }
+
+        return NSLocalizedString("Enter Search Tag", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 다음
+      ///
+      /// Locales: ko
+      static func next(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Next", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Next"
+        }
+
+        return NSLocalizedString("Next", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 다크 모드
+      ///
+      /// Locales: ko
+      static func darkMode(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Dark Mode", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Dark Mode"
+        }
+
+        return NSLocalizedString("Dark Mode", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 라이트 / 다크
+      ///
+      /// Locales: ko
+      static func lightDark(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Light / Dark", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Light / Dark"
+        }
+
+        return NSLocalizedString("Light / Dark", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 라이트 모드
+      ///
+      /// Locales: ko
+      static func lightMode(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Light Mode", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Light Mode"
+        }
+
+        return NSLocalizedString("Light Mode", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 레몬에이드
+      ///
+      /// Locales: ko
+      static func lemonade(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Lemonade", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Lemonade"
+        }
+
+        return NSLocalizedString("Lemonade", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 로그아웃
+      ///
+      /// Locales: ko
+      static func signOut(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Sign out", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Sign out"
+        }
+
+        return NSLocalizedString("Sign out", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 로그인
+      ///
+      /// Locales: ko
+      static func signIn(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Sign in", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Sign in"
+        }
+
+        return NSLocalizedString("Sign in", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 민트초코
+      ///
+      /// Locales: ko
+      static func mintChocolate(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Mint chocolate", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Mint chocolate"
+        }
+
+        return NSLocalizedString("Mint chocolate", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 블루레몬에이드
+      ///
+      /// Locales: ko
+      static func blueLemonade(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Blue Lemonade", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Blue Lemonade"
+        }
+
+        return NSLocalizedString("Blue Lemonade", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 블루베리에이드
+      ///
+      /// Locales: ko
+      static func blueberryAde(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Blueberry Ade", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Blueberry Ade"
+        }
+
+        return NSLocalizedString("Blueberry Ade", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 비밀번호
+      ///
+      /// Locales: ko
+      static func password(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Password", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Password"
+        }
+
+        return NSLocalizedString("Password", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 비밀번호 변경
+      ///
+      /// Locales: ko
+      static func changePasscode(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Change Passcode", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Change Passcode"
+        }
+
+        return NSLocalizedString("Change Passcode", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 비밀번호가 맞지 않습니다. 다시 입력해주세요
+      ///
+      /// Locales: ko
+      static func incorrectPasscordReEnterPasscode(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Incorrect passcord, Re-enter passcode", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Incorrect passcord, Re-enter passcode"
+        }
+
+        return NSLocalizedString("Incorrect passcord, Re-enter passcode", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 비밀번호가 맞지 않습니다. 새로운 비밀번호를 입력해주세요
+      ///
+      /// Locales: ko
+      static func incorrectPasscordEnterNewPasscode(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Incorrect Passcord, Enter new passcode", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Incorrect Passcord, Enter new passcode"
+        }
+
+        return NSLocalizedString("Incorrect Passcord, Enter new passcode", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 비밀번호를 4자리 이상 입력해주세요
+      ///
+      /// Locales: ko
+      static func enterPasswordAtLeast4(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Enter password at least 4", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Enter password at least 4"
+        }
+
+        return NSLocalizedString("Enter password at least 4", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 비밀번호를 입력하세요
+      ///
+      /// Locales: ko
+      static func enterPasscode(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Enter passcode", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Enter passcode"
+        }
+
+        return NSLocalizedString("Enter passcode", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 비밀번호를 재입력하세요
+      ///
+      /// Locales: ko
+      static func reEnterPasscode(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Re-enter passcode", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Re-enter passcode"
+        }
+
+        return NSLocalizedString("Re-enter passcode", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 사용자 피드백
+      ///
+      /// Locales: ko
+      static func contectUs(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Contect Us", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Contect Us"
+        }
+
+        return NSLocalizedString("Contect Us", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 새로운 비밀번호를 입력해주세요
+      ///
+      /// Locales: ko
+      static func enterNewPasscode(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Enter new passcode", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Enter new passcode"
+        }
+
+        return NSLocalizedString("Enter new passcode", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 생체인증 (Touch ID, Face ID)
+      ///
+      /// Locales: ko
+      static func biometricIDTouchIDFaceID(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Biometric ID (Touch ID, Face ID)", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Biometric ID (Touch ID, Face ID)"
+        }
+
+        return NSLocalizedString("Biometric ID (Touch ID, Face ID)", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 시스템 설정 모드
+      ///
+      /// Locales: ko
+      static func systemSetting(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("System Setting", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "System Setting"
+        }
+
+        return NSLocalizedString("System Setting", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 아직 회원이 아니신가요? <h>회원가입하기</h>
+      ///
+      /// Locales: ko
+      static func donTHaveAnAccountHSignUpH(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Don't have an account? <h>Sign up</h>", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Don't have an account? <h>Sign up</h>"
+        }
+
+        return NSLocalizedString("Don't have an account? <h>Sign up</h>", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 오늘 하루를 기록하세요
+      ///
+      /// Locales: ko
+      static func writeDownYourToday(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Write down your today", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Write down your today"
+        }
+
+        return NSLocalizedString("Write down your today", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 오늘하루
+      ///
+      /// Locales: ko
+      static func someday(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Someday", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Someday"
+        }
+
+        return NSLocalizedString("Someday", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 오픈소스 라이선스
+      ///
+      /// Locales: ko
+      static func openSourceLicense(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Open-source license", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Open-source license"
+        }
+
+        return NSLocalizedString("Open-source license", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 이메일
+      ///
+      /// Locales: ko
+      static func email(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Email", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Email"
+        }
+
+        return NSLocalizedString("Email", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 이메일 형식에 맞지 않습니다
+      ///
+      /// Locales: ko
+      static func itIsNotEmailFormat(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("It is not email format", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "It is not email format"
+        }
+
+        return NSLocalizedString("It is not email format", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 이미 계정이 있으신가요? <h>로그인하기</h>
+      ///
+      /// Locales: ko
+      static func alreadyHaveAccountHSignInH(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Already have account? <h>Sign in</h>", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Already have account? <h>Sign in</h>"
+        }
+
+        return NSLocalizedString("Already have account? <h>Sign in</h>", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 인증번호
+      ///
+      /// Locales: ko
+      static func verificationCode(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Verification Code", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Verification Code"
+        }
+
+        return NSLocalizedString("Verification Code", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 인증번호는 6자리입니다.
+      ///
+      /// Locales: ko
+      static func validationCodeIs6Digits(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Validation code is 6 digits", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Validation code is 6 digits"
+        }
+
+        return NSLocalizedString("Validation code is 6 digits", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 인증하기
+      ///
+      /// Locales: ko
+      static func verify(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Verify", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Verify"
+        }
+
+        return NSLocalizedString("Verify", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 일기 관리
+      ///
+      /// Locales: ko
+      static func manageDiary(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Manage Diary", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Manage Diary"
+        }
+
+        return NSLocalizedString("Manage Diary", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 일기 삭제
+      ///
+      /// Locales: ko
+      static func deleteDiary(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Delete Diary", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Delete Diary"
+        }
+
+        return NSLocalizedString("Delete Diary", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 일기 수정
+      ///
+      /// Locales: ko
+      static func editDiary(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Edit Diary", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Edit Diary"
+        }
+
+        return NSLocalizedString("Edit Diary", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 일기 작성
+      ///
+      /// Locales: ko
+      static func writeDiary(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Write Diary", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Write Diary"
+        }
+
+        return NSLocalizedString("Write Diary", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 일기가 존재하지 않습니다! 일기를 채워보시는건 어떨까요?
+      ///
+      /// Locales: ko
+      static func diaryDosenTExistHowAboutWriteDiary(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Diary dosen't exist!\nHow about write diary?", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Diary dosen't exist!\nHow about write diary?"
+        }
+
+        return NSLocalizedString("Diary dosen't exist!\nHow about write diary?", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 일기에 빈칸이 존재하는 것 같아요!
+      ///
+      /// Locales: ko
+      static func themeIsMissingPartOfDiary(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Theme is missing part of Diary!", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Theme is missing part of Diary!"
+        }
+
+        return NSLocalizedString("Theme is missing part of Diary!", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 입력한 비밀번호가 다릅니다.
+      ///
+      /// Locales: ko
+      static func incorrectPassword(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Incorrect Password", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Incorrect Password"
+        }
+
+        return NSLocalizedString("Incorrect Password", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 자몽에이드
+      ///
+      /// Locales: ko
+      static func grapefruitAde(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Grapefruit Ade", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Grapefruit Ade"
+        }
+
+        return NSLocalizedString("Grapefruit Ade", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 잠금 설정
+      ///
+      /// Locales: ko
+      static func lockSetting(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Lock Setting", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Lock Setting"
+        }
+
+        return NSLocalizedString("Lock Setting", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 저장
+      ///
+      /// Locales: ko
+      static func save(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Save", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Save"
+        }
+
+        return NSLocalizedString("Save", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 취소
+      ///
+      /// Locales: ko
+      static func cancel(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Cancel", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Cancel"
+        }
+
+        return NSLocalizedString("Cancel", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 코드가 성공적으로 전송됨
+      ///
+      /// Locales: ko
+      static func verificationCodeSentSuccessfully(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Verification Code sent Successfully", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Verification Code sent Successfully"
+        }
+
+        return NSLocalizedString("Verification Code sent Successfully", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 태그 추가
+      ///
+      /// Locales: ko
+      static func addTags(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Add Tags", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Add Tags"
+        }
+
+        return NSLocalizedString("Add Tags", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 테마 색상 설정
+      ///
+      /// Locales: ko
+      static func setThemeColor(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Set Theme Color", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Set Theme Color"
+        }
+
+        return NSLocalizedString("Set Theme Color", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 테마 설정
+      ///
+      /// Locales: ko
+      static func themeSetting(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Theme Setting", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Theme Setting"
+        }
+
+        return NSLocalizedString("Theme Setting", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 패스워드 확인
+      ///
+      /// Locales: ko
+      static func confirmPassword(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Confirm password", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Confirm password"
+        }
+
+        return NSLocalizedString("Confirm password", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 회원가입
+      ///
+      /// Locales: ko
+      static func signUp(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Sign up", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Sign up"
+        }
+
+        return NSLocalizedString("Sign up", bundle: bundle, comment: "")
+      }
+
+      /// ko translation: 회원가입 성공!
+      ///
+      /// Locales: ko
+      static func signUpSuccess(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Sign up Success!", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Sign up Success!"
+        }
+
+        return NSLocalizedString("Sign up Success!", bundle: bundle, comment: "")
       }
 
       fileprivate init() {}

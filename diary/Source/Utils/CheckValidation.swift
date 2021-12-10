@@ -14,10 +14,10 @@ enum CheckValidation: Equatable {
 }
 
 enum validationType: String, Equatable {
-    case email = "이메일"
-    case password = "비밀번호"
-    case code = "인증번호"
-    case reEnter = "비밀번호 확인"
+    case email = "Email"
+    case password = "Password"
+    case code = "Verification Code"
+    case reEnter = "Confirm password"
 }
 
 extension String {
@@ -25,17 +25,17 @@ extension String {
         guard !self.isEmpty else { return .empty }
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailcheck = NSPredicate(format:"SELF MATCHES %@", emailRegEx).evaluate(with: self)
-        return emailcheck ? .correct(.email) : .error("이메일 형식이 맞지 않습니다.")
+        return emailcheck ? .correct(.email) : .error("It is not email format".localized)
     }
     
     var isValidPassword: CheckValidation {
         guard !self.isEmpty else { return .empty }
-        return self.count >= 4 ? .correct(.password) : .error("비밀번호를 4자리 이상 입력해주세요.")
+        return self.count >= 4 ? .correct(.password) : .error("Enter password at least 4".localized)
     }
     
     var isValidCode: CheckValidation {
         guard !self.isEmpty else { return .empty }
-        return self.count == 6 ? .correct(.code) : .error("인증번호는 6자리입니다.")
+        return self.count == 6 ? .correct(.code) : .error("Validation code is 6 digits".localized)
     }
     
     var validationTagString: String {
@@ -48,6 +48,6 @@ extension Array where Element == String {
     var isValidReEnter: CheckValidation {
         guard !self[1].isEmpty else { return .empty }
         
-        return self[0] == self[1] ? .correct(.reEnter) : .error("입력한 비밀번호가 다릅니다.")
+        return self[0] == self[1] ? .correct(.reEnter) : .error("Incorrect Password".localized)
     }
 }

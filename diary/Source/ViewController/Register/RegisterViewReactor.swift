@@ -79,7 +79,7 @@ final class RegisterViewReactor: Reactor, Stepper {
                     .map { result in
                         switch result {
                         case .success:
-                            SwiftMessages.show(config: Message.diaryConfig, view: Message.successView("코드가 성공적으로 전송되었습니다."))
+                            SwiftMessages.show(config: Message.diaryConfig, view: Message.successView("Verification Code sent Successfully".localized))
                         case let .error(error):
                             print(error)
                             SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView(error.message))
