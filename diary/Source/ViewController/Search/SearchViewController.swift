@@ -105,6 +105,7 @@ final class SearchViewController: BaseViewController, ReactorKit.View {
         
         self.tableView.tableHeaderView = self.headerView
         self.navigationItem.titleView = self.searchBar
+        self.searchBar.text = self.reactor?.initialState.searchString
         
         self.view.addSubview(self.tableView)
         self.view.addSubview(self.noDiaryLabel)
@@ -171,8 +172,6 @@ final class SearchViewController: BaseViewController, ReactorKit.View {
             .distinctUntilChanged()
             .bind(to: self.activityIndicatorView.rx.isAnimating)
             .disposed(by: disposeBag)
-        
-        self.searchBar.text = reactor.initialState.searchString
         
         // View
         self.tableView.rx.setDelegate(self)

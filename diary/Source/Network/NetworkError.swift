@@ -46,7 +46,7 @@ enum NetworkError: Int, Error {
     var message: String {
         switch self {
         case .unknown:
-            return NetworkErrorMsg.unknownMsg.rawValue
+            return NetworkErrorMsg.unknownMsg.localizedMsg
         case .noConnection:
             return NetworkErrorMsg.noConnectionMsg.localizedMsg
         case .typeError:

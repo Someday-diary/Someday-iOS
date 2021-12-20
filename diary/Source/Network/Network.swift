@@ -40,7 +40,7 @@ extension Network {
                     return .error(error)
                     
                 }
-            }.catchErrorJustReturn(.error(.unknown))
+            }.catchErrorJustReturn(.error(.noConnection))
     }
 
 }
