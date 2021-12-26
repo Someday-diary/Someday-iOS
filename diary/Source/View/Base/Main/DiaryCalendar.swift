@@ -47,7 +47,6 @@ final class DiaryCalendar: UIView {
         $0.appearance.titleDefaultColor = R.color.calendarTitleDefaultColor()
         $0.appearance.titlePlaceholderColor = R.color.calendarTitlePlaceHolderColor()
         $0.appearance.subtitleFont = UIFont.systemFont(ofSize: 0)
-        $0.locale = Locale(identifier: "ko_KR")
     }
     let prevButton = UIButton().then {
         $0.setImage(R.image.calendarBackButton(), for: .normal)

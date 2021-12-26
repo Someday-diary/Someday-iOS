@@ -37,7 +37,7 @@ class SplashViewController: BaseViewController, View {
     }
     
     let titleLabel = UILabel().then {
-        $0.text = "오늘 하루"
+        $0.text = "Someday".localized
         $0.theme.textColor = themed { $0.thirdColor }
         $0.font = Font.titleFont
     }

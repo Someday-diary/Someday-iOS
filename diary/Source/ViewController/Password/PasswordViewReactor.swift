@@ -61,7 +61,7 @@ final class PasswordViewReactor: Reactor, Stepper {
                     .map { result in
                         switch result {
                         case .success:
-                            SwiftMessages.show(config: Message.diaryConfig, view: Message.successView("회원가입 성공!"))
+                            SwiftMessages.show(config: Message.diaryConfig, view: Message.successView("Sign up Success!"))
                             self.steps.accept(DiaryStep.popToRootViewController)
                         case let .error(error):
                             print(error)

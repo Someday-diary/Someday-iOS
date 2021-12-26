@@ -66,21 +66,21 @@ final class RegisterViewController: BaseViewController, View {
     }
     
     let emailTextField = DiaryTextField().then {
-        $0.textField.attributedPlaceholder = "이메일".styleAll(Font.textFieldAll).attributedString
+        $0.textField.attributedPlaceholder = "Email".localized.styleAll(Font.textFieldAll).attributedString
         $0.textField.keyboardType = .emailAddress
     }
     
     let codeTextField = DiaryTextField().then {
-        $0.textField.attributedPlaceholder = "인증번호".styleAll(Font.textFieldAll).attributedString
+        $0.textField.attributedPlaceholder = "Verification Code".localized.styleAll(Font.textFieldAll).attributedString
         $0.textField.keyboardType = .numberPad
     }
     
     let codeButton = SendCodeButton().then {
-        $0.setTitle("인증하기", for: .normal)
+        $0.setTitle("Verify".localized, for: .normal)
     }
     
     let nextButton = DiaryButton(type: .system).then {
-        $0.setTitle("다음", for: .normal)
+        $0.setTitle("Next".localized, for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = Font.nextFont
     }
@@ -267,7 +267,7 @@ extension RegisterViewController {
             .distinctUntilChanged()
             .subscribe (onNext: { [weak self] color in
                 guard let `self` = self else { return }
-                let text = "오늘 하루 회원이신가요? <h>로그인하기</h>".style(tags: Font.loginHighlight.foregroundColor(color)).styleAll(Font.loginAll).attributedString
+                let text = "Already have account? <h>Sign in</h>".localized.style(tags: Font.loginHighlight.foregroundColor(color)).styleAll(Font.loginAll).attributedString
                 self.loginButton.setAttributedTitle(text, for: .normal)
             })
             .disposed(by: disposeBag)

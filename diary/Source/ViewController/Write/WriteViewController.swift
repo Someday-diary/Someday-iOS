@@ -43,7 +43,7 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
     let textView = UITextView().then {
         $0.theme.placeholderColor = themed { $0.mainColor }
         $0.backgroundColor = R.color.diaryBackgroundColor()
-        $0.placeholder = "오늘 하루를 기록하세요."
+        $0.placeholder = "Write down your today".localized
         $0.theme.tintColor = themed { $0.mainColor }
         $0.font = Font.textViewFont
         $0.isScrollEnabled = true
@@ -64,7 +64,7 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
     }
     
     let submitButton = UIBarButtonItem(image: nil, style: .done, target: nil, action: nil).then {
-        $0.title = "확인"
+        $0.title = "Save".localized
         $0.tintColor = R.color.navigationButtonColor()
     }
     

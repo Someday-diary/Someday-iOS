@@ -62,12 +62,12 @@ final class WriteViewReactor: Reactor, Stepper {
         case let .saveDidary(data, tags):
             
             if data.isEmpty || tags.isEmpty {
-                SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView("일기에 빈칸이 존재하는 것 같아요!"))
+                SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView("Theme is missing part of Diary!".localized))
                 return Observable.empty()
             }
             
             else if tags.validationTagString.isEmpty {
-                SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView("일기에 빈칸이 존재하는 것 같아요!"))
+                SwiftMessages.show(config: Message.diaryConfig, view: Message.faildView("Theme is missing part of Diary!".localized))
                 return Observable.just(Mutation.removeTags)
             }
             
@@ -98,7 +98,6 @@ final class WriteViewReactor: Reactor, Stepper {
                             .map { result in
                                 switch result {
                                 case .success:
-                                    print("일기 저장 성공")
                                     self.steps.accept(DiaryStep.popViewController)
                                     
                                 case let .error(error):

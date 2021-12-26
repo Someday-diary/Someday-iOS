@@ -33,7 +33,7 @@ final class SideMenuScrollView: UIView {
     
     let themeButton = DiarySideMenuListButton().then {
         $0.icon.image = R.image.themeIcon()
-        $0.label.text = "테마 설정"
+        $0.label.text = "Theme Setting".localized
     }
     
 //    let alarmButton = DiarySideMenuListButton().then {
@@ -43,17 +43,17 @@ final class SideMenuScrollView: UIView {
     
     let lockButton = DiarySideMenuListButton().then {
         $0.icon.image = R.image.lockIcon()
-        $0.label.text = "잠금 설정"
+        $0.label.text = "Lock Setting".localized
     }
     
     let infoButton = DiarySideMenuListButton().then {
         $0.icon.image = R.image.openSourceIcon()
-        $0.label.text = "오픈소스 라이선스"
+        $0.label.text = "Open-source license".localized
     }
     
     let feedbackButton = DiarySideMenuListButton().then {
         $0.icon.image = R.image.feedbackIcon()
-        $0.label.text = "사용자 피드백"
+        $0.label.text = "Contect Us".localized
     }
     
     // MARK: - Inititalizing
