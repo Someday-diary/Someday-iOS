@@ -22,12 +22,14 @@ class Network<API: TargetType>: MoyaProvider<API> {
     
     func request(_ api: API) -> Single<Response> {
         return self.rx.request(api)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .utility))
     }
 }
 
 extension Network {
     func requestObject<T: ModelType>(_ target: API, type: T.Type) -> Single<NetworkResultWithValue<T>> {
         return request(target)
+            .observeOn(MainScheduler.instance)
             .map { result in
                 let response: T? = try? result.map(T.self, using: T.decoder)
                 guard let response = response else { return .error(.typeError) }
