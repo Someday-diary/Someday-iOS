@@ -9,6 +9,7 @@ target 'diary' do
   
   # UI
   pod 'SnapKit'
+  pod 'PinLayout'
   pod 'RxFlow'
   pod 'FSCalendar'
   pod 'SideMenu'
