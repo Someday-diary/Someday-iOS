@@ -8,8 +8,8 @@
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
 extension UIView {
-    private struct Preview: UIViewRepresentable {
 
+    private struct Preview: UIViewRepresentable {
         let view: UIView
 
         func makeUIView(context: Context) -> UIView {

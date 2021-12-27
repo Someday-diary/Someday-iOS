@@ -43,7 +43,6 @@
 		625A9EB226D9213800D65840 /* DiaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625A9EB126D9213800D65840 /* DiaryButton.swift */; };
 		625A9EB626D9382000D65840 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 625A9EB526D9382000D65840 /* Colors.xcassets */; };
 		625F4C5726CF235F00DC5978 /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5626CF235F00DC5978 /* UIViewControllerPreview.swift */; };
-		625F4C5926CF238600DC5978 /* UIViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5826CF238600DC5978 /* UIViewPreview.swift */; };
 		625F4C5B26CF23AC00DC5978 /* DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5A26CF23AC00DC5978 /* DeviceType.swift */; };
 		625F4C5D26CF242600DC5978 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5C26CF242600DC5978 /* MainViewController.swift */; };
 		625F4C5F26CF6DAA00DC5978 /* DiaryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5E26CF6DAA00DC5978 /* DiaryStep.swift */; };
@@ -73,6 +72,7 @@
 		629ED5A626DD108600EA7A98 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */; };
 		62AEB6E827797159009687D0 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEB6E727797159009687D0 /* FeedbackViewController.swift */; };
 		62AEB6EA27797193009687D0 /* FeedbackViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEB6E927797193009687D0 /* FeedbackViewReactor.swift */; };
+		62AEB6EB27797CD0009687D0 /* UIViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5826CF238600DC5978 /* UIViewPreview.swift */; };
 		62B2C69327296F66005A7AFF /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B2C69227296F66005A7AFF /* ServerResponse.swift */; };
 		62B3260D272CF9FE00DC3C96 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B3260C272CF9FE00DC3C96 /* Network.swift */; };
 		62B32610272D1B5400DC3C96 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B3260F272D1B5400DC3C96 /* BaseAPI.swift */; };
@@ -1132,6 +1132,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62AEB6EB27797CD0009687D0 /* UIViewPreview.swift in Sources */,
 				62B3260D272CF9FE00DC3C96 /* Network.swift in Sources */,
 				62E7B29C273530BA00CD7E5A /* NetworkError.swift in Sources */,
 				62D758C326E1AE9C009AE551 /* DiarySideMenuListButton.swift in Sources */,
@@ -1226,7 +1227,6 @@
 				62C2E464273877D200F037B9 /* RegisterViewReactor.swift in Sources */,
 				62C2E4692738B08700F037B9 /* PasswordViewController.swift in Sources */,
 				6291498D26DF0443003CDDE9 /* FSCalendar+RxTheme.swift in Sources */,
-				625F4C5926CF238600DC5978 /* UIViewPreview.swift in Sources */,
 				626AC5AB2731877600E907E8 /* DiaryService.swift in Sources */,
 				62B32610272D1B5400DC3C96 /* BaseAPI.swift in Sources */,
 				62C1564B270BDD0E00938DB7 /* UITextField+RxTheme.swift in Sources */,
