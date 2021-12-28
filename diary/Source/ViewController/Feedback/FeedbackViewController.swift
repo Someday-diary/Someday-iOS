@@ -29,6 +29,9 @@ final class FeedbackViewController: BaseViewController, View {
     // MARK: - Properties
     
     // MARK: - UI
+    private let titleTextView: DiaryTextView = DiaryTextView().then {
+        $0.placeholder = "제목"
+    }
     
     // MARK: - Inintializing
     init(reactor: Reactor) {
@@ -50,11 +53,13 @@ final class FeedbackViewController: BaseViewController, View {
     override func setupLayout() {
         super.setupLayout()
         
+        self.view.addSubview(self.titleTextView)
     }
     
     override func setupConstraints() {
         super.setupConstraints()
         
+        self.titleTextView.pin.all(self.view.pin.safeArea)
     }
     
     // MARK: - Configuring
