@@ -795,7 +795,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 28 images.
+  /// This `R.image` struct is generated, and contains static references to 25 images.
   struct image {
     /// Image `Add`.
     static let add = Rswift.ImageResource(bundle: R.hostingBundle, name: "Add")
@@ -831,12 +831,6 @@ struct R: Rswift.Validatable {
     static let mainIconBlueTheme = Rswift.ImageResource(bundle: R.hostingBundle, name: "MainIconBlueTheme")
     /// Image `MainIconGreenTheme`.
     static let mainIconGreenTheme = Rswift.ImageResource(bundle: R.hostingBundle, name: "MainIconGreenTheme")
-    /// Image `MainIconPurpleTheme`.
-    static let mainIconPurpleTheme = Rswift.ImageResource(bundle: R.hostingBundle, name: "MainIconPurpleTheme")
-    /// Image `MainIconRedTheme`.
-    static let mainIconRedTheme = Rswift.ImageResource(bundle: R.hostingBundle, name: "MainIconRedTheme")
-    /// Image `MainIconYellowTheme`.
-    static let mainIconYellowTheme = Rswift.ImageResource(bundle: R.hostingBundle, name: "MainIconYellowTheme")
     /// Image `OpenSourceIcon`.
     static let openSourceIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "OpenSourceIcon")
     /// Image `SelectedButton`.
@@ -970,27 +964,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "MainIconGreenTheme", bundle: ..., traitCollection: ...)`
     static func mainIconGreenTheme(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.mainIconGreenTheme, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "MainIconPurpleTheme", bundle: ..., traitCollection: ...)`
-    static func mainIconPurpleTheme(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.mainIconPurpleTheme, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "MainIconRedTheme", bundle: ..., traitCollection: ...)`
-    static func mainIconRedTheme(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.mainIconRedTheme, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "MainIconYellowTheme", bundle: ..., traitCollection: ...)`
-    static func mainIconYellowTheme(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.mainIconYellowTheme, compatibleWith: traitCollection)
     }
     #endif
 
