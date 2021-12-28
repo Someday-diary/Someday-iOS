@@ -72,6 +72,7 @@
 		629ED5A626DD108600EA7A98 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */; };
 		62AEB6E827797159009687D0 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEB6E727797159009687D0 /* FeedbackViewController.swift */; };
 		62AEB6EA27797193009687D0 /* FeedbackViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEB6E927797193009687D0 /* FeedbackViewReactor.swift */; };
+		62AEB6F0277A95AD009687D0 /* DiaryTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEB6EF277A95AD009687D0 /* DiaryTextView.swift */; };
 		62B2C69327296F66005A7AFF /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B2C69227296F66005A7AFF /* ServerResponse.swift */; };
 		62B3260D272CF9FE00DC3C96 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B3260C272CF9FE00DC3C96 /* Network.swift */; };
 		62B32610272D1B5400DC3C96 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B3260F272D1B5400DC3C96 /* BaseAPI.swift */; };
@@ -217,6 +218,7 @@
 		629ED5A526DD108600EA7A98 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		62AEB6E727797159009687D0 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		62AEB6E927797193009687D0 /* FeedbackViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewReactor.swift; sourceTree = "<group>"; };
+		62AEB6EF277A95AD009687D0 /* DiaryTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTextView.swift; sourceTree = "<group>"; };
 		62B2C69227296F66005A7AFF /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		62B3260C272CF9FE00DC3C96 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		62B3260F272D1B5400DC3C96 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				62C2E4842739E7BA00F037B9 /* DiaryNumberPad.swift */,
 				62C2E4862739E81E00F037B9 /* DiaryNumberButton.swift */,
 				624D11C227570C4C00E818A4 /* SendCodeButton.swift */,
+				62AEB6EF277A95AD009687D0 /* DiaryTextView.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -1160,6 +1163,7 @@
 				62BE22A0275EE80300045461 /* UserDefaults.swift in Sources */,
 				624D11C0275706E400E818A4 /* LockViewController.swift in Sources */,
 				620BCACB26E8819C0023499D /* String.swift in Sources */,
+				62AEB6F0277A95AD009687D0 /* DiaryTextView.swift in Sources */,
 				624E4D3526D66EB5004A6624 /* LoginViewReactor.swift in Sources */,
 				62D758D226E474DE009AE551 /* UITextView+RxTheme.swift in Sources */,
 				624E4D3926D85F40004A6624 /* HomeFlow.swift in Sources */,
