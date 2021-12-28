@@ -66,6 +66,9 @@ class HomeFlow: Flow {
         case .lockIsRequired:
             return navigateToLock()
             
+        case .feedbackIsRequired:
+            return navigateToFeedback()
+            
         case .splashIsRequired:
             return .end(forwardToParentFlowWithStep: DiaryStep.splashIsRequired)
             
@@ -144,6 +147,14 @@ extension HomeFlow: FloatingPanelControllerDelegate {
     private func navigateToLock() -> FlowContributors {
         let reactor = LockViewReactor(authService: services.authService)
         let viewController = LockViewController(reactor: reactor)
+        
+        self.rootViewController.pushViewController(viewController, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
+    }
+    
+    private func navigateToFeedback() -> FlowContributors {
+        let reactor = FeedbackViewReactor()
+        let viewController = FeedbackViewController(reactor: reactor)
         
         self.rootViewController.pushViewController(viewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: reactor))
