@@ -45,7 +45,7 @@ final class FeedbackViewController: BaseViewController, View {
     
     private let sendButton: DiarySecondButton = DiarySecondButton(type: .system).then {
         $0.setTitle("전송하기", for: .normal)
-        $0.isEnabled = true
+        $0.isEnabled = false
     }
     
     // MARK: - Inintializing

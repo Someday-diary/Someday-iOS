@@ -37,7 +37,7 @@ final class DiarySecondButton: UIButton {
         self.clipsToBounds = true
         self.titleLabel?.font = Font.defaultFont
         self.theme.titleColor(from: themed { $0.thirdColor }, for: .normal)
-        self.theme.titleColor(from: themed { $0.systemWhiteColor }, for: .disabled)
+        self.theme.titleColor(from: themed { $0.disable }, for: .disabled)
     }
     
     override public var isHighlighted: Bool {
@@ -54,7 +54,7 @@ final class DiarySecondButton: UIButton {
                 if self.isEnabled {
                     self.theme.backgroundColor = themed { $0.subColor }
                 } else {
-                    self.theme.backgroundColor = themed { $0.diaryDisableColor }
+                    self.theme.backgroundColor = themed { $0.background2 }
                 }
             }
         }

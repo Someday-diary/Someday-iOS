@@ -18,6 +18,8 @@ protocol Theme {
     var mainIllustration: UIImage { get }
     var systemWhiteColor: UIColor { get }
     var backgroundColor: UIColor { get }
+    var background2: UIColor { get }
+    var disable: UIColor { get }
     var clearColor: UIColor { get }
     var clearButtonColor: UIColor { get }
     var tableViewCellColor: UIColor { get }
@@ -27,6 +29,8 @@ extension Theme {
     var diaryDisableColor: UIColor { R.color.diaryDisabledColor()! }
     var systemWhiteColor: UIColor { R.color.systemWhiteColor()! }
     var backgroundColor: UIColor { R.color.diaryBackgroundColor()! }
+    var background2: UIColor { R.color.background2()! }
+    var disable: UIColor { R.color.disable()! }
     var clearColor: UIColor { .clear }
     var clearButtonColor: UIColor { R.color.clearButtonColor()! }
     var tableViewCellColor: UIColor { R.color.tableViewCellColor()! }

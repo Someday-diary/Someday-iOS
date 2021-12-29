@@ -82,6 +82,7 @@ final class DiaryTextView: UIView {
     
     private let textView: UITextView = UITextView().then {
         $0.backgroundColor = .clear
+        $0.theme.tintColor = themed { $0.mainColor }
         $0.font = Font.textFont
     }
     
