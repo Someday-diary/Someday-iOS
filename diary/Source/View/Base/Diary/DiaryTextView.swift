@@ -49,6 +49,15 @@ final class DiaryTextView: UIView {
         }
     }
     
+    public var text: String {
+        get {
+            self.textView.text
+        }
+        set(value) {
+            self.textView.text = value
+        }
+    }
+    
     // MARK: - Constants
     fileprivate struct Style {
         static let cornerRadius = 8.f
@@ -62,17 +71,17 @@ final class DiaryTextView: UIView {
     }
 
     // MARK: - UI
-    private let titleLabel: UILabel = UILabel().then {
+    let titleLabel: UILabel = UILabel().then {
         $0.font = Font.titleFont
         $0.textColor = R.color.description2()
     }
     
-    private let background: UIView = UIView().then {
+    let background: UIView = UIView().then {
         $0.backgroundColor = Style.backgroundColor
         $0.layer.cornerRadius = Style.cornerRadius
     }
     
-    private let placeholderTextView: UITextView = UITextView().then {
+    let placeholderTextView: UITextView = UITextView().then {
         $0.font = Font.textFont
         $0.backgroundColor = .clear
         $0.textColor = R.color.description1()
@@ -80,7 +89,7 @@ final class DiaryTextView: UIView {
         $0.isScrollEnabled = false
     }
     
-    private let textView: UITextView = UITextView().then {
+    let textView: UITextView = UITextView().then {
         $0.backgroundColor = .clear
         $0.theme.tintColor = themed { $0.mainColor }
         $0.font = Font.textFont
@@ -161,4 +170,3 @@ final class DiaryTextView: UIView {
     }
     
 }
-
