@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import PinLayout
 
 final class DiaryTextView: UIView {
     
@@ -15,10 +16,37 @@ final class DiaryTextView: UIView {
     
     public var placeholder: String? {
         get {
-            self.placeholderLabel.text
+            self.placeholderTextView.text
         }
         set(value) {
-            self.placeholderLabel.text = value
+            self.placeholderTextView.text = value
+        }
+    }
+    
+    public var title: String? {
+        get {
+            self.titleLabel.text
+        }
+        set(value) {
+            self.titleLabel.text = value
+        }
+    }
+    
+    public var lines: Int {
+        get {
+            self.textView.textContainer.maximumNumberOfLines
+        }
+        set(value) {
+            self.textView.textContainer.maximumNumberOfLines = value
+        }
+    }
+    
+    public var isScrollEnabled: Bool {
+        get {
+            self.textView.isScrollEnabled
+        }
+        set(value) {
+            self.textView.isScrollEnabled = value
         }
     }
     
@@ -30,21 +58,32 @@ final class DiaryTextView: UIView {
     }
     
     fileprivate struct Font {
-        static let titleFont = UIFont.systemFont(ofSize: 12, weight: .medium)
-        static let placeholderFont = UIFont.systemFont(ofSize: 14, weight: .regular)
+        static let titleFont = UIFont.systemFont(ofSize: 14, weight: .medium)
+        static let textFont = UIFont.systemFont(ofSize: 16, weight: .regular)
     }
 
     // MARK: - UI
     private let titleLabel: UILabel = UILabel().then {
         $0.font = Font.titleFont
+        $0.textColor = R.color.description2()
     }
     
-    private let placeholderLabel: UILabel = UILabel().then {
-        $0.font = Font.placeholderFont
+    private let background: UIView = UIView().then {
+        $0.backgroundColor = Style.backgroundColor
+        $0.layer.cornerRadius = Style.cornerRadius
+    }
+    
+    private let placeholderTextView: UITextView = UITextView().then {
+        $0.font = Font.textFont
+        $0.backgroundColor = .clear
+        $0.textColor = R.color.description1()
+        $0.isEditable = false
+        $0.isScrollEnabled = false
     }
     
     private let textView: UITextView = UITextView().then {
-        $0.layer.cornerRadius = Style.cornerRadius
+        $0.backgroundColor = .clear
+        $0.font = Font.textFont
     }
     
     // MARK: - Initializing
@@ -63,16 +102,39 @@ final class DiaryTextView: UIView {
         super.layoutSubviews()
         
         self.addSubview(self.titleLabel)
+        self.addSubview(self.background)
+        self.addSubview(self.placeholderTextView)
         self.addSubview(self.textView)
-        self.addSubview(self.placeholderLabel)
         
-        self.titleLabel.pin.start().end().top()
-        self.textView.pin.below(of: self.titleLabel).start().end().bottom()
-        self.placeholderLabel.pin.above(of: self.textView).topStart(to: self.textView.anchor.topStart)
+        self.titleLabel.pin.topLeft().topRight().height(20)
+        
+        self.background.pin.below(of: self.titleLabel).bottom().left().right()
+            .marginTop(4)
+        
+        self.placeholderTextView.pin
+            .topStart(to: self.background.anchor.topStart)
+            .bottomEnd(to: self.background.anchor.bottomEnd)
+            .margin(8, 8, 12, 12)
+        
+        self.textView.pin
+            .topStart(to: self.background.anchor.topStart)
+            .bottomEnd(to: self.background.anchor.bottomEnd)
+            .margin(8, 8, 12, 12)
     }
     
     private func bind() {
-        
+        self.textView.rx.didBeginEditing.asDriver()
+            .drive(onNext:{
+                self.placeholderTextView.isHidden = true
+            })
+            .disposed(by: disposeBag)
+        self.textView.rx.didEndEditing.asDriver()
+            .drive(onNext:{
+                if self.textView.text.isEmpty {
+                    self.placeholderTextView.isHidden = false
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 
+import PinLayout
 import ReactorKit
 
 final class FeedbackViewController: BaseViewController, View {
@@ -31,6 +32,16 @@ final class FeedbackViewController: BaseViewController, View {
     // MARK: - UI
     private let titleTextView: DiaryTextView = DiaryTextView().then {
         $0.placeholder = "제목"
+        $0.title = "제목"
+        $0.isScrollEnabled = false
+        $0.lines = 1
+    }
+    
+    private let feedbackTextView: DiaryTextView = DiaryTextView().then {
+        $0.placeholder = "내용을 입력하세요"
+        $0.title = "피드백"
+        $0.lines = 0
+        $0.isScrollEnabled = true
     }
     
     // MARK: - Inintializing
@@ -39,6 +50,8 @@ final class FeedbackViewController: BaseViewController, View {
         defer {
             self.reactor = reactor
         }
+        
+        self.title = "피드백"
     }
     
     required init?(coder: NSCoder) {
@@ -54,12 +67,31 @@ final class FeedbackViewController: BaseViewController, View {
         super.setupLayout()
         
         self.view.addSubview(self.titleTextView)
+        self.view.addSubview(self.feedbackTextView)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        self.view.endEditing(true)
     }
     
     override func setupConstraints() {
         super.setupConstraints()
         
-        self.titleTextView.pin.all(self.view.pin.safeArea)
+        self.titleTextView.pin
+            .top(self.view.pin.safeArea)
+            .left(7%)
+            .right(7%)
+            .height(75)
+            .marginTop(10)
+        
+        self.feedbackTextView.pin
+            .below(of: self.titleTextView)
+            .left(7%)
+            .right(7%)
+            .height(50%)
+            .marginTop(20)
     }
     
     // MARK: - Configuring
