@@ -30,7 +30,7 @@
 		6245245B270DF3B700DE083D /* Appreance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6245245A270DF3B700DE083D /* Appreance.swift */; };
 		624D11C0275706E400E818A4 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D11BE275706E400E818A4 /* LockViewController.swift */; };
 		624D11C1275706E400E818A4 /* LockViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D11BF275706E400E818A4 /* LockViewReactor.swift */; };
-		624D11C327570C4C00E818A4 /* SendCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D11C227570C4C00E818A4 /* SendCodeButton.swift */; };
+		624D11C327570C4C00E818A4 /* DiarySecondButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D11C227570C4C00E818A4 /* DiarySecondButton.swift */; };
 		624D11C5275745F000E818A4 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 624D11C4275745F000E818A4 /* LocalAuthentication.framework */; };
 		624E4D2A26D6299B004A6624 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2926D6299B004A6624 /* LoginFlow.swift */; };
 		624E4D2C26D6350A004A6624 /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E4D2B26D6350A004A6624 /* AppStepper.swift */; };
@@ -174,7 +174,7 @@
 		6245245A270DF3B700DE083D /* Appreance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appreance.swift; sourceTree = "<group>"; };
 		624D11BE275706E400E818A4 /* LockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockViewController.swift; sourceTree = "<group>"; };
 		624D11BF275706E400E818A4 /* LockViewReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockViewReactor.swift; sourceTree = "<group>"; };
-		624D11C227570C4C00E818A4 /* SendCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCodeButton.swift; sourceTree = "<group>"; };
+		624D11C227570C4C00E818A4 /* DiarySecondButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiarySecondButton.swift; sourceTree = "<group>"; };
 		624D11C4275745F000E818A4 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		624E4D2926D6299B004A6624 /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
 		624E4D2B26D6350A004A6624 /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
@@ -352,7 +352,7 @@
 				625A9EB126D9213800D65840 /* DiaryButton.swift */,
 				62C2E4842739E7BA00F037B9 /* DiaryNumberPad.swift */,
 				62C2E4862739E81E00F037B9 /* DiaryNumberButton.swift */,
-				624D11C227570C4C00E818A4 /* SendCodeButton.swift */,
+				624D11C227570C4C00E818A4 /* DiarySecondButton.swift */,
 				62AEB6EF277A95AD009687D0 /* DiaryTextView.swift */,
 			);
 			path = Diary;
@@ -1022,7 +1022,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1232,7 +1232,7 @@
 				626AC5AB2731877600E907E8 /* DiaryService.swift in Sources */,
 				62B32610272D1B5400DC3C96 /* BaseAPI.swift in Sources */,
 				62C1564B270BDD0E00938DB7 /* UITextField+RxTheme.swift in Sources */,
-				624D11C327570C4C00E818A4 /* SendCodeButton.swift in Sources */,
+				624D11C327570C4C00E818A4 /* DiarySecondButton.swift in Sources */,
 				621CF21427096DC500B7EB5D /* SearchViewReactor.swift in Sources */,
 				6221F28C2733D7FB009A9164 /* Post.swift in Sources */,
 				6250FE4426DCE26100A0277B /* AppServices.swift in Sources */,

@@ -75,8 +75,10 @@ final class RegisterViewController: BaseViewController, View {
         $0.textField.keyboardType = .numberPad
     }
     
-    let codeButton = SendCodeButton().then {
+    let codeButton = DiarySecondButton().then {
         $0.setTitle("Verify".localized, for: .normal)
+        $0.layer.cornerRadius = 8
+        $0.titleLabel?.font = Font.codeFont
     }
     
     let nextButton = DiaryButton(type: .system).then {

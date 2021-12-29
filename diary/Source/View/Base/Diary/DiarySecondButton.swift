@@ -7,16 +7,16 @@
 
 import UIKit
 
-final class SendCodeButton: UIButton {
+final class DiarySecondButton: UIButton {
     
     // MARK: - Constants
     fileprivate struct Style {
-        static let cornerRadius = 8.f
+        static let defaultCornerRadius = 12.f
     }
 
     // MARK: - UI
     fileprivate struct Font {
-        static let codeFont = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        static let defaultFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
     }
     
     // MARK: - Initializing
@@ -33,9 +33,9 @@ final class SendCodeButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.layer.cornerRadius = Style.cornerRadius
+        self.layer.cornerRadius = Style.defaultCornerRadius
         self.clipsToBounds = true
-        self.titleLabel?.font = Font.codeFont
+        self.titleLabel?.font = Font.defaultFont
         self.theme.titleColor(from: themed { $0.thirdColor }, for: .normal)
         self.theme.titleColor(from: themed { $0.systemWhiteColor }, for: .disabled)
     }
