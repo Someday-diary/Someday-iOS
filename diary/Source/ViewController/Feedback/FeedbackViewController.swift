@@ -45,7 +45,6 @@ final class FeedbackViewController: BaseViewController, View {
     
     private let sendButton: DiarySecondButton = DiarySecondButton(type: .system).then {
         $0.setTitle("전송하기", for: .normal)
-        $0.isEnabled = false
     }
     
     // MARK: - Inintializing
@@ -110,7 +109,14 @@ final class FeedbackViewController: BaseViewController, View {
     
     // MARK: - Configuring
     func bind(reactor: Reactor) {
-        
+        Observable.combineLatest(
+            titleTextView.rx.text.orEmpty,
+            feedbackTextView.rx.text.orEmpty
+        ).observeOn(MainScheduler.asyncInstance)
+            .map { !$0.isEmpty && !$1.isEmpty }
+            .asObservable()
+            .bind(to: self.sendButton.rx.isEnabled)
+            .disposed(by: disposeBag)
     }
     
     
