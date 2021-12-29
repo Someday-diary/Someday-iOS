@@ -125,13 +125,20 @@ final class DiaryTextView: UIView {
     private func bind() {
         self.textView.rx.didBeginEditing.asDriver()
             .drive(onNext:{
-                self.placeholderTextView.isHidden = true
+                UIView.animate(withDuration: 0.2) {
+                    self.placeholderTextView.isHidden = true
+                    self.background.backgroundColor = Style.selectedColor
+                }
             })
             .disposed(by: disposeBag)
+        
         self.textView.rx.didEndEditing.asDriver()
             .drive(onNext:{
-                if self.textView.text.isEmpty {
-                    self.placeholderTextView.isHidden = false
+                UIView.animate(withDuration: 0.3) {
+                    if self.textView.text.isEmpty {
+                        self.placeholderTextView.isHidden = false
+                    }
+                    self.background.backgroundColor = Style.backgroundColor
                 }
             })
             .disposed(by: disposeBag)
