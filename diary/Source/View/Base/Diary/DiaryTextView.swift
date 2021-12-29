@@ -7,7 +7,6 @@
 
 import UIKit
 import RxSwift
-import PinLayout
 
 final class DiaryTextView: UIView {
     
@@ -103,28 +102,43 @@ final class DiaryTextView: UIView {
         
         self.addSubview(self.titleLabel)
         self.addSubview(self.background)
-        self.addSubview(self.placeholderTextView)
-        self.addSubview(self.textView)
+        self.background.addSubview(self.placeholderTextView)
+        self.background.addSubview(self.textView)
         
-        self.titleLabel.pin.topLeft().topRight().height(20)
+        self.titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.height.equalTo(20)
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+        }
         
-        self.background.pin.below(of: self.titleLabel).bottom().left().right()
-            .marginTop(4)
+        self.background.snp.makeConstraints {
+            $0.top.equalTo(self.titleLabel.snp.bottom).offset(4)
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
         
-        self.placeholderTextView.pin
-            .topStart(to: self.background.anchor.topStart)
-            .bottomEnd(to: self.background.anchor.bottomEnd)
-            .margin(8, 8, 12, 12)
+        self.placeholderTextView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(8)
+            $0.left.equalToSuperview().offset(12)
+            $0.right.equalToSuperview().offset(-12)
+            $0.bottom.equalToSuperview().offset(-8)
+        }
         
-        self.textView.pin
-            .topStart(to: self.background.anchor.topStart)
-            .bottomEnd(to: self.background.anchor.bottomEnd)
-            .margin(8, 8, 12, 12)
+        self.textView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(8)
+            $0.left.equalToSuperview().offset(12)
+            $0.right.equalToSuperview().offset(-12)
+            $0.bottom.equalToSuperview().offset(-8)
+        }
+        
     }
     
     private func bind() {
         self.textView.rx.didBeginEditing.asDriver()
-            .drive(onNext:{
+            .drive(onNext:{ [weak self] in
+                guard let self = self else { return }
                 UIView.animate(withDuration: 0.2) {
                     self.placeholderTextView.isHidden = true
                     self.background.backgroundColor = Style.selectedColor
@@ -133,7 +147,8 @@ final class DiaryTextView: UIView {
             .disposed(by: disposeBag)
         
         self.textView.rx.didEndEditing.asDriver()
-            .drive(onNext:{
+            .drive(onNext:{ [weak self] in
+                guard let self = self else { return }
                 UIView.animate(withDuration: 0.3) {
                     if self.textView.text.isEmpty {
                         self.placeholderTextView.isHidden = false

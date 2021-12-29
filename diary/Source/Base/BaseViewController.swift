@@ -7,7 +7,6 @@
 
 import UIKit
 
-import PinLayout
 import RxSwift
 import RxCocoa
 
@@ -48,12 +47,13 @@ class BaseViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        self.setupConstraints()
+        
     }
     
     override func updateViewConstraints() {
         if !self.didSetupConstraints {
             self.setupLayout()
+            self.setupConstraints()
             self.didSetupConstraints = true
         }
         super.updateViewConstraints()
@@ -65,7 +65,9 @@ class BaseViewController: UIViewController {
     }
     
     func setupConstraints() {
-        activityIndicatorView.pin.center()
+        activityIndicatorView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
     }
     
     func setupLocalization() {

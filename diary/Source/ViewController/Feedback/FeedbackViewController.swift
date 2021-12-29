@@ -7,7 +7,7 @@
 
 import UIKit
 
-import PinLayout
+import RxKeyboard
 import ReactorKit
 
 final class FeedbackViewController: BaseViewController, View {
@@ -40,7 +40,6 @@ final class FeedbackViewController: BaseViewController, View {
     private let feedbackTextView: DiaryTextView = DiaryTextView().then {
         $0.placeholder = "내용을 입력하세요"
         $0.title = "피드백"
-        $0.lines = 0
         $0.isScrollEnabled = true
     }
     
@@ -74,6 +73,8 @@ final class FeedbackViewController: BaseViewController, View {
         self.view.addSubview(self.titleTextView)
         self.view.addSubview(self.feedbackTextView)
         self.view.addSubview(self.sendButton)
+        
+        UIBind()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -85,30 +86,54 @@ final class FeedbackViewController: BaseViewController, View {
     override func setupConstraints() {
         super.setupConstraints()
         
-        self.titleTextView.pin
-            .top(self.view.pin.safeArea)
-            .left(7%)
-            .right(7%)
-            .height(75)
-            .marginTop(10)
+        self.titleTextView.snp.makeConstraints {
+            $0.top.equalToSafeArea(self.view).offset(10)
+            $0.left.equalTo(20)
+            $0.right.equalTo(-20)
+            $0.height.equalTo(75)
+        }
         
-        self.feedbackTextView.pin
-            .below(of: self.titleTextView)
-            .left(7%)
-            .right(7%)
-            .height(50%)
-            .marginTop(20)
+        self.feedbackTextView.snp.makeConstraints {
+            $0.top.equalTo(self.titleTextView.snp.bottom).offset(20)
+            $0.left.equalTo(20)
+            $0.right.equalTo(-20)
+        }
         
-        self.sendButton.pin
-            .bottom(self.view.pin.safeArea)
-            .left(7%)
-            .right(7%)
-            .height(45)
+        self.sendButton.snp.makeConstraints {
+            $0.top.equalTo(self.feedbackTextView.snp.bottom).offset(20)
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+            $0.height.equalTo(45)
+        }
+        
     }
     
     // MARK: - Configuring
     func bind(reactor: Reactor) {
         
+    }
+    
+    
+}
+
+extension FeedbackViewController {
+    fileprivate func UIBind() {
+        RxKeyboard.instance.visibleHeight
+            .distinctUntilChanged()
+            .drive(onNext: { [weak self] height in
+                guard let self = self else { return }
+                
+                self.sendButton.snp.updateConstraints {
+                    $0.bottom.equalToSafeArea(self.view).offset(height == 0 ? -25 : -height)
+                }
+                self.sendButton.setNeedsUpdateConstraints()
+                
+                UIView.animate(withDuration: 0.1) {
+                    self.view.layoutIfNeeded()
+                }
+                
+            })
+            .disposed(by: disposeBag)
     }
 }
 
