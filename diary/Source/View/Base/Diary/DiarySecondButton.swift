@@ -42,7 +42,7 @@ final class DiarySecondButton: UIButton {
     
     override public var isHighlighted: Bool {
         didSet {
-            UIView.animate(withDuration: 0.3) {
+            UIView.animate(withDuration: 0.05) {
                 self.backgroundColor = self.backgroundColor?.withAlphaComponent(self.isHighlighted ? 0.5 : 1)
             }
         }
@@ -50,7 +50,7 @@ final class DiarySecondButton: UIButton {
     
     override public var isEnabled: Bool {
         didSet {
-            UIView.animate(withDuration: 0.1) {
+            UIView.animate(withDuration: 0.2) {
                 if self.isEnabled {
                     self.theme.backgroundColor = themed { $0.subColor }
                 } else {

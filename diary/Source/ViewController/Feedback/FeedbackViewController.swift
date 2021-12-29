@@ -44,6 +44,11 @@ final class FeedbackViewController: BaseViewController, View {
         $0.isScrollEnabled = true
     }
     
+    private let sendButton: DiarySecondButton = DiarySecondButton(type: .system).then {
+        $0.setTitle("전송하기", for: .normal)
+        $0.isEnabled = true
+    }
+    
     // MARK: - Inintializing
     init(reactor: Reactor) {
         super.init()
@@ -68,6 +73,7 @@ final class FeedbackViewController: BaseViewController, View {
         
         self.view.addSubview(self.titleTextView)
         self.view.addSubview(self.feedbackTextView)
+        self.view.addSubview(self.sendButton)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -92,6 +98,12 @@ final class FeedbackViewController: BaseViewController, View {
             .right(7%)
             .height(50%)
             .marginTop(20)
+        
+        self.sendButton.pin
+            .bottom(self.view.pin.safeArea)
+            .left(7%)
+            .right(7%)
+            .height(45)
     }
     
     // MARK: - Configuring
