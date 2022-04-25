@@ -30,7 +30,7 @@ final class HashtagTextField: UIView {
         $0.theme.tintColor = themed { $0.thirdColor }
         $0.theme.textColor = themed { $0.thirdColor }
         $0.font = Font.textFieldFont
-        $0.placeholder = "# Write Tags"
+        $0.placeholder = "# Write Tags".localized
         $0.autocorrectionType = .default
         $0.autocapitalizationType = .none
         $0.clearButtonMode = .whileEditing
