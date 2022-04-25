@@ -31,6 +31,7 @@ target 'diary' do
   pod 'RxAnimated'
   pod 'RxTheme'
   pod 'RxGesture'
+  pod 'RxLocalAuthentication'
   
   # Network
   pod 'Moya/RxSwift'

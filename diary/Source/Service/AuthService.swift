@@ -7,7 +7,7 @@
 
 import Foundation
 
-import LocalAuthentication
+import RxLocalAuthentication
 import KeychainAccess
 import RxSwift
 import Moya
@@ -24,7 +24,7 @@ protocol AuthServiceType: AnyObject {
     func logout()
     func setPasscode(passcode: String)
     func setBioPasscode()
-    func getBioPasscode(completion: @escaping(Bool) -> Void)
+    func getBioPasscode() -> Single<Bool>
     func removePasscode()
     func removeBioPasscode()
     func canEvaluatePolicy() -> Bool
@@ -34,7 +34,7 @@ class AuthService: AuthServiceType {
     
     fileprivate let network: Network<AuthAPI>
     fileprivate let keychain = Keychain(service: "com.diary.someday.ios")
-    fileprivate let authContext = LAContext()
+    fileprivate let authContext = RxLAContext()
     private(set) var currentToken: Token?
     private(set) var currentPasscode: String?
     
@@ -157,16 +157,9 @@ class AuthService: AuthServiceType {
     fileprivate func getPasscode() -> String? {
         return try? keychain.getString("passcode")
     }
-    
-    func getBioPasscode(completion: @escaping(Bool) -> Void) {
-        self.authContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "로그인을 위한 인증") { success, error in
-            if error == nil {
-                print(success)
-                completion(true)
-            } else {
-                completion(false)
-            }
-        }
+  
+    func getBioPasscode() -> Single<Bool> {
+        return self.authContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "로그인을 위한 인증")
     }
     
     func canEvaluatePolicy() -> Bool {

@@ -97,13 +97,13 @@
 		62C2E48D2739F07700F037B9 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E48C2739F07700F037B9 /* PasscodeViewController.swift */; };
 		62C2E4902739F32500F037B9 /* PasscodeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2E48F2739F32500F037B9 /* PasscodeViewReactor.swift */; };
 		62C2E4912739F41600F037B9 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F4C5426CF22D300DC5978 /* Preview.swift */; };
+		62C4EC8228161EFF009DB15F /* SplashFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C4EC8128161EFF009DB15F /* SplashFlow.swift */; };
 		62C7A9962715A90C00691069 /* UITableView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7A9952715A90C00691069 /* UITableView+Rx.swift */; };
 		62C7A99A2716C60400691069 /* ThemeSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7A9992716C60400691069 /* ThemeSectionHeaderView.swift */; };
 		62C7D7A226EF4AEB00C3E257 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7D7A126EF4AEB00C3E257 /* UserService.swift */; };
 		62CB1D3526DA4CCB00B1BA32 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB1D3426DA4CCB00B1BA32 /* SideMenuViewController.swift */; };
 		62CB1D3726DA4D3500B1BA32 /* SideMenuViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB1D3626DA4D3500B1BA32 /* SideMenuViewReactor.swift */; };
 		62CB1D3B26DA4F4200B1BA32 /* CustomDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB1D3A26DA4F4200B1BA32 /* CustomDelegateProxy.swift */; };
-		62D01266273CB722009D050B /* SplashFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D01265273CB722009D050B /* SplashFlow.swift */; };
 		62D0900327617D5B008D839E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 62D0900527617D5B008D839E /* Localizable.strings */; };
 		62D388A626D9E9FA00A8D185 /* CheckValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D388A526D9E9FA00A8D185 /* CheckValidation.swift */; };
 		62D388A926DA1F7C00A8D185 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 62D388AB26DA1F7C00A8D185 /* InfoPlist.strings */; };
@@ -245,6 +245,7 @@
 		62C2E48A2739EEE000F037B9 /* SecureTextEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextEntry.swift; sourceTree = "<group>"; };
 		62C2E48C2739F07700F037B9 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
 		62C2E48F2739F32500F037B9 /* PasscodeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewReactor.swift; sourceTree = "<group>"; };
+		62C4EC8128161EFF009DB15F /* SplashFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashFlow.swift; sourceTree = "<group>"; };
 		62C7A9952715A90C00691069 /* UITableView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Rx.swift"; sourceTree = "<group>"; };
 		62C7A9992716C60400691069 /* ThemeSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSectionHeaderView.swift; sourceTree = "<group>"; };
 		62C7D76326ED20B600C3E257 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
@@ -252,7 +253,6 @@
 		62CB1D3426DA4CCB00B1BA32 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		62CB1D3626DA4D3500B1BA32 /* SideMenuViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewReactor.swift; sourceTree = "<group>"; };
 		62CB1D3A26DA4F4200B1BA32 /* CustomDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDelegateProxy.swift; sourceTree = "<group>"; };
-		62D01265273CB722009D050B /* SplashFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashFlow.swift; sourceTree = "<group>"; };
 		62D09007276180A7008D839E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		62D388A526D9E9FA00A8D185 /* CheckValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckValidation.swift; sourceTree = "<group>"; };
 		62D388AA26DA1F7C00A8D185 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -482,7 +482,7 @@
 				625F4C6026CF8CEC00DC5978 /* AppFlow.swift */,
 				624E4D2926D6299B004A6624 /* LoginFlow.swift */,
 				624E4D3826D85F40004A6624 /* HomeFlow.swift */,
-				62D01265273CB722009D050B /* SplashFlow.swift */,
+				62C4EC8128161EFF009DB15F /* SplashFlow.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -1149,6 +1149,7 @@
 				620BCACB26E8819C0023499D /* String.swift in Sources */,
 				624E4D3526D66EB5004A6624 /* LoginViewReactor.swift in Sources */,
 				62D758D226E474DE009AE551 /* UITextView+RxTheme.swift in Sources */,
+				62C4EC8228161EFF009DB15F /* SplashFlow.swift in Sources */,
 				624E4D3926D85F40004A6624 /* HomeFlow.swift in Sources */,
 				628BFD9526EB514F00851408 /* FloatingViewController.swift in Sources */,
 				620BCAC926E601930023499D /* CreateDiaryButton.swift in Sources */,
@@ -1177,7 +1178,6 @@
 				620BCABF26E5D58C0023499D /* HashtagTextField.swift in Sources */,
 				628BFD9E26EBA49600851408 /* BaseTableViewCell.swift in Sources */,
 				620BCABB26E4F9F70023499D /* ModelType.swift in Sources */,
-				62D01266273CB722009D050B /* SplashFlow.swift in Sources */,
 				620BCAC526E5EC730023499D /* UITextField.swift in Sources */,
 				62F6681C26F8DAF800110E35 /* ActiveLabel+RxTheme.swift in Sources */,
 				62B2C69327296F66005A7AFF /* ServerResponse.swift in Sources */,
