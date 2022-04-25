@@ -36,8 +36,8 @@ final class SendCodeButton: UIButton {
         self.layer.cornerRadius = Style.cornerRadius
         self.clipsToBounds = true
         self.titleLabel?.font = Font.codeFont
-        self.theme.titleColor(from: themed { $0.thirdColor }, for: .normal)
-        self.theme.titleColor(from: themed { $0.systemWhiteColor }, for: .disabled)
+        self.theme.titleColor(from: themeService.attribute { $0.thirdColor }, for: .normal)
+        self.theme.titleColor(from: themeService.attribute { $0.systemWhiteColor }, for: .disabled)
     }
     
     override public var isHighlighted: Bool {
@@ -52,9 +52,9 @@ final class SendCodeButton: UIButton {
         didSet {
             UIView.animate(withDuration: 0.1) {
                 if self.isEnabled {
-                    self.theme.backgroundColor = themed { $0.subColor }
+                    self.theme.backgroundColor = themeService.attribute { $0.subColor }
                 } else {
-                    self.theme.backgroundColor = themed { $0.diaryDisableColor }
+                    self.theme.backgroundColor = themeService.attribute { $0.diaryDisableColor }
                 }
             }
         }

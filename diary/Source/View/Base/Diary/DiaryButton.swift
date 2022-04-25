@@ -50,11 +50,11 @@ final class DiaryButton: UIButton {
         didSet {
             UIView.animate(withDuration: 0.3) {
                 if self.isEnabled {
-                    self.theme.backgroundColor = themed { $0.mainColor }
-                    self.layer.theme.borderColor = themed { $0.mainColor.cgColor }
+                    self.theme.backgroundColor = themeService.attribute { $0.mainColor }
+                    self.layer.theme.borderColor = themeService.attribute { $0.mainColor.cgColor }
                 } else {
-                    self.theme.backgroundColor = themed { $0.clearColor }
-                    self.layer.theme.borderColor = themed { $0.diaryDisableColor.cgColor }
+                    self.theme.backgroundColor = themeService.attribute { $0.clearColor }
+                    self.layer.theme.borderColor = themeService.attribute { $0.diaryDisableColor.cgColor }
                 }
             }
         }

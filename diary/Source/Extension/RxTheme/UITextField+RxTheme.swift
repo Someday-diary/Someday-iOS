@@ -13,12 +13,13 @@ import RxTheme
 
 extension ThemeProxy where Base: UITextField {
     
-    var clearButtonTintColor: Observable<UIColor?> {
-        get { return .empty() }
+    var clearButtonTintColor: ThemeAttribute<UIColor?> {
+        get { fatalError("set only") }
         set {
-            let disposable = newValue
-                .takeUntil(base.rx.deallocating)
-                .observeOn(MainScheduler.instance)
+            base.clearButtonTintColor = newValue.value
+            let disposable = newValue.stream
+                .take(until: base.rx.deallocating)
+                .observe(on: MainScheduler.instance)
                 .bind(to: base.rx.clearButtonTintColor)
             hold(disposable, for: "clearButtonTintColor")
         }

@@ -56,7 +56,7 @@ final class PasswordViewController: BaseViewController, View {
     
     // MARK: - UI
     let passwordImageView = UIImageView().then {
-        $0.theme.image = themed { $0.mainIllustration }
+        $0.theme.image = themeService.attribute { $0.mainIllustration }
     }
     
     let passwordTextField = DiaryTextField().then {
@@ -160,7 +160,7 @@ final class PasswordViewController: BaseViewController, View {
             passwordTextField.textField.rx.text.orEmpty,
             reEnterTextField.textField.rx.text.orEmpty
         )
-        .observeOn(MainScheduler.asyncInstance)
+        .observe(on: MainScheduler.asyncInstance)
         .map { Reactor.Action.updateTextField([$0, $1]) }
         .bind(to: reactor.action)
         .disposed(by: disposeBag)
@@ -234,11 +234,11 @@ extension PasswordViewController {
             })
             .disposed(by: disposeBag)
         
-        themed { $0.thirdColor }.asObservable()
+        themeService.attribute { $0.thirdColor }.stream
             .distinctUntilChanged()
-            .subscribe (onNext: { [weak self] color in
+            .subscribe (onNext: { [weak self] in
                 guard let `self` = self else { return }
-                let text = "Already have account? <h>Sign in</h>".localized.style(tags: Font.loginHighlight.foregroundColor(color)).styleAll(Font.loginAll).attributedString
+                let text = "Already have account? <h>Sign in</h>".localized.style(tags: Font.loginHighlight.foregroundColor($0)).styleAll(Font.loginAll).attributedString
                 self.loginButton.setAttributedTitle(text, for: .normal)
             })
             .disposed(by: disposeBag)

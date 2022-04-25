@@ -112,7 +112,7 @@ final class MainViewController: BaseViewController, View {
             .map { [weak self] _ in
                 return Reactor.Action.changeMonth((self?.calendarView.calendar.currentPage.changeTime)!)
             }
-            .observeOn(MainScheduler.asyncInstance)
+            .observe(on: MainScheduler.asyncInstance)
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -138,11 +138,11 @@ final class MainViewController: BaseViewController, View {
             .disposed(by: disposeBag)
         
         Observable.combineLatest(
-            themed { $0.mainColor },
-            themed { $0.subColor },
-            themed { $0.thirdColor }
+          themeService.attribute { $0.mainColor }.stream,
+          themeService.attribute { $0.subColor }.stream,
+          themeService.attribute { $0.thirdColor }.stream
         ).asObservable()
-        .observeOn(MainScheduler.asyncInstance)
+        .observe(on: MainScheduler.asyncInstance)
         .map { Reactor.Action.changeColor([$0, $1, $2]) }
         .bind(to: reactor.action)
         .disposed(by: disposeBag)
@@ -157,7 +157,7 @@ final class MainViewController: BaseViewController, View {
 
         reactor.state.map { $0.writedDays }.asObservable()
             .distinctUntilChanged()
-            .observeOn(MainScheduler.asyncInstance)
+            .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] _ in
                 self?.calendarView.calendar.reloadData()
             })

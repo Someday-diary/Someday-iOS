@@ -14,12 +14,13 @@ import RxTheme
 
 extension ThemeProxy where Base: UITextView {
     
-    var placeholderColor: Observable<UIColor?> {
-        get { return .empty() }
+    var placeholderColor: ThemeAttribute<UIColor?> {
+        get { fatalError("set only") }
         set {
-            let disposable = newValue
-                .takeUntil(base.rx.deallocating)
-                .observeOn(MainScheduler.instance)
+            base.placeholderColor = newValue.value
+            let disposable = newValue.stream
+                .take(until: base.rx.deallocating)
+                .observe(on: MainScheduler.instance)
                 .bind(to: base.rx.placeholderColor)
             hold(disposable, for: "placeholderColor")
         }

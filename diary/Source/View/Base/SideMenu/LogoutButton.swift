@@ -31,7 +31,7 @@ class LogoutButton: UIButton {
     // MARK: - UI
     let logoutIcon = UIImageView().then {
         $0.image = R.image.logoutIcon()
-        $0.theme.tintColor = themed { $0.mainColor }
+        $0.theme.tintColor = themeService.attribute { $0.mainColor }
     }
     
     let label = UILabel().then {

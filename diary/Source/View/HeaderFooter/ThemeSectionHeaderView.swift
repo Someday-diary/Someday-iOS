@@ -23,7 +23,7 @@ class ThemeSectionHeaderView: UITableViewHeaderFooterView {
     
     var title = UILabel().then {
         $0.font = Font.titleFont
-        $0.theme.textColor = themed { $0.tableViewCellColor }
+        $0.theme.textColor = themeService.attribute { $0.tableViewCellColor }
         $0.text = "section"
     }
     

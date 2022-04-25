@@ -19,8 +19,7 @@ final class RegisterViewController: BaseViewController, View {
     fileprivate struct Metric {
         
         // Image
-        static let imageRatio = (50 / 70).f
-        static let imageHeight = 70.f
+        static let imageHeight = 50.f
         static let imageWidth = 50.f
         static let imageTop = 60.f
         
@@ -62,7 +61,7 @@ final class RegisterViewController: BaseViewController, View {
     
     // MARK: - UI
     let signUpImageView = UIImageView().then {
-        $0.theme.image = themed { $0.mainIllustration }
+        $0.theme.image = themeService.attribute { $0.mainIllustration }
     }
     
     let emailTextField = DiaryTextField().then {
@@ -177,7 +176,7 @@ final class RegisterViewController: BaseViewController, View {
             emailTextField.textField.rx.text.orEmpty,
             codeTextField.textField.rx.text.orEmpty
         )
-        .observeOn(MainScheduler.asyncInstance)
+        .observe(on: MainScheduler.asyncInstance)
         .map { Reactor.Action.updateTextField([$0, $1]) }
         .bind(to: reactor.action)
         .disposed(by: disposeBag)
@@ -263,11 +262,11 @@ extension RegisterViewController {
             })
             .disposed(by: disposeBag)
         
-        themed { $0.thirdColor }.asObservable()
+        themeService.attribute { $0.thirdColor }.stream
             .distinctUntilChanged()
-            .subscribe (onNext: { [weak self] color in
-                guard let `self` = self else { return }
-                let text = "Already have account? <h>Sign in</h>".localized.style(tags: Font.loginHighlight.foregroundColor(color)).styleAll(Font.loginAll).attributedString
+            .subscribe (onNext: { [weak self] in
+                guard let self = self else { return }
+                let text = "Already have account? <h>Sign in</h>".localized.style(tags: Font.loginHighlight.foregroundColor($0)).styleAll(Font.loginAll).attributedString
                 self.loginButton.setAttributedTitle(text, for: .normal)
             })
             .disposed(by: disposeBag)

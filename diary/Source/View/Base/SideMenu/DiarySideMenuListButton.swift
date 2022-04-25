@@ -41,11 +41,11 @@ class DiarySideMenuListButton: UIButton {
     let imageArea = UIView()
     
     let icon = UIImageView().then {
-        $0.theme.tintColor = themed { $0.mainColor }
+        $0.theme.tintColor = themeService.attribute { $0.mainColor }
     }
     
     let imageBackground = UIView().then {
-        $0.theme.backgroundColor = themed { $0.subColor }
+        $0.theme.backgroundColor = themeService.attribute { $0.subColor }
         $0.layer.cornerRadius = Style.backgroundCornerRadius
     }
     

@@ -47,7 +47,7 @@ target 'diary' do
   pod 'Then'
   pod 'Carte'
   pod 'CGFloatLiteral'
-  pod 'ReusableKit/RxSwift'
+  pod 'ReusableKit/RxSwift', :git => 'https://github.com/Skyline-23/ReusableKit', :branch => 'master'
 
   target 'diaryTests' do
     inherit! :search_paths

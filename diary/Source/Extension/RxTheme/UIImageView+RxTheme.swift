@@ -12,12 +12,13 @@ import RxCocoa
 import RxTheme
 
 extension ThemeProxy where Base: UIImageView {
-    var image: Observable<UIImage?> {
-        get { return .empty() }
+      var image: ThemeAttribute<UIImage?> {
+        get { fatalError("set only") }
         set {
-            let disposable = newValue
-                .takeUntil(base.rx.deallocating)
-                .observeOn(MainScheduler.instance)
+            base.image = newValue.value
+            let disposable = newValue.stream
+                .take(until: base.rx.deallocating)
+                .observe(on: MainScheduler.instance)
                 .bind(to: base.rx.image)
             hold(disposable, for: "image")
         }

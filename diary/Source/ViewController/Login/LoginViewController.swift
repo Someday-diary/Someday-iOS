@@ -18,8 +18,7 @@ class LoginViewController: BaseViewController, View {
     fileprivate struct Metric {
         
         // Image
-        static let imageRatio = (50 / 70).f
-        static let imageHeight = 70.f
+        static let imageHeight = 50.f
         static let imageWidth = 50.f
         static let imageTop = 60.f
         
@@ -55,7 +54,7 @@ class LoginViewController: BaseViewController, View {
     
     // MARK: - UI
     let loginImageView = UIImageView().then {
-        $0.theme.image = themed { $0.mainIllustration }
+        $0.theme.image = themeService.attribute { $0.mainIllustration }
     }
     
     let idTextField = DiaryTextField().then {
@@ -161,7 +160,7 @@ class LoginViewController: BaseViewController, View {
             idTextField.textField.rx.text.orEmpty,
             passwordTextField.textField.rx.text.orEmpty
         )
-        .observeOn(MainScheduler.asyncInstance)
+        .observe(on: MainScheduler.asyncInstance)
         .map { Reactor.Action.updateTextField([$0, $1]) }
         .bind(to: reactor.action)
         .disposed(by: disposeBag)
@@ -236,11 +235,11 @@ extension LoginViewController {
             })
             .disposed(by: disposeBag)
         
-        themed { $0.thirdColor }.asObservable()
+        themeService.attribute { $0.thirdColor }.stream
             .distinctUntilChanged()
-            .subscribe (onNext: { [weak self] color in
-                guard let `self` = self else { return }
-                let text = "Don't have an account? <h>Sign up</h>".localized.style(tags: Font.registerHighlight.foregroundColor(color)).styleAll(Font.registerAll).attributedString
+            .subscribe (onNext: { [weak self] in
+                guard let self = self else { return }
+                let text = "Don't have an account? <h>Sign up</h>".localized.style(tags: Font.registerHighlight.foregroundColor($0)).styleAll(Font.registerAll).attributedString
                 self.registerButton.setAttributedTitle(text, for: .normal)
             })
             .disposed(by: disposeBag)

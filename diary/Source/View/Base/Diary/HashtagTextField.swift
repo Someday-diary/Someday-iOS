@@ -27,18 +27,18 @@ final class HashtagTextField: UIView {
     
     // MARK: - UI
     let textField = UITextField().then {
-        $0.theme.tintColor = themed { $0.thirdColor }
-        $0.theme.textColor = themed { $0.thirdColor }
+        $0.theme.tintColor = themeService.attribute { $0.thirdColor }
+        $0.theme.textColor = themeService.attribute { $0.thirdColor }
         $0.font = Font.textFieldFont
         $0.placeholder = "# Write Tags".localized
         $0.autocorrectionType = .default
         $0.autocapitalizationType = .none
         $0.clearButtonMode = .whileEditing
-        $0.theme.clearButtonTintColor = themed { $0.clearButtonColor }
+        $0.theme.clearButtonTintColor = themeService.attribute { $0.clearButtonColor }
     }
     
     let separatorView = UIView().then {
-        $0.theme.backgroundColor = themed { $0.thirdColor }
+        $0.theme.backgroundColor = themeService.attribute { $0.thirdColor }
     }
     
     // MARK: - Initializing

@@ -13,12 +13,13 @@ import RxCocoa
 import FSCalendar
 
 extension ThemeProxy where Base: FSCalendarAppearance {
-    var selectionColor: Observable<UIColor?> {
-        get { return .empty() }
+    var selectionColor: ThemeAttribute<UIColor?> {
+        get { fatalError("set only") }
         set {
-            let disposable = newValue
-                .takeUntil(base.rx.deallocating)
-                .observeOn(MainScheduler.instance)
+            base.selectionColor = newValue.value
+            let disposable = newValue.stream
+                .take(until: base.rx.deallocating)
+                .observe(on: MainScheduler.instance)
                 .bind(to: base.rx.selectionColor)
             hold(disposable, for: "selectionColor")
         }

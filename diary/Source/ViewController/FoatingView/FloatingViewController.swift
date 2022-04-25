@@ -66,7 +66,7 @@ final class FloatingViewController: BaseViewController, View {
     let headerView = UIView()
     
     let dateView = UIView().then {
-        $0.theme.backgroundColor = themed { $0.mainColor }
+        $0.theme.backgroundColor = themeService.attribute { $0.mainColor }
         $0.layer.cornerRadius = Metric.dateViewSize / 2
         $0.clipsToBounds = true
     }
@@ -91,8 +91,8 @@ final class FloatingViewController: BaseViewController, View {
     
     let hashtagLabel = ActiveLabel().then {
         $0.enabledTypes = [LabelActive.customType]
-        $0.theme.textColor = themed { $0.thirdColor }
-        $0.theme.customColor = themed { $0.thirdColor }
+        $0.theme.textColor = themeService.attribute { $0.thirdColor }
+        $0.theme.customColor = themeService.attribute { $0.thirdColor }
         $0.font = Font.tagLabelFont
         $0.adjustsFontForContentSizeCategory = true
     }

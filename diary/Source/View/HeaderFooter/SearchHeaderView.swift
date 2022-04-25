@@ -19,7 +19,7 @@ class SearchHeaderView: UIView {
     // MARK: - UI
     var title = UILabel().then {
         $0.font = Font.titleFont
-        $0.theme.textColor = themed { $0.thirdColor }
+        $0.theme.textColor = themeService.attribute { $0.thirdColor }
         $0.text = "#"
     }
     

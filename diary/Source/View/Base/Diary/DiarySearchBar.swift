@@ -27,7 +27,7 @@ final class DiarySearchBar: UISearchBar {
     // MARK: - UI
     let leftButton = UIButton(type: .system).then {
         $0.setImage(R.image.arrowIcon(), for: .normal)
-        $0.theme.tintColor = themed { $0.mainColor }
+        $0.theme.tintColor = themeService.attribute { $0.mainColor }
     }
     
     let leftView = UIView().then {
@@ -42,9 +42,9 @@ final class DiarySearchBar: UISearchBar {
         self.searchTextField.backgroundColor = .clear
         self.searchTextField.layer.cornerRadius = Style.cornerRadius
         self.searchTextField.layer.borderWidth = Style.borderWidth
-        self.searchTextField.layer.theme.borderColor = themed { $0.mainColor.cgColor }
-        self.searchTextField.theme.clearButtonTintColor = themed { $0.clearButtonColor }
-        self.theme.tintColor = themed { $0.mainColor }
+        self.searchTextField.layer.theme.borderColor = themeService.attribute { $0.mainColor.cgColor }
+        self.searchTextField.theme.clearButtonTintColor = themeService.attribute { $0.clearButtonColor }
+        self.theme.tintColor = themeService.attribute { $0.mainColor }
     }
     
     required init?(coder: NSCoder) {

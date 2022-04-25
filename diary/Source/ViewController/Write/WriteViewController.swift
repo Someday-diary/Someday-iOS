@@ -41,10 +41,10 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
     
     // MARK: - UI
     let textView = UITextView().then {
-        $0.theme.placeholderColor = themed { $0.mainColor }
+        $0.theme.placeholderColor = themeService.attribute { $0.mainColor }
         $0.backgroundColor = R.color.diaryBackgroundColor()
         $0.placeholder = "Write down your today".localized
-        $0.theme.tintColor = themed { $0.mainColor }
+        $0.theme.tintColor = themeService.attribute { $0.mainColor }
         $0.font = Font.textViewFont
         $0.isScrollEnabled = true
     }
@@ -153,7 +153,7 @@ final class WriteViewController: BaseViewController, ReactorKit.View {
             .bind(to: self.activityIndicatorView.rx.isAnimating)
             .disposed(by: disposeBag)
         
-        themed { $0.thirdColor }.asObservable()
+        themeService.attribute { $0.thirdColor }.stream
             .subscribe(onNext: { [weak self] in
                 guard let `self` = self else { return }
                 self.hashtagTextField.textField.setPlaceholderColor($0)

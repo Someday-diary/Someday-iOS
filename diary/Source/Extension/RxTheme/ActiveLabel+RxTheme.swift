@@ -14,12 +14,13 @@ import ActiveLabel
 
 extension ThemeProxy where Base: ActiveLabel {
     
-    var customColor: Observable<UIColor?> {
-        get { return .empty() }
+    var customColor: ThemeAttribute<UIColor?> {
+        get { fatalError("set only") }
         set {
-            let disposable = newValue
-                .takeUntil(base.rx.deallocating)
-                .observeOn(MainScheduler.instance)
+            base.customColor[.custom(pattern: "#[\\p{L}0-9_-]*")] = newValue.value
+            let disposable = newValue.stream
+                .take(until: base.rx.deallocating)
+                .observe(on: MainScheduler.instance)
                 .bind(to: base.rx.customColor)
             hold(disposable, for: "customColor")
         }

@@ -59,7 +59,7 @@ final class SearchCell: BaseTableViewCell, View {
     
     // MARK: - UI
     let dateView = UIView().then {
-        $0.theme.backgroundColor = themed { $0.mainColor }
+        $0.theme.backgroundColor = themeService.attribute { $0.mainColor }
         $0.layer.cornerRadius = Metric.dateViewSize / 2
         $0.clipsToBounds = true
     }
@@ -78,7 +78,7 @@ final class SearchCell: BaseTableViewCell, View {
     
     let hashtagLabel = ActiveLabel().then {
         $0.enabledTypes = [LabelActive.customType]
-        $0.theme.customColor = themed { $0.thirdColor }
+        $0.theme.customColor = themeService.attribute { $0.thirdColor }
         $0.font = Font.tagLabelFont
         $0.adjustsFontForContentSizeCategory = true
     }
@@ -92,9 +92,9 @@ final class SearchCell: BaseTableViewCell, View {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.accessoryType = .none
         
-        hashtagLabel.handleCustomTap(for: LabelActive.customType) { [weak self] element in
-            
-        }
+//        hashtagLabel.handleCustomTap(for: LabelActive.customType) { [weak self] element in
+//            
+//        }
     }
     
     override func layoutSubviews() {

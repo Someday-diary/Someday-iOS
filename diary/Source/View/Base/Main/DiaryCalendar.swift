@@ -36,7 +36,7 @@ final class DiaryCalendar: UIView {
         $0.today = nil
         $0.select(Date())
         $0.appearance.headerMinimumDissolvedAlpha = 0
-        $0.appearance.theme.selectionColor = themed { $0.mainColor }
+        $0.appearance.theme.selectionColor = themeService.attribute { $0.mainColor }
         $0.appearance.titleSelectionColor = .white
         $0.appearance.headerTitleColor = R.color.calendarHeaderColor()
         $0.appearance.headerTitleFont = Font.calendarTitle
@@ -58,7 +58,7 @@ final class DiaryCalendar: UIView {
     }
     let calendarAsset = UIImageView().then {
         $0.image = R.image.calendarAsset()
-        $0.theme.tintColor = themed { $0.mainColor }
+        $0.theme.tintColor = themeService.attribute { $0.mainColor }
     }
     
     // MARK: - Initializing

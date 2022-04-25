@@ -33,12 +33,12 @@ class SplashViewController: BaseViewController, View {
     
     // MARK: - UI
     let splashImage = UIImageView().then {
-        $0.theme.image = themed { $0.mainIllustration }
+        $0.theme.image = themeService.attribute { $0.mainIllustration }
     }
     
     let titleLabel = UILabel().then {
         $0.text = "Someday".localized
-        $0.theme.textColor = themed { $0.thirdColor }
+        $0.theme.textColor = themeService.attribute { $0.thirdColor }
         $0.font = Font.titleFont
     }
     

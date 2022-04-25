@@ -29,7 +29,7 @@ class WriteDiaryButton: UIButton {
     
     // MARK: - UI
     let icon = UIImageView().then {
-        $0.theme.tintColor = themed { $0.mainColor }
+        $0.theme.tintColor = themeService.attribute { $0.mainColor }
         $0.image = R.image.add()
     }
     
