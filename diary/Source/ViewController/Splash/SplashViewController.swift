@@ -16,7 +16,7 @@ class SplashViewController: BaseViewController, View {
     // MARK: - Constants
     fileprivate struct Metric {
         // Image
-        static let imageHeight = 70.f
+        static let imageHeight = 50.f
         static let imageWidth = 50.f
         static let imageY = 50.f
         
